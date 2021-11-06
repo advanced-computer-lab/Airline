@@ -9,7 +9,6 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
-    <Router>
       <div className="App">
         <Navbar/>
         <Routes>
@@ -19,7 +18,6 @@ function App() {
         <Route path='/register' element={Register} />
       </Routes>
       </div>
-    </Router>
     
   );
 }
