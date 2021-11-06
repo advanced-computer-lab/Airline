@@ -32,8 +32,10 @@ export default class FlightsDAO {
         query = { "BusinessSeats": { $eq: filters["BusinessSeats"] } }
       }  else if ("FirstSeats" in filters) {
         query = { "FirstSeats": { $eq: filters["FirstSeats"] } }
-      }  else if ("Airport" in filters) {
-        query = { "Airport": { $eq: filters["Airport"] } }
+      }  else if ("DepartureAirport" in filters) {
+        query = { "DepartureAirport": { $eq: filters["DepartureAirport"] } }
+      }  else if ("DestinationAirport" in filters) {
+        query = { "DestinationAirport": { $eq: filters["DestinationAirport"] } }
       }  
 
     }
@@ -71,7 +73,7 @@ export default class FlightsDAO {
   }
   
 
-  static async addFlight(Fnumber, deptime, arrtime, date, ecseats, bseats, fseats, airport) {
+  static async addFlight(Fnumber="", deptime="", arrtime="", date="", ecseats="", bseats="", fseats="", depairport="", destairport="") {
     try {
       const flightDoc = { 
         FlightNumber: Fnumber,
@@ -81,7 +83,8 @@ export default class FlightsDAO {
         EconomySeats: ecseats,
         BusinessSeats: bseats,
         FirstSeats: fseats,
-        Airport: airport
+        DepartureAirport: depairport,
+        DestinationAirport: destairport
     }
 
       return await flights.insertOne(flightDoc)
@@ -91,11 +94,11 @@ export default class FlightsDAO {
     }
   }
 
-  static async updateFlight(flightId, Fnumber=null, deptime=null, arrtime=null, date=null, ecseats=null, bseats=null, fseats=null, airport=null) {
+  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats="", bseats="", fseats="", depairport="", destairport="") {
     try {
       const updateResponse = await flights.updateOne(
         { _id: ObjectId(flightId)},
-        { $set: { FlightNumber:Fnumber, DepartureTime:deptime, ArrivalTime:arrtime, Date: date,  EconomySeats:ecseats, BusinessSeats:bseats, FirstSeats:fseats, Airport:airport } },
+        { $set: { FlightNumber:Fnumber, DepartureTime:deptime, ArrivalTime:arrtime, Date: date,  EconomySeats:ecseats, BusinessSeats:bseats, FirstSeats:fseats, DepartureAirport:depairport, DestinationAirport:destairport } },
       )
 
       return updateResponse
