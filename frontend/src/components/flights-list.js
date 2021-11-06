@@ -223,7 +223,8 @@ const FlightsList = props => {
                 <div className="card-body">
                   <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
                   <p className="card-text">
-                    <strong>Departure Time: </strong>{flight.DepartureTime}<br/>
+                   <strong>Date: </strong>{flight.Date}<br/>
+                    <strong>Departure Time: </strong>{flight.DepartureTime}  &nbsp;
                     <strong>Arrival Time: </strong>{flight.ArrivalTime}
                   </p>
                   <div className="row">

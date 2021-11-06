@@ -1,8 +1,6 @@
-
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 
 import AddFlight from "./components/add-flight";
 import EditFlight from "./components/edit-flight";
@@ -11,7 +9,6 @@ import FlightsList from "./components/flights-list";
 
 function App() {
   //const [user, setUser] = React.useState(null);
-
 
   return (
     <div>
