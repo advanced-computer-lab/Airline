@@ -101,7 +101,7 @@ let filters = {}
 
       if (reviewResponse.modifiedCount === 0) {
         throw new Error(
-          "unable to update flight - user may not be original poster",
+          "unable to update flight",
         )
       }
 
