@@ -7,6 +7,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AddFlight from "./components/add-flight";
 import EditFlight from "./components/edit-flight";
 import Flight from "./components/flights";
+
 import FlightsList from "./components/flights-list";
 
 function App() {
