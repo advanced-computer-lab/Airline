@@ -26,12 +26,6 @@ export default class FlightsDAO {
         query = { "ArrivalTime": { $eq: filters["ArrivalTime"] } }
       } else if ("Date" in filters) {
         query = { "Date": { $eq: filters["Date"] } }
-      } else if ("EconomySeats" in filters) {
-        query = { "EconomySeats": { $eq: filters["EconomySeats"] } }
-      } else if ("BusinessSeats" in filters) {
-        query = { "BusinessSeats": { $eq: filters["BusinessSeats"] } }
-      }  else if ("FirstSeats" in filters) {
-        query = { "FirstSeats": { $eq: filters["FirstSeats"] } }
       }  else if ("DepartureAirport" in filters) {
         query = { "DepartureAirport": { $eq: filters["DepartureAirport"] } }
       }  else if ("DestinationAirport" in filters) {
