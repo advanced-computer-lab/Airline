@@ -31,6 +31,21 @@ let filters = {}
     res.json(response)
   }
 
+  static async apiGetFlightById(req, res, next) {
+    try {
+      let id = req.params.id || {}
+      let flight = await FlightsDAO.getFlightByID(id)
+      if (!flight) {
+        res.status(404).json({ error: "Flight not found" })
+        return
+      }
+      res.json(flight)
+    } catch (e) {
+      console.log(`api, ${e}`)
+      res.status(500).json({ error: e })
+    }
+  }
+
  
   static async apiPostFlight(req, res, next) {
     try {
@@ -63,7 +78,7 @@ let filters = {}
 
   static async apiUpdateFlight(req, res, next) {
     try {
-      const flightId = req.body.id
+      const flightId = req.params.id
       const Fnumber = req.body.fnumber
       const deptime = req.body.deptime
       const arrtime = req.body.arrtime
@@ -81,7 +96,7 @@ let filters = {}
 
       if (reviewResponse.modifiedCount === 0) {
         throw new Error(
-          "unable to update review - user may not be original poster",
+          "unable to update flight - user may not be original poster",
         )
       }
 
@@ -93,7 +108,7 @@ let filters = {}
 
   static async apiDeleteFlight(req, res, next) {
     try {
-      const flightId = req.body.id
+      const flightId = req.params.id
       const flightResponse = await FlightsDAO.deleteFlight(flightId)
       res.json({ status: "success" })
     } catch (e) {

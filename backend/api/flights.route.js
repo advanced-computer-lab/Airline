@@ -3,9 +3,12 @@ import FlightsCtrl from "./flights.controller.js"
 
 const router = express.Router()
 
+router.route("/").get(FlightsCtrl.apiGetFlights)
+router.route("/").post(FlightsCtrl.apiPostFlight)
+
+
 router
-  .route("/").get(FlightsCtrl.apiGetFlights)
-  .post(FlightsCtrl.apiPostFlight)
+  .route("/:id").get(FlightsCtrl.apiGetFlightById)
   .put(FlightsCtrl.apiUpdateFlight)
   .delete(FlightsCtrl.apiDeleteFlight)
 

@@ -61,6 +61,14 @@ export default class FlightsDAO {
       return { FlightsList: [], totalNumFlights: 0 }
     }
   }
+
+  static async getFlightByID(id) {
+    try {
+      return await flights.findOne( {"_id": new ObjectId(id)})
+    } catch (e) {
+      console.error(`Unable to get flight, ${e}`)
+    }
+  }
   
 
   static async addFlight(Fnumber, deptime, arrtime, date, ecseats, bseats, fseats, airport) {
@@ -92,7 +100,7 @@ export default class FlightsDAO {
 
       return updateResponse
     } catch (e) {
-      console.error(`Unable to update review: ${e}`)
+      console.error(`Unable to update flight: ${e}`)
       return { error: e }
     }
   }
@@ -106,7 +114,7 @@ export default class FlightsDAO {
 
       return deleteResponse
     } catch (e) {
-      console.error(`Unable to delete review: ${e}`)
+      console.error(`Unable to delete flight: ${e}`)
       return { error: e }
     }
   }
