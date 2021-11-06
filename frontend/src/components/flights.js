@@ -5,7 +5,7 @@ import {link} from "react-router-dom"
 function Flight() {
   return (
     <div className="App">
-     Hello World
+     flight details
     </div>
   );
 }

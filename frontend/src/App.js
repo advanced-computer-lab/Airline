@@ -22,6 +22,15 @@ function App() {
             Flights
           </Link>
         </li>
+
+        <li className="nav-item" >
+                   
+          <Link to={"/flights/create"} className="nav-link">
+            Create New Flight
+          </Link>
+
+        </li>
+
         <li className="nav-item" >
                    
           <Link to={"/flights"} className="nav-link">
@@ -36,24 +45,10 @@ function App() {
     <div className="container mt-3">
       <Switch>
       <Route exact path={["/", "/flights"]} component={FlightsList} />
-        <Route 
-          path="/flights/:id/edit"
-          render={(props) => (
-            <EditFlight {...props} />
-          )}
-        />
-        <Route 
-          path="/flights/:id"
-          render={(props) => (
-            <Flight {...props} />
-          )}
-        />
-         <Route 
-          path="/flights/create"
-          render={(props) => (
-            <AddFlight {...props} />
-          )}
-        />
+      <Route  path="/flights/create" component={AddFlight} />
+      <Route  path="/flights/:id/edit" component={EditFlight} />
+      <Route  path="/flights/:id" component={Flight} />
+        
       </Switch>
     </div>
   </div>

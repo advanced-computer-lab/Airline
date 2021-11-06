@@ -5,7 +5,7 @@ import {link} from "react-router-dom"
 function EditFlight() {
   return (
     <div className="App">
-     Hello World
+     edit flight
     </div>
   );
 }
