@@ -1,17 +1,16 @@
-
-import React from "react";
+import {Component,React} from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
+/*
 import AddFlight from "./components/add-flight";
 import EditFlight from "./components/edit-flight";
 import Flight from "./components/flights";
-
+*/
 import FlightsList from "./components/flights-list";
 
 function App() {
-  const [user, setUser] = React.useState(null);
+  //const [user, setUser] = React.useState(null);
 
   return (
     <div>
@@ -39,24 +38,7 @@ function App() {
     <div className="container mt-3">
       <Routes>
         <Route exact path={["/", "/flights"]} component={FlightsList} />
-        <Route 
-          path="/flights/:id/edit"
-          render={(props) => (
-            <EditFlight {...props} user={user} />
-          )}
-        />
-        <Route 
-          path="/flights/:id"
-          render={(props) => (
-            <Flight {...props} user={user} />
-          )}
-        />
-         <Route 
-          path="/flights/create"
-          render={(props) => (
-            <AddFlight {...props} user={user} />
-          )}
-        />
+        
       </Routes>
     </div>
   </div>
