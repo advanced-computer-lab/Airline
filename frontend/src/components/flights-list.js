@@ -92,7 +92,7 @@ const FlightsList = props => {
   };
 
   const findByDepartAirpt = () => {
-    find(searchArrivalAirpt, "DepartureAirport")
+    find(searchDepartAirpt, "DepartureAirport")
   };
 
   const findByArrivalAirpt = () => {
@@ -199,7 +199,7 @@ const FlightsList = props => {
             type="text"
             className="form-control"
             placeholder="Search by Destination Airport"
-            value={searchDepartAirpt}
+            value={searchArrivalAirpt}
             onChange={onChangeSearchArrivalAirpt}
           />
           <div className="input-group-append">
@@ -221,7 +221,7 @@ const FlightsList = props => {
             <div className="col-lg-4 pb-1">
               <div className="card">
                 <div className="card-body">
-                  <h5 className="card-title">{flight.DepartureAirport} TO {flight.ArrivalAirport}</h5>
+                  <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
                   <p className="card-text">
                     <strong>Departure Time: </strong>{flight.DepartureTime}<br/>
                     <strong>Arrival Time: </strong>{flight.ArrivalTime}
