@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import{Formik, useFormik} from "formik";
+import * as Yup from "yup";
+import FlightDataService from "../services/flight";
 
-export default function UpdateFlight(){
+export default function Updateflight(){
     
      const formik=useFormik({
          initialValues: {
@@ -13,17 +15,50 @@ export default function UpdateFlight(){
              EconomySeats:"",
              BusinessSeats:"",
              FirstSeats:"",
-             AirportD:"",
-             AirportA:""
-
+             DepartureAirport:"",
+             DestinationAirport:""
 
 
          },
-         onSubmit:(values)=>{
-             console.log(values);
+
+         validationSchema: Yup.object({
+             FlightNumber: Yup.string().required("Required"),
+             DepartureTime: Yup.string().required("Required"),
+             ArrivalTime : Yup.string().required("Required"),
+             Date: Yup.date().required("Required"),
+             EconomySeats: Yup.number(),
+             BusinessSeats: Yup.number(),
+             FirstSeats: Yup.number(),
+             DepartureAirport: Yup.string().required("Required"),
+             DestinationAirport: Yup.string().required("Required")
+             
+
+         }),
+
+
+         onSubmit:async (values)=>{
+             const FlightData = {
+                 fnumber: formik.values.FlightNumber,
+                 deptime: formik.values.DepartureTime,
+                 arrtime: formik.values.ArrivalTime,
+                 date: formik.values.Date,
+                 ecseats: formik.values.EconomySeats,
+                 bseats: formik.values.BusinessSeats,
+                 fseats: formik.values.FirstSeats,
+                 depairport: formik.values.DepartureAirport,
+                 destairport: formik.values.DestinationAirport,
+
+             };
+
+             const pathArray = window.location.pathname.split('/');
+             const id = pathArray[2];
+
+             FlightDataService.updateFlight(id,FlightData);
+             window.location.href="/flights";
+
+
          },
      });
-     //console.log(formik.values);
     return(
 
        <form onSubmit={formik.handleSubmit}>
@@ -38,19 +73,17 @@ export default function UpdateFlight(){
                  type="text"
                  placeholder="Flight Number"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.FlightNumber}
                  />  
 
            </div>
-           <div className="input-container">
+           <div className="input-container">           
                <input
                  id="DepartureTime"
                  name="DepartureTime"
                  type="time"
                  placeholder="Departure Time"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.DepartureTime}
                  />  
 
@@ -62,7 +95,6 @@ export default function UpdateFlight(){
                  type="time"
                  placeholder="Arrival Time"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.ArrivalTime}
                  />  
 
@@ -74,7 +106,6 @@ export default function UpdateFlight(){
                  type="date"
                  placeholder="Date"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.Date}
                  />  
 
@@ -86,7 +117,6 @@ export default function UpdateFlight(){
                  type="text"
                  placeholder="Economy Seats"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.EconomySeats}
                  />  
 
@@ -98,7 +128,6 @@ export default function UpdateFlight(){
                  type="text"
                  placeholder="Business Seats"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.BusinessSeats}
                  />  
 
@@ -110,32 +139,29 @@ export default function UpdateFlight(){
                  type="text"
                  placeholder="First Seats"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.FirstSeats}
                  />  
 
            </div>
            <div className="input-container">
                <input
-                 id="AirportD"
-                 name="AirportD"
+                 id="DepartureAirport"
+                 name="DepartureAirport"
                  type="text"
                  placeholder="Departure Airport"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
-                value={formik.values.AirportD}
+                value={formik.values.DepartureAirport}
                  />  
 
            </div>
            <div className="input-container">
                <input
-                 id="AirportA"
-                 name="AirportA"
+                 id="DestinationAirport"
+                 name="DestinationAirport"
                  type="text"
-                 placeholder="Arrival Airport"
+                 placeholder="Destination Airport"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
-                value={formik.values.AirportA}
+                value={formik.values.DestinationAirport}
                  />  
 
            </div>
