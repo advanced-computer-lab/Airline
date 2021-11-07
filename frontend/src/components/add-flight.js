@@ -13,7 +13,8 @@ export default function Createflights(){
              EconomySeats:"",
              BusinessSeats:"",
              FirstSeats:"",
-             Airport:""
+             DepartureAirport:"",
+             DestinationAirport:""
 
 
          },
@@ -21,7 +22,6 @@ export default function Createflights(){
              console.log(values);
          },
      });
-     //console.log(formik.values);
     return(
 
        <form onSubmit={formik.handleSubmit}>
@@ -36,7 +36,6 @@ export default function Createflights(){
                  type="text"
                  placeholder="Flight Number"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.FlightNumber}
                  />  
 
@@ -48,7 +47,6 @@ export default function Createflights(){
                  type="time"
                  placeholder="Departure Time"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.DepartureTime}
                  />  
 
@@ -60,7 +58,6 @@ export default function Createflights(){
                  type="time"
                  placeholder="Arrival Time"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.ArrivalTime}
                  />  
 
@@ -72,7 +69,6 @@ export default function Createflights(){
                  type="date"
                  placeholder="Date"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.Date}
                  />  
 
@@ -84,7 +80,6 @@ export default function Createflights(){
                  type="text"
                  placeholder="Economy Seats"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.EconomySeats}
                  />  
 
@@ -96,7 +91,6 @@ export default function Createflights(){
                  type="text"
                  placeholder="Business Seats"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.BusinessSeats}
                  />  
 
@@ -108,20 +102,29 @@ export default function Createflights(){
                  type="text"
                  placeholder="First Seats"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
                 value={formik.values.FirstSeats}
                  />  
 
            </div>
            <div className="input-container">
                <input
-                 id="Airport"
-                 name="Airport"
+                 id="DepartureAirport"
+                 name="DepartureAirport"
                  type="text"
-                 placeholder="Airport"
+                 placeholder="Departure Airport"
                  onChange={formik.handleChange}
-                 //onChange={(e)=>setFirstName(e.target.values)}
-                value={formik.values.Airport}
+                value={formik.values.DepartureAirport}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
+                 id="DestinationAirport"
+                 name="DestinationAirport"
+                 type="text"
+                 placeholder="Destination Airport"
+                 onChange={formik.handleChange}
+                value={formik.values.DestinationAirport}
                  />  
 
            </div>
