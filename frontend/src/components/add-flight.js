@@ -1,13 +1,135 @@
-import React, {useState,UseEffect } from "react";
-import FlightDataService from "../services/flight";
-import {link} from "react-router-dom"
+import React, { useState } from "react";
+import{Formik, useFormik} from "formik";
 
-function AddFlight() {
-  return (
-    <div className="App">
-     ADD FLIGHT
-    </div>
-  );
+export default function Createflights(){
+    
+     const formik=useFormik({
+         initialValues: {
+             
+             FlightNumber:"",
+             DepartureTime:"",
+             ArrivalTime:"",
+             Date:"",
+             EconomySeats:"",
+             BusinessSeats:"",
+             FirstSeats:"",
+             Airport:""
+
+
+         },
+         onSubmit:(values)=>{
+             console.log(values);
+         },
+     });
+     //console.log(formik.values);
+    return(
+
+       <form onSubmit={formik.handleSubmit}>
+           
+
+            
+           
+           <div className="input-container">
+               <input
+                 id="FlightNumber"
+                 name="FlightNumber"
+                 type="text"
+                 placeholder="Flight Number"
+                 onChange={formik.handleChange}
+                 //onChange={(e)=>setFirstName(e.target.values)}
+                value={formik.values.FlightNumber}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
+                 id="DepartureTime"
+                 name="DepartureTime"
+                 type="time"
+                 placeholder="Departure Time"
+                 onChange={formik.handleChange}
+                 //onChange={(e)=>setFirstName(e.target.values)}
+                value={formik.values.DepartureTime}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
+                 id="ArrivalTime"
+                 name="ArrivalTime"
+                 type="time"
+                 placeholder="Arrival Time"
+                 onChange={formik.handleChange}
+                 //onChange={(e)=>setFirstName(e.target.values)}
+                value={formik.values.ArrivalTime}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
+                 id="Date"
+                 name="Date"
+                 type="date"
+                 placeholder="Date"
+                 onChange={formik.handleChange}
+                 //onChange={(e)=>setFirstName(e.target.values)}
+                value={formik.values.Date}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
+                 id="EconomySeats"
+                 name="EconomySeats"
+                 type="text"
+                 placeholder="Economy Seats"
+                 onChange={formik.handleChange}
+                 //onChange={(e)=>setFirstName(e.target.values)}
+                value={formik.values.EconomySeats}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
+                 id="BusinessSeats"
+                 name="BusinessSeats"
+                 type="text"
+                 placeholder="Business Seats"
+                 onChange={formik.handleChange}
+                 //onChange={(e)=>setFirstName(e.target.values)}
+                value={formik.values.BusinessSeats}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
+                 id="FirstSeats"
+                 name="FirstSeats"
+                 type="text"
+                 placeholder="First Seats"
+                 onChange={formik.handleChange}
+                 //onChange={(e)=>setFirstName(e.target.values)}
+                value={formik.values.FirstSeats}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
+                 id="Airport"
+                 name="Airport"
+                 type="text"
+                 placeholder="Airport"
+                 onChange={formik.handleChange}
+                 //onChange={(e)=>setFirstName(e.target.values)}
+                value={formik.values.Airport}
+                 />  
+
+           </div>
+
+          
+           <button type= "submit">Submit</button>
+
+</form>
+
+    )
 }
-
-export default AddFlight;
