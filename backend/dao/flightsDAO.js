@@ -11,7 +11,7 @@ export default class FlightsDAO {
     try {
       flights = await conn.db(process.env.AIRLINE_NS).collection("flights")
     } catch (e) {
-      console.error(`Unable to establish collection handles in userDAO: ${e}`)
+      console.error(`Unable to establish collection handles in flightsDAO: ${e}`)
     }
   }
 
