@@ -32,20 +32,7 @@ const Flight = props => {
     getFlight(props.match.params.id);
   }, [props.match.params.id]);
 
-  /*const deleteReview = (reviewId, index) => {
-    FlightDataService.deleteFlight(reviewId, props.user.id)
-      .then(response => {
-        setFlight((prevState) => {
-          prevState.reviews.splice(index, 1)
-          return({
-            ...prevState
-          })
-        })
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };*/
+
 
   return (
     <div>
@@ -61,8 +48,10 @@ const Flight = props => {
             <strong>Economy Class Seats: </strong>{flight.EconomySeats} 
           </p>
           <Link to={"/flights/" + props.match.params.id + "/edit"} className="btn btn-primary">
-            Update Flight
+            Edit Flight
           </Link> &nbsp;
+
+          <a className="btn btn-danger" onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(props.match.params.id);window.location.href="/flights"};}}>Delete Flight</a> &nbsp;
 
           
 
