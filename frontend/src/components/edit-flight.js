@@ -54,7 +54,7 @@ export default function Updateflight(){
              const id = pathArray[2];
 
              FlightDataService.updateFlight(id,FlightData);
-             window.location.href="/flights";
+             window.location.href=`/flights/${id}`;
 
 
          },
