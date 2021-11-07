@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import{Formik, useFormik} from "formik";
+import * as Yup from "yup";
+import FlightDataService from "../services/flight";
 
-export default function Createflights(){
+export default function Createflight(){
     
      const formik=useFormik({
          initialValues: {
@@ -10,16 +12,48 @@ export default function Createflights(){
              DepartureTime:"",
              ArrivalTime:"",
              Date:"",
-             EconomySeats:"",
-             BusinessSeats:"",
-             FirstSeats:"",
+             EconomySeats:0,
+             BusinessSeats:0,
+             FirstSeats:0,
              DepartureAirport:"",
              DestinationAirport:""
 
 
          },
-         onSubmit:(values)=>{
-             console.log(values);
+
+         validationSchema: Yup.object({
+             FlightNumber: Yup.string().required("Required"),
+             DepartureTime: Yup.string().required("Required"),
+             ArrivalTime : Yup.string().required("Required"),
+             Date: Yup.date().required("Required"),
+             EconomySeats: Yup.number(),
+             BusinessSeats: Yup.number(),
+             FirstSeats: Yup.number(),
+             DepartureAirport: Yup.string().required("Required"),
+             DestinationAirport: Yup.string().required("Required")
+             
+
+         }),
+
+
+         onSubmit:async (values)=>{
+             const FlightData = {
+                 fnumber: formik.values.FlightNumber,
+                 deptime: formik.values.DepartureTime,
+                 arrtime: formik.values.ArrivalTime,
+                 date: formik.values.Date,
+                 ecseats: formik.values.EconomySeats,
+                 bseats: formik.values.BusinessSeats,
+                 fseats: formik.values.FirstSeats,
+                 depairport: formik.values.DepartureAirport,
+                 destairport: formik.values.DestinationAirport,
+
+             };
+
+             FlightDataService.createFlight(FlightData);
+             window.location.href="/flights";
+
+
          },
      });
     return(
@@ -40,7 +74,7 @@ export default function Createflights(){
                  />  
 
            </div>
-           <div className="input-container">
+           <div className="input-container">           
                <input
                  id="DepartureTime"
                  name="DepartureTime"
@@ -130,7 +164,7 @@ export default function Createflights(){
            </div>
 
           
-           <button type= "submit">Submit</button>
+           <button type= "submit">Create</button>
 
 </form>
 
