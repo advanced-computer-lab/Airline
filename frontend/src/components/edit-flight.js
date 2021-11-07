@@ -1,22 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import{Formik, useFormik} from "formik";
 import * as Yup from "yup";
 import FlightDataService from "../services/flight";
+import axios from 'axios';
+import { useParams } from "react-router";
 
-export default function Updateflight(){
-    
+
+
+const UpdateFlight = props => {
+
+  const pathArray = window.location.pathname.split('/');
+  const id = pathArray[2];
+
+  const flight = props.location.state
+
+  
+
      const formik=useFormik({
          initialValues: {
              
-             FlightNumber:"",
-             DepartureTime:"",
-             ArrivalTime:"",
-             Date:"",
-             EconomySeats:"",
-             BusinessSeats:"",
-             FirstSeats:"",
-             DepartureAirport:"",
-             DestinationAirport:""
+             FlightNumber:flight.FlightNumber,
+             DepartureTime:flight.DepartureTime,
+             ArrivalTime:flight.ArrivalTime,
+             Date:flight.Date,
+             EconomySeats:flight.EconomySeats,
+             BusinessSeats:flight.BusinessSeats,
+             FirstSeats:flight.FirstSeats,
+             DepartureAirport:flight.DepartureAirport,
+             DestinationAirport:flight.DestinationAirport
 
 
          },
@@ -50,9 +61,7 @@ export default function Updateflight(){
 
              };
 
-             const pathArray = window.location.pathname.split('/');
-             const id = pathArray[2];
-
+            
              FlightDataService.updateFlight(id,FlightData);
              window.location.href=`/flights/${id}`;
 
@@ -173,3 +182,5 @@ export default function Updateflight(){
 
     )
 }
+
+export default UpdateFlight;

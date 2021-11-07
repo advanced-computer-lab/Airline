@@ -47,7 +47,7 @@ const Flight = props => {
             <strong>Business Class Seats: </strong>{flight.BusinessSeats} <br/>
             <strong>Economy Class Seats: </strong>{flight.EconomySeats} 
           </p>
-          <Link to={"/flights/" + props.match.params.id + "/edit"} className="btn btn-primary">
+          <Link to={{ pathname: "/flights/" + props.match.params.id + "/edit", state: flight }} className="btn btn-primary">
             Edit Flight
           </Link> &nbsp;
 
