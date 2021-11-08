@@ -12,9 +12,9 @@ export default function Createflight(){
              DepartureTime:"",
              ArrivalTime:"",
              Date:"",
-             EconomySeats:0,
-             BusinessSeats:0,
-             FirstSeats:0,
+             EconomySeats:"",
+             BusinessSeats:"",
+             FirstSeats:"",
              DepartureAirport:"",
              DestinationAirport:""
 
@@ -26,9 +26,9 @@ export default function Createflight(){
              DepartureTime: Yup.string().required("Required"),
              ArrivalTime : Yup.string().required("Required"),
              Date: Yup.date().required("Required"),
-             EconomySeats: Yup.number(),
-             BusinessSeats: Yup.number(),
-             FirstSeats: Yup.number(),
+             EconomySeats: Yup.number().required("Required"),
+             BusinessSeats: Yup.number().required("Required"),
+             FirstSeats: Yup.number().required("Required"),
              DepartureAirport: Yup.string().required("Required"),
              DestinationAirport: Yup.string().required("Required")
              
