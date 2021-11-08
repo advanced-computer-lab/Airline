@@ -7,15 +7,15 @@ export default class FlightsController {
 let filters = {}
     if (req.query.FlightNumber) {
       filters.FlightNumber = req.query.FlightNumber
-    } else if (req.query.DepartureTime) {
+    } if (req.query.DepartureTime) {
       filters.DepartureTime = req.query.DepartureTime
-    } else if (req.query.ArrivalTime) {
+    } if (req.query.ArrivalTime) {
       filters.ArrivalTime = req.query.ArrivalTime
-    } else if (req.query.Date) {
+    } if (req.query.Date) {
       filters.Date = req.query.Date
-    } else if (req.query.DepartureAirport) {
+    } if (req.query.DepartureAirport) {
       filters.DepartureAirport = req.query.DepartureAirport
-    } else if (req.query.DestinationAirport) {
+    } if (req.query.DestinationAirport) {
       filters.DestinationAirport = req.query.DestinationAirport
     }
     

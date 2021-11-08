@@ -18,18 +18,19 @@ export default class FlightsDAO {
   static async getFlights({filters = null}={}) {
     let query
     if (filters) {
+      query = {}
       if ("FlightNumber" in filters) {
-        query = { "FlightNumber": { $eq: filters["FlightNumber"] } }
-      } else if ("DepartureTime" in filters) {
-        query = { "DepartureTime": { $eq: filters["DepartureTime"] } }
-      } else if ("ArrivalTime" in filters) {
-        query = { "ArrivalTime": { $eq: filters["ArrivalTime"] } }
-      } else if ("Date" in filters) {
-        query = { "Date": { $eq: filters["Date"] } }
-      }  else if ("DepartureAirport" in filters) {
-        query = { "DepartureAirport": { $eq: filters["DepartureAirport"] } }
-      }  else if ("DestinationAirport" in filters) {
-        query = { "DestinationAirport": { $eq: filters["DestinationAirport"] } }
+        query["FlightNumber"] =  { $eq: filters["FlightNumber"]}
+      }  if ("DepartureTime" in filters) {
+        query["DepartureTime"] =  { $eq: filters["DepartureTime"]}
+      }  if ("ArrivalTime" in filters) {
+        query["ArrivalTime"] =  { $eq: filters["ArrivalTime"]}
+      }  if ("Date" in filters) {
+        query["Date"] =  { $eq: filters["Date"]}
+      }  if ("DepartureAirport" in filters) {
+        query["DepartureAirport"] =  { $eq: filters["DepartureAirport"]}
+      }  if ("DestinationAirport" in filters) {
+        query["DestinationAirport"] =  { $eq: filters["DestinationAirport"]}
       }  
 
     }
