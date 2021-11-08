@@ -8,7 +8,6 @@ import Flight from "./components/flights";
 import FlightsList from "./components/flights-list";
 
 function App() {
-  //const [user, setUser] = React.useState(null);
 
   return (
     <div>

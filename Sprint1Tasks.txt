@@ -1,0 +1,9 @@
+Mohamed Singer : backend api and routing / flight data service
+
+Youssef Shaker : backend DAOs / Flights list and flight components
+
+Ahmed Shamel : Create flight component
+
+Adham Salah : Edit flight component / Testing
+
+Abdelkareem Tarek : Navbar/routing (App.js)
