@@ -62,10 +62,16 @@ const FlightsList = props => {
 
   const refreshList = () => {
     retrieveFlights();
+    setSearchFlightNum("");
+    setSearchDepartTime("");
+    setSearchArrivalTime("");
+    setSearchDate("");
+    setSearchDepartAirpt("");
+    setSearchArrivalAirpt("");
   };
 
-  const find = (query, by) => {
-    FlightDataService.find(query, by)
+  const find = (query) => {
+    FlightDataService.findByParams(query)
       .then(response => {
         console.log(response.data);
         setFlights(response.data.flights);
@@ -75,29 +81,10 @@ const FlightsList = props => {
       });
   };
 
-  const findByFlightNum = () => {
-    find(searchFlightNum, "FlightNumber")
-  };
-
-  const findByDepartTime = () => {
-    find(searchDepartTime, "DepartureTime")
-  };
-
-  const findByArrivalTime = () => {
-    find(searchArrivalTime, "ArrivalTime")
-  };
-
-  const findByDate = () => {
-    find(searchDate, "Date")
-  };
-
-  const findByDepartAirpt = () => {
-    find(searchDepartAirpt, "DepartureAirport")
-  };
-
-  const findByArrivalAirpt = () => {
-    find(searchArrivalAirpt, "DestinationAirport")
-  };
+ 
+  const findByAll = () => {
+    find({"FlightNumber":searchFlightNum, "DepartureTime": searchDepartTime, "ArrivalTime": searchArrivalTime, "Date": searchDate, "DepartureAirport": searchDepartAirpt, "DestinationAirport": searchArrivalAirpt})
+  }
 
 
   return (
@@ -107,90 +94,60 @@ const FlightsList = props => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Flight Number"
+            placeholder="Flight Number"
             value={searchFlightNum}
             onChange={onChangeSearchFlightNum}
           />
           <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByFlightNum}
-            >
-              Search
-            </button>
+           
           </div>
         </div>
         <div className="input-group col-lg-4"> 
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Departure Time"
+            placeholder="Departure Time"
             value={searchDepartTime}
             onChange={onChangeSearchDepartTime}
           />
           <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByDepartTime}
-            >
-              Search
-            </button>
+           
           </div>
         </div>
         <div className="input-group col-lg-4"> 
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Arrival Time"
+            placeholder="Arrival Time"
             value={searchArrivalTime}
             onChange={onChangeSearchArrivalTime}
           />
           <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByArrivalTime}
-            >
-              Search
-            </button>
+           
           </div>
         </div>
         <div className="input-group col-lg-4"> 
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Date"
+            placeholder="Date"
             value={searchDate}
             onChange={onChangeSearchDate}
           />
           <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByDate}
-            >
-              Search
-            </button>
+           
           </div>
         </div>
         <div className="input-group col-lg-4"> 
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Departure Airport"
+            placeholder="Departure Airport"
             value={searchDepartAirpt}
             onChange={onChangeSearchDepartAirpt}
           />
           <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByDepartAirpt}
-            >
-              Search
-            </button>
+           
           </div>
         </div>
 
@@ -198,15 +155,23 @@ const FlightsList = props => {
           <input
             type="text"
             className="form-control"
-            placeholder="Search by Destination Airport"
+            placeholder="Destination Airport"
             value={searchArrivalAirpt}
             onChange={onChangeSearchArrivalAirpt}
           />
           <div className="input-group-append">
+          <button
+              className="btn btn-outline-secondary"
+              type="button"
+              onClick={refreshList}
+            >
+              Reset filters
+            </button>
+            
             <button
               className="btn btn-outline-secondary"
               type="button"
-              onClick={findByArrivalAirpt}
+              onClick={findByAll}
             >
               Search
             </button>
@@ -229,7 +194,7 @@ const FlightsList = props => {
                   </p>
                   <div className="row">
                   <Link to={"/flights/"+flight._id} className="btn btn-primary col-lg-5 mx-1 mb-1">
-                    View Flight
+                    Flight Details
                   </Link>
                   </div>
                 </div>
