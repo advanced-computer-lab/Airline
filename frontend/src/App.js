@@ -6,6 +6,7 @@ import AddFlight from "./components/add-flight";
 import EditFlight from "./components/edit-flight";
 import Flight from "./components/flights";
 import FlightsList from "./components/flights-list";
+import Landing from "./components/landing";
 
 function App() {
 
@@ -47,6 +48,7 @@ function App() {
       <Route  path="/flights/create" component={AddFlight} />
       <Route  path="/flights/:id/edit" component={EditFlight} />
       <Route  path="/flights/:id" component={Flight} />
+      <Route  path="/landing" component={Landing} />
         
       </Switch>
     </div>
