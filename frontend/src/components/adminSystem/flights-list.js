@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FlightDataService from "../services/flight";
+import FlightDataService from "../../services/flight";
 import { Link } from "react-router-dom";
 
 const FlightsList = props => {
@@ -177,11 +177,14 @@ const FlightsList = props => {
             </button>
           </div>
         </div>
-       
       </div>
+
+      <Link to={"/admin/flights/create"} className="btn btn-primary col-lg-5 mx-1 mb-1">
+            Create New Flight
+          </Link>
+
       <div className="row">
         {flights.map((flight) => {
-          //const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
           return (
             <div className="col-lg-4 pb-1">
               <div className="card">
@@ -193,7 +196,7 @@ const FlightsList = props => {
                     <strong>Arrival Time: </strong>{flight.ArrivalTime}
                   </p>
                   <div className="row">
-                  <Link to={"/flights/"+flight._id} className="btn btn-primary col-lg-5 mx-1 mb-1">
+                  <Link to={"/admin/flights/"+flight._id} className="btn btn-primary col-lg-5 mx-1 mb-1">
                     Flight Details
                   </Link>
                   </div>

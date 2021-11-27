@@ -1,22 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import{Formik, useFormik} from "formik";
 import * as Yup from "yup";
-import FlightDataService from "../services/flight";
+import FlightDataService from "../../services/flight";
+import axios from 'axios';
+import { useParams } from "react-router";
 
-export default function Createflight(){
-    
+
+
+const UpdateFlight = props => {
+
+  const pathArray = window.location.pathname.split('/');
+  const id = pathArray[3];
+
+  const flight = props.location.state
+
+  
+
      const formik=useFormik({
          initialValues: {
              
-             FlightNumber:"",
-             DepartureTime:"",
-             ArrivalTime:"",
-             Date:"",
-             EconomySeats:"",
-             BusinessSeats:"",
-             FirstSeats:"",
-             DepartureAirport:"",
-             DestinationAirport:""
+             FlightNumber:flight.FlightNumber,
+             DepartureTime:flight.DepartureTime,
+             ArrivalTime:flight.ArrivalTime,
+             Date:flight.Date,
+             EconomySeats:flight.EconomySeats,
+             BusinessSeats:flight.BusinessSeats,
+             FirstSeats:flight.FirstSeats,
+             DepartureAirport:flight.DepartureAirport,
+             DestinationAirport:flight.DestinationAirport
 
 
          },
@@ -26,9 +37,9 @@ export default function Createflight(){
              DepartureTime: Yup.string().required("Required"),
              ArrivalTime : Yup.string().required("Required"),
              Date: Yup.date().required("Required"),
-             EconomySeats: Yup.number().required("Required"),
-             BusinessSeats: Yup.number().required("Required"),
-             FirstSeats: Yup.number().required("Required"),
+             EconomySeats: Yup.number(),
+             BusinessSeats: Yup.number(),
+             FirstSeats: Yup.number(),
              DepartureAirport: Yup.string().required("Required"),
              DestinationAirport: Yup.string().required("Required")
              
@@ -50,8 +61,9 @@ export default function Createflight(){
 
              };
 
-             FlightDataService.createFlight(FlightData);
-             window.location.href="/flights";
+            
+             FlightDataService.updateFlight(id,FlightData);
+             window.location.href=`/admin/flights/${id}`;
 
 
          },
@@ -164,9 +176,11 @@ export default function Createflight(){
            </div>
 
           
-           <button type= "submit">Create</button>
+           <button type= "submit">Update</button>
 
 </form>
 
     )
 }
+
+export default UpdateFlight;
