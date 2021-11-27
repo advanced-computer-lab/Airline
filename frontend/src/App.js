@@ -8,6 +8,7 @@ import Flight from "./components/adminSystem/flights";
 import FlightsList from "./components/adminSystem/flights-list";
 import Landing from "./components/userSystem/landing";
 import FlightDep from "./components/userSystem/departure-flight";
+import FlightReturn from "./components/userSystem/return-flights";
 
 function App() {
 
@@ -46,6 +47,8 @@ function App() {
 
       <Route  exact path={["/", "/flights"]} component={Landing} />
       <Route  path="/flights/SelectDeparture" component={FlightDep} />
+      <Route  path="/flights/SelectReturn" component={FlightReturn} />
+      <Route  path="/flights/ReviewSelection" component={Flight} />
         
       </Switch>
     </div>

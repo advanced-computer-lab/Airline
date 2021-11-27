@@ -55,7 +55,7 @@ const Landing = props => {
         'Economy', 'Business Class', 'First Class'
       ];
 
-      const hashobj = {"DepatureDate":searchDepartDate, "DepartureAirport":searchDepartAirpt, "DestinationAirport":searchArrivalAirpt , "NumberOfPassengers":searchNoPassenger, "CabinClass":searchClass }
+      const hashobj = {DepartureDate:searchDepartDate, DepartureAirport:searchDepartAirpt, DestinationAirport:searchArrivalAirpt ,ReturnDate:searchReturnDate, NumberOfPassengers:searchNoPassenger, CabinClass:searchClass }
 
     return (
         <div>

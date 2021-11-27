@@ -7,6 +7,9 @@ const FlightDep = props => {
 
   const flight = props.location.state
 
+  const returnDate = flight.ReturnDate
+
+  //  adults/children & cabin class
 
 
   const [flights, setFlights] = useState([]);
@@ -44,6 +47,7 @@ const FlightDep = props => {
             <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
             <p className="card-text">
              <strong>FlightNumber: </strong>{flight.FlightNumber}<br/>
+             <strong>Date: </strong>{flight.Date}<br/>
               <strong>Departure Time: </strong>{flight.DepartureTime}<br/>
               <strong>Arrival Time: </strong>{flight.ArrivalTime}<br/>
               <strong>Trip Duration: </strong>{flight.ArrivalTime}<br/>
@@ -51,7 +55,7 @@ const FlightDep = props => {
               <strong>Baggage Allowance: </strong>{flight.ArrivalTime}<br/>
             </p>
             <div className="row">
-            <Link to={{ pathname: "/flights/selectReturn", state: flight }} className="btn btn-primary">
+            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate} }} className="btn btn-primary">
             Select
           </Link> &nbsp;
             </div>
