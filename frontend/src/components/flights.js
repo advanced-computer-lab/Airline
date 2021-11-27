@@ -51,7 +51,7 @@ const Flight = props => {
             Edit Flight
           </Link> &nbsp;
 
-          <a className="btn btn-danger" onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(props.match.params.id);window.location.href="/flights"};}}>Delete Flight</a> &nbsp;
+          <a className="btn btn-danger"  onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(props.match.params.id);window.location.href="/flights"};}}>Delete Flight</a> &nbsp;
 
           
           
