@@ -43,7 +43,7 @@ const FlightDep = props => {
           <div className="card-body">
             <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
             <p className="card-text">
-             <strong>FlightNumber: </strong>{flight.flightNumber}<br/>
+             <strong>FlightNumber: </strong>{flight.FlightNumber}<br/>
               <strong>Departure Time: </strong>{flight.DepartureTime}<br/>
               <strong>Arrival Time: </strong>{flight.ArrivalTime}<br/>
               <strong>Trip Duration: </strong>{flight.ArrivalTime}<br/>
@@ -51,9 +51,9 @@ const FlightDep = props => {
               <strong>Baggage Allowance: </strong>{flight.ArrivalTime}<br/>
             </p>
             <div className="row">
-            <Link to={"/flights/"+flight._id} className="btn btn-primary col-lg-5 mx-1 mb-1">
-              Select
-            </Link>
+            <Link to={{ pathname: "/flights/selectReturn", state: flight }} className="btn btn-primary">
+            Select
+          </Link> &nbsp;
             </div>
           </div>
         </div>
