@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FlightDataService from "../services/flight";
+import FlightDataService from "../../services/flight";
 import { Link } from "react-router-dom";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
@@ -55,7 +55,7 @@ const Landing = props => {
         'Economy', 'Business Class', 'First Class'
       ];
 
-      const hashobj = {"DepatureDate":searchDepartDate, "DepartureAirport":searchDepartAirpt, "DestinationAirport":searchArrivalAirpt , "NumberOfPassengers":searchNoPassenger, "CabinClass":searchClass }
+      const hashobj = {DepartureDate:searchDepartDate, DepartureAirport:searchDepartAirpt, DestinationAirport:searchArrivalAirpt ,ReturnDate:searchReturnDate, NumberOfPassengers:searchNoPassenger, CabinClass:searchClass }
 
     return (
         <div>
@@ -139,10 +139,10 @@ const Landing = props => {
                   type="button"
                   onClick={refreshList}
                 >
-                  Reset filters
+                  Clear filters
                 </button>
                 
-                <Link to={{ pathname: "/flights/" + props.match.params.id + "/edit", state: hashobj }} className="btn btn-primary">
+                <Link to={{ pathname: "/flights/SelectDeparture", state: hashobj }} className="btn btn-primary">
            Search
           </Link> &nbsp;
               </div>

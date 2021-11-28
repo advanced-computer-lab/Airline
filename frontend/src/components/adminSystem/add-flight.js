@@ -1,33 +1,22 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import{Formik, useFormik} from "formik";
 import * as Yup from "yup";
-import FlightDataService from "../services/flight";
-import axios from 'axios';
-import { useParams } from "react-router";
+import FlightDataService from "../../services/flight";
 
-
-
-const UpdateFlight = props => {
-
-  const pathArray = window.location.pathname.split('/');
-  const id = pathArray[2];
-
-  const flight = props.location.state
-
-  
-
+export default function Createflight(){
+    
      const formik=useFormik({
          initialValues: {
              
-             FlightNumber:flight.FlightNumber,
-             DepartureTime:flight.DepartureTime,
-             ArrivalTime:flight.ArrivalTime,
-             Date:flight.Date,
-             EconomySeats:flight.EconomySeats,
-             BusinessSeats:flight.BusinessSeats,
-             FirstSeats:flight.FirstSeats,
-             DepartureAirport:flight.DepartureAirport,
-             DestinationAirport:flight.DestinationAirport
+             FlightNumber:"",
+             DepartureTime:"",
+             ArrivalTime:"",
+             Date:"",
+             EconomySeats:"",
+             BusinessSeats:"",
+             FirstSeats:"",
+             DepartureAirport:"",
+             DestinationAirport:""
 
 
          },
@@ -37,9 +26,9 @@ const UpdateFlight = props => {
              DepartureTime: Yup.string().required("Required"),
              ArrivalTime : Yup.string().required("Required"),
              Date: Yup.date().required("Required"),
-             EconomySeats: Yup.number(),
-             BusinessSeats: Yup.number(),
-             FirstSeats: Yup.number(),
+             EconomySeats: Yup.number().required("Required"),
+             BusinessSeats: Yup.number().required("Required"),
+             FirstSeats: Yup.number().required("Required"),
              DepartureAirport: Yup.string().required("Required"),
              DestinationAirport: Yup.string().required("Required")
              
@@ -61,9 +50,8 @@ const UpdateFlight = props => {
 
              };
 
-            
-             FlightDataService.updateFlight(id,FlightData);
-             window.location.href=`/flights/${id}`;
+             FlightDataService.createFlight(FlightData);
+             window.location.href="/admin/flights";
 
 
          },
@@ -176,11 +164,9 @@ const UpdateFlight = props => {
            </div>
 
           
-           <button type= "submit">Update</button>
+           <button type= "submit">Create</button>
 
 </form>
 
     )
 }
-
-export default UpdateFlight;
