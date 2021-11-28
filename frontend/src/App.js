@@ -9,8 +9,20 @@ import FlightsList from "./components/adminSystem/flights-list";
 import Landing from "./components/userSystem/landing";
 import FlightDep from "./components/userSystem/departure-flight";
 import FlightReturn from "./components/userSystem/return-flights";
+import Login from "./components/userSystem/login";
 
 function App() {
+
+  const [user, setUser] = React.useState(null);
+
+  async function login(user = null) {
+    setUser(user);
+  }
+
+  async function logout() {
+    setUser(null)
+  }
+
 
   return (
     <div>
@@ -27,10 +39,15 @@ function App() {
 
 
         <li className="nav-item" >
-                   
-          <Link to={"/flights"} className="nav-link">
-            Login
-          </Link>
+            { user ? (
+              <a onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
+                Logout {user.name}
+              </a>
+            ) : (            
+            <Link to={"/login"} className="nav-link">
+              Login
+            </Link>
+            )}
 
         </li>
       </div>
@@ -49,6 +66,12 @@ function App() {
       <Route  path="/flights/SelectDeparture" component={FlightDep} />
       <Route  path="/flights/SelectReturn" component={FlightReturn} />
       <Route  path="/flights/ReviewSelection" component={Flight} />
+      <Route 
+            path="/login"
+            render={(props) => (
+              <Login {...props} login={login} />
+            )}
+          />
         
       </Switch>
     </div>
