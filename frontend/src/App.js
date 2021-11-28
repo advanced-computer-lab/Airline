@@ -10,6 +10,7 @@ import Landing from "./components/userSystem/landing";
 import FlightDep from "./components/userSystem/departure-flight";
 import FlightReturn from "./components/userSystem/return-flights";
 import Login from "./components/userSystem/login";
+import ReviewSelection from "./components/userSystem/review-selection";
 
 function App() {
 
@@ -65,13 +66,13 @@ function App() {
       <Route  exact path={["/", "/flights"]} component={Landing} />
       <Route  path="/flights/SelectDeparture" component={FlightDep} />
       <Route  path="/flights/SelectReturn" component={FlightReturn} />
-      <Route  path="/flights/ReviewSelection" component={Flight} />
       <Route 
             path="/login"
             render={(props) => (
               <Login {...props} login={login} />
             )}
           />
+      <Route  path="/flights/ReviewSelection" component={ReviewSelection} />
         
       </Switch>
     </div>
