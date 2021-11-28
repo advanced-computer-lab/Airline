@@ -33,7 +33,7 @@ const ReviewSelection = props => {
         
         </div>
         <div className="row">
-        <h1>Return Flight</h1>
+        <h1>Departure Flight</h1>
             <div className="col-lg-4 pb-1">
               <div className="card">
                 <div className="card-body">
@@ -50,6 +50,11 @@ const ReviewSelection = props => {
                 </div>
               </div>
             </div>
+            <div>
+                  <Link to={{ pathname: "/flights/?", state: {returnFlight, flight} }} className="btn btn-primary">
+            Confirm
+          </Link> &nbsp;
+                  </div>
         
         </div>
             </div>
