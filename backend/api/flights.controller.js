@@ -17,6 +17,8 @@ let filters = {}
       filters.DepartureAirport = req.query.DepartureAirport
     } if (req.query.DestinationAirport) {
       filters.DestinationAirport = req.query.DestinationAirport
+    }if (req.query.CabinClass) {
+      filters.CabinClass = req.query.CabinClass
     }
     
 
@@ -60,7 +62,9 @@ let filters = {}
       const FirstSeats=req.body.fseats
       const DepartureAirport=req.body.depairport
       const DestinationAirport=req.body.destairport
-      
+      const TripDuration= req.body.tripdur
+      const Price= req.body.price
+      const BaggageAllowance= req.body.bagallwd
 
       const FlightResponse = await FlightsDAO.addFlight(
        FlightNumber,
@@ -71,7 +75,10 @@ let filters = {}
        BusinessSeats,
        FirstSeats,
        DepartureAirport,
-       DestinationAirport
+       DestinationAirport,
+       TripDuration,
+       Price,
+       BaggageAllowance
       )
       res.json({ status: "success" })
     } catch (e) {
@@ -92,8 +99,11 @@ let filters = {}
       const fseats=req.body.fseats
       const depairport=req.body.depairport
       const destairport=req.body.destairport
+      const TripDuration= req.body.tripdur
+      const Price= req.body.price
+      const BaggageAllowance= req.body.bagallwd
 
-      const reviewResponse = await FlightsDAO.updateFlight(flightId, Fnumber, deptime, arrtime, date, ecseats, bseats, fseats, depairport, destairport)
+      const reviewResponse = await FlightsDAO.updateFlight(flightId, Fnumber, deptime, arrtime, date, ecseats, bseats, fseats, depairport, destairport, TripDuration, Price, BaggageAllowance)
       var { error } = reviewResponse
       if (error) {
         res.status(400).json({ error })
