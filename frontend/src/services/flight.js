@@ -2,19 +2,19 @@ import http from "../http-common";
 
 class FlightDataService {
   getAll() {
-    return http.get(`/`);
+    return http.get(`/flights`);
   }
 
   get(id) {
-    return http.get(`/${id}`);
+    return http.get(`/flights/${id}`);
   }
 
   find(query, by) {
-    return http.get(`?${by}=${query}`);
+    return http.get(`/flights?${by}=${query}`);
   } 
 
   findByParams(query){
-    let url = `?`;
+    let url = `/flights?`;
     for (var key in query) {
       if (query.hasOwnProperty(key)) {
         if(query[key]){
@@ -26,15 +26,15 @@ class FlightDataService {
   }
 
   createFlight(data) {
-    return http.post("/", data);
+    return http.post("/flights", data);
   }
 
   updateFlight(id, data) {
-    return http.put(`/${id}`, data);
+    return http.put(`/flights/${id}`, data);
   }
 
   deleteFlight(id) {
-    return http.delete(`/${id}`);
+    return http.delete(`/flights/${id}`);
   }
 
 
