@@ -24,7 +24,7 @@ const FlightDep = props => {
   const retrieveFlights = () => {
     const noseats = parseInt(flight.NumberOfAdults) + parseInt(flight.NumberOfChildren)
     const cclass = flight.CabinClass.replace(/\s+/g, '')
-    FlightDataService.findByParams({ "DepartureDate": flight.DepartureDate, "DepartureAirport": flight.DepartureAirport, "DestinationAirport":flight.DestinationAirport, /*"CabinClass":cclass,*/ "Seats": noseats})
+    FlightDataService.findByParams({ "DepartureDate": flight.DepartureDate, "DepartureAirport": flight.DepartureAirport, "DestinationAirport":flight.DestinationAirport, "CabinClass":cclass, "Seats": noseats})
       .then(response => {
         console.log(response.data);
         setFlights(response.data.flights);
