@@ -11,6 +11,9 @@ import FlightDep from "./components/userSystem/departure-flight";
 import FlightReturn from "./components/userSystem/return-flights";
 import Login from "./components/userSystem/login";
 import ReviewSelection from "./components/userSystem/review-selection";
+import DepSeats from "./components/userSystem/departure-seats";
+import RetSeats from "./components/userSystem/return-seats";
+import Booking from "./components/userSystem/final-booking";
 
 function App() {
 
@@ -73,6 +76,13 @@ function App() {
             )}
           />
       <Route  path="/flights/ReviewSelection" component={ReviewSelection} />
+
+
+      <Route  path="/flights/ChooseDepSeats" component={DepSeats} />
+      <Route  path="/flights/ChooseRetSeats" component={RetSeats} />
+      <Route  path="/flights/Booking" component={Booking} />
+      
+
         
       </Switch>
     </div>
