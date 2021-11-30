@@ -16,7 +16,11 @@ export default function Createflight(){
              BusinessSeats:"",
              FirstSeats:"",
              DepartureAirport:"",
-             DestinationAirport:""
+             DestinationAirport:"",
+             TripDuration: "",
+             BaggageAllowed: "",
+             Price:"",
+
 
 
          },
@@ -30,7 +34,11 @@ export default function Createflight(){
              BusinessSeats: Yup.number().required("Required"),
              FirstSeats: Yup.number().required("Required"),
              DepartureAirport: Yup.string().required("Required"),
-             DestinationAirport: Yup.string().required("Required")
+             DestinationAirport: Yup.string().required("Required"),
+             TripDuration:Yup.string().required("Required"),
+             BaggageAllowed:Yup.string().required("Required"),
+             Price:Yup.number().required("Required"),
+
              
 
          }),
@@ -47,6 +55,9 @@ export default function Createflight(){
                  fseats: formik.values.FirstSeats,
                  depairport: formik.values.DepartureAirport,
                  destairport: formik.values.DestinationAirport,
+                 tripdur: formik.values.TripDuration,
+                 bagallwd: formik.values.BaggageAllowed,
+                 price: formik.values.Price,
 
              };
 
@@ -98,6 +109,17 @@ export default function Createflight(){
            </div>
            <div className="input-container">
                <input
+                 id="TripDuration"
+                 name="TripDuration"
+                 type="text"
+                 placeholder="Trip Duration"
+                 onChange={formik.handleChange}
+                value={formik.values.TripDuration}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
                  id="Date"
                  name="Date"
                  type="date"
@@ -111,7 +133,7 @@ export default function Createflight(){
                <input
                  id="EconomySeats"
                  name="EconomySeats"
-                 type="text"
+                 type="number"
                  placeholder="Economy Seats"
                  onChange={formik.handleChange}
                 value={formik.values.EconomySeats}
@@ -122,7 +144,7 @@ export default function Createflight(){
                <input
                  id="BusinessSeats"
                  name="BusinessSeats"
-                 type="text"
+                 type="number"
                  placeholder="Business Seats"
                  onChange={formik.handleChange}
                 value={formik.values.BusinessSeats}
@@ -133,7 +155,7 @@ export default function Createflight(){
                <input
                  id="FirstSeats"
                  name="FirstSeats"
-                 type="text"
+                 type="number"
                  placeholder="First Seats"
                  onChange={formik.handleChange}
                 value={formik.values.FirstSeats}
@@ -162,6 +184,29 @@ export default function Createflight(){
                  />  
 
            </div>
+           <div className="input-container">
+               <input
+                 id="BaggageAllowed"
+                 name="BaggageAllowed"
+                 type="text"
+                 placeholder="Baggage Allowed"
+                 onChange={formik.handleChange}
+                value={formik.values.BaggageAllowed}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
+                 id="Price"
+                 name="Price"
+                 type="number"
+                 placeholder="Price"
+                 onChange={formik.handleChange}
+                value={formik.values.Price}
+                 />  
+
+           </div>
+
 
           
            <button type= "submit">Create</button>

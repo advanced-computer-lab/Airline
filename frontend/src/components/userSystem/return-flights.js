@@ -10,9 +10,10 @@ const FlightReturn = props => {
 
     const cabin = state.cabin
 
+    const noseats = state.noseats
+
     const [flights, setFlights] = useState([]);
 
-    const noseats = parseInt(flight.NumberOfAdults) + parseInt(flight.NumberOfChildren)
 
     const initialFlightState = {
       Date: state.returnDate, 
