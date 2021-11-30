@@ -32,10 +32,11 @@ export default class FlightsDAO {
       }  if ("DestinationAirport" in filters) {
         query["DestinationAirport"] =  { $eq: filters["DestinationAirport"]}
       }  
+      
       if ("CabinClass" in filters) {
-        if(filters["CabinClass"]=="Economy"){query["ecseatsavlbl"] =  { $eq: true}}
-        else if(filters["CabinClass"]=="BusinessClass"){query["bseatsavlbl"] =  { $eq: true}}
-        else if(filters["CabinClass"]=="FirstClass"){query["fseatsavlbl"] =  { $eq: true}}
+        if(filters["CabinClass"]=="Economy"){query["EconomyAvailable"] =  { $eq: true}}
+        else if(filters["CabinClass"]=="BusinessClass"){query["BusinessAvailable"] =  { $eq: true}}
+        else if(filters["CabinClass"]=="FirstClass"){query["FirstAvailable"] =  { $eq: true}}
 
         
       }  

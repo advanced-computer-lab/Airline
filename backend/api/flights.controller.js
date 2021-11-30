@@ -23,9 +23,7 @@ let filters = {}
     
 
 
-    const { flightsList, totalNumFlights } = await FlightsDAO.getFlights({
-      filters,
-    })
+    const { flightsList, totalNumFlights } = await FlightsDAO.getFlights({filters})
 
     let response = {
       flights: flightsList,

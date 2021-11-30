@@ -9,7 +9,8 @@ const FlightDep = props => {
 
   const returnDate = flight.ReturnDate
 
-  //  adults/children & cabin class
+  const cabin = flight.CabinClass
+  
 
 
   const [flights, setFlights] = useState([]);
@@ -21,7 +22,9 @@ const FlightDep = props => {
 
 
   const retrieveFlights = () => {
-    FlightDataService.findByParams({ "DepartureDate": flight.DepartureDate, "DepartureAirport": flight.DepartureAirport, "DestinationAirport":flight.DestinationAirport})
+    const noseats = parseInt(flight.NumberOfAdults) + parseInt(flight.NumberOfChildren)
+    const cclass = flight.CabinClass.replace(/\s+/g, '')
+    FlightDataService.findByParams({ "DepartureDate": flight.DepartureDate, "DepartureAirport": flight.DepartureAirport, "DestinationAirport":flight.DestinationAirport, /*"CabinClass":cclass,*/ "Seats": noseats})
       .then(response => {
         console.log(response.data);
         setFlights(response.data.flights);
@@ -50,12 +53,13 @@ const FlightDep = props => {
              <strong>Date: </strong>{flight.Date}<br/>
               <strong>Departure Time: </strong>{flight.DepartureTime}<br/>
               <strong>Arrival Time: </strong>{flight.ArrivalTime}<br/>
-              <strong>Trip Duration: </strong>{flight.ArrivalTime}<br/>
-              <strong>Cabin Classes: </strong>{flight.ArrivalTime}<br/>
-              <strong>Baggage Allowance: </strong>{flight.ArrivalTime}<br/>
+              <strong>Trip Duration: </strong>{flight.TripDuration}<br/>
+              <strong>Cabin Class: </strong>{cabin}<br/>
+              <strong>Baggage Allowance: </strong>{flight.BaggageAllowance}<br/>
+              <strong>Price: </strong>{"$"+flight.Price}<br/>
             </p>
             <div className="row">
-            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate} }} className="btn btn-primary">
+            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin} }} className="btn btn-primary">
             Select
           </Link> &nbsp;
             </div>

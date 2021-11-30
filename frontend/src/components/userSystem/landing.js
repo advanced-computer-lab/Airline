@@ -13,8 +13,10 @@ const Landing = props => {
     const [searchReturnDate, setSearchReturnDate ] = useState("");
     const [searchDepartAirpt, setSearchDepartAirpt ] = useState("");
     const [searchArrivalAirpt, setSearchArrivalAirpt ] = useState("");
-    const [searchNoPassenger,setSearchNoPassenger]=useState("");
-    const [searchClass,setSearchClass]=useState("");
+    const [searchNoAdults,setSearchNoAdults]=useState("1, Adult");
+    const [searchNoChildren,setSearchNoChildren]=useState("0, Children");
+    const [searchClass,setSearchClass]=useState("Economy");
+    
 
     const onChangeSearchDepartAirpt = e => {
         const searchDepartAirpt = e.target.value;
@@ -38,24 +40,34 @@ const Landing = props => {
         const searchReturnDate=e.target.value;
         setSearchReturnDate(searchReturnDate);
     }
-    const onChangeSearchNoPassenger =e =>{
-        const searchNoPassenger=e.target.value;
-        setSearchNoPassenger(searchNoPassenger);
+    const onChangeSearchNoAdults =e =>{
+        const searchNoAdults=e.value+", Adults";
+        setSearchNoAdults(searchNoAdults);
     }
+    const onChangeSearchNoChildren =e =>{
+      const searchNoChildren=e.value+", Children";
+      setSearchNoChildren(searchNoChildren);
+  }
+
     const refreshList = () => {
        setSearchDepartAirpt("");
        setSearchArrivalAirpt("");
        setSearchClass("");
        setSearchDepartDate("");
-       setSearchNoPassenger("");
+       setSearchNoAdults("1, Adult");
+       setSearchNoChildren("0, Children");
        setSearchReturnDate("");
-       setSearchClass("Enter Class Cabin");
+       setSearchClass("Economy");
       };
       const options = [
         'Economy', 'Business Class', 'First Class'
       ];
 
-      const hashobj = {DepartureDate:searchDepartDate, DepartureAirport:searchDepartAirpt, DestinationAirport:searchArrivalAirpt ,ReturnDate:searchReturnDate, NumberOfPassengers:searchNoPassenger, CabinClass:searchClass }
+      const numbers = [
+        "1","2","3","4","5","6","7","8","9"
+      ];
+
+      const hashobj = {DepartureDate:searchDepartDate, DepartureAirport:searchDepartAirpt, DestinationAirport:searchArrivalAirpt ,ReturnDate:searchReturnDate, NumberOfAdults:searchNoAdults.charAt(0),NumberOfChildren:searchNoChildren.charAt(0), CabinClass:searchClass }
 
     return (
         <div>
@@ -112,20 +124,25 @@ const Landing = props => {
             </div>
             
 
-            <div className="input-group col-lg-4"> 
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Number of tickets"
-                value={searchNoPassenger}
-                onChange={onChangeSearchNoPassenger}
-              />
+            <div> 
+            <Dropdown options={numbers} onChange={onChangeSearchNoAdults} value ={searchNoAdults} placeholder="1, Adults" />
+              
               <div className="input-group-append">
                
               </div>
             </div>
+           
+
             <div> 
-            <Dropdown options={options} onChange={onChangeSearchClass} value ={searchClass} placeholder="Select Cabin Class" />
+            <Dropdown options={numbers} onChange={onChangeSearchNoChildren} value ={searchNoChildren} placeholder="0, Children" />
+              
+              <div className="input-group-append">
+               
+              </div>
+            </div>
+
+            <div> 
+            <Dropdown options={options} onChange={onChangeSearchClass} value ={searchClass} placeholder="Economy" />
               
               <div className="input-group-append">
                

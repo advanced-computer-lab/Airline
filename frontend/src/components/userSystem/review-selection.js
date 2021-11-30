@@ -7,7 +7,9 @@ const ReviewSelection = props => {
     const state = props.location.state
 
     const flight = state.flight
-    const returnFlight=state.depFlight;
+    const returnFlight=state.depFlight
+    const cabin = state.cabin
+
     return(
             <div>
             
@@ -23,9 +25,10 @@ const ReviewSelection = props => {
              <strong>Date: </strong>{returnFlight.Date}<br/>
               <strong>Departure Time: </strong>{returnFlight.DepartureTime}<br/>
               <strong>Arrival Time: </strong>{returnFlight.ArrivalTime}<br/>
-              <strong>Trip Duration: </strong>{returnFlight.ArrivalTime}<br/>
-              <strong>Cabin Classes: </strong>{returnFlight.ArrivalTime}<br/>
-              <strong>Baggage Allowance: </strong>{returnFlight.ArrivalTime}<br/>
+              <strong>Trip Duration: </strong>{returnFlight.TripDuration}<br/>
+              <strong>Cabin Class: </strong>{cabin}<br/>
+              <strong>Baggage Allowance: </strong>{returnFlight.BaggageAllowance}<br/>
+              <strong>Price: </strong>{"$"+returnFlight.Price}<br/>
                   </p>
                 </div>
               </div>
@@ -43,9 +46,10 @@ const ReviewSelection = props => {
              <strong>Date: </strong>{flight.Date}<br/>
               <strong>Departure Time: </strong>{flight.DepartureTime}<br/>
               <strong>Arrival Time: </strong>{flight.ArrivalTime}<br/>
-              <strong>Trip Duration: </strong>{flight.ArrivalTime}<br/>
-              <strong>Cabin Classes: </strong>{flight.ArrivalTime}<br/>
-              <strong>Baggage Allowance: </strong>{flight.ArrivalTime}<br/>
+              <strong>Trip Duration: </strong>{flight.TripDuration}<br/>
+              <strong>Cabin Class: </strong>{cabin}<br/>
+              <strong>Baggage Allowance: </strong>{flight.BaggageAllowance}<br/>
+              <strong>Price: </strong>{"$"+flight.Price}<br/>
                   </p>
                 </div>
               </div>

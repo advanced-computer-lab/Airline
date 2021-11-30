@@ -8,14 +8,18 @@ const FlightReturn = props => {
 
     const flight = state.flight
 
-  //const flight= {DepartureAirport:"JFK",DestinationAirport:"LHR",Date:"2022-03-06"};
+    const cabin = state.cabin
 
     const [flights, setFlights] = useState([]);
+
+    const noseats = parseInt(flight.NumberOfAdults) + parseInt(flight.NumberOfChildren)
 
     const initialFlightState = {
       Date: state.returnDate, 
       DepartureAirport: flight.DestinationAirport, 
-      DestinationAirport: flight.DepartureAirport
+      DestinationAirport: flight.DepartureAirport,
+      //CabinClass:cclass,
+      Seats: noseats
     };
 
     useEffect(() => {
@@ -58,12 +62,13 @@ const FlightReturn = props => {
              <strong>Date: </strong>{flight.Date}<br/>
               <strong>Departure Time: </strong>{flight.DepartureTime}<br/>
               <strong>Arrival Time: </strong>{flight.ArrivalTime}<br/>
-              <strong>Trip Duration: </strong>{flight.ArrivalTime}<br/>
-              <strong>Cabin Classes: </strong>{flight.ArrivalTime}<br/>
-              <strong>Baggage Allowance: </strong>{flight.ArrivalTime}<br/>
+              <strong>Trip Duration: </strong>{flight.TripDuration}<br/>
+              <strong>Cabin Class: </strong>{cabin}<br/>
+              <strong>Baggage Allowance: </strong>{flight.BaggageAllowance}<br/>
+              <strong>Price: </strong>{"$"+flight.Price}<br/>
                   </p>
                   <div className="row">
-                  <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight} }} className="btn btn-primary">
+                  <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight, cabin} }} className="btn btn-primary">
             Select
           </Link> &nbsp;
                   </div>
