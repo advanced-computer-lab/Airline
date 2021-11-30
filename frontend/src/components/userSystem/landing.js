@@ -13,7 +13,7 @@ const Landing = props => {
     const [searchReturnDate, setSearchReturnDate ] = useState("");
     const [searchDepartAirpt, setSearchDepartAirpt ] = useState("");
     const [searchArrivalAirpt, setSearchArrivalAirpt ] = useState("");
-    const [searchNoAdults,setSearchNoAdults]=useState("1, Adult");
+    const [searchNoAdults,setSearchNoAdults]=useState("1, Adults");
     const [searchNoChildren,setSearchNoChildren]=useState("0, Children");
     const [searchClass,setSearchClass]=useState("Economy");
     

@@ -18,7 +18,7 @@ const FlightReturn = props => {
       Date: state.returnDate, 
       DepartureAirport: flight.DestinationAirport, 
       DestinationAirport: flight.DepartureAirport,
-      CabinClass:cclass,
+      CabinClass:cabin.replace(/\s+/g, ''),
       Seats: noseats
     };
 
