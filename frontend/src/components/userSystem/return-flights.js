@@ -12,6 +12,8 @@ const FlightReturn = props => {
 
     const noseats = state.noseats
 
+    const depdate = flight.Date
+
     const [flights, setFlights] = useState([]);
 
 
@@ -53,6 +55,7 @@ const FlightReturn = props => {
       <div className="row">
         {flights.map((flight) => {
          
+         if (flight.Date>depdate){
           return (
             <div className="col-lg-4 pb-1">
               <div className="card">
@@ -77,7 +80,7 @@ const FlightReturn = props => {
               </div>
             </div>
           );
-        })}
+}})}
 
 
       </div>
