@@ -11,6 +11,10 @@ const ReviewSelection = props => {
     const cabin = state.cabin
     const noseats = state.noseats
 
+    const user = props.User
+
+    //const user = true
+
     return(
             <div>
             
@@ -60,9 +64,15 @@ const ReviewSelection = props => {
             <strong>Total Price: ${noseats*(flight.Price+returnFlight.Price)}</strong><br/>
             </div>
             <div>
-                  <Link to={{ pathname: "/flights/ChooseDepSeats", state: {returnFlight, flight, noseats, cabin} }} className="btn btn-primary">
+            {user?
+                 ( <Link to={{ pathname: "/flights/ChooseDepSeats", state: {returnFlight, flight, noseats, cabin} }} className="btn btn-primary">
             Pick Seats
-          </Link> &nbsp;
+          </Link> )
+          :(<Link to={{ pathname: "/login", state: {returnFlight, flight, noseats, cabin, reserving:true} }} className="btn btn-primary">
+          Login to continue booking
+        </Link>)
+          }
+
                   </div>
         
         </div>

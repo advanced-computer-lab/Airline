@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 import './select-seats.css'; 
 
-let reserved = new Array
-
 function useForceUpdate(){
   const [value, setValue] = useState(0); // integer state
   return () => setValue(value => value + 1); // update the state to force render
@@ -17,6 +15,8 @@ const RetSeats = props => {
     const noseats = state.noseats
 
     let seatsavlbl
+
+    const [reserved, setReserved] = useState([])
 
     const forceUpdate = useForceUpdate();
     
@@ -34,8 +34,8 @@ const RetSeats = props => {
     const flightreserved = []
 
     if (cabin == "Economy"){seatsavlbl = ""+retflight.EconomySeats}
-    else if (cabin == "Business Class"){seatsavlbl = ""+retflight.EconomySeats}
-    else if (cabin == "First Class"){seatsavlbl = ""+retflight.EconomySeats}
+    else if (cabin == "Business Class"){seatsavlbl = ""+retflight.BusinessSeats}
+    else if (cabin == "First Class"){seatsavlbl = ""+retflight.FirstSeats}
 
     const row1 =[{id: "01"}, {id: "02"}, {id: "03"}, {id: "04"}, {id: "05"}, {id: "06"}]
     const row2 =[{id: "07"}, {id: "08"}, {id: "09"}, {id: "10"}, {id: "11"}, {id: "12"}]
@@ -70,6 +70,11 @@ const RetSeats = props => {
         return false;
       }
 
+      if(reserved.includes(id))
+      {
+        return true;
+      }
+
       else {
         return;
 
@@ -81,12 +86,12 @@ const RetSeats = props => {
       let isSelected = e.currentTarget.checked;
       if(isSelected){
           if(reserved.length<noseats){
-            reserved.push(id)
+            setReserved([...reserved, id])
             console.log("reserved seat "+id)
           }
       }
       else{
-        reserved = reserved.filter((item)=>id!==item)
+        setReserved(reserved.filter((item)=>id!==item))
         console.log("removed seat "+id)
       }
 

@@ -18,9 +18,12 @@ export default class ReservationsController{
           const DepartureFlight = req.body.departflight
           const ReturnFlight= req.body.returnflight
           const User= req.body.user
+          const Cabin = req.body.cabin
+          const DepSeats = req.body.depseats
+          const RetSeats = req.body.depseats
           
     
-          await FlightsDAO.addFlight(DepartureFlight,ReturnFlight,User)
+          await ReservationsDAO.addReservation(DepartureFlight, ReturnFlight, User, Cabin, DepSeats, RetSeats)
            
           res.json({ status: "success" })
         } catch (e) {

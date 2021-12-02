@@ -9,7 +9,6 @@ function useForceUpdate(){
   return () => setValue(value => value + 1); // update the state to force render
 }
 
-let reserved = new Array
 
 
 
@@ -19,7 +18,9 @@ const DepSeats = props => {
 
     const noseats = state.noseats
 
-    let seatsavlbl
+    let seatsavlbl 
+
+    const [reserved, setReserved] = useState([])
 
     const forceUpdate = useForceUpdate();
 
@@ -34,8 +35,8 @@ const DepSeats = props => {
     const flightreserved = []
 
     if (cabin == "Economy"){seatsavlbl = ""+depflight.EconomySeats}
-    else if (cabin == "Business Class"){seatsavlbl = ""+depflight.EconomySeats}
-    else if (cabin == "First Class"){seatsavlbl = ""+depflight.EconomySeats}
+    else if (cabin == "Business Class"){seatsavlbl = ""+depflight.BusinessSeats}
+    else if (cabin == "First Class"){seatsavlbl = ""+depflight.FirstSeats}
 
     const row1 =[{id: "01"}, {id: "02"}, {id: "03"}, {id: "04"}, {id: "05"}, {id: "06"}]
     const row2 =[{id: "07"}, {id: "08"}, {id: "09"}, {id: "10"}, {id: "11"}, {id: "12"}]
@@ -73,6 +74,11 @@ const DepSeats = props => {
         return false;
       }
 
+      if(reserved.includes(id))
+      {
+        return true;
+      }
+
       else {
         return;
 
@@ -84,12 +90,12 @@ const DepSeats = props => {
       let isSelected = e.currentTarget.checked;
       if(isSelected){
           if(reserved.length<noseats){
-            reserved.push(id)
+            setReserved([...reserved, id])
             console.log("reserved seat "+id)
           }
       }
       else{
-        reserved = reserved.filter((item)=>id!==item)
+        setReserved(reserved.filter((item)=>id!==item))
         console.log("removed seat "+id)
       }
 

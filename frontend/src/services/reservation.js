@@ -8,7 +8,7 @@ class ReservationDataService {
   }
 
   get() {
-    return http.get(`/users`);
+    return http.get(`/reservations`);
   }
 
  

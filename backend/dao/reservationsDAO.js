@@ -3,7 +3,7 @@ const ObjectId = mongodb.ObjectID
 
 let reservations
 
-export default class UsersDAO {
+export default class ReservationsDAO {
   static async injectDB(conn) {
     if (reservations) {
       return
@@ -41,13 +41,14 @@ static async getReservations() {
   }
 
 
-  static async addFlight(DepartureFlight,ReturnFlight,User) {
+  static async addReservation(DepartureFlight, ReturnFlight, User, Cabin, Depseats, retseats) {
     try {
 
 
 
       const ReservationDoc = { 
         DepartureFlight:{
+          id: DepartureFlight._id,
           FlightNumber: DepartureFlight.Fnumber,
           DepartureTime: DepartureFlight.deptime,
           ArrivalTime: DepartureFlight.arrtime,
@@ -60,6 +61,7 @@ static async getReservations() {
 
         },
         ReturnFlight:{
+          id: ReturnFlight._id,
           FlightNumber: ReturnFlight.Fnumber,
           DepartureTime: ReturnFlight.deptime,
           ArrivalTime: ReturnFlight.arrtime,
@@ -77,7 +79,14 @@ static async getReservations() {
           lastname: User.lastname,
           passportnumber: User.passportnumber,
           email: User.email
-        }
+        },
+
+        CabinClass: Cabin,
+
+        DepSeats: Depseats,
+
+        RetSeats: retseats
+
         
 
 

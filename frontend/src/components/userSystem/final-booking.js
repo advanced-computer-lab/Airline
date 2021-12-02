@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import ReservationDataService from "../../services/reservation";
 
 const Booking = props => {
 
@@ -15,6 +16,7 @@ const Booking = props => {
     const retreserved = state.reserved
 
 
+    console.log("HERE "+props.User.firstname)
 
 
     return (
@@ -68,9 +70,7 @@ const Booking = props => {
           <strong>Total Price: ${noseats*(flight.Price+returnFlight.Price)}</strong><br/>
           </div>
           <div>
-                <Link to={{ pathname: "/flights"}} className="btn btn-primary">
-         Book Another Flight
-        </Link> &nbsp;
+          <a className="btn btn-primary" onClick={() => {if(window.confirm('Are you sure you want to create this reservation?')){ReservationDataService.create(flight, returnFlight, props.User, cabin, depreserved, retreserved);window.location.href="/flights"};}}>Confirm Booking</a> &nbsp;
                 </div>
       
       </div>

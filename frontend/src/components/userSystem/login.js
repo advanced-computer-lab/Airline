@@ -7,6 +7,8 @@ const Login = props => {
 	const [password, setPassword] = useState('')
 
 
+  const state = props.location.state
+  const reserving = props.location.state.reserving
 
   async function login(event) {
 		event.preventDefault()
@@ -28,7 +30,10 @@ const Login = props => {
 			localStorage.setItem('token', data.user)
 			alert('Login successful')
       props.login(data.user)
-      props.history.push('/');
+
+      if(reserving){props.history.push('/flights/ChooseDepSeats', state);}
+      else {props.history.push('/');}
+
 		} else {
 			alert('Please check your username and password')
 		}

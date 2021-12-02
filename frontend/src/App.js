@@ -62,11 +62,11 @@ function App() {
         
         <li className="nav-item" >
             { user ? (
-              <a onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
+              <Link to={"/"} onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
                 Logout {user.firstname +" "+ user.lastname}
-              </a>
+              </Link>
             ) : (            
-            <Link to={"/login"} className="nav-link">
+            <Link to={{ pathname: "/login", state: {reserving: false}}} className="nav-link">
               Login
             </Link>
             )}
@@ -98,7 +98,7 @@ function App() {
               <Login {...props} login={login} />
             )}
           />
-      <Route  path="/flights/ReviewSelection" component={ReviewSelection} />
+      <Route  path="/flights/ReviewSelection" render={(props) => <ReviewSelection {...props} User={user} />} />
       <Route 
             path="/UpdateUser"
             render={(props) => (
@@ -107,9 +107,9 @@ function App() {
           />
 
 
-      <Route  path="/flights/ChooseDepSeats" component={DepSeats} />
-      <Route  path="/flights/ChooseRetSeats" component={RetSeats} />
-      <Route  path="/flights/Booking" component={Booking} />
+      <Route  path="/flights/ChooseDepSeats" render={(props) => <DepSeats {...props} User={user} />} />
+      <Route  path="/flights/ChooseRetSeats" render={(props) => <RetSeats {...props} User={user} />} />
+      <Route  path="/flights/Booking" render={(props) => <Booking {...props} User={user} />} />
       
 
         
