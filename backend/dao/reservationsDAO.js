@@ -56,33 +56,34 @@ static async getReservations() {
           DestinationAirport: DepartureFlight.destairport,
           TripDuration: DepartureFlight.tripdur,
           Price: DepartureFlight.price,
-          BaggageAllowance: DepartureFlight.bagallwd,
+          BaggageAllowance: DepartureFlight.bagallwd
 
         },
         ReturnFlight:{
-          FlightNumber: Fnumber,
-        DepartureTime: deptime,
-        ArrivalTime: arrtime,
-        Date: date,
-        EconomySeats: ecseats,
-        BusinessSeats: bseats,
-        FirstSeats: fseats,
-        DepartureAirport: depairport,
-        DestinationAirport: destairport,
-        TripDuration: tripdur,
-        Price: price,
-        BaggageAllowance: bagallwd,
-        EconomyAvailable: ecseatsavlbl,
-        BusinessAvailable: bseatsavlbl,
-        FirstAvailable: fseatsavlbl,
+          FlightNumber: ReturnFlight.Fnumber,
+          DepartureTime: ReturnFlight.deptime,
+          ArrivalTime: ReturnFlight.arrtime,
+          Date: ReturnFlight.date,
+          DepartureAirport: ReturnFlight.depairport,
+          DestinationAirport: ReturnFlight.destairport,
+          TripDuration: ReturnFlight.tripdur,
+          Price: ReturnFlight.price,
+          BaggageAllowance: ReturnFlight.bagallwd
 
         },
+        User:{
+          id: User._id,
+          firstname: User.firstname,
+          lastname: User.lastname,
+          passportnumber: User.passportnumber,
+          email: User.email
+        }
         
 
 
     }
 
-      return await flights.insertOne(ReservationDoc)
+      return await reservations.insertOne(ReservationDoc)
     } catch (e) {
       console.error(`Unable to add flight: ${e}`)
       return { error: e }
