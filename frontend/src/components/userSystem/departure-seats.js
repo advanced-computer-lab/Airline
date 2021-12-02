@@ -31,7 +31,7 @@ const DepSeats = props => {
 
     const retflight = state.flight
 
-    const flightreserved = ["01"]
+    const flightreserved = []
 
     if (cabin == "Economy"){seatsavlbl = ""+depflight.EconomySeats}
     else if (cabin == "Business Class"){seatsavlbl = ""+depflight.EconomySeats}

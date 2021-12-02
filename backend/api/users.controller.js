@@ -41,7 +41,6 @@ export default class UsersController {
 
   static async apiPostUser(req, res, next) {
     try {
-      const id = req.params.id
       const fname = req.body.firstname
       const lname = req.body.lastname
       const passnum = req.body.passportnumber
@@ -49,7 +48,7 @@ export default class UsersController {
       const email = req.body.email
       
 
-      const UserResponse = await UsersDAO.addUser(id ,fname, lname, passnum, password, email)
+      const UserResponse = await UsersDAO.addUser(fname, lname, passnum, password, email)
       res.json({ status: "success" })
     } catch (e) {
       console.log(e)

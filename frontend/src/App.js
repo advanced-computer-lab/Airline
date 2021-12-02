@@ -12,10 +12,10 @@ import FlightDep from "./components/userSystem/departure-flight";
 import FlightReturn from "./components/userSystem/return-flights";
 import Login from "./components/userSystem/login";
 import ReviewSelection from "./components/userSystem/review-selection";
+import UpdateUser from "./components/userSystem/edit-user";
 import DepSeats from "./components/userSystem/departure-seats";
 import RetSeats from "./components/userSystem/return-seats";
 import Booking from "./components/userSystem/final-booking";
-import UpdateUser from "./components/userSystem/edit-user";
 
 function App() {
 
@@ -63,7 +63,7 @@ function App() {
         <li className="nav-item" >
             { user ? (
               <a onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
-                Logout {user.firstname}
+                Logout {user.firstname +" "+ user.lastname}
               </a>
             ) : (            
             <Link to={"/login"} className="nav-link">
@@ -99,6 +99,12 @@ function App() {
             )}
           />
       <Route  path="/flights/ReviewSelection" component={ReviewSelection} />
+      <Route 
+            path="/UpdateUser"
+            render={(props) => (
+              <UpdateUser {...props} user={user} log={logi} />
+            )}
+          />
 
 
       <Route  path="/flights/ChooseDepSeats" component={DepSeats} />
@@ -106,12 +112,6 @@ function App() {
       <Route  path="/flights/Booking" component={Booking} />
       
 
-      <Route 
-            path="/UpdateUser"
-            render={(props) => (
-              <UpdateUser {...props} user={user} log={logi} />
-            )}
-          />
         
       </Switch>
     </div>
