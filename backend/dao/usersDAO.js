@@ -54,7 +54,7 @@ export default class UsersDAO {
   }
 
 
-  static async addUser(firstname,lastname,passportnumber, password, email) {
+  static async addUser(firstname=null,lastname=null,passportnumber=null, password, email) {
     try {
       const userDoc = { 
         firstname: firstname,

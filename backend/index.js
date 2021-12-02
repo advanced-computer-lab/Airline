@@ -3,6 +3,7 @@ import mongodb from "mongodb"
 import dotenv from "dotenv"
 import FlightsDAO from "./dao/flightsDAO.js"
 import UsersDAO from "./dao/usersDAO.js"
+import ReservationsDAO from "./dao/reservationsDAO.js"
 dotenv.config()
 const MongoClient = mongodb.MongoClient
 import jwt from "jsonwebtoken"
@@ -27,6 +28,7 @@ MongoClient.connect(
     .then(async client => {
       await FlightsDAO.injectDB(client)
       await UsersDAO.injectDB(client)
+      await ReservationsDAO.injectDB(client)
       app.listen(port, () => {
         console.log(`listening on port ${port}`)
       })
