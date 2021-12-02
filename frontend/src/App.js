@@ -1,6 +1,7 @@
 import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import UserDataService from "./services/user.js";
 
 import AddFlight from "./components/adminSystem/add-flight";
 import EditFlight from "./components/adminSystem/edit-flight";
@@ -11,17 +12,26 @@ import FlightDep from "./components/userSystem/departure-flight";
 import FlightReturn from "./components/userSystem/return-flights";
 import Login from "./components/userSystem/login";
 import ReviewSelection from "./components/userSystem/review-selection";
+import UpdateUser from "./components/userSystem/edit-user";
 
 function App() {
 
   const [user, setUser] = React.useState(null);
 
-  async function login(user = null) {
+  async function login(user=null) {
+    //const user1 = UserDataService.get(user._id);
+    console.log(user.firstname);
+    setUser(user);
+  }
+
+  async function logi(user=null) {
+   // const user2 = UserDataService.get(user.id);
+    //console.log(user2);
     setUser(user);
   }
 
   async function logout() {
-    setUser(null)
+    setUser(null);
   }
 
 
@@ -39,10 +49,18 @@ function App() {
         </li>
 
 
+        { user ? (
+              <li className="nav-item" >
+              <Link to={"/UpdateUser"} className="nav-link">
+              Edit User 
+            </Link>
+            </li>
+            ) :(null)}
+        
         <li className="nav-item" >
             { user ? (
               <a onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
-                Logout {user.name}
+                Logout {user.firstname}
               </a>
             ) : (            
             <Link to={"/login"} className="nav-link">
@@ -51,6 +69,11 @@ function App() {
             )}
 
         </li>
+
+        
+           
+
+        
       </div>
     </nav>
 
@@ -73,6 +96,12 @@ function App() {
             )}
           />
       <Route  path="/flights/ReviewSelection" component={ReviewSelection} />
+      <Route 
+            path="/UpdateUser"
+            render={(props) => (
+              <UpdateUser {...props} user={user} log={logi} />
+            )}
+          />
         
       </Switch>
     </div>

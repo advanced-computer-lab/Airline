@@ -15,6 +15,20 @@ export default class UsersDAO {
     }
   }
 
+  static async getUserByEmail(email){
+
+    //setTimeout(() => {console.log("Email not found")}, 500);
+    
+    try{
+      return await users.findOne({"email":email })
+    }catch (e) {
+      console.error(`Unable to get user, ${e}`)
+    }
+  }
+
+
+
+
   static async getUsers() {
 
     let cursor
@@ -40,11 +54,14 @@ export default class UsersDAO {
   }
 
 
-  static async addUser(name, password) {
+  static async addUser(firstname,lastname,passportnumber, password, email) {
     try {
       const userDoc = { 
-        Name: name,
-        Password: password
+        firstname: firstname,
+        lastname: lastname,
+        passportnumber: passportnumber,
+        password: password,
+        email: email
     }
 
       return await users.insertOne(userDoc)
@@ -53,4 +70,29 @@ export default class UsersDAO {
       return { error: e }
     }
   }
+
+  static async updateUser(id="", fname="", lname="", passnum="", email="") {
+    try {
+
+      const updateResponse = await users.updateOne(
+        { _id: ObjectId(id)},
+        { $set: { firstname:fname, lastname:lname, passportnumber:passnum, email: email } },
+      )
+
+      return updateResponse
+    } catch (e) {
+      console.error(`Unable to update user: ${e}`)
+      return { error: e }
+    }
+  }
+
+  static async getUserByID(id) {
+    try {
+      return await users.findOne( {"_id": new ObjectId(id)})
+    } catch (e) {
+      console.error(`Unable to get user, ${e}`)
+    }
+  }
+
+
 }

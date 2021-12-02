@@ -5,10 +5,15 @@ import FlightsDAO from "./dao/flightsDAO.js"
 import UsersDAO from "./dao/usersDAO.js"
 dotenv.config()
 const MongoClient = mongodb.MongoClient
+import jwt from "jsonwebtoken"
+
 
 const port = process.env.PORT || 8000
 
+
+
 MongoClient.connect(
+  
     process.env.AIRLINE_DB_URI,
     {
       MaxPoolSize: 50,

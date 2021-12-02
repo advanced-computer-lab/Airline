@@ -37,6 +37,12 @@ class FlightDataService {
     return http.delete(`/flights/${id}`);
   }
 
+  authentication(email,password){
+    return http.get(`/users/login/${email}/${password}`);
+  }
+
+  
+
 
 }
 
