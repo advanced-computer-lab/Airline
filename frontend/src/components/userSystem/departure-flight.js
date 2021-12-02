@@ -11,7 +11,7 @@ const FlightDep = props => {
 
   const cabin = flight.CabinClass
   
-  
+  const noseats = parseInt(flight.NumberOfAdults) + parseInt(flight.NumberOfChildren)
 
 
   const [flights, setFlights] = useState([]);
@@ -23,7 +23,7 @@ const FlightDep = props => {
 
 
   const retrieveFlights = () => {
-    const noseats = parseInt(flight.NumberOfAdults) + parseInt(flight.NumberOfChildren)
+    
     const cclass = cabin.replace(/\s+/g, '')
     FlightDataService.findByParams({ "DepartureDate": flight.DepartureDate, "DepartureAirport": flight.DepartureAirport, "DestinationAirport":flight.DestinationAirport, "CabinClass":cclass, "Seats": noseats})
       .then(response => {
@@ -60,7 +60,7 @@ const FlightDep = props => {
               <strong>Price: </strong>{"$"+flight.Price}<br/>
             </p>
             <div className="row">
-            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin} }} className="btn btn-primary">
+            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats} }} className="btn btn-primary">
             Select
           </Link> &nbsp;
             </div>

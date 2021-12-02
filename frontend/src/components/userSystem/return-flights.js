@@ -10,9 +10,12 @@ const FlightReturn = props => {
 
     const cabin = state.cabin
 
+    const noseats = state.noseats
+
+    const depdate = flight.Date
+
     const [flights, setFlights] = useState([]);
 
-    const noseats = parseInt(flight.NumberOfAdults) + parseInt(flight.NumberOfChildren)
 
     const initialFlightState = {
       Date: state.returnDate, 
@@ -52,6 +55,7 @@ const FlightReturn = props => {
       <div className="row">
         {flights.map((flight) => {
          
+         if (flight.Date>depdate){
           return (
             <div className="col-lg-4 pb-1">
               <div className="card">
@@ -68,7 +72,7 @@ const FlightReturn = props => {
               <strong>Price: </strong>{"$"+flight.Price}<br/>
                   </p>
                   <div className="row">
-                  <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight, cabin} }} className="btn btn-primary">
+                  <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight, cabin, noseats} }} className="btn btn-primary">
             Select
           </Link> &nbsp;
                   </div>
@@ -76,7 +80,7 @@ const FlightReturn = props => {
               </div>
             </div>
           );
-        })}
+}})}
 
 
       </div>

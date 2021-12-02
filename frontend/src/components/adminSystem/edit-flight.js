@@ -27,22 +27,27 @@ const UpdateFlight = props => {
              BusinessSeats:flight.BusinessSeats,
              FirstSeats:flight.FirstSeats,
              DepartureAirport:flight.DepartureAirport,
-             DestinationAirport:flight.DestinationAirport
+             DestinationAirport:flight.DestinationAirport,
+             TripDuration: flight.TripDuration,
+             BaggageAllowed: flight.BaggageAllowance,
+             Price:flight.Price,
 
 
          },
 
          validationSchema: Yup.object({
-             FlightNumber: Yup.string().required("Required"),
-             DepartureTime: Yup.string().required("Required"),
-             ArrivalTime : Yup.string().required("Required"),
-             Date: Yup.date().required("Required"),
-             EconomySeats: Yup.number(),
-             BusinessSeats: Yup.number(),
-             FirstSeats: Yup.number(),
-             DepartureAirport: Yup.string().required("Required"),
-             DestinationAirport: Yup.string().required("Required")
-             
+            FlightNumber: Yup.string().required("Required"),
+            DepartureTime: Yup.string().required("Required"),
+            ArrivalTime : Yup.string().required("Required"),
+            Date: Yup.date().required("Required"),
+            EconomySeats: Yup.number().required("Required"),
+            BusinessSeats: Yup.number().required("Required"),
+            FirstSeats: Yup.number().required("Required"),
+            DepartureAirport: Yup.string().required("Required"),
+            DestinationAirport: Yup.string().required("Required"),
+            TripDuration:Yup.string().required("Required"),
+            BaggageAllowed:Yup.string().required("Required"),
+            Price:Yup.number().required("Required"),
 
          }),
 
@@ -58,6 +63,9 @@ const UpdateFlight = props => {
                  fseats: formik.values.FirstSeats,
                  depairport: formik.values.DepartureAirport,
                  destairport: formik.values.DestinationAirport,
+                 tripdur: formik.values.TripDuration,
+                 bagallwd: formik.values.BaggageAllowed,
+                 price: formik.values.Price,
 
              };
 
@@ -110,6 +118,17 @@ const UpdateFlight = props => {
            </div>
            <div className="input-container">
                <input
+                 id="TripDuration"
+                 name="TripDuration"
+                 type="text"
+                 placeholder="Trip Duration"
+                 onChange={formik.handleChange}
+                value={formik.values.TripDuration}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
                  id="Date"
                  name="Date"
                  type="date"
@@ -123,7 +142,7 @@ const UpdateFlight = props => {
                <input
                  id="EconomySeats"
                  name="EconomySeats"
-                 type="text"
+                 type="number"
                  placeholder="Economy Seats"
                  onChange={formik.handleChange}
                 value={formik.values.EconomySeats}
@@ -134,7 +153,7 @@ const UpdateFlight = props => {
                <input
                  id="BusinessSeats"
                  name="BusinessSeats"
-                 type="text"
+                 type="number"
                  placeholder="Business Seats"
                  onChange={formik.handleChange}
                 value={formik.values.BusinessSeats}
@@ -145,7 +164,7 @@ const UpdateFlight = props => {
                <input
                  id="FirstSeats"
                  name="FirstSeats"
-                 type="text"
+                 type="number"
                  placeholder="First Seats"
                  onChange={formik.handleChange}
                 value={formik.values.FirstSeats}
@@ -171,6 +190,28 @@ const UpdateFlight = props => {
                  placeholder="Destination Airport"
                  onChange={formik.handleChange}
                 value={formik.values.DestinationAirport}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
+                 id="BaggageAllowed"
+                 name="BaggageAllowed"
+                 type="text"
+                 placeholder="Baggage Allowed"
+                 onChange={formik.handleChange}
+                value={formik.values.BaggageAllowed}
+                 />  
+
+           </div>
+           <div className="input-container">
+               <input
+                 id="Price"
+                 name="Price"
+                 type="number"
+                 placeholder="Price"
+                 onChange={formik.handleChange}
+                value={formik.values.Price}
                  />  
 
            </div>

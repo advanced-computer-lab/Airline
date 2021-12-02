@@ -36,9 +36,13 @@ export default class FlightsDAO {
       if ("CabinClass" in filters) {
         if(filters["CabinClass"]=="Economy"){query["EconomyAvailable"] =  { $eq: true}}
         else if(filters["CabinClass"]=="BusinessClass"){query["BusinessAvailable"] =  { $eq: true}}
-        else if(filters["CabinClass"]=="FirstClass"){query["FirstAvailable"] =  { $eq: true}}
+        else if(filters["CabinClass"]=="FirstClass"){query["FirstAvailable"] =  { $eq: true}}  
+      }  
 
-        
+      if ("Seats" in filters) {
+        if(filters["CabinClass"]=="Economy"){query["EconomySeats"] =  { $gte: parseInt(filters["Seats"])}}
+        else if(filters["CabinClass"]=="BusinessClass"){query["BusinessSeats"] =  { $gte: parseInt(filters["Seats"])}}
+        else if(filters["CabinClass"]=="FirstClass"){query["FirstSeats"] =  { $gte: parseInt(filters["Seats"])}}
       }  
 
     }
@@ -46,8 +50,7 @@ export default class FlightsDAO {
     let cursor
     
     try {
-      cursor = await flights
-        .find(query)
+      cursor = await flights.find(query)
     } catch (e) {
       console.error(`Unable to issue find command, ${e}`)
       return { flightsList: [], totalNumFlights: 0 }
@@ -76,7 +79,7 @@ export default class FlightsDAO {
   }
   
 
-  static async addFlight(Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price="", bagallwd="") {
+  static async addFlight(Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="") {
     try {
 
       let ecseatsavlbl = false
@@ -118,7 +121,7 @@ export default class FlightsDAO {
     }
   }
 
-  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats="", bseats="", fseats="", depairport="", destairport="", tripdur="", price="", bagallwd="") {
+  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="") {
     try {
 
       let ecseatsavlbl = false
