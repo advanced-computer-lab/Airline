@@ -10,6 +10,8 @@ const ReviewSelection = props => {
     const returnFlight=state.depFlight
     const cabin = state.cabin
     const noseats = state.noseats
+    const noadults = state.noadults
+    const nochild = noseats-noadults
 
     const user = props.User
 
@@ -21,7 +23,7 @@ const ReviewSelection = props => {
 
         <div className="row"> 
         <h1>Departure Flight</h1>
-            <div className="col-lg-4 pb-1">
+            <div >
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">{returnFlight.DepartureAirport} TO {returnFlight.DestinationAirport}</h5>
@@ -33,16 +35,20 @@ const ReviewSelection = props => {
               <strong>Trip Duration: </strong>{returnFlight.TripDuration}<br/>
               <strong>Cabin Class: </strong>{cabin}<br/>
               <strong>Baggage Allowance: </strong>{returnFlight.BaggageAllowance}<br/>
-              <strong>Price: </strong>{"$"+returnFlight.Price}<br/>
+              <strong>Adult Ticket Price: </strong>{"$"+returnFlight.Price}<br/>
+              <strong>Child Ticket Price: </strong>{"$"+(flight.Price/2)}<br/>
                   </p>
                 </div>
               </div>
             </div>
         
         </div>
+
+        <br/>
+        
         <div className="row">
         <h1>Return Flight</h1>
-            <div className="col-lg-4 pb-1">
+            <div>
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
@@ -54,21 +60,22 @@ const ReviewSelection = props => {
               <strong>Trip Duration: </strong>{flight.TripDuration}<br/>
               <strong>Cabin Class: </strong>{cabin}<br/>
               <strong>Baggage Allowance: </strong>{flight.BaggageAllowance}<br/>
-              <strong>Price: </strong>{"$"+flight.Price}<br/>
+              <strong>Adult Ticket Price: </strong>{"$"+flight.Price}<br/>
+              <strong>Child Ticket Price: </strong>{"$"+(flight.Price/2)}<br/>
                   </p>
                 </div>
               </div>
             </div>
             <div className="row">
-            <strong>Total Travellers: {noseats}</strong><br/>
-            <strong>Total Price: ${noseats*(flight.Price+returnFlight.Price)}</strong><br/>
+            <strong>Total Travellers: {noseats} ({noadults} Adults, {nochild} Children)</strong><br/>
+            <strong>Total Price: ${noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2)}</strong><br/>
             </div>
             <div>
             {user?
-                 ( <Link to={{ pathname: "/flights/ChooseDepSeats", state: {returnFlight, flight, noseats, cabin} }} className="btn btn-primary">
+                 ( <Link to={{ pathname: "/flights/ChooseDepSeats", state: {returnFlight, flight, noseats, cabin, noadults} }} className="btn btn-primary">
             Pick Seats
           </Link> )
-          :(<Link to={{ pathname: "/login", state: {returnFlight, flight, noseats, cabin, reserving:true} }} className="btn btn-primary">
+          :(<Link to={{ pathname: "/login", state: {returnFlight, flight, noseats, cabin, reserving:true, noadults} }} className="btn btn-primary">
           Login to continue booking
         </Link>)
           }

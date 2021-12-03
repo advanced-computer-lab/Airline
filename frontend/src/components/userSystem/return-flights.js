@@ -12,6 +12,8 @@ const FlightReturn = props => {
 
     const noseats = state.noseats
 
+    const noadults = state.noadults
+
     const depdate = flight.Date
 
     const [flights, setFlights] = useState([]);
@@ -57,7 +59,7 @@ const FlightReturn = props => {
          
          if (flight.Date>depdate){
           return (
-            <div className="col-lg-4 pb-1">
+            <div >
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
@@ -69,15 +71,17 @@ const FlightReturn = props => {
               <strong>Trip Duration: </strong>{flight.TripDuration}<br/>
               <strong>Cabin Class: </strong>{cabin}<br/>
               <strong>Baggage Allowance: </strong>{flight.BaggageAllowance}<br/>
-              <strong>Price: </strong>{"$"+flight.Price}<br/>
+              <strong>Adult Ticket Price: </strong>{"$"+flight.Price}<br/>
+              <strong>Child Ticket Price: </strong>{"$"+(flight.Price/2)}<br/>
                   </p>
                   <div className="row">
-                  <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight, cabin, noseats} }} className="btn btn-primary">
+                  <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight, cabin, noseats, noadults} }} className="btn btn-primary">
             Select
           </Link> &nbsp;
                   </div>
                 </div>
               </div>
+              <br/>
             </div>
           );
 }})}

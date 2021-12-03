@@ -13,6 +13,7 @@ const FlightDep = props => {
   
   const noseats = parseInt(flight.NumberOfAdults) + parseInt(flight.NumberOfChildren)
 
+  const noadults = parseInt(flight.NumberOfAdults)
 
   const [flights, setFlights] = useState([]);
 
@@ -45,7 +46,7 @@ const FlightDep = props => {
 
   {flights.map((flight) => {
     return (
-      <div className="col-lg-4 pb-1">
+      <div>
         <div className="card">
           <div className="card-body">
             <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
@@ -57,15 +58,19 @@ const FlightDep = props => {
               <strong>Trip Duration: </strong>{flight.TripDuration}<br/>
               <strong>Cabin Class: </strong>{cabin}<br/>
               <strong>Baggage Allowance: </strong>{flight.BaggageAllowance}<br/>
-              <strong>Price: </strong>{"$"+flight.Price}<br/>
+              <strong>Adult Ticket Price: </strong>{"$"+flight.Price}<br/>
+              <strong>Child Ticket Price: </strong>{"$"+(flight.Price/2)}<br/>
             </p>
             <div className="row">
-            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats} }} className="btn btn-primary">
+            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats, noadults} }} className="btn btn-primary">
             Select
-          </Link> &nbsp;
+          </Link>
             </div>
           </div>
         </div>
+
+        <br/>
+
       </div>
     );
   })}

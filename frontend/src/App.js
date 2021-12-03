@@ -39,7 +39,7 @@ function App() {
 
 
   return (
-    <div>
+    <div  style={{backgroundColor:"#f0f6f7ff"}}>
     <nav className="navbar navbar-expand navbar-dark bg-dark">
       <a className="navbar-brand">
         Airline

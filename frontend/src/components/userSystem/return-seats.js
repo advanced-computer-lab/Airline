@@ -14,6 +14,8 @@ const RetSeats = props => {
 
     const noseats = state.noseats
 
+    const noadults = state.noadults
+
     let seatsavlbl
 
     const [reserved, setReserved] = useState([])
@@ -388,7 +390,7 @@ const RetSeats = props => {
 </div>
 <div className="row">
 { done &&
-          <Link to={{ pathname: "/flights/Booking", state: {retflight, depflight, noseats, cabin, departurereserved, reserved} }} className="btn btn-primary">
+          <Link to={{ pathname: "/flights/Booking", state: {retflight, depflight, noseats, cabin, departurereserved, reserved, noadults} }} className="btn btn-primary">
             Confirm Selection
           </Link>
 }

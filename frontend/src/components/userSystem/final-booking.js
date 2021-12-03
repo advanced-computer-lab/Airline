@@ -11,12 +11,16 @@ const Booking = props => {
     const cabin = state.cabin
     const noseats = state.noseats
 
+    const noadults = state.noadults
+
+    const nochild = noseats-noadults
+
     const depreserved = state.departurereserved
 
     const retreserved = state.reserved
 
 
-    console.log("HERE "+props.User.firstname)
+    //console.log("HERE "+props.User.firstname)
 
 
     return (
@@ -25,7 +29,7 @@ const Booking = props => {
 
       <div className="row"> 
       <h1>Departure Flight</h1>
-          <div className="col-lg-4 pb-1">
+          <div>
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">{returnFlight.DepartureAirport} TO {returnFlight.DestinationAirport}</h5>
@@ -37,7 +41,8 @@ const Booking = props => {
             <strong>Trip Duration: </strong>{returnFlight.TripDuration}<br/>
             <strong>Cabin Class: </strong>{cabin}<br/>
             <strong>Baggage Allowance: </strong>{returnFlight.BaggageAllowance}<br/>
-            <strong>Price: </strong>{"$"+returnFlight.Price}<br/>
+            <strong>Adult Ticket Price: </strong>{"$"+flight.Price}<br/>
+            <strong>Child Ticket Price: </strong>{"$"+(flight.Price/2)}<br/>
             <strong>Selected Seat Numbers: </strong>{depreserved.sort().toString()}<br/>
                 </p>
               </div>
@@ -45,9 +50,10 @@ const Booking = props => {
           </div>
       
       </div>
+      <br/>
       <div className="row">
       <h1>Return Flight</h1>
-          <div className="col-lg-4 pb-1">
+          <div className>
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
@@ -59,15 +65,16 @@ const Booking = props => {
             <strong>Trip Duration: </strong>{flight.TripDuration}<br/>
             <strong>Cabin Class: </strong>{cabin}<br/>
             <strong>Baggage Allowance: </strong>{flight.BaggageAllowance}<br/>
-            <strong>Price: </strong>{"$"+flight.Price}<br/>
+            <strong>Adult Ticket Price: </strong>{"$"+flight.Price}<br/>
+            <strong>Child Ticket Price: </strong>{"$"+(flight.Price/2)}<br/>
             <strong>Selected Seat Numbers: </strong>{retreserved.sort().toString()}<br/>
                 </p>
               </div>
             </div>
           </div>
           <div className="row">
-          <strong>Total Travellers: {noseats}</strong><br/>
-          <strong>Total Price: ${noseats*(flight.Price+returnFlight.Price)}</strong><br/>
+          <strong>Total Travellers: {noseats} ({noadults} Adults, {nochild} Children)</strong><br/>
+            <strong>Total Price: ${noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2)}</strong><br/>
           </div>
           <div>
           <a className="btn btn-primary" onClick={() => {if(window.confirm('Are you sure you want to create this reservation?')){ReservationDataService.create(flight, returnFlight, props.User, cabin, depreserved, retreserved);window.location.href="/flights"};}}>Confirm Booking</a> &nbsp;

@@ -17,6 +17,7 @@ const DepSeats = props => {
     const state = props.location.state
 
     const noseats = state.noseats
+    const noadults = state.noadults
 
     let seatsavlbl 
 
@@ -392,7 +393,7 @@ const DepSeats = props => {
 </div>
 <div className="row">
   { done &&
-          <Link to={{ pathname: "/flights/ChooseRetSeats", state: {retflight, depflight, noseats, cabin, reserved} }} className="btn btn-primary">
+          <Link to={{ pathname: "/flights/ChooseRetSeats", state: {retflight, depflight, noseats, cabin, reserved, noadults} }} className="btn btn-primary">
             Confirm Selection
           </Link>
 }
