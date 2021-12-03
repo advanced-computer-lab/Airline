@@ -1,16 +1,18 @@
 import http from "../http-common";
+import { trackPromise } from 'react-promise-tracker';
 
 class FlightDataService {
   getAll() {
-    return http.get(`/flights`);
+    
+    return trackPromise(http.get(`/flights`));
   }
 
   get(id) {
-    return http.get(`/flights/${id}`);
+    return trackPromise(http.get(`/flights/${id}`));
   }
 
   find(query, by) {
-    return http.get(`/flights?${by}=${query}`);
+    return trackPromise(http.get(`/flights?${by}=${query}`));
   } 
 
   findByParams(query){
@@ -22,23 +24,23 @@ class FlightDataService {
         }
       }
     }
-    return http.get(url);
+    return trackPromise(http.get(url));
   }
 
   createFlight(data) {
-    return http.post("/flights", data);
+    return trackPromise(http.post("/flights", data));
   }
 
   updateFlight(id, data) {
-    return http.put(`/flights/${id}`, data);
+    return trackPromise(http.put(`/flights/${id}`, data));
   }
 
   deleteFlight(id) {
-    return http.delete(`/flights/${id}`);
+    return trackPromise(http.delete(`/flights/${id}`));
   }
 
   authentication(email,password){
-    return http.get(`/users/login/${email}/${password}`);
+    return trackPromise(http.get(`/users/login/${email}/${password}`));
   }
 
   

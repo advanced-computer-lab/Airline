@@ -1,23 +1,24 @@
 import http from "../http-common";
+import { trackPromise } from 'react-promise-tracker';
 
 class UserDataService {
    
   authentication(data){
     
-    return http.get(`/users/login`, data);
+    return trackPromise(http.get(`/users/login`, data));
   }
 
   get(id) {
-    return http.get(`/users/${id}`);
+    return trackPromise(http.get(`/users/${id}`));
   }
 
   edit(id, data) {
-    return http.put(`/users/${id}`, data);
+    return trackPromise(http.put(`/users/${id}`, data));
   }
 
 
     login(user) {
-      return http.get(`/${user.id}`);
+      return trackPromise(http.get(`/${user.id}`));
     }
 
 
