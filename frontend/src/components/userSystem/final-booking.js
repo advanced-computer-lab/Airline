@@ -11,13 +11,70 @@ const Booking = props => {
     const cabin = state.cabin
     const noseats = state.noseats
 
+    const user = props.User
+
+    console.log(flight)
+    console.log(returnFlight)
+    console.log(props.User)
+
     const noadults = state.noadults
 
     const nochild = noseats-noadults
 
     const depreserved = state.departurereserved
+    console.log(depreserved)
 
     const retreserved = state.reserved
+    console.log(retreserved)
+
+    const tprice = noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2);
+
+    const ReservationData = {
+      DepartureFlight:{
+        id: returnFlight._id,
+        FlightNumber: returnFlight.FlightNumber,
+        DepartureTime: returnFlight.DepartureTime,
+        ArrivalTime: returnFlight.ArrivalTime,
+        Date: returnFlight.Date,
+        DepartureAirport: returnFlight.DepartureAirport,
+        DestinationAirport: returnFlight.DestinationAirport,
+        TripDuration: returnFlight.TripDuration,
+        BaggageAllowance: returnFlight.BaggageAllowance
+
+      },
+      ReturnFlight:{
+        id: flight._id,
+        FlightNumber: flight.FlightNumber,
+        DepartureTime: flight.DepartureTime,
+        ArrivalTime: flight.ArrivalTime,
+        Date: flight.Date,
+        DepartureAirport: flight.DepartureAirport,
+        DestinationAirport: flight.DestinationAirport,
+        TripDuration: flight.TripDuration,
+        BaggageAllowance: flight.BaggageAllowance
+
+      },
+      User:{
+        id: user._id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        passportnumber: user.passportnumber,
+        email: user.email
+      },
+
+      CabinClass: cabin,
+
+      Price: tprice,
+
+      DepSeats: depreserved,
+
+      RetSeats: retreserved
+
+      
+
+
+  
+    }
 
 
     //console.log("HERE "+props.User.firstname)
@@ -77,7 +134,7 @@ const Booking = props => {
             <strong>Total Price: ${noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2)}</strong><br/>
           </div>
           <div>
-          <a className="btn btn-primary" onClick={() => {if(window.confirm('Are you sure you want to create this reservation?')){ReservationDataService.create(flight, returnFlight, props.User, cabin, depreserved, retreserved);window.location.href="/flights"};}}>Confirm Booking</a> &nbsp;
+          <a className="btn btn-primary" onClick={() => {if(window.confirm('Are you sure you want to create this reservation?')){ReservationDataService.create(ReservationData);window.location.href="/flights"};}}>Confirm Booking</a> &nbsp;
                 </div>
       
       </div>
