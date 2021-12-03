@@ -72,7 +72,13 @@ const Landing = props => {
     return (
         <div>
           <div className="row pb-1">
-            
+
+          <h1>Welcome! </h1><br/>
+          <h2>Let the journey begin. </h2><br/>
+          </div>
+          <br/>
+          <div>
+          <strong>Where would you like to go?</strong>
           <div className="input-group col-lg-4"> 
               <input
                 type="text"
@@ -84,8 +90,8 @@ const Landing = props => {
               <div className="input-group-append">
                
               </div>
-            </div>
-            <div className= "input-group col-lg-4">
+            
+            &nbsp;
             <input
                 type="text"
                 className="form-control"
@@ -98,33 +104,11 @@ const Landing = props => {
                </div>
             </div>
 
-            <div className="input-group col-lg-4"> 
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Departure Date"
-                value={searchDepartDate}
-                onChange={onChangeSearchDepartDate}
-              />
-              <div className="input-group-append">
-               
-              </div>
-            </div>
-            <div className="input-group col-lg-4"> 
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Return Date"
-                value={searchReturnDate}
-                onChange={onChangeSearchReturnDate}
-              />
-              <div className="input-group-append">
-               
-              </div>
-            </div>
+            
             
 
             <div> 
+            <strong>Number of Travellers: </strong>
             <Dropdown options={numbers} onChange={onChangeSearchNoAdults} value ={searchNoAdults} placeholder="1, Adults" />
               
               <div className="input-group-append">
@@ -142,22 +126,45 @@ const Landing = props => {
             </div>
 
             <div> 
+            <strong>Cabin Class: </strong>
             <Dropdown options={options} onChange={onChangeSearchClass} value ={searchClass} placeholder="Economy" />
               
               <div className="input-group-append">
                
               </div>
             </div>
-    
+
+            <strong>Departure Date: </strong>
             <div className="input-group col-lg-4"> 
+            
+              <input
+                type="date"
+                className="form-control"
+                placeholder="Departure Date"
+                value={searchDepartDate}
+                onChange={onChangeSearchDepartDate}
+              />
               <div className="input-group-append">
-              <button
-                  className="btn btn-outline-secondary"
-                  type="button"
-                  onClick={refreshList}
-                >
-                  Clear filters
-                </button>
+               
+              </div>
+            </div>
+            <strong>Return Date: </strong>
+            <div className="input-group col-lg-4"> 
+              <input
+                type="date"
+                className="form-control"
+                placeholder="Return Date"
+                value={searchReturnDate}
+                onChange={onChangeSearchReturnDate}
+              />
+              <div className="input-group-append">
+               </div>
+              </div>
+              
+              <div>
+              <br/>
+              <div className="row">
+              
                 
                 <Link to={{ pathname: "/flights/SelectDeparture", state: hashobj }} className="btn btn-primary">
            Search

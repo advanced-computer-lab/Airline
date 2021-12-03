@@ -84,10 +84,16 @@ const Booking = props => {
 
     return (
       <div>
-            
+
+<div className="row">
+          <h1>Final Summary</h1><br/>
+          <strong>Please review before confirming your booking.</strong>
+          
+          </div>
+          <br/>
 
       <div className="row"> 
-      <h1>Departure Flight</h1>
+      <h3>Departure Flight</h3>
           <div>
             <div className="card">
               <div className="card-body">
@@ -111,7 +117,7 @@ const Booking = props => {
       </div>
       <br/>
       <div className="row">
-      <h1>Return Flight</h1>
+      <h3>Return Flight</h3>
           <div className>
             <div className="card">
               <div className="card-body">

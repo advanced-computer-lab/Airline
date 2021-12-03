@@ -169,7 +169,7 @@ const FlightsList = props => {
             </button>
             
             <button
-              className="btn btn-outline-secondary"
+              className="btn btn-primary"
               type="button"
               onClick={findByAll}
             >
