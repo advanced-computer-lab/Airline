@@ -59,6 +59,14 @@ function App() {
             </Link>
             </li>
             ) :(null)}
+
+        { user ? (
+              <li className="nav-item" >
+              <Link to={"/UpdateUser"} className="nav-link">
+              View Reservations 
+            </Link>
+            </li>
+            ) :(null)}     
         
         <li className="nav-item" >
             { user ? (

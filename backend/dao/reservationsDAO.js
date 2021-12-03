@@ -16,29 +16,6 @@ export default class ReservationsDAO {
   }
 
 
-static async getReservations() {
-
-    let cursor
-    
-    try {
-      cursor = await reservations.find()
-    } catch (e) {
-      console.error(`Unable to issue find command, ${e}`)
-      return { reserveList: [] }
-    }
-
-
-    try {
-      const reserveList = await cursor.toArray()
-
-      return { reserveList }
-    } catch (e) {
-      console.error(
-        `Unable to convert cursor to array or problem counting documents, ${e}`,
-      )
-      return { ReservesList: []}
-    }
-  }
 
 
   static async addReservation(data) {
@@ -97,6 +74,36 @@ static async getReservations() {
     } catch (e) {
       console.error(`Unable to add reservation: ${e}`)
       return { error: e }
+    }
+  }
+
+  static async getReservations(filter) {
+
+    let query = {}
+
+    query["UserId"] = {$eq: filter};
+
+
+
+    let cursor
+    
+    try {
+      cursor = await reservations.find(query);
+    } catch (e) {
+      console.error(`Unable to issue find command, ${e}`)
+      return { ReservationsList: [] }
+    }
+
+
+    try {
+      const reservationsList = await cursor.toArray()
+
+      return { reservationsList }
+    } catch (e) {
+      console.error(
+        `Unable to convert cursor to array or problem counting documents, ${e}`,
+      )
+      return { ReservationsList: [] }
     }
   }
 

@@ -2,16 +2,7 @@ import { response } from "express";
 import ReservationsDAO from "../dao/reservationsDAO.js"
 
 export default class ReservationsController{
-    static async apiGetReservations(req, res, next) {
-
-        const reserveList  = await ReservationsDAO.getReservations();
-    
-        let response = {
-          reservations: reserveList,
-        }
-        res.json(response)
-      }
-
+   
       static async apiPostReservation(req, res, next) {
         try {
 
@@ -37,4 +28,16 @@ export default class ReservationsController{
           res.status(500).json({ error: e.message })
         }
       }
+
+      static async apiGetReservations(req, res, next) {
+
+        const filter = req.body.userId;
+        
+            const ReservationsList = await ReservationsDAO.getReservations(filter);
+        
+            
+            res.json(ReservationsList);
+          }
+        
+         
 }
