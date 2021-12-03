@@ -110,7 +110,7 @@ const DepSeats = props => {
       <div>
       <div className="row">
           <h1>Select Departure Seats</h1><br/>
-          <strong>Please select {noseats} {cabin} seat(s).</strong>
+          <strong>Please select {noseats} {cabin} seat(s) for your departure flight.</strong>
           
           </div>
 

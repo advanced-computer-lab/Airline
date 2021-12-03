@@ -107,7 +107,7 @@ const RetSeats = props => {
       <div>
       <div className="row">
           <h1>Select Return Seats</h1><br/>
-          <strong>Please select {noseats} {cabin} seat(s).</strong>
+          <strong>Please select {noseats} {cabin} seat(s) for your return flight.</strong>
           
           </div>
 
