@@ -16,7 +16,7 @@ import UpdateUser from "./components/userSystem/edit-user";
 import DepSeats from "./components/userSystem/departure-seats";
 import RetSeats from "./components/userSystem/return-seats";
 import Booking from "./components/userSystem/final-booking";
-
+import UserReservations from "./components/userSystem/user-reservations"
 function App() {
 
   const [user, setUser] = React.useState(null);
@@ -62,7 +62,7 @@ function App() {
 
         { user ? (
               <li className="nav-item" >
-              <Link to={"/UpdateUser"} className="nav-link">
+              <Link to={"/ViewReservations"} className="nav-link">
               View Reservations 
             </Link>
             </li>
@@ -113,11 +113,18 @@ function App() {
               <UpdateUser {...props} user={user} log={logi} />
             )}
           />
+      <Route 
+            path="/ViewReservations"
+            render={(props) => (
+              <UserReservations {...props} user={user} log={logi} />
+            )}
+          />
 
 
       <Route  path="/flights/ChooseDepSeats" render={(props) => <DepSeats {...props} User={user} />} />
       <Route  path="/flights/ChooseRetSeats" render={(props) => <RetSeats {...props} User={user} />} />
       <Route  path="/flights/Booking" render={(props) => <Booking {...props} User={user} />} />
+      
       
 
         
