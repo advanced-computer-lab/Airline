@@ -26,7 +26,7 @@ const FlightDep = props => {
   const retrieveFlights = () => {
     
     const cclass = cabin.replace(/\s+/g, '')
-    FlightDataService.findByParams({ "DepartureDate": flight.DepartureDate, "DepartureAirport": flight.DepartureAirport, "DestinationAirport":flight.DestinationAirport, "CabinClass":cclass, "Seats": noseats})
+    FlightDataService.findByParams({ "Date": flight.DepartureDate, "DepartureAirport": flight.DepartureAirport, "DestinationAirport":flight.DestinationAirport, "CabinClass":cclass, "Seats": noseats})
       .then(response => {
         console.log(response.data);
         setFlights(response.data.flights);
@@ -37,12 +37,41 @@ const FlightDep = props => {
       });
   };
 
-  retrieveFlights();
+  const noFlights = () => {
 
+    if (flights.length==0) return true; return false;
+
+
+  }
+
+  const criteria = () => {
+
+    let string =""
+
+    if (flight.DepartureDate!="") string += `  Date: ${flight.DepartureDate} //`
+    if (flight.DepartureAirport!="") string += `     DepartureAirport: ${flight.DepartureAirport} //`
+    if (flight.DestinationAirport!="") string += `      DestinationAirport: ${flight.DestinationAirport} //`
+    if (cabin!="") string += `    Cabin Class: ${cabin} //`
+    if (noseats!=0) string += `     Seats: ${noseats}`
+
+    return string
+
+  }
 
   return(
 
     <div>
+      <div className="row">
+          <h1>Available Departure Flights</h1><br/>
+          <strong>{criteria()}</strong>
+          
+          </div>
+
+
+
+
+
+      {noFlights() && ( <strong>Sorry! No Flights Match Your Search Criteria</strong>)} 
 
   {flights.map((flight) => {
     return (
@@ -72,8 +101,11 @@ const FlightDep = props => {
         <br/>
 
       </div>
+      
     );
   })}
+
+
   </div>
   
   );

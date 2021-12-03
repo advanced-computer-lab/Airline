@@ -15,8 +15,6 @@ const ReviewSelection = props => {
 
     const user = props.User
 
-    //const user = true
-
     return(
             <div>
             

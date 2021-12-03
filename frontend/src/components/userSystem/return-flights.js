@@ -45,19 +45,52 @@ const FlightReturn = props => {
   };
 
 
-  retrieveFlights();
-
   const depFlight = state.flight
+
+
+  const noFlights = () => {
+
+    if (flights.length<=0) return true; return false;
+    
+
+
+  }
+
+  const criteria = () => {
+
+    let string =""
+
+    if (state.returnDate!="") string += `  Date: ${state.returnDate} //`
+    if (flight.DestinationAirport!="") string += `     DepartureAirport: ${flight.DestinationAirport} //`
+    if (flight.DepartureAirport!="") string += `      DestinationAirport: ${flight.DepartureAirport} //`
+    if (cabin!="") string += `    Cabin Class: ${cabin} //`
+    if (noseats!=0) string += `     Seats: ${noseats}`
+
+    return string
+
+  }
 
   return (
     <div>
       
+      <div className="row">
+          <h1>Available Return Flights</h1><br/>
+          <strong>{criteria()}</strong>
+          
+          </div>
+
+
+
+
+
+      {noFlights() && ( <strong>Sorry! No Flights Match Your Search Criteria</strong>)} 
           
         
       <div className="row">
         {flights.map((flight) => {
          
-         if (flight.Date>depdate){
+         if (flight.Date<depdate){ setFlights(flights.filter((fl)=>fl._id!==flight._id));}
+          else{
           return (
             <div >
               <div className="card">
