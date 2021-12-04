@@ -89,14 +89,17 @@ const UpdateUser = props => {
          },
      });
     return(
+      <div>
+     
+         <h3 className="card-title">Edit user details </h3>
+            <form onSubmit={formik.handleSubmit}>
 
-       <form onSubmit={formik.handleSubmit}>
-           
+            <div className="row">
+            <div className="row-auto">
 
-            
-           
-           <div className="input-container">
+            First Name :
                <input
+               className="form-control"
                  id="FirstName"
                  name="FirstName"
                  type="text"
@@ -105,9 +108,13 @@ const UpdateUser = props => {
                 value={formik.values.FirstName}
                  />  
 
-           </div>
-           <div className="input-container">           
+              </div>
+           <div className="row-auto">   
+           <br/>
+
+           Last Name :        
                <input
+               className="form-control"
                  id="LastName"
                  name="LastName"
                  type="text"
@@ -117,8 +124,12 @@ const UpdateUser = props => {
                  />  
 
            </div>
-           <div className="input-container">
+           <div className="row-auto">
+           <br/>
+
+           Passport Number :
                <input
+               className="form-control"
                  id="PassportNumber"
                  name="PassportNumber"
                  type="text"
@@ -128,8 +139,11 @@ const UpdateUser = props => {
                  />  
 
            </div>
-           <div className="input-container">
+           <div className="row-auto">
+           <br/>
+             Email :
                <input
+               className="form-control"
                  id="Email"
                  name="Email"
                  type="text"
@@ -139,11 +153,14 @@ const UpdateUser = props => {
                  />  
 
            </div>
-           
           
-           <button type= "submit">Update</button>
-
+           <div style={{display: 'flex',  justifyContent:'right', alignItems:'center', height: '5vh'}}>
+           <button type= "submit" class="btn btn-primary">Update</button>
+           </div>
+</div>
 </form>
+</div>
+
 
     )
 }
