@@ -121,12 +121,36 @@ export default class FlightsDAO {
     }
   }
 
-  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="") {
+  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="", seats=[], rem=false) {
     try {
 
       let ecseatsavlbl = false
       let bseatsavlbl = false
       let fseatsavlbl = false
+
+      let flight
+
+      if(seats.length>0) flight = await FlightsDAO.getFlightByID(flightId)
+
+      let reserved = flight.ReservedSeats
+
+      if (rem) {reserved = reserved.concat(seats)}
+      else {
+        for (let i=0;i<=reserved.length;i++)
+        {
+          for (let j=0;j<=seats.length;j++)
+          {
+            if(reserved[i]==seats[j])
+            {
+              reserved.splice(i,1);
+            }
+
+
+          }
+        } 
+      } 
+
+      reserved.sort()
 
       if (ecseats>0) ecseatsavlbl = true 
       if (bseats>0) bseatsavlbl = true 
@@ -134,7 +158,7 @@ export default class FlightsDAO {
 
       const updateResponse = await flights.updateOne(
         { _id: ObjectId(flightId)},
-        { $set: { FlightNumber:Fnumber, DepartureTime:deptime, ArrivalTime:arrtime, Date: date,  EconomySeats:ecseats, BusinessSeats:bseats, FirstSeats:fseats, DepartureAirport:depairport, DestinationAirport:destairport, TripDuration: tripdur, Price: price,BaggageAllowance: bagallwd, EconomyAvailable: ecseatsavlbl,  BusinessAvailable: bseatsavlbl, FirstAvailable: fseatsavlbl } },
+        { $set: { FlightNumber:Fnumber, DepartureTime:deptime, ArrivalTime:arrtime, Date: date,  EconomySeats:ecseats, BusinessSeats:bseats, FirstSeats:fseats, DepartureAirport:depairport, DestinationAirport:destairport, TripDuration: tripdur, Price: price,BaggageAllowance: bagallwd, EconomyAvailable: ecseatsavlbl,  BusinessAvailable: bseatsavlbl, FirstAvailable: fseatsavlbl, ReservedSeats:reserved } },
       )
 
       return updateResponse

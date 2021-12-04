@@ -102,6 +102,14 @@ export default class ReservationsDAO {
     }
   }
 
+  static async getReservationByID(id) {
+    try {
+      return await reservations.findOne( {"_id": new ObjectId(id)})
+    } catch (e) {
+      console.error(`Unable to get reservation, ${e}`)
+    }
+  }
+
   static async deleteReservation(resId) {
 
     try {

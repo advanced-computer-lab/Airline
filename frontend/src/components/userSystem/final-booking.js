@@ -39,7 +39,8 @@ const Booking = props => {
         DepartureAirport: returnFlight.DepartureAirport,
         DestinationAirport: returnFlight.DestinationAirport,
         TripDuration: returnFlight.TripDuration,
-        BaggageAllowance: returnFlight.BaggageAllowance
+        BaggageAllowance: returnFlight.BaggageAllowance,
+        Price: returnFlight.Price
 
       },
       ReturnFlight:{
@@ -51,7 +52,9 @@ const Booking = props => {
         DepartureAirport: flight.DepartureAirport,
         DestinationAirport: flight.DestinationAirport,
         TripDuration: flight.TripDuration,
-        BaggageAllowance: flight.BaggageAllowance
+        BaggageAllowance: flight.BaggageAllowance,
+        Price: flight.Price
+
 
       },
       User:{
@@ -70,7 +73,9 @@ const Booking = props => {
 
       DepSeats: depreserved,
 
-      RetSeats: retreserved
+      RetSeats: retreserved,
+
+      NoSeats: noseats
 
       
 
@@ -145,7 +150,7 @@ const Booking = props => {
           <div className="col-lg-4 pb-1"></div>
           <div className="col-lg-4 pb-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-          <a className="btn btn-success" onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);window.location.href="/flights"};}}>Confirm Booking</a> &nbsp;
+          <a className="btn btn-success" onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/")};}}>Confirm Booking</a> &nbsp;
                 </div>
       
       </div>

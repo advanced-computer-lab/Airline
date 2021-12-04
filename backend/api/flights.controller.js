@@ -103,7 +103,7 @@ let filters = {}
       const Price= parseInt(req.body.price)
       const BaggageAllowance= req.body.bagallwd
 
-      const reviewResponse = await FlightsDAO.updateFlight(flightId, Fnumber, deptime, arrtime, date, ecseats, bseats, fseats, depairport, destairport, TripDuration, Price, BaggageAllowance)
+      const reviewResponse = await FlightsDAO.updateFlight(flightId, Fnumber, deptime, arrtime, date, ecseats, bseats, fseats, depairport, destairport, TripDuration, Price, BaggageAllowance,[])
       var { error } = reviewResponse
       if (error) {
         res.status(400).json({ error })
