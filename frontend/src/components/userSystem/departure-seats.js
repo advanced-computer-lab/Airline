@@ -108,11 +108,16 @@ const DepSeats = props => {
     return (
 
       <div>
-      <div className="row">
-          <h1>Select Departure Seats</h1><br/>
+      <div >
+          <h1>Select Departure Flight Seats &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            { done &&
+          <Link to={{ pathname: "/flights/ChooseRetSeats", state: {retflight, depflight, noseats, cabin, reserved, noadults} }} className="btn btn-success">
+            Confirm Selection
+          </Link>}</h1>
+
           <strong>Please select {noseats} {cabin} seat(s) for your departure flight.</strong>
-          
           </div>
+
 
       <div class="plane">
   <div class="exit exit--front fuselage"></div>
@@ -391,13 +396,7 @@ const DepSeats = props => {
     
   </div>
 </div>
-<div className="row">
-  { done &&
-          <Link to={{ pathname: "/flights/ChooseRetSeats", state: {retflight, depflight, noseats, cabin, reserved, noadults} }} className="btn btn-primary">
-            Confirm Selection
-          </Link>
-}
-   </div>
+
 </div>
       );
 

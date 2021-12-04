@@ -166,7 +166,7 @@ const Landing = props => {
               <div className="row">
               
                 
-                <Link to={{ pathname: "/flights/SelectDeparture", state: hashobj }} className="btn btn-primary">
+                <Link to={{ pathname: "/flights/SelectDeparture", state: hashobj }} className="btn btn-success">
            Search
           </Link> &nbsp;
               </div>

@@ -201,14 +201,19 @@ const FlightsList = props => {
                 <div className="card-body">
                   <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
                   <p className="card-text">
+                  <strong>Flight Number: </strong>{flight.FlightNumber}<br/>
                    <strong>Date: </strong>{flight.Date}<br/>
-                    <strong>Departure Time: </strong>{flight.DepartureTime}  &nbsp;
-                    <strong>Arrival Time: </strong>{flight.ArrivalTime}
+                    <strong>Departure Time: </strong>{flight.DepartureTime}<br/>
+                    <strong>Arrival Time: </strong>{flight.ArrivalTime}<br/>
+                    <strong>First Class Seats: </strong>{flight.FirstSeats} <br/>
+                    <strong>Business Class Seats: </strong>{flight.BusinessSeats} <br/>
+                    <strong>Economy Class Seats: </strong>{flight.EconomySeats} 
                   </p>
-                  <div className="row">
-                  <Link to={"/admin/flights/"+flight._id} className="btn btn-primary col-lg-5 mx-1 mb-1">
-                    Flight Details
-                  </Link>
+                  <div>
+                  <Link to={{ pathname: "/admin/flights/" + flight._id + "/edit", state: flight }} className="btn btn-primary">
+            Edit
+          </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a className="btn btn-danger" onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(flight._id);window.location.href="/admin/flights"};}}>Delete</a>
                   </div>
                 </div>
               </div>

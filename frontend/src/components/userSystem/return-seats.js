@@ -105,10 +105,15 @@ const RetSeats = props => {
     return (
 
       <div>
-      <div className="row">
-          <h1>Select Return Seats</h1><br/>
+      <div >
+          <h1>Select Return Flight Seats &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            { done &&
+          <Link to={{ pathname: "/flights/Booking", state: {retflight, depflight, noseats, cabin, departurereserved, reserved, noadults} }} className="btn btn-success">
+            Confirm Selection
+          </Link>
+}</h1>
           <strong>Please select {noseats} {cabin} seat(s) for your return flight.</strong>
-          
+         
           </div>
 
       <div class="plane">
@@ -388,13 +393,7 @@ const RetSeats = props => {
     
   </div>
 </div>
-<div className="row">
-{ done &&
-          <Link to={{ pathname: "/flights/Booking", state: {retflight, depflight, noseats, cabin, departurereserved, reserved, noadults} }} className="btn btn-primary">
-            Confirm Selection
-          </Link>
-}
-          </div>
+
 </div>
       );
 

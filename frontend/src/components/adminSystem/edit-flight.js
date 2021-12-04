@@ -71,7 +71,7 @@ const UpdateFlight = props => {
 
             
              FlightDataService.updateFlight(id,FlightData);
-             window.location.href=`/admin/flights/${id}`;
+             window.location.href=`/admin/flights/`;
 
 
          },

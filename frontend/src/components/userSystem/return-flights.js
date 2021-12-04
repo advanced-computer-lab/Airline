@@ -108,9 +108,9 @@ const FlightReturn = props => {
               <strong>Child Ticket Price: </strong>{"$"+(flight.Price/2)}<br/>
                   </p>
                   <div className="row">
-                  <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight, cabin, noseats, noadults} }} className="btn btn-primary">
+                  <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight, cabin, noseats, noadults} }} className="btn btn-success">
             Select
-          </Link> &nbsp;
+          </Link>
                   </div>
                 </div>
               </div>
