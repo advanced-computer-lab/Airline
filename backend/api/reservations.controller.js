@@ -31,7 +31,7 @@ export default class ReservationsController{
 
       static async apiGetReservations(req, res, next) {
 
-        const filter = req.body.userId;
+        const filter = req.body.UserId;
         
             const ReservationsList = await ReservationsDAO.getReservations(filter);
         

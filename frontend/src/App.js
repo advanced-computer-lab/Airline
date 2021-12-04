@@ -116,7 +116,7 @@ function App() {
       <Route 
             path="/ViewReservations"
             render={(props) => (
-              <UserReservations {...props} user={user} log={logi} />
+              <UserReservations {...props} user={user}  />
             )}
           />
 

@@ -50,19 +50,30 @@ const UserReservations = props => {
 
   }*/
     const user = props.user;
-    const [reservations, setReservations] =useState("");
-   
-    const retrieveReservations = () => {
-        ReservationsDataService.get()
+    const userid = user._id
+    console.log(userid)
+    //let reservations = new Array
+    const [reservations, setReservations] =useState([]);
+    
+   const data = {UserId: userid}
+   console.log(data)
+   const retrieveReservations = () => {
+        ReservationsDataService.get(data)
+        
           .then(response => {
-            setReservations(response.data.reservations);
+            setReservations(response.data);
+            //reservations = response.data
             console.log(response.data);
           })
           .catch(e => {
             console.log(e);
           });
       };
-      retrieveReservations();
+      //retrieveReservations();
+      console.log(reservations)
+      useEffect(() => {
+        retrieveReservations();
+      }, []);
       return(
         
         <div className="row">

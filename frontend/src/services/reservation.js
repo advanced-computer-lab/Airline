@@ -1,4 +1,5 @@
 import http from "../http-common";
+import { trackPromise } from 'react-promise-tracker';
 
 class ReservationDataService {
 
@@ -7,9 +8,9 @@ class ReservationDataService {
       return http.post(`/reservations`,data);
   }
 
-  get() {
-    return http.get(`/reservations`);
-  }
+  get(data) {
+    return http.get(`/reservations`,data);
+  } 
 
  
 

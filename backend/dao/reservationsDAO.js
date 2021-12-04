@@ -98,7 +98,7 @@ export default class ReservationsDAO {
     try {
       const reservationsList = await cursor.toArray()
 
-      return { reservationsList }
+      return  reservationsList 
     } catch (e) {
       console.error(
         `Unable to convert cursor to array or problem counting documents, ${e}`,
