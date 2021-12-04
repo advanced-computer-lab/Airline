@@ -5,11 +5,11 @@ class ReservationDataService {
 
 
   create(data){
-      return http.post(`/reservations`,data);
+      return trackPromise(http.post(`/reservations`,data));
   }
 
-  get(data) {
-    return http.get(`/reservations`,data);
+  get(userid) {
+    return trackPromise(http.get(`/reservations/${userid}`));
   } 
 
  

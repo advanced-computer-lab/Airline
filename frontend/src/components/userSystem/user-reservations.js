@@ -4,72 +4,22 @@ import { Link } from "react-router-dom";
 
 const UserReservations = props => {
 
-  /*const ReservationData = {
-    DepartureFlight:{
-      id: 1,
-      FlightNumber: 1,
-      DepartureTime: '22:30',
-      ArrivalTime:'01:50',
-      Date: '22/12/2021',
-      DepartureAirport: 'CAI',
-      DestinationAirport: 'ROM',
-      TripDuration: '03:10',
-      BaggageAllowance: 10
-
-    },
-    ReturnFlight:{
-      id: 2,
-      FlightNumber: 2,
-      DepartureTime: '02:00',
-      ArrivalTime: '05:00',
-      Date: '31/12/2021',
-      DepartureAirport: 'ROM',
-      DestinationAirport: 'CAI',
-      TripDuration: '03:00',
-      BaggageAllowance: '20'
-
-    },
-    User:{
-      id: 103031,
-      firstname: 'Abdelkareem',
-      lastname: 'Tarek',
-      passportnumber: 1234,
-      email: 'aasfgfare'
-    },
-
-    CabinClass: 'Economey',
-
-    Price: 100,
-
-    UserId:102301,
-
-    DepSeats: '2A',
-
-    RetSeats: '3B'
-
-
-  }*/
     const user = props.user;
     const userid = user._id
     console.log(userid)
-    //let reservations = new Array
     const [reservations, setReservations] =useState([]);
     
-   const data = {UserId: userid}
-   console.log(data)
    const retrieveReservations = () => {
-        ReservationsDataService.get(data)
+        ReservationsDataService.get(userid)
         
           .then(response => {
-            setReservations(response.data);
-            //reservations = response.data
+            setReservations(response.data.ReservationsList);
             console.log(response.data);
           })
           .catch(e => {
             console.log(e);
           });
       };
-      //retrieveReservations();
       console.log(reservations)
       useEffect(() => {
         retrieveReservations();

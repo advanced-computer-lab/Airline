@@ -77,33 +77,28 @@ export default class ReservationsDAO {
     }
   }
 
-  static async getReservations(filter) {
-
-    let query = {}
-
-    query["UserId"] = {$eq: filter};
-
-
+  static async getReservations(userid) {
 
     let cursor
     
     try {
-      cursor = await reservations.find(query);
+      cursor = await reservations.find({"UserId":userid})
     } catch (e) {
       console.error(`Unable to issue find command, ${e}`)
-      return { ReservationsList: [] }
+      return { ReservationsList: [], totalNumReservations: 0 }
     }
 
 
     try {
-      const reservationsList = await cursor.toArray()
+      const ReservationsList = await cursor.toArray()
+      const totalNumReservations = await reservations.countDocuments({"UserId":userid})
 
-      return  reservationsList 
+      return { ReservationsList, totalNumReservations }
     } catch (e) {
       console.error(
         `Unable to convert cursor to array or problem counting documents, ${e}`,
       )
-      return { ReservationsList: [] }
+      return { ReservationsList: [], totalNumReservations: 0 }
     }
   }
 

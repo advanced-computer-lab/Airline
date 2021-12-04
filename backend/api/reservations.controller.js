@@ -6,16 +6,6 @@ export default class ReservationsController{
       static async apiPostReservation(req, res, next) {
         try {
 
-         
-         /* const DepartureFlight = req.body.flight
-          console.log(DepartureFlight)
-          const ReturnFlight= req.body.returnFlight
-          console.log(ReturnFlight)
-          const User= req.body.user
-          console.log(User)
-          const Cabin = req.body.cabin
-          const DepSeats = req.body.depreserved
-          const RetSeats = req.body.retreserved*/
 
           const data = req.body
           
@@ -29,15 +19,22 @@ export default class ReservationsController{
         }
       }
 
-      static async apiGetReservations(req, res, next) {
+      static async apiGetReservationsByUserId(req, res, next) {
 
-        const filter = req.body.UserId;
-        
-            const ReservationsList = await ReservationsDAO.getReservations(filter);
-        
-            
-            res.json(ReservationsList);
+        try {
+          
+        let userid = req.params.id || {};
+            let ReservationsList = await ReservationsDAO.getReservations(userid);
+            if (!ReservationsList) {
+              res.status(404).json({ error: "Reservations not found" })
+              return
+            }
+            res.json(ReservationsList)
+          } catch (e) {
+            console.log(`api, ${e}`)
+            res.status(500).json({ error: e })
           }
+        }
         
          
 }
