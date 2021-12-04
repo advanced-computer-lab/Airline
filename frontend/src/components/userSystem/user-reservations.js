@@ -60,10 +60,10 @@ const UserReservations = props => {
                     <div className="card-body">
                   <h5 className="card-title">  Return Flight</h5>
                   <p className="card-text">
-                    <strong>First Name :</strong>{reservation.User.firstname}<br/>
-                    <strong>Last Name :</strong>{reservation.User.lastname}<br/>
-                    <strong>Passport Number :</strong>{reservation.User.passportnumber}<br/>
-                    <strong>Email :</strong>{reservation.User.email}<br/>
+                    <strong>First Name :</strong>{user.firstname}<br/>
+                    <strong>Last Name :</strong>{user.lastname}<br/>
+                    <strong>Passport Number :</strong>{user.passportnumber}<br/>
+                    <strong>Email :</strong>{user.email}<br/>
                     <strong>Cabin Class</strong>{reservation.CabinClass}<br/>
                     <strong>Price :</strong>{reservation.Price}<br/>
                     <strong>Departure Seats</strong>{reservation.DepSeats}<br/>

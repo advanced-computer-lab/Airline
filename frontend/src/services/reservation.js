@@ -12,6 +12,9 @@ class ReservationDataService {
     return trackPromise(http.get(`/reservations/${userid}`));
   } 
 
+  delete(resid){
+    return trackPromise(http.delete(`/reservations/${resid}`)); 
+  }
  
 
 

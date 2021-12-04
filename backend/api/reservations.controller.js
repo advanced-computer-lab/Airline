@@ -35,6 +35,16 @@ export default class ReservationsController{
             res.status(500).json({ error: e })
           }
         }
+
+        static async apiCancelReservation(req, res, next) {
+          try {
+            const resId = req.params.id
+            await ReservationsDAO.deleteReservation(resId)
+            res.json({ status: "success" })
+          } catch (e) {
+            res.status(500).json({ error: e.message })
+          }
+      }
         
          
 }

@@ -102,4 +102,18 @@ export default class ReservationsDAO {
     }
   }
 
+  static async deleteReservation(resId) {
+
+    try {
+      const deleteResponse = await reservations.deleteOne({
+        _id: ObjectId(resId),
+      })
+
+      return deleteResponse
+    } catch (e) {
+      console.error(`Unable to cancel reservation: ${e}`)
+      return { error: e }
+    }
+  }
+
 }
