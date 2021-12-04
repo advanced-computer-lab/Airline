@@ -44,7 +44,7 @@ function App() {
       <a className="navbar-brand">
         Airline
       </a>
-      <div className="navbar-nav mr-auto">
+      <div className="navbar-nav ms-auto">
         <li className="nav-item" >
           <Link to={"/"} className="nav-link">
             Home
