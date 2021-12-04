@@ -117,6 +117,22 @@ export default class ReservationsController{
             resp.status(500).json({ error: e.message })
           }
       }
+
+
+      static async apiGetReservationById(req, res, next) {
+        try {
+          let id = req.params.id || {}
+          let reservation = await ReservationsDAO.getReservationByID(id)
+          if (!reservation) {
+            res.status(404).json({ error: "Reservation not found" })
+            return
+          }
+          res.json(reservation)
+        } catch (e) {
+          console.log(`api, ${e}`)
+          res.status(500).json({ error: e })
+        }
+      }
         
          
 }

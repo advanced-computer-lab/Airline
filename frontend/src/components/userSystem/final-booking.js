@@ -30,6 +30,7 @@ const Booking = props => {
     const tprice = noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2);
 
     const ReservationData = {
+      BookingNumber: GenerateBookingNumber(),
       DepartureFlight:{
         id: returnFlight._id,
         FlightNumber: returnFlight.FlightNumber,
@@ -75,13 +76,24 @@ const Booking = props => {
 
       RetSeats: retreserved,
 
-      NoSeats: noseats
+      NoSeats: noseats,
+
+      NoAdults: noadults,
+
+      NoChildren: noadults
 
       
 
 
   
     }
+
+    function GenerateBookingNumber() {
+      const chars = '123456789123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      var result = '';
+      for (var i = 10; i > 0; --i) result += chars[Math.floor(Math.random() * chars.length)];
+      return result;
+  }
 
 
     //console.log("HERE "+props.User.firstname)
@@ -150,7 +162,7 @@ const Booking = props => {
           <div className="col-lg-4 pb-1"></div>
           <div className="col-lg-4 pb-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-          <a className="btn btn-success" onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/")};}}>Confirm Booking</a> &nbsp;
+          <a className="btn btn-success" onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Booking</a> &nbsp;
                 </div>
       
       </div>
