@@ -62,6 +62,8 @@ const Login = props => {
   }*/
 
   return (
+    <div>
+    <h1>Login</h1>
     <div className="submit-form">
       <div>
         <div className="form-group">
@@ -89,12 +91,14 @@ const Login = props => {
             name="password"
             display="none"
           />
-        </div>
-
+        </div><br/>
+        <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}> 
         <button onClick={login} className="btn btn-success">
           Login
         </button>
+        </div>
       </div>
+    </div>
     </div>
   );
 };

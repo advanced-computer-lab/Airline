@@ -106,12 +106,14 @@ const RetSeats = props => {
 
       <div>
       <div >
-          <h1>Select Return Flight Seats &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <h1>Select Return Flight Seats </h1>
+          <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
             { done &&
           <Link to={{ pathname: "/flights/Booking", state: {retflight, depflight, noseats, cabin, departurereserved, reserved, noadults} }} className="btn btn-success">
             Confirm Selection
-          </Link>
-}</h1>
+          </Link>}
+          </div>
+
           <strong>Please select {noseats} {cabin} seat(s) for your return flight.</strong>
          
           </div>

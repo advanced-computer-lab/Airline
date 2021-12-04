@@ -129,12 +129,17 @@ export default class FlightsDAO {
       let fseatsavlbl = false
 
       let flight
+      let reserved = []
 
-      if(seats.length>0) flight = await FlightsDAO.getFlightByID(flightId)
+      if(seats.length>0) 
+      {
+      flight = await FlightsDAO.getFlightByID(flightId)
 
-      let reserved = flight.ReservedSeats
-
+      reserved = flight.ReservedSeats
+      }
+      
       if (rem) {reserved = reserved.concat(seats)}
+      
       else {
         for (let i=0;i<=reserved.length;i++)
         {

@@ -70,10 +70,10 @@ const ReviewSelection = props => {
             </div>
             <div className="col-lg-4 pb-1">
             <strong>Total Travellers: {noseats} ({noadults} Adults, {nochild} Children)</strong><br/>
-            <strong>Total Price: ${noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2)}</strong><br/>
+            <strong>Total Price: ${noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2)}<br/><br/></strong><br/>
             </div>
             <div className="col-lg-4 pb-1"></div>
-            <div className="col-lg-4 pb-1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div className="col-lg-4 pb-1" style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '6vh'}}>
             {user?
                  ( <Link to={{ pathname: "/flights/ChooseDepSeats", state: {returnFlight, flight, noseats, cabin, noadults} }} className="btn btn-success">
             Continue Booking
@@ -83,7 +83,7 @@ const ReviewSelection = props => {
         </Link>)
           }
 
-                  </div>
+                  </div><br/>
         
         </div>
             </div>
