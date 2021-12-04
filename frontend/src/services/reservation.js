@@ -9,7 +9,11 @@ class ReservationDataService {
   }
 
   get(userid) {
-    return trackPromise(http.get(`/reservations/${userid}`));
+    return trackPromise(http.get(`/reservations/user/${userid}`));
+  } 
+
+  getByResId(resid) {
+    return trackPromise(http.get(`/reservations/${resid}`));
   } 
 
   delete(resid){

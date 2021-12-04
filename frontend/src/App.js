@@ -16,6 +16,7 @@ import UpdateUser from "./components/userSystem/edit-user";
 import DepSeats from "./components/userSystem/departure-seats";
 import RetSeats from "./components/userSystem/return-seats";
 import Booking from "./components/userSystem/final-booking";
+import MyBooking from "./components/userSystem/successful-booking";
 import UserReservations from "./components/userSystem/user-reservations"
 function App() {
 
@@ -124,6 +125,7 @@ function App() {
       <Route  path="/flights/ChooseDepSeats" render={(props) => <DepSeats {...props} User={user} />} />
       <Route  path="/flights/ChooseRetSeats" render={(props) => <RetSeats {...props} User={user} />} />
       <Route  path="/flights/Booking" render={(props) => <Booking {...props} User={user} />} />
+      <Route  path="/flights/MyBooking" render={(props) => <MyBooking {...props} User={user} />} />
       
       
 
