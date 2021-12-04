@@ -66,6 +66,8 @@ const Booking = props => {
 
       Price: tprice,
 
+      UserId:user._id,
+
       DepSeats: depreserved,
 
       RetSeats: retreserved

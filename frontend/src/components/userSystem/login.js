@@ -80,13 +80,14 @@ const Login = props => {
         <div className="form-group">
           <label htmlFor="id">Password</label>
           <input
-            type="text"
+            type="password"
             className="form-control"
             id="password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             name="password"
+            display="none"
           />
         </div>
 

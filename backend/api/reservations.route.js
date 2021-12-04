@@ -5,6 +5,7 @@ const router = express.Router();
 
 router.route("/").get(ReservationsCtrl.apiGetReservations)
 router.route("/").post(ReservationsCtrl.apiPostReservation)
+router.route("/")
                  
 
 
