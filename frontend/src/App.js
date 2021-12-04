@@ -45,7 +45,7 @@ function App() {
         Airline
       </a>
       <div className="navbar-nav mr-auto">
-        <li className="nav-item">
+        <li className="nav-item" >
           <Link to={"/"} className="nav-link">
             Home
           </Link>

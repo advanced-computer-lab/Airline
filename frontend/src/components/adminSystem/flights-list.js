@@ -89,6 +89,14 @@ const FlightsList = props => {
 
   return (
     <div>
+      <div className="row">
+          <h1>Flight Management System</h1><br/>
+          
+          
+          </div>
+          <br/>
+          <strong>Search</strong>
+          <br/>
       <div className="row pb-1">
         <div className="input-group col-lg-4"> 
           <input
@@ -128,7 +136,7 @@ const FlightsList = props => {
         </div>
         <div className="input-group col-lg-4"> 
           <input
-            type="text"
+            type="date"
             className="form-control"
             placeholder="Date"
             value={searchDate}
@@ -178,16 +186,18 @@ const FlightsList = props => {
           </div>
         </div>
       </div>
-
-      <Link to={"/admin/flights/create"} className="btn btn-primary col-lg-5 mx-1 mb-1">
+      <br/>
+      <strong>Flights: </strong><br/>
+      <Link to={"/admin/flights/create"} className="link" style={{textDecoration: "none"}}>
             Create New Flight
           </Link>
+
 
       <div className="row">
         {flights.map((flight) => {
           return (
             <div className="col-lg-4 pb-1">
-              <div className="card">
+              <div className="card" style={{border : "1px solid #111111"}}>
                 <div className="card-body">
                   <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
                   <p className="card-text">

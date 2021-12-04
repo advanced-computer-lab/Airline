@@ -25,7 +25,7 @@ const ReviewSelection = props => {
         <div className="row"> 
         <h3>Departure Flight</h3>
             <div >
-              <div className="card">
+              <div className="card" style={{border : "1px solid #111111"}}>
                 <div className="card-body">
                   <h5 className="card-title">{returnFlight.DepartureAirport} TO {returnFlight.DestinationAirport}</h5>
                   <p className="card-text">
@@ -50,7 +50,7 @@ const ReviewSelection = props => {
         <div className="row">
         <h3>Return Flight</h3>
             <div>
-              <div className="card">
+              <div className="card" style={{border : "1px solid #111111"}}>
                 <div className="card-body">
                   <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
                   <p className="card-text">

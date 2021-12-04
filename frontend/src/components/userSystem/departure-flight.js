@@ -76,7 +76,7 @@ const FlightDep = props => {
   {flights.map((flight) => {
     return (
       <div>
-        <div className="card">
+        <div className="card" style={{border : "1px solid #111111"}}>
           <div className="card-body">
             <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
             <p className="card-text">
