@@ -78,13 +78,18 @@ const UpdateFlight = props => {
      });
     return(
 
+        <div>
+          <h3 className="card-title">Edit flight details </h3>
+
        <form onSubmit={formik.handleSubmit}>
            
 
             
-           
-           <div className="input-container">
+       <div className="row">
+            <div className="row-auto">
+            Flight Number :
                <input
+               className="form-control"
                  id="FlightNumber"
                  name="FlightNumber"
                  type="text"
@@ -94,8 +99,11 @@ const UpdateFlight = props => {
                  />  
 
            </div>
-           <div className="input-container">           
+           <div className="row-auto">     
+           <br/>  
+           Departure Time : 
                <input
+               className="form-control"
                  id="DepartureTime"
                  name="DepartureTime"
                  type="time"
@@ -105,8 +113,11 @@ const UpdateFlight = props => {
                  />  
 
            </div>
-           <div className="input-container">
+           <div className="row-auto"> 
+           <br/>    
+           Arrival Time :  
                <input
+               className="form-control"
                  id="ArrivalTime"
                  name="ArrivalTime"
                  type="time"
@@ -115,9 +126,12 @@ const UpdateFlight = props => {
                 value={formik.values.ArrivalTime}
                  />  
 
-           </div>
-           <div className="input-container">
+          </div>
+           <div className="row-auto">   
+           <br/>    
+           Trip Duration :
                <input
+               className="form-control"
                  id="TripDuration"
                  name="TripDuration"
                  type="text"
@@ -126,9 +140,12 @@ const UpdateFlight = props => {
                 value={formik.values.TripDuration}
                  />  
 
-           </div>
-           <div className="input-container">
+          </div>
+           <div className="row-auto">  
+           <br/>     
+           Date :
                <input
+               className="form-control"
                  id="Date"
                  name="Date"
                  type="date"
@@ -137,9 +154,12 @@ const UpdateFlight = props => {
                 value={formik.values.Date}
                  />  
 
-           </div>
-           <div className="input-container">
+            </div>
+           <div className="row-auto">  
+           <br/>     
+           Economy Seats :
                <input
+               className="form-control"
                  id="EconomySeats"
                  name="EconomySeats"
                  type="number"
@@ -148,9 +168,12 @@ const UpdateFlight = props => {
                 value={formik.values.EconomySeats}
                  />  
 
-           </div>
-           <div className="input-container">
+            </div>
+           <div className="row-auto">  
+           <br/>     
+           Business Seats :
                <input
+               className="form-control"
                  id="BusinessSeats"
                  name="BusinessSeats"
                  type="number"
@@ -159,9 +182,12 @@ const UpdateFlight = props => {
                 value={formik.values.BusinessSeats}
                  />  
 
-           </div>
-           <div className="input-container">
+            </div>
+           <div className="row-auto">    
+           <br/>   
+           First Seats :
                <input
+               className="form-control"
                  id="FirstSeats"
                  name="FirstSeats"
                  type="number"
@@ -170,9 +196,12 @@ const UpdateFlight = props => {
                 value={formik.values.FirstSeats}
                  />  
 
-           </div>
-           <div className="input-container">
+            </div>
+           <div className="row-auto">    
+           <br/>   
+           Departure Airport :
                <input
+               className="form-control"
                  id="DepartureAirport"
                  name="DepartureAirport"
                  type="text"
@@ -181,9 +210,12 @@ const UpdateFlight = props => {
                 value={formik.values.DepartureAirport}
                  />  
 
-           </div>
-           <div className="input-container">
+          </div>
+           <div className="row-auto">      
+           <br/> 
+           Destination Airport :
                <input
+               className="form-control"
                  id="DestinationAirport"
                  name="DestinationAirport"
                  type="text"
@@ -192,9 +224,12 @@ const UpdateFlight = props => {
                 value={formik.values.DestinationAirport}
                  />  
 
-           </div>
-           <div className="input-container">
+          </div>
+           <div className="row-auto">  
+           <br/>     
+           Baggage Allowed :
                <input
+               className="form-control"
                  id="BaggageAllowed"
                  name="BaggageAllowed"
                  type="text"
@@ -203,9 +238,12 @@ const UpdateFlight = props => {
                 value={formik.values.BaggageAllowed}
                  />  
 
-           </div>
-           <div className="input-container">
+          </div>
+           <div className="row-auto">  
+           <br/>     
+           Price :
                <input
+               className="form-control"
                  id="Price"
                  name="Price"
                  type="number"
@@ -217,9 +255,12 @@ const UpdateFlight = props => {
            </div>
 
           
-           <button type= "submit">Update</button>
-
+           <div style={{display: 'flex',  justifyContent:'right', alignItems:'center', height: '5vh'}}>
+           <button type= "submit" class="btn btn-primary">Update</button>
+           </div>
+      </div>
 </form>
+</div>
 
     )
 }
