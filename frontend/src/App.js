@@ -56,7 +56,7 @@ function App() {
         { user ? (
               <li className="nav-item" >
               <Link to={"/UpdateUser"} className="nav-link">
-              Edit User 
+              Edit Profile 
             </Link>
             </li>
             ) :(null)}
@@ -64,7 +64,7 @@ function App() {
         { user ? (
               <li className="nav-item" >
               <Link to={"/ViewReservations"} className="nav-link">
-              View Reservations 
+              My Reservations 
             </Link>
             </li>
             ) :(null)}     

@@ -2,25 +2,37 @@ import React, { useState, useEffect } from "react";
 import ReservationsDataService from "../../services/reservation";
 import { Link } from "react-router-dom";
 
+
+function useForceUpdate(){
+  const [value, setValue] = useState(0); // integer state
+  return () => setValue(value => value + 1); // update the state to force render
+}
+
 const UserReservations = props => {
+
+ 
 
     const user = props.user;
     const userid = user._id
     console.log(userid)
     const [reservations, setReservations] =useState([]);
+    const forceUpdate = useForceUpdate();
 
     const deleteReservations = (resid) => {
       ReservationsDataService.delete(resid)
+      .then(response => {
+        retrieveReservations();
+      })
         .catch(e => {
           console.log(e);
         });
+
     };
    const retrieveReservations = () => {
         ReservationsDataService.get(userid)
         
           .then(response => {
             setReservations(response.data.ReservationsList);
-            console.log(response.data);
           })
           .catch(e => {
             console.log(e);
@@ -31,9 +43,22 @@ const UserReservations = props => {
       useEffect(() => {
         retrieveReservations();
       }, []);
+
+      const noRes = () => {
+
+        if (reservations.length==0) return true; return false;
+    
+    
+      }
+
+
       return(
         
         <div className="row" style= {{width:"250rem"}}>
+          <h1>My Reservations </h1><br/>
+
+          {noRes() && ( <strong>You have no Reservations.</strong>)} 
+
         {reservations.map((reservation) => {
           
           return (
@@ -51,9 +76,9 @@ const UserReservations = props => {
                   <h5 className="card-title"> Departure Flight</h5>
                   <p className="card-text" >
                    <strong>Date: </strong>{reservation.DepartureFlight.Date}<br/>
-                    <strong>Departure Time : </strong>{reservation.DepartureFlight.DepartureTime} <br/> &nbsp;
+                    <strong>Departure Time : </strong>{reservation.DepartureFlight.DepartureTime} <br/>
                     <strong>Arrival Time : </strong>{reservation.DepartureFlight.ArrivalTime}<br/>
-                    <strong>Flight Number : </strong>{reservation.DepartureFlight._id}<br/>
+                    <strong>Flight Number : </strong>{reservation.DepartureFlight.FlightNumber}<br/>
                     <strong>Baggage Allowance : </strong>{reservation.DepartureFlight.BaggageAllowance}<br/>
                     <strong>Trip Duration : </strong>{reservation.DepartureFlight.TripDuration}<br/>
                     <strong>Seats : </strong>{reservation.DepSeats.sort().toString()}<br/>
@@ -64,9 +89,9 @@ const UserReservations = props => {
                   <h5 className="card-title">  Return Flight</h5>
                   <p className="card-text">
                     <strong>Date: </strong>{reservation.ReturnFlight.Date}<br/>
-                    <strong>Departure Time : </strong>{reservation.ReturnFlight.DepartureTime} <br/> &nbsp;
+                    <strong>Departure Time : </strong>{reservation.ReturnFlight.DepartureTime} <br/>
                     <strong>Arrival Time : </strong>{reservation.ReturnFlight.ArrivalTime}<br/>
-                    <strong>Flight Number : </strong>{reservation.ReturnFlight._id}<br/>
+                    <strong>Flight Number : </strong>{reservation.ReturnFlight.FlightNumber}<br/>
                     <strong>Baggage Allowance : </strong>{reservation.ReturnFlight.BaggageAllowance}<br/>
                     <strong>Trip Duration : </strong>{reservation.ReturnFlight.TripDuration}<br/>
                     <strong>Seats : </strong>{reservation.RetSeats.sort().toString()}<br/>
@@ -80,7 +105,7 @@ const UserReservations = props => {
                     <strong>Last Name : </strong>{reservation.User.lastname}<br/>
                     <strong>Passport Number : </strong>{reservation.User.passportnumber}<br/>
                     <strong>Email : </strong>{reservation.User.email}<br/>
-                    <strong>Total Price : </strong>{reservation.Price}<br/>
+                    <strong>Total Price : </strong>${reservation.Price}<br/>
                     
                    
                     </p>

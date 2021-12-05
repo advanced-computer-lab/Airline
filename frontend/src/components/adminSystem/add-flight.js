@@ -33,11 +33,12 @@ export default function Createflight(){
              EconomySeats: Yup.number().required("Required"),
              BusinessSeats: Yup.number().required("Required"),
              FirstSeats: Yup.number().required("Required"),
-             DepartureAirport: Yup.string().required("Required"),
-             DestinationAirport: Yup.string().required("Required"),
+             DepartureAirport: Yup.string().required("Required").matches(/^[A-Z]+$/),
+             DestinationAirport: Yup.string().required("Required").matches(/^[A-Z]+$/),
              TripDuration:Yup.string().required("Required"),
              BaggageAllowed:Yup.string().required("Required"),
              Price:Yup.number().required("Required"),
+             
 
              
 
@@ -69,7 +70,7 @@ export default function Createflight(){
      });
     return(
 <div>
-<h3 className="card-title">Create</h3>
+<h1 className="card-title">Create New Flight</h1>
 <form onSubmit={formik.handleSubmit}>
     <div className="row">
             <div className="row-auto">
@@ -86,7 +87,7 @@ export default function Createflight(){
 
            </div>
            <div className="row-auto">     
-           <br/>  
+           
            Departure Time : 
                <input
                className="form-control"
@@ -100,7 +101,7 @@ export default function Createflight(){
 
            </div>
            <div className="row-auto"> 
-           <br/>    
+               
            Arrival Time :  
                <input
                className="form-control"
@@ -114,7 +115,7 @@ export default function Createflight(){
 
           </div>
            <div className="row-auto">   
-           <br/>    
+              
            Trip Duration :
                <input
                className="form-control"
@@ -128,7 +129,7 @@ export default function Createflight(){
 
           </div>
            <div className="row-auto">  
-           <br/>     
+             
            Date :
                <input
                className="form-control"
@@ -142,7 +143,7 @@ export default function Createflight(){
 
             </div>
            <div className="row-auto">  
-           <br/>     
+              
            Economy Seats :
                <input
                className="form-control"
@@ -156,7 +157,7 @@ export default function Createflight(){
 
             </div>
            <div className="row-auto">  
-           <br/>     
+              
            Business Seats :
                <input
                className="form-control"
@@ -170,7 +171,7 @@ export default function Createflight(){
 
             </div>
            <div className="row-auto">    
-           <br/>   
+            
            First Seats :
                <input
                className="form-control"
@@ -184,7 +185,7 @@ export default function Createflight(){
 
             </div>
            <div className="row-auto">    
-           <br/>   
+           
            Departure Airport :
                <input
                className="form-control"
@@ -198,7 +199,7 @@ export default function Createflight(){
 
           </div>
            <div className="row-auto">      
-           <br/> 
+            
            Destination Airport :
                <input
                className="form-control"
@@ -212,7 +213,7 @@ export default function Createflight(){
 
           </div>
            <div className="row-auto">  
-           <br/>     
+             
            Baggage Allowed :
                <input
                className="form-control"
@@ -226,7 +227,7 @@ export default function Createflight(){
 
           </div>
            <div className="row-auto">  
-           <br/>     
+              
            Price :
                <input
                className="form-control"
@@ -238,11 +239,11 @@ export default function Createflight(){
                 value={formik.values.Price}
                  />  
 
-           </div>
+<br/></div>
 
-          
+           
            <div style={{display: 'flex',  justifyContent:'right', alignItems:'center', height: '5vh'}}>
-           <button type= "submit" class="btn btn-primary">Update</button>
+           <button type= "submit" class="btn btn-primary">Create</button>
            </div>
       </div>
 </form>

@@ -83,7 +83,7 @@ const Landing = props => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Departure Airport"
+                placeholder="Departure Airport,  ex.CAI"
                 value={searchDepartAirpt}
                 onChange={onChangeSearchDepartAirpt}
               />

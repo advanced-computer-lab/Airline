@@ -86,6 +86,13 @@ const FlightsList = props => {
     find({"FlightNumber":searchFlightNum, "DepartureTime": searchDepartTime, "ArrivalTime": searchArrivalTime, "Date": searchDate, "DepartureAirport": searchDepartAirpt, "DestinationAirport": searchArrivalAirpt})
   }
 
+  const noFlights = () => {
+
+    if (flights.length==0) return true; return false;
+
+
+  }
+
 
   return (
     <div>
@@ -194,6 +201,8 @@ const FlightsList = props => {
 
 
       <div className="row">
+
+      {noFlights() && ( <strong>no flights match search criteria.</strong>)}
         {flights.map((flight) => {
           return (
             <div className="col-lg-4 pb-1">
@@ -213,7 +222,7 @@ const FlightsList = props => {
                   <Link to={{ pathname: "/admin/flights/" + flight._id + "/edit", state: flight }} className="btn btn-primary">
             Edit
           </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a className="btn btn-danger" onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(flight._id);window.location.href="/admin/flights"};}}>Delete</a>
+          <a className="btn btn-danger" onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(flight._id).then(response => {retrieveFlights();})}}}>Delete</a>
                   </div>
                 </div>
               </div>

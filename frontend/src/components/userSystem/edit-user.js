@@ -91,7 +91,7 @@ const UpdateUser = props => {
     return(
       <div>
      
-         <h3 className="card-title">Edit user details </h3>
+         <h1 className="card-title">Edit user details </h1>
             <form onSubmit={formik.handleSubmit}>
 
             <div className="row">
@@ -110,7 +110,7 @@ const UpdateUser = props => {
 
               </div>
            <div className="row-auto">   
-           <br/>
+           
 
            Last Name :        
                <input
@@ -125,7 +125,7 @@ const UpdateUser = props => {
 
            </div>
            <div className="row-auto">
-           <br/>
+           
 
            Passport Number :
                <input
@@ -140,7 +140,7 @@ const UpdateUser = props => {
 
            </div>
            <div className="row-auto">
-           <br/>
+           
              Email :
                <input
                className="form-control"
@@ -150,7 +150,7 @@ const UpdateUser = props => {
                  placeholder="Email"
                  onChange={formik.handleChange}
                 value={formik.values.Email}
-                 />  
+                 />  <br/>
 
            </div>
           
