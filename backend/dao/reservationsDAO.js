@@ -123,5 +123,25 @@ export default class ReservationsDAO {
       return { error: e }
     }
   }
+  static async UpdateReservation(id, data){
+    try{
+      const updateResponse = await reservations.updateOne(
+        { _id: ObjectId(id)},
+        { $set:  { User:{
+          id: data.id,
+          firstname: data.firstname,
+          lastname: data.lastname,
+          passportnumber: data.passportnumber,
+          email: data.email}
+      }},)
+
+      return updateResponse
+    }
+     catch (e) {
+      console.error(`Unable to update reservation: ${e}`)
+      return { error: e }
+    }
+    }
+  
 
 }

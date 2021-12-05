@@ -1,5 +1,6 @@
 import UsersDAO from "../dao/usersDAO.js"
 import jwt from "jsonwebtoken"
+import ReservationsDAO from "../dao/reservationsDAO.js"
 
 export default class UsersController {
   static async apiGetUsers(req, res, next) {
@@ -63,6 +64,20 @@ export default class UsersController {
       const lname = req.body.lastname
       const passnum = req.body.passportnumber
       const email = req.body.email
+
+          
+        
+      let Reservations = await ReservationsDAO.getReservations(Id);
+
+      let ReservationsList = Reservations.ReservationsList
+             
+            for (let i = 0; i<ReservationsList.length; i++){
+
+              let id = ReservationsList[i]._id
+
+              let resResponse = await ReservationsDAO.UpdateReservation(id, {id: Id, firstname:fname, lastname:lname, passportnumber:passnum, email:email});
+
+            }
       
       const reviewResponse = await UsersDAO.updateUser(Id, fname, lname, passnum, email)
       var { error } = reviewResponse

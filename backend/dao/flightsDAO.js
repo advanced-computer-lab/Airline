@@ -158,7 +158,10 @@ export default class FlightsDAO {
 
       const updateResponse = await flights.updateOne(
         { _id: ObjectId(flightId)},
-        { $set: { FlightNumber:Fnumber, DepartureTime:deptime, ArrivalTime:arrtime, Date: date,  EconomySeats:ecseats, BusinessSeats:bseats, FirstSeats:fseats, DepartureAirport:depairport, DestinationAirport:destairport, TripDuration: tripdur, Price: price,BaggageAllowance: bagallwd, EconomyAvailable: ecseatsavlbl,  BusinessAvailable: bseatsavlbl, FirstAvailable: fseatsavlbl, ReservedSeats:reserved } },
+        { $set: { FlightNumber:Fnumber, DepartureTime:deptime, ArrivalTime:arrtime, Date: date,  EconomySeats:ecseats, 
+          BusinessSeats:bseats, FirstSeats:fseats, DepartureAirport:depairport, DestinationAirport:destairport, 
+          TripDuration: tripdur, Price: price,BaggageAllowance: bagallwd, EconomyAvailable: ecseatsavlbl,  
+          BusinessAvailable: bseatsavlbl, FirstAvailable: fseatsavlbl, ReservedSeats:reserved } },
       )
 
       return updateResponse

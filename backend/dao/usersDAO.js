@@ -73,6 +73,8 @@ export default class UsersDAO {
 
   static async updateUser(id="", fname="", lname="", passnum="", email="") {
     try {
+
+      
       
 
       const updateResponse = await users.updateOne(
