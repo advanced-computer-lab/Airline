@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FlightDataService from "../services/flight";
+import FlightDataService from "../../services/flight";
 import { Link } from "react-router-dom";
 
 const Flight = props => {
@@ -47,11 +47,11 @@ const Flight = props => {
             <strong>Business Class Seats: </strong>{flight.BusinessSeats} <br/>
             <strong>Economy Class Seats: </strong>{flight.EconomySeats} 
           </p>
-          <Link to={{ pathname: "/flights/" + props.match.params.id + "/edit", state: flight }} className="btn btn-primary">
+          <Link to={{ pathname: "/admin/flights/" + props.match.params.id + "/edit", state: flight }} className="btn btn-primary">
             Edit Flight
           </Link> &nbsp;
 
-          <a className="btn btn-danger" onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(props.match.params.id);window.location.href="/flights"};}}>Delete Flight</a> &nbsp;
+          <a className="btn btn-danger" onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(props.match.params.id);window.location.href="/admin/flights"};}}>Delete Flight</a> &nbsp;
 
           
           

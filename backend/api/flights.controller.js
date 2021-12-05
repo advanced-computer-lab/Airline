@@ -17,13 +17,15 @@ let filters = {}
       filters.DepartureAirport = req.query.DepartureAirport
     } if (req.query.DestinationAirport) {
       filters.DestinationAirport = req.query.DestinationAirport
+    }if (req.query.CabinClass) {
+      filters.CabinClass = req.query.CabinClass
+    }if (req.query.Seats) {
+      filters.Seats = req.query.Seats
     }
     
 
 
-    const { flightsList, totalNumFlights } = await FlightsDAO.getFlights({
-      filters,
-    })
+    const { flightsList, totalNumFlights } = await FlightsDAO.getFlights({filters})
 
     let response = {
       flights: flightsList,
@@ -55,12 +57,14 @@ let filters = {}
       const DepartureTime= req.body.deptime
       const ArrivalTime= req.body.arrtime
       const Date = req.body.date
-      const EconomySeats= req.body.ecseats
-      const BusinessSeats=req.body.bseats
-      const FirstSeats=req.body.fseats
+      const EconomySeats= parseInt(req.body.ecseats)
+      const BusinessSeats=parseInt(req.body.bseats)
+      const FirstSeats=parseInt(req.body.fseats)
       const DepartureAirport=req.body.depairport
       const DestinationAirport=req.body.destairport
-      
+      const TripDuration= req.body.tripdur
+      const Price= parseInt(req.body.price)
+      const BaggageAllowance= req.body.bagallwd
 
       const FlightResponse = await FlightsDAO.addFlight(
        FlightNumber,
@@ -71,7 +75,10 @@ let filters = {}
        BusinessSeats,
        FirstSeats,
        DepartureAirport,
-       DestinationAirport
+       DestinationAirport,
+       TripDuration,
+       Price,
+       BaggageAllowance
       )
       res.json({ status: "success" })
     } catch (e) {
@@ -87,13 +94,16 @@ let filters = {}
       const deptime = req.body.deptime
       const arrtime = req.body.arrtime
       const date = req.body.date
-      const ecseats= req.body.ecseats
-      const bseats=req.body.bseats
-      const fseats=req.body.fseats
+      const ecseats= parseInt(req.body.ecseats)
+      const bseats=parseInt(req.body.bseats)
+      const fseats=parseInt(req.body.fseats)
       const depairport=req.body.depairport
       const destairport=req.body.destairport
+      const TripDuration= req.body.tripdur
+      const Price= parseInt(req.body.price)
+      const BaggageAllowance= req.body.bagallwd
 
-      const reviewResponse = await FlightsDAO.updateFlight(flightId, Fnumber, deptime, arrtime, date, ecseats, bseats, fseats, depairport, destairport)
+      const reviewResponse = await FlightsDAO.updateFlight(flightId, Fnumber, deptime, arrtime, date, ecseats, bseats, fseats, depairport, destairport, TripDuration, Price, BaggageAllowance,[])
       var { error } = reviewResponse
       if (error) {
         res.status(400).json({ error })

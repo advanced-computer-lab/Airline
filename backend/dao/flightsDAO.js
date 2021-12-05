@@ -32,14 +32,25 @@ export default class FlightsDAO {
       }  if ("DestinationAirport" in filters) {
         query["DestinationAirport"] =  { $eq: filters["DestinationAirport"]}
       }  
+      
+      if ("CabinClass" in filters) {
+        if(filters["CabinClass"]=="Economy"){query["EconomyAvailable"] =  { $eq: true}}
+        else if(filters["CabinClass"]=="BusinessClass"){query["BusinessAvailable"] =  { $eq: true}}
+        else if(filters["CabinClass"]=="FirstClass"){query["FirstAvailable"] =  { $eq: true}}  
+      }  
+
+      if ("Seats" in filters) {
+        if(filters["CabinClass"]=="Economy"){query["EconomySeats"] =  { $gte: parseInt(filters["Seats"])}}
+        else if(filters["CabinClass"]=="BusinessClass"){query["BusinessSeats"] =  { $gte: parseInt(filters["Seats"])}}
+        else if(filters["CabinClass"]=="FirstClass"){query["FirstSeats"] =  { $gte: parseInt(filters["Seats"])}}
+      }  
 
     }
 
     let cursor
     
     try {
-      cursor = await flights
-        .find(query)
+      cursor = await flights.find(query)
     } catch (e) {
       console.error(`Unable to issue find command, ${e}`)
       return { flightsList: [], totalNumFlights: 0 }
@@ -68,8 +79,21 @@ export default class FlightsDAO {
   }
   
 
-  static async addFlight(Fnumber="", deptime="", arrtime="", date="", ecseats="", bseats="", fseats="", depairport="", destairport="") {
+  static async addFlight(Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="") {
     try {
+
+      let ecseatsavlbl = false
+      let bseatsavlbl = false
+      let fseatsavlbl = false
+
+
+
+      if (ecseats>0) ecseatsavlbl = true 
+      if (bseats>0) bseatsavlbl = true 
+      if (fseats>0) fseatsavlbl = true 
+
+
+
       const flightDoc = { 
         FlightNumber: Fnumber,
         DepartureTime: deptime,
@@ -79,7 +103,15 @@ export default class FlightsDAO {
         BusinessSeats: bseats,
         FirstSeats: fseats,
         DepartureAirport: depairport,
-        DestinationAirport: destairport
+        DestinationAirport: destairport,
+        TripDuration: tripdur,
+        Price: price,
+        BaggageAllowance: bagallwd,
+        EconomyAvailable: ecseatsavlbl,
+        BusinessAvailable: bseatsavlbl,
+        FirstAvailable: fseatsavlbl,
+
+
     }
 
       return await flights.insertOne(flightDoc)
@@ -89,11 +121,52 @@ export default class FlightsDAO {
     }
   }
 
-  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats="", bseats="", fseats="", depairport="", destairport="") {
+  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="", seats=[], rem=false) {
     try {
+
+      let ecseatsavlbl = false
+      let bseatsavlbl = false
+      let fseatsavlbl = false
+
+      let flight
+      let reserved = []
+
+      if(seats.length>0) 
+      {
+      flight = await FlightsDAO.getFlightByID(flightId)
+
+      reserved = flight.ReservedSeats
+      }
+      
+      if (rem) {reserved = reserved.concat(seats)}
+      
+      else {
+        for (let i=0;i<=reserved.length;i++)
+        {
+          for (let j=0;j<=seats.length;j++)
+          {
+            if(reserved[i]==seats[j])
+            {
+              reserved.splice(i,1);
+            }
+
+
+          }
+        } 
+      } 
+
+      reserved.sort()
+
+      if (ecseats>0) ecseatsavlbl = true 
+      if (bseats>0) bseatsavlbl = true 
+      if (fseats>0) fseatsavlbl = true 
+
       const updateResponse = await flights.updateOne(
         { _id: ObjectId(flightId)},
-        { $set: { FlightNumber:Fnumber, DepartureTime:deptime, ArrivalTime:arrtime, Date: date,  EconomySeats:ecseats, BusinessSeats:bseats, FirstSeats:fseats, DepartureAirport:depairport, DestinationAirport:destairport } },
+        { $set: { FlightNumber:Fnumber, DepartureTime:deptime, ArrivalTime:arrtime, Date: date,  EconomySeats:ecseats, 
+          BusinessSeats:bseats, FirstSeats:fseats, DepartureAirport:depairport, DestinationAirport:destairport, 
+          TripDuration: tripdur, Price: price,BaggageAllowance: bagallwd, EconomyAvailable: ecseatsavlbl,  
+          BusinessAvailable: bseatsavlbl, FirstAvailable: fseatsavlbl, ReservedSeats:reserved } },
       )
 
       return updateResponse

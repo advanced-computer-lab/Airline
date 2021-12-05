@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import FlightDataService from "../services/flight";
+import FlightDataService from "../../services/flight";
 import { Link } from "react-router-dom";
 
 const FlightsList = props => {
@@ -86,9 +86,24 @@ const FlightsList = props => {
     find({"FlightNumber":searchFlightNum, "DepartureTime": searchDepartTime, "ArrivalTime": searchArrivalTime, "Date": searchDate, "DepartureAirport": searchDepartAirpt, "DestinationAirport": searchArrivalAirpt})
   }
 
+  const noFlights = () => {
+
+    if (flights.length==0) return true; return false;
+
+
+  }
+
 
   return (
     <div>
+      <div className="row">
+          <h1>Flight Management System</h1><br/>
+          
+          
+          </div>
+          <br/>
+          <strong>Search</strong>
+          <br/>
       <div className="row pb-1">
         <div className="input-group col-lg-4"> 
           <input
@@ -128,7 +143,7 @@ const FlightsList = props => {
         </div>
         <div className="input-group col-lg-4"> 
           <input
-            type="text"
+            type="date"
             className="form-control"
             placeholder="Date"
             value={searchDate}
@@ -169,7 +184,7 @@ const FlightsList = props => {
             </button>
             
             <button
-              className="btn btn-outline-secondary"
+              className="btn btn-primary"
               type="button"
               onClick={findByAll}
             >
@@ -177,25 +192,37 @@ const FlightsList = props => {
             </button>
           </div>
         </div>
-       
       </div>
+      <br/>
+      <strong>Flights: </strong><br/>
+      <Link to={"/admin/flights/create"} className="link" style={{textDecoration: "none"}}>
+            Create New Flight
+          </Link>
+
+
       <div className="row">
+
+      {noFlights() && ( <strong>no flights match search criteria.</strong>)}
         {flights.map((flight) => {
-          //const address = `${restaurant.address.building} ${restaurant.address.street}, ${restaurant.address.zipcode}`;
           return (
             <div className="col-lg-4 pb-1">
-              <div className="card">
+              <div className="card" style={{border : "1px solid #111111"}}>
                 <div className="card-body">
                   <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
                   <p className="card-text">
+                  <strong>Flight Number: </strong>{flight.FlightNumber}<br/>
                    <strong>Date: </strong>{flight.Date}<br/>
-                    <strong>Departure Time: </strong>{flight.DepartureTime}  &nbsp;
-                    <strong>Arrival Time: </strong>{flight.ArrivalTime}
+                    <strong>Departure Time: </strong>{flight.DepartureTime}<br/>
+                    <strong>Arrival Time: </strong>{flight.ArrivalTime}<br/>
+                    <strong>First Class Seats: </strong>{flight.FirstSeats} <br/>
+                    <strong>Business Class Seats: </strong>{flight.BusinessSeats} <br/>
+                    <strong>Economy Class Seats: </strong>{flight.EconomySeats} 
                   </p>
-                  <div className="row">
-                  <Link to={"/flights/"+flight._id} className="btn btn-primary col-lg-5 mx-1 mb-1">
-                    Flight Details
-                  </Link>
+                  <div>
+                  <Link to={{ pathname: "/admin/flights/" + flight._id + "/edit", state: flight }} className="btn btn-primary">
+            Edit
+          </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <a className="btn btn-danger" onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(flight._id).then(response => {retrieveFlights();})}}}>Delete</a>
                   </div>
                 </div>
               </div>

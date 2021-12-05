@@ -1,20 +1,22 @@
 import http from "../http-common";
+import { trackPromise } from 'react-promise-tracker';
 
 class FlightDataService {
   getAll() {
-    return http.get(`/`);
+    
+    return trackPromise(http.get(`/flights`));
   }
 
   get(id) {
-    return http.get(`/${id}`);
+    return trackPromise(http.get(`/flights/${id}`));
   }
 
   find(query, by) {
-    return http.get(`?${by}=${query}`);
+    return trackPromise(http.get(`/flights?${by}=${query}`));
   } 
 
   findByParams(query){
-    let url = `?`;
+    let url = `/flights?`;
     for (var key in query) {
       if (query.hasOwnProperty(key)) {
         if(query[key]){
@@ -22,20 +24,26 @@ class FlightDataService {
         }
       }
     }
-    return http.get(url);
+    return trackPromise(http.get(url));
   }
 
   createFlight(data) {
-    return http.post("/", data);
+    return trackPromise(http.post("/flights", data));
   }
 
   updateFlight(id, data) {
-    return http.put(`/${id}`, data);
+    return trackPromise(http.put(`/flights/${id}`, data));
   }
 
   deleteFlight(id) {
-    return http.delete(`/${id}`);
+    return trackPromise(http.delete(`/flights/${id}`));
   }
+
+  authentication(email,password){
+    return trackPromise(http.get(`/users/login/${email}/${password}`));
+  }
+
+  
 
 
 }
