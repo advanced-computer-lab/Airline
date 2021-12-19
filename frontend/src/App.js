@@ -18,6 +18,7 @@ import RetSeats from "./components/userSystem/return-seats";
 import Booking from "./components/userSystem/final-booking";
 import MyBooking from "./components/userSystem/successful-booking";
 import UserReservations from "./components/userSystem/user-reservations"
+import SignUp from "./components/userSystem/sign-up"
 function App() {
 
   const [user, setUser] = React.useState(null);
@@ -41,6 +42,7 @@ function App() {
 
   return (
     <div  style={{backgroundColor:"#f0f6f7ff"}}>
+      
     <nav className="navbar navbar-expand navbar-dark bg-dark">
       <a className="navbar-brand">
         Airline
@@ -100,6 +102,7 @@ function App() {
 
       <Route  exact path={["/", "/flights"]} component={Landing} />
       <Route  path="/flights/SelectDeparture" component={FlightDep} />
+      <Route  path="/signup" component={SignUp} />
       <Route  path="/flights/SelectReturn" component={FlightReturn} />
       <Route 
             path="/login"
@@ -131,6 +134,7 @@ function App() {
 
         
       </Switch>
+      
     </div>
   </div>
     
