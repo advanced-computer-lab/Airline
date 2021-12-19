@@ -94,7 +94,7 @@ export default function Signup(){
           variant="outlined"
           value={formik.values.FirstName}
           onChange={formik.handleChange}
-          //sx={{ input: { color: '#7B68EE' }  }}
+          sx={{background:'white'  }}
         />
         <TextField
           required
@@ -103,6 +103,7 @@ export default function Signup(){
           variant="outlined"
           onChange={formik.handleChange}
           value={formik.values.LastName}
+          sx={{background:'white'  }}
         />
          <div>
         </div>
@@ -115,6 +116,7 @@ export default function Signup(){
           variant="outlined"
           onChange={formik.handleChange}
          value={formik.values.Password}
+         sx={{background:'white'  }}
         />
         <TextField
           required
@@ -125,6 +127,7 @@ export default function Signup(){
           variant="outlined"
           onChange={formik.handleChange}
          value={formik.values.ConfirmPassword}
+         sx={{background:'white'  }}
         /><div>
          </div>
             <TextField
@@ -134,6 +137,7 @@ export default function Signup(){
           variant="outlined"
           onChange={formik.handleChange}
          value={formik.values.Email}
+         sx={{background:'white'  }}
         />
         <TextField
           required
@@ -142,6 +146,7 @@ export default function Signup(){
           variant="outlined"
           onChange={formik.handleChange}
          value={formik.values.Username}
+         sx={{background:'white'  }}
         />
          <div>
         </div>
@@ -152,6 +157,7 @@ export default function Signup(){
           variant="outlined"
           onChange={formik.handleChange}
           value={formik.values.PassNumber}
+          sx={{background:'white'  }}
         />
         <TextField
           required
@@ -161,6 +167,7 @@ export default function Signup(){
           variant="outlined"
           onChange={formik.handleChange}
           value={formik.values.Phone}
+          sx={{background:'white'  }}
         />
          <div>
         </div>
@@ -172,6 +179,7 @@ export default function Signup(){
           variant="outlined"
           onChange={formik.handleChange}
          value={formik.values.CountryCode}
+         sx={{background:'white'  }}
         />
          <TextField
          id='Address'
@@ -181,6 +189,7 @@ export default function Signup(){
           label="Address"
           onChange={formik.handleChange}
          value={formik.values.Address}
+         sx={{background:'white'  }}
         />
         <div >
             </div>
