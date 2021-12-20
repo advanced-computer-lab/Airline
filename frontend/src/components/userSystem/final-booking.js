@@ -41,7 +41,11 @@ const Booking = props => {
         DestinationAirport: returnFlight.DestinationAirport,
         TripDuration: returnFlight.TripDuration,
         BaggageAllowance: returnFlight.BaggageAllowance,
-        Price: returnFlight.Price
+        Price: returnFlight.Price,
+        EconomySeats: returnFlight.EconomySeats,
+        BusinessSeats: returnFlight.BusinessSeats,
+        FirstSeats: returnFlight.FirstSeats,
+        ReservedSeats: returnFlight.ReservedSeats
 
       },
       ReturnFlight:{
@@ -54,7 +58,11 @@ const Booking = props => {
         DestinationAirport: flight.DestinationAirport,
         TripDuration: flight.TripDuration,
         BaggageAllowance: flight.BaggageAllowance,
-        Price: flight.Price
+        Price: flight.Price,
+        EconomySeats: flight.EconomySeats,
+        BusinessSeats: flight.BusinessSeats,
+        FirstSeats: flight.FirstSeats,
+        ReservedSeats: flight.ReservedSeats
 
 
       },

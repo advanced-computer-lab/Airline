@@ -141,7 +141,7 @@ const UserReservations = props => {
                     <Button variant='contained'  size='small' color='info' >Mail My Booking</Button>  
                     <Button variant='contained'  size='small' color='primary' href="/flights/SelectDeparture" state={reservation}>Edit Departure Flight</Button>  
                     <Button variant='contained'  size='small' color='primary' href="/flights/SelectReturn" state={reservation}>Edit Return Flight</Button>  
-                    <Button variant='contained'  size='small' color='warning' href="/flights/EditDepSeats" state={reservation}>Edit Departure Seats</Button>  
+                    <Link to={{ pathname: "/flights/EditDepSeats", state: reservation }} className="btn btn-success">Edit Departure Seats</Link>  
                     <Button variant='contained'  size='small' color='warning' href="/flights/EditRetSeats" state={reservation}>Edit Return Seats</Button>  
                     <Button variant='contained'  size='small' color='error' onClick={() => {if(window.confirm('Are you sure you want to cancel this reservation?')){deleteReservations(reservation._id)}}}>Cancel Reservation</Button> 
                       </ButtonGroup>
