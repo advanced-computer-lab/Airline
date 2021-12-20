@@ -1,6 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import BackgroundSlider from 'react-background-slider'
+import image1 from './images/image1.jpg'
+import image2 from './images/image2.jpg'
+import image3 from './images/image3.jpg'
+import Box from '@mui/material/Box';
 import './select-seats.css'; 
 
 function useForceUpdate(){
@@ -105,6 +109,22 @@ const RetSeats = props => {
     return (
 
       <div>
+         <BackgroundSlider
+          images={[image1,image2, image3]}
+          duration={4}
+          transition={2}
+        />
+        <Box
+    opacity='[0,0,0]'
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 3, width: '65ch' },
+      }}
+      noValidate
+      textAlign='left'
+      autoComplete="off"
+      height="0px" 
+    >
       <div >
           <h1>Select Return Flight Seats </h1>
           <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
@@ -395,7 +415,7 @@ const RetSeats = props => {
     
   </div>
 </div>
-
+</Box>
 </div>
       );
 
