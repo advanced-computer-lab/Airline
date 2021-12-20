@@ -3,7 +3,14 @@ import FlightDataService from "../../services/flight";
 import { Link } from "react-router-dom";
 import Dropdown from 'react-dropdown';
 import 'react-dropdown/style.css';
-
+import BackgroundSlider from 'react-background-slider'
+import image1 from './images/image1.jpg'
+import image2 from './images/image2.jpg'
+import image3 from './images/image3.jpg'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
 
 const Landing = props => {
 
@@ -33,7 +40,7 @@ const Landing = props => {
         setSearchClass(searchClass);
     }
     const onChangeSearchDepartDate = e=>{
-        const searchDepartDate=e.target.value;
+        const searchDepartDate=e.value;
         setSearchDepartDate(searchDepartDate);
     }
     const onChangeSearchReturnDate = e =>{
@@ -71,29 +78,43 @@ const Landing = props => {
 
     return (
         <div>
-          <div className="row pb-1">
-
-          <h1>Welcome! </h1><br/>
-          <h2>Let the journey begin. </h2><br/>
-          </div>
-          <br/>
-          <div>
-          <strong>Where would you like to go?</strong>
-          <div className="input-group col-lg-4"> 
-              <input
+          
+          <BackgroundSlider
+          images={[image1,image2, image3]}
+          duration={4}
+          transition={2}
+        />
+         
+         <Box
+    opacity='[0,0,0]'
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 3, width: '65ch' },
+      }}
+      noValidate
+      textAlign='left'
+      autoComplete="off"
+      height="0px"
+      
+    >
+          <h4>Where would you like to go?</h4>
+          
+            <Box sx={{ minWidth: 1000 } }>
+            <FormControl  variant='filled' size='small' >
+              <TextField
                 type="text"
+                variant="outlined"
                 className="form-control"
+                label="Departure Airport"
                 placeholder="Departure Airport,  ex.CAI"
                 value={searchDepartAirpt}
                 onChange={onChangeSearchDepartAirpt}
               />
-              <div className="input-group-append">
-               
-              </div>
-            
-            &nbsp;
-            <input
+              </FormControl>
+            <TextField
                 type="text"
+                label="Destination Airport"
+                variant="outlined"
                 className="form-control"
                 placeholder="Destination Airport"
                 value={searchArrivalAirpt}
@@ -102,12 +123,8 @@ const Landing = props => {
               <div className="input-group-append">
                
                </div>
-            </div>
-
-            
-            
-
-            <div> 
+               </Box>
+               <div> 
             <strong>Number of Travellers: </strong>
             <Dropdown options={numbers} onChange={onChangeSearchNoAdults} value ={searchNoAdults} placeholder="1, Adults" />
               
@@ -169,10 +186,11 @@ const Landing = props => {
                 <Link to={{ pathname: "/flights/SelectDeparture", state: hashobj }} className="btn btn-success">
            Search
           </Link> &nbsp;
+          <Button onClick={refreshList} variant='contained'  size='medium' color='primary'>Reset filters</Button>
               </div>
             </div>
            
-          </div>
+          </Box>
           
         </div>
       );

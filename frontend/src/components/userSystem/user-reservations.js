@@ -1,7 +1,15 @@
 import React, { useState, useEffect } from "react";
 import ReservationsDataService from "../../services/reservation";
 import { Link } from "react-router-dom";
-
+import BackgroundSlider from 'react-background-slider'
+import image1 from './images/image1.jpg'
+import image2 from './images/image2.jpg'
+import image3 from './images/image3.jpg'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import ButtonGroup from '@mui/material/ButtonGroup';
 
 function useForceUpdate(){
   const [value, setValue] = useState(0); // integer state
@@ -53,7 +61,24 @@ const UserReservations = props => {
 
 
       return(
-        
+        <div>
+           <BackgroundSlider
+          images={[image1,image2, image3]}
+          duration={4}
+          transition={2}
+        />
+        <Box
+    opacity='[0,0,0]'
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 3, width: '65ch' },
+      }}
+      noValidate
+      textAlign='left'
+      autoComplete="off"
+      height="0px"
+      
+    >
         <div className="row" style= {{width:"250rem"}}>
           <h1>My Reservations </h1><br/>
 
@@ -111,9 +136,15 @@ const UserReservations = props => {
                     </p>
                     </div>
                     </div>
-                    <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
-                    <a className="btn btn-danger" onClick={() => {if(window.confirm('Are you sure you want to cancel this reservation?')){deleteReservations(reservation._id)}}}>Cancel Reservation</a> &nbsp;
-                      </div>
+                    
+                    <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh'}}>
+                    <Button variant='contained'  size='small' color='info' >Mail My Booking</Button>  
+                    <Button variant='contained'  size='small' color='primary' href="/flights/SelectDeparture" state={reservation}>Edit Departure Flight</Button>  
+                    <Button variant='contained'  size='small' color='primary' href="/flights/SelectReturn" state={reservation}>Edit Return Flight</Button>  
+                    <Button variant='contained'  size='small' color='warning' href="/flights/EditDepSeats" state={reservation}>Edit Departure Seats</Button>  
+                    <Button variant='contained'  size='small' color='warning' href="/flights/EditRetSeats" state={reservation}>Edit Return Seats</Button>  
+                    <Button variant='contained'  size='small' color='error' onClick={() => {if(window.confirm('Are you sure you want to cancel this reservation?')){deleteReservations(reservation._id)}}}>Cancel Reservation</Button> 
+                      </ButtonGroup>
                     
                   </p>
                 </div>
@@ -122,8 +153,8 @@ const UserReservations = props => {
            </div>
           );
         })}
-
-
+      </div>
+      </Box>
       </div>
       )
 }

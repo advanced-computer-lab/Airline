@@ -38,29 +38,6 @@ const Login = props => {
 			alert('Please check your username and password')
 		}
 	}
-
-  /*const hash = {Email: user.Email , Password: user.Password};
-
-  const login = (hash) => {
-
-    
-
-    UserDataService.authentication(hash).then(response => {
-      
-      console.log(response.data.user);
-      setUser({id: response.data.user._id});
-      setUser({Name:response.data.user.Name});
-      
-      
-    })
-    .catch(e => {
-      console.log(e);
-    });
-
-    props.login(user)
-    props.history.push(`/${user.Name}`);
-  }*/
-
   return (
     <div>
     <h1>Login</h1>
