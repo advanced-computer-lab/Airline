@@ -1,28 +1,64 @@
-import React, { useState } from "react";
-import{Formik, useFormik} from "formik";
+import React from "react";
+import ReactDOM from "react-dom";
+import { Formik, useField, useFormikContext,useFormik,Form } from "formik";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import * as Yup from "yup";
 import FlightDataService from "../../services/flight";
 import 'react-dropdown/style.css';
-import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import BackgroundSlider from 'react-background-slider'
  import image1 from './images/image1.jpg'
  import image2 from './images/image2.jpg'
  import image3 from './images/image3.jpg'
  import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import TimePicker from '@mui/lab/TimePicker';
+import DateTimePicker from '@mui/lab/DateTimePicker';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import MobileDatePicker from '@mui/lab/MobileDatePicker';
+import Stack from '@mui/material/Stack';
+import { Typography, Container, Button, Box } from "@material-ui/core";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 
 
+var formSchema = {
+  date: null // if date is defiend as '' yup will throw a invalid date error
+};
+
+var validationSchema = Yup.object().shape({
+  date: Yup.date().nullable()
+});
+
+const DatePickerField = ({ ...props }) => {
+  const { setFieldValue } = useFormikContext();
+  const [field] = useField(props);
+  return (
+    <DatePicker
+      {...field}
+      {...props}
+      selected={(field.value && new Date(field.value)) || null}
+      onChange={(val) => {
+        setFieldValue(field.name, val);
+      }}
+    />
+  );
+};
 export default function Createflight(){
-    
+
+
      const formik=useFormik({
          initialValues: {
              
              FlightNumber:"",
              DepartureTime:"",
              ArrivalTime:"",
-             Date:"",
+             Date: new Date(),
              EconomySeats:"",
              BusinessSeats:"",
              FirstSeats:"",
@@ -35,6 +71,8 @@ export default function Createflight(){
 
 
          },
+
+        
 
          validationSchema: Yup.object({
              FlightNumber: Yup.string().required("Required"),
@@ -88,12 +126,11 @@ export default function Createflight(){
              <BackgroundSlider
                 images={[image1, image2, image3]}
                 duration={4}
-                transition={2} />
+                transition={2} 
+                margin="0px"/>
         
          
-        <h1>Add Flight
-
-        </h1>
+        
         <Box
     opacity='[0,0,0]'
       component="form"
@@ -104,10 +141,14 @@ export default function Createflight(){
       textAlign='center'
       autoComplete="off"
       height="0px"
+      margin="0px"
       
     >
         
       <div>
+      <h1>Add Flight
+
+</h1>
       <form onSubmit={formik.handleSubmit}>
         <TextField
           required
@@ -143,17 +184,35 @@ export default function Createflight(){
          value={formik.values.ArrivalTime}
          sx={{background:'white'  }}
         />
-        <TextField
-          required
-          id=" Date"
-          label=" Date"
-          type="date"
-          //autoComplete="current-password"
-          variant="outlined"
-          onChange={formik.handleChange}
-         value={formik.values. Date}
-         sx={{background:'white'  }}
-        /><div>
+         <Formik
+        initialValues={formSchema}
+        onSubmit={values => {
+          // same shape as initial values
+          console.log(values);
+        }}
+        render={props => (
+          <Form>
+            <Box width="100%" mb={2}>
+              {/* Material Ui Date Picker */}
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  id="date-picker-dialog"
+                  label="Date picker dialog"
+                  inputVariant="filled"
+                  format="MM/dd/yyyy"
+                  value={props.values.date}
+                  onChange={value => props.setFieldValue("date", value)}
+                  KeyboardButtonProps={{
+                    "aria-label": "change date"
+                  }}
+                />
+              </MuiPickersUtilsProvider>
+            </Box>
+
+          </Form>
+        )}
+      />
+      <div>
          </div>
             <TextField
           required
