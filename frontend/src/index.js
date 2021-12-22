@@ -16,7 +16,7 @@ import Loader from 'react-loader-spinner';
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor:"#f0f6f7ff"
+       
       }}
     >
       <Loader type="ThreeDots" color="#000000" height="100" width="100" />

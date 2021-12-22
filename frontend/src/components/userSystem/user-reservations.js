@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import FormControl from '@mui/material/FormControl';
 import ButtonGroup from '@mui/material/ButtonGroup';
+import { Card } from "@mui/material";
 
 function useForceUpdate(){
   const [value, setValue] = useState(0); // integer state
@@ -62,11 +63,7 @@ const UserReservations = props => {
 
       return(
         <div>
-           <BackgroundSlider
-          images={[image1,image2, image3]}
-          duration={4}
-          transition={2}
-        />
+           
         <Box
     opacity='[0,0,0]'
       component="form"
@@ -91,7 +88,7 @@ const UserReservations = props => {
            <div >
              
               <div className="col-lg-4 pb-1">
-              <div className="card" style={{border : "1px solid #111111"}}>
+              <Card  variant="outlined">
                 <div className="card-body">
                   <h4 className="card-title">{reservation.DepartureFlight.DepartureAirport} TO {reservation.DepartureFlight.DestinationAirport }  </h4>
                   <h5>Booking Number :{reservation.BookingNumber}</h5>
@@ -99,6 +96,7 @@ const UserReservations = props => {
                   <div class="row">
                     
                   <div class="col-sm">
+                    <Card variant="outlined">
                   <h5 className="card-title"> Departure Flight</h5>
                   <p className="card-text" >
                    <strong>Date: </strong>{reservation.DepartureFlight.Date}<br/>
@@ -110,8 +108,10 @@ const UserReservations = props => {
                     <strong>Seats : </strong>{reservation.DepSeats.sort().toString()}<br/>
                     <strong>Cabin Class : </strong>{reservation.CabinClass}<br/>
                     </p>
+                    </Card>
                     </div>
                     <div class="col-sm">
+                    <Card variant="outlined">
                   <h5 className="card-title">  Return Flight</h5>
                   <p className="card-text">
                     <strong>Date: </strong>{reservation.ReturnFlight.Date}<br/>
@@ -123,8 +123,10 @@ const UserReservations = props => {
                     <strong>Seats : </strong>{reservation.RetSeats.sort().toString()}<br/>
                     <strong>Cabin Class : </strong>{reservation.CabinClass}<br/>
                     </p>
+                    </Card>
                     </div>
                     <div class="col-sm">
+                    <Card variant="outlined">
                   <h5 className="card-title">  User info</h5>
                   <p className="card-text">
                     <strong>First Name : </strong>{reservation.User.firstname}<br/>
@@ -132,13 +134,12 @@ const UserReservations = props => {
                     <strong>Passport Number : </strong>{reservation.User.passportnumber}<br/>
                     <strong>Email : </strong>{reservation.User.email}<br/>
                     <strong>Total Price : </strong>${reservation.Price}<br/>
-                    
-                   
                     </p>
+                    </Card>
                     </div>
                     </div>
                     
-                    <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh'}}>
+                    <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'1vh'}}>
                     <Button variant='contained'  size='small' color='info' >Mail My Booking</Button>  
                     <Button variant='contained'  size='small' color='primary' href="/flights/SelectDeparture" state={reservation}>Edit Departure Flight</Button>  
                     <Button variant='contained'  size='small' color='primary' href="/flights/SelectReturn" state={reservation}>Edit Return Flight</Button>  
@@ -149,7 +150,7 @@ const UserReservations = props => {
                     
                   </p>
                 </div>
-              </div>
+              </Card>
             </div>
            </div>
           );
