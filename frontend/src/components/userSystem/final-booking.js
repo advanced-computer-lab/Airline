@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ReservationDataService from "../../services/reservation";
+import BackgroundSlider from 'react-background-slider'
+import image1 from './images/image1.jpg'
+import image2 from './images/image2.jpg'
+import image3 from './images/image3.jpg'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import ButtonGroup from '@mui/material/ButtonGroup';
+import Card from '@mui/material/Card';
 
 const Booking = props => {
 
@@ -101,14 +111,31 @@ const Booking = props => {
 
     return (
       <div>
-
+        <BackgroundSlider
+          images={[image1,image2, image3]}
+          duration={4}
+          transition={2}
+        />
+<Box
+    opacity='[0,0,0]'
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 3, width: '35ch' },
+      }}
+      noValidate
+      textAlign='left'
+      autoComplete="off"
+      marginTop={'0px'}
+      height="0px"
+      
+    >
 <div className="row">
           <h1>Final Summary</h1><br/>
           <strong>Please review before confirming your booking.</strong>
           
           </div>
           <br/>
-
+      
       <div className="row"> 
       <h3>Departure Flight</h3>
           <div>
@@ -136,7 +163,7 @@ const Booking = props => {
       <div className="row">
       <h3>Return Flight</h3>
           <div className>
-            <div className="card" style={{border : "1px solid #111111"}}>
+            <Card style={{border : "1px solid #111111"}}>
               <div className="card-body">
                 <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
                 <p className="card-text">
@@ -152,20 +179,24 @@ const Booking = props => {
             <strong>Selected Seat Numbers: </strong>{retreserved.sort().toString()}<br/>
                 </p>
               </div>
-            </div>
+            </Card>
             <br/>
           </div>
           <div className="col-lg-4 pb-1">
-          <strong>Total Travellers: {noseats} ({noadults} Adults, {nochild} Children)</strong><br/>
+            <Card style={{border : "1px solid #111111"}}>          <strong>Total Travellers: {noseats} ({noadults} Adults, {nochild} Children)</strong><br/>
             <strong>Total Price: ${noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2)}<br/><br/></strong><br/>
+            </Card>
+
           </div>
           <div className="col-lg-4 pb-1"></div>
+          
           <div className="col-lg-4 pb-1" style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '6vh'}}>
 
-          <a className="btn btn-success" onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Booking</a> &nbsp;
+          <Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Booking</Button> &nbsp;
                 </div>
       
       </div>
+      </Box>
           </div>
           
         

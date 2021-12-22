@@ -76,6 +76,7 @@ const UserReservations = props => {
       noValidate
       textAlign='left'
       autoComplete="off"
+      marginTop={'0px'}
       height="0px"
       
     >
