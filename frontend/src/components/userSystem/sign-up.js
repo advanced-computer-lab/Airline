@@ -203,7 +203,7 @@ export default function Signup(){
         <div >
             </div>
            
-        <Button type = 'submit' variant='contained'  size='large' >Sign up</Button>
+        <Button type = 'submit' variant='contained'  size='large'  >Sign up</Button>
   
         
         </form>

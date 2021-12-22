@@ -21,6 +21,7 @@ import UserReservations from "./components/userSystem/user-reservations"
 import SignUp from "./components/userSystem/sign-up"
 import EditDepSeats from './components/userSystem/edit-dep-seats'
 import EditRetSeats from './components/userSystem/edit-ret-seats'
+import DepFlight from './components/userSystem/edit-dep-flight'
 function App() {
 
   const [user, setUser] = React.useState(null);
@@ -133,6 +134,7 @@ function App() {
       <Route  path="/flights/MyBooking" render={(props) => <MyBooking {...props} User={user} />} />
       <Route  path="/flights/EditDepSeats" render={(props) => <EditDepSeats {...props} User={user} />} />
       <Route  path="/flights/EditRetSeats" render={(props) => <EditRetSeats {...props} User={user} />} />
+      <Route  path="/flights/DepFlight" render={(props) => <DepFlight {...props} User={user} />} />
       
       
 

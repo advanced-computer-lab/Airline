@@ -128,23 +128,24 @@ const UserReservations = props => {
                     <div class="col-sm">
                     <Card variant="outlined">
                   <h5 className="card-title">  User info</h5>
-                  <p className="card-text">
+                  <p className="card-text" >
                     <strong>First Name : </strong>{reservation.User.firstname}<br/>
                     <strong>Last Name : </strong>{reservation.User.lastname}<br/>
                     <strong>Passport Number : </strong>{reservation.User.passportnumber}<br/>
                     <strong>Email : </strong>{reservation.User.email}<br/>
                     <strong>Total Price : </strong>${reservation.Price}<br/>
                     </p>
+                    <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'1vh'}}>
+                      
+                    </ButtonGroup>
                     </Card>
                     </div>
                     </div>
                     
                     <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'1vh'}}>
                     <Button variant='contained'  size='small' color='info' >Mail My Booking</Button>  
-                    <Button variant='contained'  size='small' color='primary' href="/flights/SelectDeparture" state={reservation}>Edit Departure Flight</Button>  
-                    <Button variant='contained'  size='small' color='primary' href="/flights/SelectReturn" state={reservation}>Edit Return Flight</Button>  
-                    <Button variant='contained'  size='small' color='warning' href="/flights/EditDepSeats" state={reservation}>Edit Departure Seats</Button>  
-                    <Button variant='contained'  size='small' color='warning' href="/flights/EditRetSeats" state={reservation}>Edit Return Seats</Button>  
+                    <Link to={{ pathname:"/flights/DepFlight", state:reservation}} className="btn btn-success">Edit Departure Flight</Link>  
+                    <Link to={{ pathname:"/flights/RetFlight", state:reservation}} className="btn btn-success">Edit Return Flight</Link>  
                     <Button variant='contained'  size='small' color='error' onClick={() => {if(window.confirm('Are you sure you want to cancel this reservation?')){deleteReservations(reservation._id)}}}>Cancel Reservation</Button> 
                       </ButtonGroup>
                     
