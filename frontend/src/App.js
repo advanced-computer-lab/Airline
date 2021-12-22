@@ -41,13 +41,13 @@ function App() {
 
 
   return (
-    <div  style={{backgroundColor:"#f0f6f7ff"}}>
+    <div  style={{backgroundColor:"#f0f6f7ff"},{margin:"0 0 0 0"}}>
       
-    <nav className="navbar navbar-expand navbar-dark bg-dark">
+    <nav style={{margin:"0 0 0 0"}} className="navbar navbar-expand navbar-dark bg-dark">
       <a className="navbar-brand">
         Airline
       </a>
-      <div className="navbar-nav ms-auto">
+      <div  style={{margin:"0 0 0 0"}} className="navbar-nav ms-auto">
         <li className="nav-item" >
           <Link to={"/"} className="nav-link">
             Home

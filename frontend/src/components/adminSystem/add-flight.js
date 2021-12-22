@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment, useEffect } from "react";
 import ReactDOM from "react-dom";
 import { Formik, useField, useFormikContext,useFormik,Form } from "formik";
 import DatePicker from "react-datepicker";
@@ -18,13 +18,15 @@ import DateTimePicker from '@mui/lab/DateTimePicker';
 import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
 import MobileDatePicker from '@mui/lab/MobileDatePicker';
 import Stack from '@mui/material/Stack';
-import { Typography, Container, Button, Box } from "@material-ui/core";
+import { Typography, Container, Button, Box,Paper } from "@material-ui/core";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker,
   KeyboardDatePicker
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
+import { Grid } from "@mui/material";
+//import React ,{Fragment,UseState,useEffect} from "react";
 
 
 var formSchema = {
@@ -119,71 +121,39 @@ export default function Createflight(){
      });
     return(
 
-       
-         <div>
+      
+         
         
-        <div>
-             <BackgroundSlider
-                images={[image1, image2, image3]}
-                duration={4}
-                transition={2} 
-                margin="0px"/>
+     
+             <div style={{position:"absolute",padding:"auto",backgroundImage:`url(${image3})`,margin:"-17px 0 0 -112px",height:"100vh",width:"100vw"}}>
+                
         
          
         
-        <Box
-    opacity='[0,0,0]'
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 3, width: '65ch' },
-      }}
-      noValidate
-      textAlign='center'
-      autoComplete="off"
-      height="0px"
-      margin="0px"
-      
-    >
         
-      <div>
-      <h1>Add Flight
+      <Grid sx={{justifyContent:"center",textAlign:"center"}}>
+        <h1 >Add Flight
 
-</h1>
+  </h1></Grid>
       <form onSubmit={formik.handleSubmit}>
-        <TextField
+        <Grid container
+            spacing={2}
+
+              margin="0 0 0 50px"
+              alignItems="center"
+             justifyContent="center"
+           >
+          <Grid item  xs={3} >
+        <TextField 
           required
           id="FlightNumber"
           label="Flight Number"
-          variant="outlined"
+          variant="filled"
           value={formik.values.FlightNumber}
           onChange={formik.handleChange}
-          sx={{background:'white'  }}
-        />
-        <TextField
-        
-          required
-          id=" DepartureTime"
-          label=" Departure Time"
-         // placeholder="Departure Time"
-          type="time"
-          variant="outlined"
-          onChange={formik.handleChange}
-          value={formik.values.DepartureTime}
-          sx={{background:'white'  }}
-        />
-         <div>
-        </div>
-        <TextField
-          required
-          id="ArrivalTime"
-          label="Arrival Time"
-          type="time"
-         // autoComplete="current-password"
-          variant="outlined"
-          onChange={formik.handleChange}
-         value={formik.values.ArrivalTime}
-         sx={{background:'white'  }}
-        />
+          sx={{ width: "250px" }}
+        /> </Grid>
+         <Grid item xs={3}  >
          <Formik
         initialValues={formSchema}
         onSubmit={values => {
@@ -192,7 +162,39 @@ export default function Createflight(){
         }}
         render={props => (
           <Form>
-            <Box width="100%" mb={2}>
+            <Box sx={{ width: "250px", margin:"30px 0 0 0"}} mb={2}>
+              {/* Material Ui Date Picker */}
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardTimePicker
+                  id="date-picker-dialog"
+                  label="Departure Time"
+                  inputVariant="filled"
+                  format="HH:mm"
+                  value={props.values.date}
+                  onChange={value => props.setFieldValue("time", value)}
+                  KeyboardButtonProps={{
+                    "aria-label": "change time"
+                  }}
+                />
+              </MuiPickersUtilsProvider>
+            </Box>
+
+          </Form>
+         
+
+        )}
+      />&nbsp;
+         </Grid>
+         <Grid item  xs={3}>
+         <Formik
+        initialValues={formSchema}
+        onSubmit={values => {
+          // same shape as initial values
+          console.log(values);
+        }}
+        render={props => (
+          <Form>
+            <Box sx={{ width: "250px", margin:"10px 0 0 0"}} mb={2}>
               {/* Material Ui Date Picker */}
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <KeyboardDatePicker
@@ -210,110 +212,111 @@ export default function Createflight(){
             </Box>
 
           </Form>
+         
+
         )}
       />
-      <div>
-         </div>
-            <TextField
+     </Grid >
+     <Grid item  xs={3}>
+           <TextField
           required
-          id=""EconomySeats
+          id="EconomySeats"
           label="Economy Seats"
           type="number"
-          variant="outlined"
+          variant="filled"
           onChange={formik.handleChange}
          value={formik.values.EconomySeats}
-         sx={{background:'white'  }}
-        />
+         sx={{ width: "250px"}}
+        /></Grid>
+       <Grid item  xs={3} >
         <TextField
           required
           id="BusinessSeats"
           label="Business Seats"
           type="number"
-          variant="outlined"
+          variant="filled"
           onChange={formik.handleChange}
          value={formik.values.BusinessSeats}
-         sx={{background:'white'  }}
-        />
-         <div>
-        </div>
+         sx={{ width: "250px"}}
+        /></Grid>
+         <Grid item xs={3} >
         <TextField
           required
-          id=" FirstSeats"
-          label=" First Seats"
+          id="FirstSeats"
+          label="First Seats"
           type="number"
-          variant="outlined"
+          variant="filled"
           onChange={formik.handleChange}
           value={formik.values. FirstSeats}
-          sx={{background:'white'  }}
-        />
+          sx={{ width: "250px"}}
+        /></Grid>
+         <Grid item xs={3}>
         <TextField
           required
-          id=' DepartureAirport'
-          label=" Departure Airport"
-          color="secondary"
-          variant="outlined"
+          id="DepartureAirport"
+          label="Departure Airport"
+          variant="filled"
+          value={formik.values.DepartureAirport}
           onChange={formik.handleChange}
-          value={formik.values. DepartureAirport}
-          sx={{background:'white'  }}
-        />
-         <div>
-        </div>
+          sx={{ width: "250px"}}
+        /></Grid>
+        
+        <Grid item xs={3} >
          <TextField
+          
           required
-          id='DestinationAirport'
+          id="DestinationAirport"
           label="Destination Airport"
-          color="secondary"
-          variant="outlined"
+          variant="filled"
+          value={formik.values.DestinationAirport}
           onChange={formik.handleChange}
-         value={formik.values.DestinationAirport}
-         sx={{background:'white'  }}
-        />
+          sx={{ width: "250px"}}
+        /></Grid>
+        <Grid item xs={3} >
          <TextField
          id='TripDuration'
           color="secondary"
           type="number"
           required
-          variant="outlined"
+          variant="filled"
           label="Trip Duration"
           onChange={formik.handleChange}
          value={formik.values.TripDuration}
-         sx={{background:'white'  }}
+         sx={{ width: "250px"}}
         />
-        <div >
-            </div>
+        </Grid>
+        <Grid item xs={3} >
             <TextField
           required
-          id=' BaggageAllowed'
-          label=" Baggage Allowed"
-          color="secondary"
-          variant="outlined"
-          onChange={formik.handleChange}
+          id="BaggageAllowed"
+          label="BaggageAllowed"
+          variant="filled"
           value={formik.values.BaggageAllowed}
-          sx={{background:'white'  }}
+          onChange={formik.handleChange}
+          sx={{ width: "250px"}}
         />
+        </Grid>
+        <Grid item  xs={3} >
          <TextField
-         id=' Price'
+         id='Price'
           color="secondary"
           type="number"
           required
-          variant="outlined"
-          label="Trip Duration"
+          variant="filled"
+          label="Price"
           onChange={formik.handleChange}
          value={formik.values. Price}
-         sx={{background:'white'  }}
+         sx={{ width: "250px"}}
         />
-         <div>
-        </div>
-           
-        <Button variant='contained'  size='large' >Create</Button>
-  
         
+        </Grid>
+        
+        </Grid>
+        <Grid sx={ {margin:"50px 0 0 0",textAlign: 'center'}}>
+        <Button variant='contained'  size='large' >Create</Button>
+        </Grid>
         </form>
       </div>
-     
-      </Box>
-         
-</div>
-</div>
+
     )
 }
