@@ -66,7 +66,7 @@ const EditDepSeats = props => {
 
 
   const UpdateReservation = () => {
-    ReservationDataService.update(reservation._id, {fullres:reservation, newseats:reserved})
+    ReservationDataService.update(reservation._id, {flightid:id, userid:reservation.User.id, oldseats:flightreserved, newseats:reserved, editdepseats:true})
   };
 
 

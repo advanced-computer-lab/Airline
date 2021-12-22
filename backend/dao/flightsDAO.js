@@ -110,6 +110,8 @@ export default class FlightsDAO {
         EconomyAvailable: ecseatsavlbl,
         BusinessAvailable: bseatsavlbl,
         FirstAvailable: fseatsavlbl,
+        ReservedSeats:[],
+        Reservations:[]
 
 
     }
@@ -121,7 +123,7 @@ export default class FlightsDAO {
     }
   }
 
-  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="", seats=[], rem=false) {
+  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="", seats=[],resid=null, add=false) {
     try {
 
       let ecseatsavlbl = false
@@ -130,15 +132,25 @@ export default class FlightsDAO {
 
       let flight
       let reserved = []
+      let resids = []
 
       if(seats.length>0) 
       {
       flight = await FlightsDAO.getFlightByID(flightId)
 
       reserved = flight.ReservedSeats
+
+      resids = flight.Reservations
+
       }
       
-      if (rem) {reserved = reserved.concat(seats)}
+      if (add) {
+        reserved = reserved.concat(seats); 
+        if(resid!=null) 
+        {
+          resids.push(resid)
+        }
+      }
       
       else {
         for (let i=0;i<=reserved.length;i++)
@@ -152,7 +164,18 @@ export default class FlightsDAO {
 
 
           }
-        } 
+        }
+        if(resid!=null) 
+        {
+          for (let i=0;i<=resids.length;i++)
+        {
+          if(resids[i]==resid)
+            {
+              resids.splice(i,1);
+            }
+
+        }
+      }
       } 
 
       reserved.sort()
@@ -166,7 +189,7 @@ export default class FlightsDAO {
         { $set: { FlightNumber:Fnumber, DepartureTime:deptime, ArrivalTime:arrtime, Date: date,  EconomySeats:ecseats, 
           BusinessSeats:bseats, FirstSeats:fseats, DepartureAirport:depairport, DestinationAirport:destairport, 
           TripDuration: tripdur, Price: price,BaggageAllowance: bagallwd, EconomyAvailable: ecseatsavlbl,  
-          BusinessAvailable: bseatsavlbl, FirstAvailable: fseatsavlbl, ReservedSeats:reserved } },
+          BusinessAvailable: bseatsavlbl, FirstAvailable: fseatsavlbl, ReservedSeats:reserved, Reservations:resids } },
       )
 
       return updateResponse
