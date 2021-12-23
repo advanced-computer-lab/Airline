@@ -4,6 +4,8 @@ import FlightDataService from "../../services/flight";
 import 'react-dropdown/style.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dropdown from 'react-dropdown';
+import TextField from '@mui/material/TextField';
+import Stack from '@mui/material/Stack';
 
 import { Link } from "react-router-dom";
 
@@ -33,16 +35,25 @@ return(  <div>
        
       </div>
     </div>
-     <strong>Departure Date: </strong>
-     <div className="input-group col-lg-4"> 
      
-       <input
-         type="date"
-         className="form-control"
-         placeholder="Departure Date"
-         value={searchDepartDate}
-         onChange={onChangeSearchDepartDate}
-       />
+     <div className="input-group col-lg-4"> 
+    <br>
+    </br>
+    
+      <TextField
+        id="date"
+        label="Departure Date"
+        type="date"
+        defaultValue="2017-05-24"
+        value={searchDepartDate}
+        onChange={onChangeSearchDepartDate}
+        sx={{ width: 220 }}
+        InputLabelProps={{
+          shrink: true,
+        }}
+      />
+        
+       
        </div>
        <Link to={{ pathname: "/flights/SelectDeparture", state: hashobj }} className="btn btn-success">
            Search
