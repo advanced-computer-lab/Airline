@@ -81,7 +81,7 @@ export default function Signup(){
         />
 <div>
 
-<Box
+ <Box
     opacity='[0,0,0]'
       component="form"
       sx={{

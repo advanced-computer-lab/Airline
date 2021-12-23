@@ -1,10 +1,22 @@
 import React, { useState, useEffect } from "react";
 import FlightDataService from "../../services/flight";
 import { Link } from "react-router-dom";
+<<<<<<< HEAD
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Button from '@mui/material/Button';
+=======
+import 'react-dropdown/style.css';
+
+import {Box,Paper,Grid} from '@mui/material';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import BackgroundSlider from 'react-background-slider'
+import image1 from './images/image1.jpg'
+import image2 from './images/image2.jpg'
+import image3 from './images/image3.jpg'
+>>>>>>> 29834871a2738312a4e2dc47b3ac5776d7d1822b
 
 const FlightsList = props => {
   const [flights, setFlights] = useState([]);
@@ -100,6 +112,11 @@ const FlightsList = props => {
 
   return (
     <div>
+      
+      
+      
+    
+
       <div className="row">
           <h1>Flight Management System</h1><br/>
           
@@ -108,6 +125,7 @@ const FlightsList = props => {
           <br/>
           <strong>Search</strong>
           <br/>
+<<<<<<< HEAD
       <div className="row pb-1">
         <div className="input-group col-lg-4"> 
           <TextField
@@ -125,6 +143,21 @@ const FlightsList = props => {
           </div>
         </div>
         
+=======
+      <Grid container className="row pb-1">
+        <Grid item className="input-group col-lg-4"> 
+          <input
+           
+            className="form-control"
+            placeholder="Flight Number"
+            value={searchFlightNum}
+            onChange={onChangeSearchFlightNum}
+          /> <TextField id="outlined-basic" label="Outlined" variant="outlined" />
+          <div className="input-group-append">
+           
+          </div>
+        </Grid>
+>>>>>>> 29834871a2738312a4e2dc47b3ac5776d7d1822b
         <div className="input-group col-lg-4"> 
           <TextField
 
@@ -143,8 +176,14 @@ const FlightsList = props => {
         </div>
         <div className="input-group col-lg-4"> 
           <TextField
+<<<<<<< HEAD
             id="Arrival Time"
             label="Arrival Time"
+=======
+            type="text"
+            className="form-control"
+            placeholder="Arrival Time"
+>>>>>>> 29834871a2738312a4e2dc47b3ac5776d7d1822b
             value={searchArrivalTime}
             onChange={onChangeSearchArrivalTime}
             sx={{background:'white'  }}
@@ -218,7 +257,7 @@ const FlightsList = props => {
             </ButtonGroup>
           </div>
         </div>
-      </div>
+      </Grid>
       <br/>
       <strong>Flights: </strong><br/>
       <Button href="/admin/flights/create" variant='contained' size='large'>
@@ -260,6 +299,7 @@ const FlightsList = props => {
 
 
       </div>
+      
     </div>
   );
 };
