@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import FlightDataService from "../../services/flight";
 import { Link } from "react-router-dom";
+import 'react-dropdown/style.css';
+
+import {Box,Paper,Grid} from '@mui/material';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import BackgroundSlider from 'react-background-slider'
+import image1 from './images/image1.jpg'
+import image2 from './images/image2.jpg'
+import image3 from './images/image3.jpg'
 
 const FlightsList = props => {
   const [flights, setFlights] = useState([]);
@@ -96,6 +105,11 @@ const FlightsList = props => {
 
   return (
     <div>
+      
+      
+      
+    
+
       <div className="row">
           <h1>Flight Management System</h1><br/>
           
@@ -104,19 +118,19 @@ const FlightsList = props => {
           <br/>
           <strong>Search</strong>
           <br/>
-      <div className="row pb-1">
-        <div className="input-group col-lg-4"> 
+      <Grid container className="row pb-1">
+        <Grid item className="input-group col-lg-4"> 
           <input
-            type="text"
+           
             className="form-control"
             placeholder="Flight Number"
             value={searchFlightNum}
             onChange={onChangeSearchFlightNum}
-          />
+          /> <TextField id="outlined-basic" label="Outlined" variant="outlined" />
           <div className="input-group-append">
            
           </div>
-        </div>
+        </Grid>
         <div className="input-group col-lg-4"> 
           <input
             type="text"
@@ -130,7 +144,7 @@ const FlightsList = props => {
           </div>
         </div>
         <div className="input-group col-lg-4"> 
-          <input
+          <TextField
             type="text"
             className="form-control"
             placeholder="Arrival Time"
@@ -192,7 +206,7 @@ const FlightsList = props => {
             </button>
           </div>
         </div>
-      </div>
+      </Grid>
       <br/>
       <strong>Flights: </strong><br/>
       <Link to={"/admin/flights/create"} className="link" style={{textDecoration: "none"}}>
@@ -232,6 +246,7 @@ const FlightsList = props => {
 
 
       </div>
+      
     </div>
   );
 };
