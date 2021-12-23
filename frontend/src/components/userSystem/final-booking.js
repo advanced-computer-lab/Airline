@@ -122,7 +122,7 @@ const Booking = props => {
       <div>
 
          
-      <Grid container spacing ={30} mt={0} >
+      <Grid container spacing ={33} mt={0} >
       <div className="row">
           <h1>Final Summary</h1><br/>
           <strong>Please review before confirming your booking.</strong>  
@@ -703,12 +703,30 @@ const Booking = props => {
 
 
           
-          <div className="col-lg-4 pb-1" style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '6vh'}}>
-          <Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Booking</Button> &nbsp;
-                </div>
+         
       
       </Container>
+      <Container sx={{ py: 0 ,margin:"0 0 0 300px" }}  maxWidth='sm'>
+      <Grid container>
+        <Grid item align="left" xs={12}>
+                  
+            <List
+        sx={{
+          width: "300px",
+          paddingTop: "0",
+          paddingBottom: "0",
+        }}
+      >
+        
+      <div className="col-lg-4 pb-1" style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '6vh'}}>
+          <Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Booking</Button> &nbsp;
+                </div>
+                </List>
+                </Grid>
+                </Grid>
+                </Container>
       </Grid>
+     
           </div>
           
         
