@@ -123,7 +123,7 @@ export default class FlightsDAO {
     }
   }
 
-  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="", seats=[],resid=null, add=false) {
+  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="", seats=[],resid=null, add=null) {
     try {
 
       let ecseatsavlbl = false
@@ -134,15 +134,9 @@ export default class FlightsDAO {
       let reserved = []
       let resids = []
 
-      if(seats.length>0) 
-      {
       flight = await FlightsDAO.getFlightByID(flightId)
-
-      reserved = flight.ReservedSeats
-
       resids = flight.Reservations
-
-      }
+      reserved = flight.ReservedSeats
       
       if (add) {
         reserved = reserved.concat(seats); 
@@ -152,7 +146,7 @@ export default class FlightsDAO {
         }
       }
       
-      else {
+      else if(!add){
         for (let i=0;i<=reserved.length;i++)
         {
           for (let j=0;j<=seats.length;j++)

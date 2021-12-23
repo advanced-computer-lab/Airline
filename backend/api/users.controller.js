@@ -75,7 +75,7 @@ export default class UsersController {
 
               let id = ReservationsList[i]._id
 
-              let resResponse = await ReservationsDAO.UpdateReservation(id, {id: Id, firstname:fname, lastname:lname, passportnumber:passnum, email:email});
+              let resResponse = await ReservationsDAO.UpdateReservationUser(id, {id: Id, firstname:fname, lastname:lname, passportnumber:passnum, email:email});
 
             }
       

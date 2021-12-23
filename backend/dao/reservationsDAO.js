@@ -76,15 +76,9 @@ export default class ReservationsDAO {
   }
   static async UpdateReservation(id, data){
     try{
-      const updateResponse = await reservations.updateOne(
-        { _id: ObjectId(id)},
-        { $set:  { User:{
-          id: data.id,
-          firstname: data.firstname,
-          lastname: data.lastname,
-          passportnumber: data.passportnumber,
-          email: data.email}
-      }},)
+      const str = JSON.stringify(data);
+      console.log("body:"+str)
+      const updateResponse = await reservations.updateOne({ _id: ObjectId(id)},{ $set: data})
 
       return updateResponse
     }
@@ -93,6 +87,31 @@ export default class ReservationsDAO {
       return { error: e }
     }
     }
+
+    static async UpdateReservationUser(id, data){
+      try{
+        const str = JSON.stringify(data);
+        console.log("body:"+str)
+        const updateResponse = await reservations.updateOne(
+          { _id: ObjectId(id)},
+          { $set:  {
+             User:{
+            id: data.id,
+            firstname: data.firstname,
+            lastname: data.lastname,
+            passportnumber: data.passportnumber,
+            email: data.email
+          }
+        }
+      },)
+  
+        return updateResponse
+      }
+       catch (e) {
+        console.error(`Unable to update reservation: ${e}`)
+        return { error: e }
+      }
+      }
   
 
 }

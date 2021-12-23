@@ -101,9 +101,9 @@ export default class ReservationsController{
 
 
 
-          await FlightsDAO.updateFlight(res.DepartureFlight.id, res.DepartureFlight.FlightNumber, res.DepartureFlight.DepartureTime, res.DepartureFlight.ArrivalTime, res.DepartureFlight.Date, decseats, dbseats, dfseats, res.DepartureFlight.DepartureAirport, res.DepartureFlight.DestinationAirport, res.DepartureFlight.TripDuration, res.DepartureFlight.Price, res.DepartureFlight.BaggageAllowance, depseats, res.BookingNumber)
+          await FlightsDAO.updateFlight(res.DepartureFlight.id, res.DepartureFlight.FlightNumber, res.DepartureFlight.DepartureTime, res.DepartureFlight.ArrivalTime, res.DepartureFlight.Date, decseats, dbseats, dfseats, res.DepartureFlight.DepartureAirport, res.DepartureFlight.DestinationAirport, res.DepartureFlight.TripDuration, res.DepartureFlight.Price, res.DepartureFlight.BaggageAllowance, depseats, res.BookingNumber, false)
 
-          await FlightsDAO.updateFlight(res.ReturnFlight.id, res.ReturnFlight.FlightNumber, res.ReturnFlight.DepartureTime, res.ReturnFlight.ArrivalTime, res.ReturnFlight.Date, recseats, rbseats, rfseats, res.ReturnFlight.DepartureAirport, res.ReturnFlight.DestinationAirport, res.ReturnFlight.TripDuration, res.ReturnFlight.Price, res.ReturnFlight.BaggageAllowance, retseats, res.BookingNumber)
+          await FlightsDAO.updateFlight(res.ReturnFlight.id, res.ReturnFlight.FlightNumber, res.ReturnFlight.DepartureTime, res.ReturnFlight.ArrivalTime, res.ReturnFlight.Date, recseats, rbseats, rfseats, res.ReturnFlight.DepartureAirport, res.ReturnFlight.DestinationAirport, res.ReturnFlight.TripDuration, res.ReturnFlight.Price, res.ReturnFlight.BaggageAllowance, retseats, res.BookingNumber, false)
 
           await ReservationsDAO.deleteReservation(resId)
 
@@ -134,8 +134,9 @@ export default class ReservationsController{
 
       static async apiUpdateReservation(req, res, next) {
         try {
-         if(req.body.editdepseats){
-          
+
+          //const str = JSON.stringify(req.body);
+          //console.log("body:"+str)
           let res = await ReservationsDAO.getReservationByID(req.params.id);
           
           let flight = await FlightsDAO.getFlightByID(req.body.flightid);
@@ -144,20 +145,23 @@ export default class ReservationsController{
 
           const newseats = req.body.newseats;
 
-          await FlightsDAO.updateFlight(res.DepartureFlight.id, res.DepartureFlight.FlightNumber, res.DepartureFlight.DepartureTime, res.DepartureFlight.ArrivalTime, res.DepartureFlight.Date, res.DepartureFlight.EconomySeats, res.DepartureFlight.BusinessSeats, res.DepartureFlight.FirstSeats, res.DepartureFlight.DepartureAirport, res.DepartureFlight.DestinationAirport, res.DepartureFlight.TripDuration, res.DepartureFlight.Price, res.DepartureFlight.BaggageAllowance, oldseats)
+          // console.log("old:"+oldseats);
+          // console.log("new:"+newseats);
+          // console.log("edp:"+req.body.editdepseats);
+          // console.log("fid:"+req.body.flightid);
 
-          await FlightsDAO.updateFlight(res.DepartureFlight.id, res.DepartureFlight.FlightNumber, res.DepartureFlight.DepartureTime, res.DepartureFlight.ArrivalTime, res.DepartureFlight.Date, res.DepartureFlight.EconomySeats, res.DepartureFlight.BusinessSeats, res.DepartureFlight.FirstSeats, res.DepartureFlight.DepartureAirport, res.DepartureFlight.DestinationAirport, res.DepartureFlight.TripDuration, res.DepartureFlight.Price, res.DepartureFlight.BaggageAllowance, newseats, true)
+          await FlightsDAO.updateFlight(req.body.flightid, res.DepartureFlight.FlightNumber, res.DepartureFlight.DepartureTime, res.DepartureFlight.ArrivalTime, res.DepartureFlight.Date, res.DepartureFlight.EconomySeats, res.DepartureFlight.BusinessSeats, res.DepartureFlight.FirstSeats, res.DepartureFlight.DepartureAirport, res.DepartureFlight.DestinationAirport, res.DepartureFlight.TripDuration, res.DepartureFlight.Price, res.DepartureFlight.BaggageAllowance, oldseats, null, false)
 
-          res.DepSeats = newseats;
+          await FlightsDAO.updateFlight(req.body.flightid, res.DepartureFlight.FlightNumber, res.DepartureFlight.DepartureTime, res.DepartureFlight.ArrivalTime, res.DepartureFlight.Date, res.DepartureFlight.EconomySeats, res.DepartureFlight.BusinessSeats, res.DepartureFlight.FirstSeats, res.DepartureFlight.DepartureAirport, res.DepartureFlight.DestinationAirport, res.DepartureFlight.TripDuration, res.DepartureFlight.Price, res.DepartureFlight.BaggageAllowance, newseats,null, true)
+
+          if(req.body.editdepseats) res.DepSeats = newseats;
+          else if(req.body.editretseats) res.RetSeats = newseats;
 
           await ReservationsDAO.UpdateReservation(req.params.id, res);
 
 
           res.json({ status: "success" })
-         }
-    
-              
-    
+         
         } catch (e) {
           res.status(500).json({ error: e.message })
         }

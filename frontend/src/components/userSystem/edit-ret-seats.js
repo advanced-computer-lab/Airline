@@ -17,7 +17,7 @@ const EditRetSeats = props => {
 
   const reservation = props.location.state
 
-  const noseats = reservation.DepSeats.length
+  const noseats = reservation.RetSeats.length
 
   let seatsavlbl 
 
@@ -30,17 +30,18 @@ const EditRetSeats = props => {
 
   const cabin = reservation.CabinClass
 
-  const id = reservation.DepartureFlight.id
+  const id = reservation.ReturnFlight.id
 
-  const depflight = reservation.DepartureFlight
+  const retflight = reservation.ReturnFlight
 
-  const flightreserved = depflight.ReservedSeats
+  const flightreserved = retflight.ReservedSeats
 
-  if (cabin == "Economy"){seatsavlbl = ""+depflight.EconomySeats}
-  else if (cabin == "Business Class"){seatsavlbl = ""+depflight.BusinessSeats}
-  else if (cabin == "First Class"){seatsavlbl = ""+depflight.FirstSeats}
+  const oldseats = reservation.RetSeats
 
-  //console.log(reservation._id)
+  if (cabin == "Economy"){seatsavlbl = ""+retflight.EconomySeats}
+  else if (cabin == "Business Class"){seatsavlbl = ""+retflight.BusinessSeats}
+  else if (cabin == "First Class"){seatsavlbl = ""+retflight.FirstSeats}
+
 
   let c = ""
 
@@ -59,10 +60,6 @@ const EditRetSeats = props => {
   const row9 =[{id: `${c}49`}, {id: `${c}50`}, {id: `${c}51`}, {id: `${c}52`}, {id: `${c}53`}, {id: `${c}54`}]
   const row10 =[{id: `${c}55`}, {id: `${c}56`}, {id: `${c}57`}, {id: `${c}58`}, {id: `${c}59`}, {id: `${c}60`}]
 
-
-  const UpdateReservation = () => {
-    ReservationDataService.update(reservation._id, {fullres:reservation, newseats:reserved})
-  };
 
 
   const dispSeats = (id) => {
@@ -145,7 +142,7 @@ const EditRetSeats = props => {
         <h1>Select Departure Flight Seats </h1>
         <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
           { done &&
-        <Link to={{ pathname: "/ViewReservations"}} onClick={UpdateReservation()}  style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}} className="btn btn-success">
+        <Link to={{ pathname: "/"}} onClick={() =>{ReservationDataService.update(reservation._id, {flightid:id, oldseats:oldseats, newseats:reserved, editretseats:true});console.log("clicked");}}  style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}} className="btn btn-success">
           Update Selection
         </Link>}
         </div>
@@ -433,6 +430,7 @@ const EditRetSeats = props => {
 </Box>
 </div>
     );
+
 
 };
 
