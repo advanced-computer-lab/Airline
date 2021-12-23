@@ -2,7 +2,8 @@ import React from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import UserDataService from "./services/user.js";
-
+import DepFlight from './components/userSystem/edit-dep-flight'
+import RetFlight from './components/userSystem/edit-return-flight'
 import AddFlight from "./components/adminSystem/add-flight";
 import EditFlight from "./components/adminSystem/edit-flight";
 import Flight from "./components/adminSystem/flights";
@@ -133,8 +134,8 @@ function App() {
       <Route  path="/flights/MyBooking" render={(props) => <MyBooking {...props} User={user} />} />
       <Route  path="/flights/EditDepSeats" render={(props) => <EditDepSeats {...props} User={user} />} />
       <Route  path="/flights/EditRetSeats" render={(props) => <EditRetSeats {...props} User={user} />} />
-      
-      
+      <Route  path="/flights/RetFlight" render={(props) => <RetFlight {...props} User={user} />} />
+      <Route  path="/flights/DepFlight" render={(props) => <DepFlight {...props} User={user} />} />
 
         
       </Switch>
