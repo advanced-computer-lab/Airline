@@ -53,14 +53,13 @@ const DatePickerField = ({ ...props }) => {
 };
 export default function Createflight(){
 
-
-     const formik=useFormik({
+    const formik=useFormik({
          initialValues: {
              
              FlightNumber:"",
              DepartureTime:"",
              ArrivalTime:"",
-             Date: new Date(),
+             Date: "",
              EconomySeats:"",
              BusinessSeats:"",
              FirstSeats:"",
@@ -112,7 +111,7 @@ export default function Createflight(){
                  price: formik.values.Price,
 
              };
-
+             console.log(FlightData.date+"DATTTTT")
              FlightDataService.createFlight(FlightData);
              window.location.href="/admin/flights";
 
@@ -122,9 +121,7 @@ export default function Createflight(){
     return(
 
       
-         
-        
-     
+          
              <div style={{position:"absolute",padding:"auto",backgroundImage:`url(${image3})`,margin:"-17px 0 0 -112px",height:"100vh",width:"100vw"}}>
                 
         
@@ -135,7 +132,11 @@ export default function Createflight(){
         <h1 >Add Flight
 
   </h1></Grid>
-      <form onSubmit={formik.handleSubmit}>
+  <form onSubmit={
+    formik.handleSubmit}
+   
+     
+    >
         <Grid container
             spacing={2}
 
@@ -183,7 +184,7 @@ export default function Createflight(){
          
 
         )}
-      />&nbsp;
+      />
          </Grid>
          <Grid item  xs={3}>
          <Formik
@@ -313,7 +314,7 @@ export default function Createflight(){
         
         </Grid>
         <Grid sx={ {margin:"50px 0 0 0",textAlign: 'center'}}>
-        <Button variant='contained'  size='large' >Create</Button>
+        <Button onClick={console.log("heyy")} type="submit" variant='contained'  size='large'  >Create</Button>
         </Grid>
         </form>
       </div>

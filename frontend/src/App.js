@@ -19,6 +19,8 @@ import Booking from "./components/userSystem/final-booking";
 import MyBooking from "./components/userSystem/successful-booking";
 import UserReservations from "./components/userSystem/user-reservations"
 import SignUp from "./components/userSystem/sign-up"
+import CabinSearch from "./components/userSystem/CabinSearch.js";
+
 function App() {
 
   const [user, setUser] = React.useState(null);
@@ -104,7 +106,7 @@ function App() {
       <Route  path="/admin/flights/create" component={AddFlight} />
       <Route  path="/admin/flights/:id/edit" component={EditFlight} />
       <Route  path="/admin/flights/:id" component={Flight} />
-
+      <Route  path="/CabinSearch" component={CabinSearch} />
 
       <Route  exact path={["/", "/flights"]} component={Landing} />
       <Route  path="/flights/SelectDeparture" component={FlightDep} />
