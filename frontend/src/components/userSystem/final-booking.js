@@ -1,16 +1,25 @@
-import React, { useState } from "react";
+import React, { Component, useState } from "react";
 import { Link } from "react-router-dom";
 import ReservationDataService from "../../services/reservation";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 import BackgroundSlider from 'react-background-slider'
 import image1 from './images/image1.jpg'
 import image2 from './images/image2.jpg'
 import image3 from './images/image3.jpg'
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import FormControl from '@mui/material/FormControl';
-import ButtonGroup from '@mui/material/ButtonGroup';
-import Card from '@mui/material/Card';
+import FlightIcon from "@mui/icons-material/Flight";
+import FlightLandIcon from "@mui/icons-material/FlightLand";
+import FlightTakeoffIcon from "@mui/icons-material/FlightTakeoff";
+import EventIcon from "@mui/icons-material/Event";
+import SupervisorAccountIcon from "@mui/icons-material/SupervisorAccount";
+import AirlineSeatReclineExtraIcon from "@mui/icons-material/AirlineSeatReclineExtra";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import NumbersIcon from '@mui/icons-material/Numbers';
+import EventSeatIcon from '@mui/icons-material/EventSeat';
+import LuggageIcon from "@mui/icons-material/Luggage";
+import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import {Box,Container,Typography,Grid,CardContent,CardActions,Card,ListItemAvatar,ListItem,Divider,List} from '@mui/material';
+import { ButtonGroup } from "@mui/material";
 
 const Booking = props => {
 
@@ -111,92 +120,595 @@ const Booking = props => {
 
     return (
       <div>
-        <BackgroundSlider
-          images={[image1,image2, image3]}
-          duration={4}
-          transition={2}
-        />
-<Box
-    opacity='[0,0,0]'
-      component="form"
-      sx={{
-        '& .MuiTextField-root': { m: 3, width: '35ch' },
-      }}
-      noValidate
-      textAlign='left'
-      autoComplete="off"
-      marginTop={'0px'}
-      height="0px"
-      
-    >
-<div className="row">
+
+         
+      <Grid container spacing ={30} mt={0} >
+      <div className="row">
           <h1>Final Summary</h1><br/>
-          <strong>Please review before confirming your booking.</strong>
-          
+          <strong>Please review before confirming your booking.</strong>  
+          </div>
+              <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
+              <h3>Departure Flight</h3>
+               <h5 className="card-title">{returnFlight.DepartureAirport} TO {returnFlight.DestinationAirport}</h5>
+              <div className="row">
           </div>
           <br/>
-      
-      <div className="row"> 
-      <h3>Departure Flight</h3>
-          <div>
-            <div className="card" style={{border : "1px solid #111111"}}>
-              <div className="card-body">
-                <h5 className="card-title">{returnFlight.DepartureAirport} TO {returnFlight.DestinationAirport}</h5>
-                <p className="card-text">
-                <strong>FlightNumber: </strong>{returnFlight.FlightNumber}<br/>
-           <strong>Date: </strong>{returnFlight.Date}<br/>
-            <strong>Departure Time: </strong>{returnFlight.DepartureTime}<br/>
-            <strong>Arrival Time: </strong>{returnFlight.ArrivalTime}<br/>
-            <strong>Trip Duration: </strong>{returnFlight.TripDuration}<br/>
-            <strong>Cabin Class: </strong>{cabin}<br/>
-            <strong>Baggage Allowance: </strong>{returnFlight.BaggageAllowance}<br/>
-            <strong>Adult Ticket Price: </strong>{"$"+flight.Price}<br/>
-            <strong>Child Ticket Price: </strong>{"$"+(flight.Price/2)}<br/>
-            <strong>Selected Seat Numbers: </strong>{depreserved.sort().toString()}<br/>
-                </p>
-              </div>
+          <Grid item  xs={12} sm={10} md={4}>
+        <div className="row"> 
+       
+            <div >
+           
+            <Card
+              sx={{ width:"550px",height: '600px', display: 'flex', flexDirection: 'column' }}
+            >
+              <CardContent sx={{ flexGrow: 1 }}>
+              
+                  <Grid style={{ width: "550px" }} fullWidth container>
+      <Grid
+        align="center"
+        style={{
+          
+          width: "550px",
+          height: "550px",
+          alignItems: "center",
+        }}
+        item
+        fullWidth
+        container
+      >
+         <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {returnFlight.FlightNumber}</Typography>
+
+         <List
+        sx={{
+          width: "550px",
+          paddingTop: "0",
+          paddingBottom: "0",
+        }}
+      >
+             <ListItem>
+          <ListItemAvatar>
+            <EventIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container columns={16}>
+            <Grid container item xs={7}>
+              <Grid item align="left" xs={12}>
+                <Typography
+                  sx={{ mt: 0.5 }}
+                  color="text.secondary"
+                  display="block"
+                  variant="caption"
+                >
+                 Date
+                </Typography>
+              </Grid>
+              <Grid>
+                <Typography>
+                {returnFlight.Date}
+                  
+                </Typography>
+              </Grid>
+            </Grid>
+        
+            
+          </Grid>
+        </ListItem>
+        <Divider />
+             <ListItem fullWidth>
+          <ListItemAvatar>
+            <FlightTakeoffIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid container item xs={6}>
+              <Grid item align="left" xs={12}>
+                <Typography
+                  sx={{ mt: 0.5 }}
+                  color="text.secondary"
+                  display="block"
+                  variant="caption"
+                >
+                  Departure Time
+                </Typography>
+              </Grid>
+  
+            </Grid>
+            <Grid item xs>
+              <Grid container>
+                <Grid item align="left" xs={12}>
+                  <Typography
+                    sx={{ mt: 0.5 }}
+                    color="text.secondary"
+                    display="block"
+                    variant="caption"
+                  >
+                    {returnFlight.DepartureTime}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </ListItem>
+        <ListItem>
+          <ListItemAvatar>
+            <FlightLandIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid container item xs={6}>
+              <Grid item align="left" xs={12}>
+                <Typography
+                  sx={{ mt: 0.5 }}
+                  color="text.secondary"
+                  display="block"
+                  variant="caption"
+                >
+                 Arrival Time
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid item xs>
+              <Grid container>
+                <Grid item align="left" xs={12}>
+                  <Typography
+                    sx={{ mt: 0.5 }}
+                    color="text.secondary"
+                    display="block"
+                    variant="caption"
+                  >
+                   {returnFlight.ArrivalTime}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemAvatar>
+            <AccessTimeIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid item align="left" xs={12}>
+              <Typography
+                sx={{ mt: 0.5 }}
+                color="text.secondary"
+                display="block"
+                variant="caption"
+              >
+                Flight Duration
+              </Typography>
+            </Grid>
+           <Grid>{returnFlight.TripDuration}</Grid>
+          </Grid>
+        </ListItem>
+        <Divider />
+        
+        <ListItem>
+          <ListItemAvatar>
+            <AirlineSeatReclineExtraIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid item align="left" xs={12}>
+          <Typography
+                  sx={{ mt: 0.5 }}
+                  color="text.secondary"
+                  display="block"
+                  variant="caption"
+                >
+                  Cabin Class
+                </Typography>
+                <Typography>{state.cabin}</Typography>
+                </Grid>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemAvatar>
+            <LuggageIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid item align="left" xs={12}>
+              <Typography
+                sx={{ mt: 0.5 }}
+                color="text.secondary"
+                display="block"
+                variant="caption"
+              >
+                Baggage allowance
+              </Typography>
+            </Grid>
+            <Typography>{returnFlight.BaggageAllowance}</Typography>
+          </Grid>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemAvatar>
+            <EventSeatIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid item align="left" xs={12}>
+              <Typography
+                sx={{ mt: 0.5 }}
+                color="text.secondary"
+                display="block"
+                variant="caption"
+              >
+                Seats Selected
+              </Typography>
+            </Grid>
+            <Typography>{depreserved.sort().toString()}</Typography>
+          </Grid>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemAvatar>
+            <AttachMoneyIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid item align="left" xs={12}>
+              <Typography
+                sx={{ mt: 0.5 }}
+                color="text.secondary"
+                display="block"
+                variant="caption"
+              >
+                Adult Ticket Price
+              </Typography>
+            </Grid>
+            <Typography>{"$"+returnFlight.Price}</Typography>
+          </Grid>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemAvatar>
+            <AttachMoneyIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid item align="left" xs={12}>
+              <Typography
+                sx={{ mt: 0.5 }}
+                color="text.secondary"
+                display="block"
+                variant="caption"
+              >
+                Child Ticket Price
+              </Typography>
+            </Grid>
+            <Typography>{"$"+(returnFlight.Price/2)}</Typography>
+          </Grid>
+        </ListItem>
+        <Divider />
+        
+        
+              </List>
+                 
+                    </Grid>
+                    </Grid>
+                </CardContent>
+              </Card>
             </div>
+        
+        </div>
+        </Grid>
+        <br/>
+        </Container>
+      <div className="col-sm">
+        
+      <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
+              <h3>Return Flight</h3>
+               <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
+              <div className="row">
           </div>
-      
-      </div>
-      <br/>
-      <div className="row">
-      <h3>Return Flight</h3>
-          <div className>
-            <Card style={{border : "1px solid #111111"}}>
-              <div className="card-body">
-                <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
-                <p className="card-text">
-                <strong>FlightNumber: </strong>{flight.FlightNumber}<br/>
-           <strong>Date: </strong>{flight.Date}<br/>
-            <strong>Departure Time: </strong>{flight.DepartureTime}<br/>
-            <strong>Arrival Time: </strong>{flight.ArrivalTime}<br/>
-            <strong>Trip Duration: </strong>{flight.TripDuration}<br/>
-            <strong>Cabin Class: </strong>{cabin}<br/>
-            <strong>Baggage Allowance: </strong>{flight.BaggageAllowance}<br/>
-            <strong>Adult Ticket Price: </strong>{"$"+flight.Price}<br/>
-            <strong>Child Ticket Price: </strong>{"$"+(flight.Price/2)}<br/>
-            <strong>Selected Seat Numbers: </strong>{retreserved.sort().toString()}<br/>
-                </p>
-              </div>
-            </Card>
-            <br/>
-          </div>
-          <div className="col-lg-4 pb-1">
-            <Card style={{border : "1px solid #111111"}}>          <strong>Total Travellers: {noseats} ({noadults} Adults, {nochild} Children)</strong><br/>
-            <strong>Total Price: ${noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2)}<br/><br/></strong><br/>
+          <br/>
+          <Grid item  xs={12} sm={6} md={4}>
+        <div className="row"> 
+       
+            <div >
+           
+            <Card
+              sx={{ width:"550px",height: '600px', display: 'flex', flexDirection: 'column' }}
+            >
+              <CardContent sx={{ flexGrow: 1 }}>
+              
+                  <Grid style={{ width: "550px" }} fullWidth container>
+      <Grid
+        align="center"
+        style={{
+          
+          width: "550px",
+          height: "550px",
+          alignItems: "center",
+        }}
+        item
+        fullWidth
+        container
+      >
+         <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {returnFlight.FlightNumber}</Typography>
+
+         <List
+        sx={{
+          width: "550px",
+          paddingTop: "0",
+          paddingBottom: "0",
+        }}
+      >
+             <ListItem>
+          <ListItemAvatar>
+            <EventIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container columns={16}>
+            <Grid container item xs={7}>
+              <Grid item align="left" xs={12}>
+                <Typography
+                  sx={{ mt: 0.5 }}
+                  color="text.secondary"
+                  display="block"
+                  variant="caption"
+                >
+                 Date
+                </Typography>
+              </Grid>
+              <Grid>
+                <Typography>
+                {flight.Date}
+                  
+                </Typography>
+              </Grid>
+            </Grid>
+        
+            
+          </Grid>
+        </ListItem>
+        <Divider />
+             <ListItem fullWidth>
+          <ListItemAvatar>
+            <FlightTakeoffIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid container item xs={6}>
+              <Grid item align="left" xs={12}>
+                <Typography
+                  sx={{ mt: 0.5 }}
+                  color="text.secondary"
+                  display="block"
+                  variant="caption"
+                >
+                  Departure Time
+                </Typography>
+              </Grid>
+  
+            </Grid>
+            <Grid item xs>
+              <Grid container>
+                <Grid item align="left" xs={12}>
+                  <Typography
+                    sx={{ mt: 0.5 }}
+                    color="text.secondary"
+                    display="block"
+                    variant="caption"
+                  >
+                    {flight.DepartureTime}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </ListItem>
+        <ListItem>
+          <ListItemAvatar>
+            <FlightLandIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid container item xs={6}>
+              <Grid item align="left" xs={12}>
+                <Typography
+                  sx={{ mt: 0.5 }}
+                  color="text.secondary"
+                  display="block"
+                  variant="caption"
+                >
+                 Arrival Time
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid item xs>
+              <Grid container>
+                <Grid item align="left" xs={12}>
+                  <Typography
+                    sx={{ mt: 0.5 }}
+                    color="text.secondary"
+                    display="block"
+                    variant="caption"
+                  >
+                   {flight.ArrivalTime}
+                  </Typography>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemAvatar>
+            <AccessTimeIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid item align="left" xs={12}>
+              <Typography
+                sx={{ mt: 0.5 }}
+                color="text.secondary"
+                display="block"
+                variant="caption"
+              >
+                Flight Duration
+              </Typography>
+            </Grid>
+           <Grid>{flight.TripDuration}</Grid>
+          </Grid>
+        </ListItem>
+        <Divider />
+        
+        <ListItem>
+          <ListItemAvatar>
+            <AirlineSeatReclineExtraIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid item align="left" xs={12}>
+          <Typography
+                  sx={{ mt: 0.5 }}
+                  color="text.secondary"
+                  display="block"
+                  variant="caption"
+                >
+                  Cabin Class
+                </Typography>
+                <Typography>{state.cabin}</Typography>
+                </Grid>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemAvatar>
+            <LuggageIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid item align="left" xs={12}>
+              <Typography
+                sx={{ mt: 0.5 }}
+                color="text.secondary"
+                display="block"
+                variant="caption"
+              >
+                Baggage allowance
+              </Typography>
+            </Grid>
+            <Typography>{flight.BaggageAllowance}</Typography>
+          </Grid>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemAvatar>
+            <EventSeatIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid item align="left" xs={12}>
+              <Typography
+                sx={{ mt: 0.5 }}
+                color="text.secondary"
+                display="block"
+                variant="caption"
+              >
+                Seats Selected
+              </Typography>
+            </Grid>
+            <Typography>{retreserved.sort().toString()}</Typography>
+          </Grid>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemAvatar>
+            <AttachMoneyIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid item align="left" xs={12}>
+              <Typography
+                sx={{ mt: 0.5 }}
+                color="text.secondary"
+                display="block"
+                variant="caption"
+              >
+                Adult Ticket Price
+              </Typography>
+            </Grid>
+            <Typography>{"$"+flight.Price}</Typography>
+          </Grid>
+        </ListItem>
+        <Divider />
+        <ListItem>
+          <ListItemAvatar>
+            <AttachMoneyIcon style={{ transform: "scale(1.2)" }} />
+          </ListItemAvatar>
+          <Grid container>
+            <Grid item align="left" xs={12}>
+              <Typography
+                sx={{ mt: 0.5 }}
+                color="text.secondary"
+                display="block"
+                variant="caption"
+              >
+                Child Ticket Price
+              </Typography>
+            </Grid>
+            <Typography>{"$"+(flight.Price/2)}</Typography>
+          </Grid>
+        </ListItem>
+        <Divider />
+        
+        
+              </List>
+                 
+                    </Grid>
+                    </Grid>
+                </CardContent>
+              </Card>
+            </div>
+        
+        </div>
+        </Grid>
+        <br/>
+        </Container>
+        </div>
+        <Container sx={{ py: 0 ,margin:"0 0 0 15px" }}  maxWidth="sm">
+            <Card width="550px" height='100px'>      
+            <List
+        sx={{
+          width: "550px",
+          paddingTop: "0",
+          paddingBottom: "0",
+        }}
+      ><ListItem>
+      <ListItemAvatar>
+        <NumbersIcon style={{ transform: "scale(1.2)" }} />
+      </ListItemAvatar>
+      <Grid container>
+        <Grid item align="left" xs={12}>
+          <Typography
+            sx={{ mt: 0.5 }}
+            color="text.secondary"
+            display="block"
+            variant="caption"
+          >
+            Total Travellers 
+          </Typography>
+        </Grid>
+        <Typography>{noseats} ({noadults} Adults, {nochild} Children)</Typography>
+      </Grid>
+    </ListItem>
+    <Divider />
+    <ListItem>
+      <ListItemAvatar>
+        <AttachMoneyIcon style={{ transform: "scale(1.2)" }} />
+      </ListItemAvatar>
+      <Grid container>
+        <Grid item align="left" xs={12}>
+          <Typography
+            sx={{ mt: 0.5 }}
+            color="text.secondary"
+            display="block"
+            variant="caption"
+          >
+            Total Price
+          </Typography>
+        </Grid>
+        <Typography>{noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2)}</Typography>
+      </Grid>
+    </ListItem>
+    <Divider />
+            </List>
             </Card>
 
-          </div>
-          <div className="col-lg-4 pb-1"></div>
+
           
           <div className="col-lg-4 pb-1" style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '6vh'}}>
-
           <Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Booking</Button> &nbsp;
                 </div>
       
-      </div>
-      </Box>
+      </Container>
+      </Grid>
           </div>
           
         

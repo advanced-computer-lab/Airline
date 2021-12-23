@@ -39,7 +39,7 @@ const EditDepFlight = props => {
             <div >
            
             <Card
-              sx={{ width:"400px",height: '100%', display: 'flex', flexDirection: 'column' }}
+              sx={{ width:"500px",height: '600px', display: 'flex', flexDirection: 'column' }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
               
@@ -257,8 +257,8 @@ const EditDepFlight = props => {
         <Divider />
               </List>
                   <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'2vh'}}>
-                  <Link to={{ pathname:"/flights/EditDepFlight", state:state}} className="btn btn-success">Edit Departure Flight</Link>  
-                  <Link to={{ pathname:"/flights/EditDepSeats", state:state}} className="btn btn-success">Edit Departure Seats</Link> 
+                  <Link to={{ pathname:"/flights/EditDepFlight", state:state}} className="btn btn-success">Change Flight</Link>  
+                  <Link to={{ pathname:"/flights/EditDepSeats", state:state}} className="btn btn-success">Edit Seats</Link> 
                     </ButtonGroup>
                     </Grid>
                     </Grid>

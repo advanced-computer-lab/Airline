@@ -73,7 +73,7 @@ const UserReservations = props => {
 
       return(
         <div>
-        <div className="row" style= {{width:"250rem"}}>
+        <div className="row" style= {{width:"80rem"}}>
           <h1>My Reservations </h1><br/>
 
           {noRes() && ( <strong>You have no Reservations.</strong>)} 
