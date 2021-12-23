@@ -78,64 +78,14 @@ const FlightDep = props => {
 
   }
 
-//   return(
 
-//     <div>
-//       <div className="row">
-//           <h1>Available Departure Flights</h1><br/>
-//           <strong>{criteria()}</strong>
-          
-//           </div>
-
-
-
-
-
-//       {noFlights() && ( <strong>Sorry! No Flights Match Your Search Criteria</strong>)} 
-
-//   {flights.map((flight) => {
-//     return (
-//       <div>
-//         <div className="card" style={{border : "1px solid #111111"}}>
-//           <div className="card-body">
-//             <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
-//             <p className="card-text">
-//              <strong>FlightNumber: </strong>{flight.FlightNumber}<br/>
-//              <strong>Date: </strong>{flight.Date}<br/>
-//               <strong>Departure Time: </strong>{flight.DepartureTime}<br/>
-//               <strong>Arrival Time: </strong>{flight.ArrivalTime}<br/>
-//               <strong>Trip Duration: </strong>{flight.TripDuration}<br/>
-//               <strong>Cabin Class: </strong>{cabin}<br/>
-//               <strong>Baggage Allowance: </strong>{flight.BaggageAllowance}<br/>
-//               <strong>Adult Ticket Price: </strong>{"$"+flight.Price}<br/>
-//               <strong>Child Ticket Price: </strong>{"$"+(flight.Price/2)}<br/>
-//             </p>
-//             <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
-//             <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats, noadults} }} className="btn btn-success">
-//             Select
-//           </Link>
-//             </div>
-//           </div>
-//         </div>
-
-//         <br/>
-
-//       </div>
-      
-//     );
-//   })}
-
-
-//   </div>
-  
-//   );
-// };
 return (
   <div>
       <BackgroundSlider
         images={[image1,image2, image3]}
         duration={4}
         transition={2}
+        id="background-slider"
       />
        
        <Box
