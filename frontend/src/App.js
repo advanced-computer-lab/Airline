@@ -21,6 +21,7 @@ import UserReservations from "./components/userSystem/user-reservations"
 import SignUp from "./components/userSystem/sign-up"
 import EditDepSeats from './components/userSystem/edit-dep-seats'
 import EditRetSeats from './components/userSystem/edit-ret-seats'
+import DepFlight from './components/userSystem/edit-dep-flight'
 function App() {
 
   const [user, setUser] = React.useState(null);
@@ -43,15 +44,15 @@ function App() {
 
 
   return (
-    <div  style={{backgroundColor:"#f0f6f7ff"}}>
+    <div  style={{backgroundColor:"#f0f6f7ff" }}>
       
-    <nav className="navbar navbar-expand navbar-dark bg-dark">
+    <nav className="navbar navbar-expand navbar-dark bg-dark" >
       <a className="navbar-brand">
         Airline
       </a>
-      <div className="navbar-nav ms-auto">
+      <div className="navbar-nav ms-auto" >
         <li className="nav-item" >
-          <Link to={"/"} className="nav-link">
+          <Link to={"/"} className="nav-link" >
             Home
           </Link>
         </li>
@@ -133,6 +134,7 @@ function App() {
       <Route  path="/flights/MyBooking" render={(props) => <MyBooking {...props} User={user} />} />
       <Route  path="/flights/EditDepSeats" render={(props) => <EditDepSeats {...props} User={user} />} />
       <Route  path="/flights/EditRetSeats" render={(props) => <EditRetSeats {...props} User={user} />} />
+      <Route  path="/flights/DepFlight" render={(props) => <DepFlight {...props} User={user} />} />
       
       
 

@@ -1,4 +1,5 @@
 import mongodb from "mongodb"
+import bcrypt from "bcrypt"
 const ObjectId = mongodb.ObjectID
 
 let users
@@ -56,11 +57,13 @@ export default class UsersDAO {
 
   static async addUser(firstname=null,lastname=null,passportnumber=null, password, email) {
     try {
+      const hashed = await bcrypt.hash(password,5);
+
       const userDoc = { 
         firstname: firstname,
         lastname: lastname,
         passportnumber: passportnumber,
-        password: password,
+        password: hashed,
         email: email
     }
 

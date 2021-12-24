@@ -36,6 +36,7 @@ const Flight = props => {
 
   return (
     <div>
+      
       {flight ? (
         <div>
           <h5>{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>

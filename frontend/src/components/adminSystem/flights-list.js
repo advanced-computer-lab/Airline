@@ -1,6 +1,16 @@
 import React, { useState, useEffect } from "react";
 import FlightDataService from "../../services/flight";
 import { Link } from "react-router-dom";
+import 'react-dropdown/style.css';
+import { ButtonGroup } from "@mui/material";
+
+import {Box,Paper,Grid} from '@mui/material';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import BackgroundSlider from 'react-background-slider'
+import image1 from './images/image1.jpg'
+import image2 from './images/image2.jpg'
+import image3 from './images/image3.jpg'
 
 const FlightsList = props => {
   const [flights, setFlights] = useState([]);
@@ -96,6 +106,11 @@ const FlightsList = props => {
 
   return (
     <div>
+      
+      
+      
+    
+
       <div className="row">
           <h1>Flight Management System</h1><br/>
           
@@ -104,38 +119,46 @@ const FlightsList = props => {
           <br/>
           <strong>Search</strong>
           <br/>
-      <div className="row pb-1">
-        <div className="input-group col-lg-4"> 
+      <Grid container className="row pb-1">
+        <Grid item className="input-group col-lg-4"> 
           <input
-            type="text"
+           
             className="form-control"
             placeholder="Flight Number"
             value={searchFlightNum}
             onChange={onChangeSearchFlightNum}
-          />
+          /> <TextField id="outlined-basic" label="Outlined" variant="outlined" />
           <div className="input-group-append">
            
           </div>
-        </div>
+        </Grid>
         <div className="input-group col-lg-4"> 
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Departure Time"
+          <TextField
+
+            id="Departure Time"
+            label="Departure Time"
             value={searchDepartTime}
             onChange={onChangeSearchDepartTime}
+            sx={{background:'white'  }}
+            variant='outlined'
+            fullWidth
+            margin='normal'
           />
           <div className="input-group-append">
            
           </div>
         </div>
         <div className="input-group col-lg-4"> 
-          <input
+          <TextField
             type="text"
             className="form-control"
             placeholder="Arrival Time"
             value={searchArrivalTime}
             onChange={onChangeSearchArrivalTime}
+            sx={{background:'white'  }}
+            variant='outlined'
+            fullWidth
+            margin='normal'
           />
           <div className="input-group-append">
            
@@ -148,18 +171,22 @@ const FlightsList = props => {
             placeholder="Date"
             value={searchDate}
             onChange={onChangeSearchDate}
+            margin="normal"
           />
           <div className="input-group-append">
            
           </div>
         </div>
         <div className="input-group col-lg-4"> 
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Departure Airport"
+          <TextField
+            id="Departure Airport"
+            label="Departure Airport"
             value={searchDepartAirpt}
             onChange={onChangeSearchDepartAirpt}
+            sx={{background:'white'  }}
+            variant='outlined'
+            fullWidth
+            margin='normal'
           />
           <div className="input-group-append">
            
@@ -167,37 +194,44 @@ const FlightsList = props => {
         </div>
 
         <div className="input-group col-lg-4"> 
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Destination Airport"
+          <TextField
+            id="Destination Airport"
+            label="Destination Airport"
             value={searchArrivalAirpt}
             onChange={onChangeSearchArrivalAirpt}
+            sx={{background:'white'  }}
+            variant='outlined'
+            fullWidth
+            margin='normal'
           />
           <div className="input-group-append">
-          <button
-              className="btn btn-outline-secondary"
-              type="button"
+          <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'1vh'}}>
+          <Button
               onClick={refreshList}
+              variant="contained"
+              color="primary"
+              size="large"
             >
               Reset filters
-            </button>
+            </Button>
             
-            <button
-              className="btn btn-primary"
-              type="button"
+            <Button
+              variant="contained"
+              color="primary"
+              size="large"
               onClick={findByAll}
             >
               Search
-            </button>
+            </Button>
+            </ButtonGroup>
           </div>
         </div>
-      </div>
+      </Grid>
       <br/>
       <strong>Flights: </strong><br/>
-      <Link to={"/admin/flights/create"} className="link" style={{textDecoration: "none"}}>
+      <Button href="/admin/flights/create" variant='contained' size='large'>
             Create New Flight
-          </Link>
+          </Button>
 
 
       <div className="row">
@@ -219,10 +253,12 @@ const FlightsList = props => {
                     <strong>Economy Class Seats: </strong>{flight.EconomySeats} 
                   </p>
                   <div>
+                  <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'1vh'}}>
                   <Link to={{ pathname: "/admin/flights/" + flight._id + "/edit", state: flight }} className="btn btn-primary">
             Edit
           </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <a className="btn btn-danger" onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(flight._id).then(response => {retrieveFlights();})}}}>Delete</a>
+          <Button color='error' variant="contained" onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(flight._id).then(response => {retrieveFlights();})}}}>Delete</Button>
+          </ButtonGroup>
                   </div>
                 </div>
               </div>
@@ -232,6 +268,7 @@ const FlightsList = props => {
 
 
       </div>
+      
     </div>
   );
 };

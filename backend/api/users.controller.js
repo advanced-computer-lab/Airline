@@ -1,5 +1,6 @@
 import UsersDAO from "../dao/usersDAO.js"
 import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
 import ReservationsDAO from "../dao/reservationsDAO.js"
 
 export default class UsersController {
@@ -15,15 +16,13 @@ export default class UsersController {
 
   static async apiAuthentication(req,res){
     const user = await UsersDAO.getUserByEmail(req.body.email)
-    if (user == null) {
-      return { status: 'error', error: 'Invalid login' }
-    }
+    if (user) {
   
-    /*const isPasswordValid = await bcrypt.compare(
-      req.body.Password,
-      user.Password)*/
+    const isPasswordValid = await bcrypt.compare(
+      req.body.password,
+      user.password)
 
-      const isPasswordValid = req.body.password == (user.password);
+      //const isPasswordValid = req.body.password == (user.password);
   
     if (isPasswordValid) {
       const token = jwt.sign(
@@ -35,6 +34,7 @@ export default class UsersController {
       )
   
       return res.json({ status: 'ok', user: user })
+    }
     } else {
       return res.json({ status: 'error', user: false })
     }
