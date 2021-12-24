@@ -48,13 +48,13 @@ const Landing = props => {
         setSearchClass(searchClass);
     }
     const onChangeSearchDepartDate = e=>{
-        const searchDepartDate=e.value;
-        setSearchDepartDate(searchDepartDate);
-    }
-    const onChangeSearchReturnDate = e =>{
-        const searchReturnDate=e.target.value;
-        setSearchReturnDate(searchReturnDate);
-    }
+      const searchDepartDate=e.target.value;
+      setSearchDepartDate(searchDepartDate);
+  }
+  const onChangeSearchReturnDate = e =>{
+      const searchReturnDate=e.target.value;
+      setSearchReturnDate(searchReturnDate);
+  }
     const onChangeSearchNoAdults =e =>{
         const searchNoAdults=e.value+", Adults";
         setSearchNoAdults(searchNoAdults);
