@@ -14,6 +14,8 @@ export default class UsersController {
     res.json(response)
   }
 
+  
+
   static async apiAuthentication(req,res){
     const user = await UsersDAO.getUserByEmail(req.body.email)
     if (user) {
@@ -32,9 +34,11 @@ export default class UsersController {
         },
         'secret123'
       )
+
+
   
-      return res.json({ status: 'ok', user: user })
-    }
+      return res.json({ status: 'ok', user: user , token: token  })
+    } else return res.json({ status: 'error', user: false }) 
     } else {
       return res.json({ status: 'error', user: false })
     }
@@ -42,15 +46,27 @@ export default class UsersController {
 
   static async apiPostUser(req, res, next) {
     try {
+      const username = req.body.username
       const fname = req.body.firstname
       const lname = req.body.lastname
-      const passnum = req.body.passportnumber
+      const passnum = req.body.passnumber
       const password = req.body.password
       const email = req.body.email
-      
+      const address = req.body.address
+      const phone = req.body.phone
+      const countrycode = req.body.countrycode
 
-      const UserResponse = await UsersDAO.addUser(fname, lname, passnum, password, email)
-      res.json({ status: "success" })
+      const user = await UsersDAO.getUserByEmail(req.body.email)
+
+      
+      if(user)
+        res.status(500).json({ error: "email already registered!" })
+      
+        else{
+
+      const UserResponse = await UsersDAO.addUser(fname, lname, passnum, password, email, username, address, phone , countrycode)
+      res.json({ status: "success" })}
+      
     } catch (e) {
       console.log(e)
       res.status(500).json({ error: e.message })
@@ -64,10 +80,33 @@ export default class UsersController {
       const lname = req.body.lastname
       const passnum = req.body.passportnumber
       const email = req.body.email
+      const oldpass = req.body.oldpassword
+      const newpass = req.body.newpassword
+      let p = false;
 
-          
+      console.log(newpass);
+
+      if(newpass != "")
+      p=true;
+
+      console.log(p);
+
+      let user = await UsersDAO.getUserByEmail(email);
+
+      const isPasswordValid = await bcrypt.compare(oldpass, user.password);
+
+      
+
+
+      console.log(isPasswordValid);
+        if(isPasswordValid){
+
         
       let Reservations = await ReservationsDAO.getReservations(Id);
+
+      
+
+      
 
       let ReservationsList = Reservations.ReservationsList
              
@@ -78,22 +117,31 @@ export default class UsersController {
               let resResponse = await ReservationsDAO.UpdateReservation(id, {id: Id, firstname:fname, lastname:lname, passportnumber:passnum, email:email});
 
             }
-      
-      const reviewResponse = await UsersDAO.updateUser(Id, fname, lname, passnum, email)
+        
+
+            
+             await UsersDAO.updateUser(Id, fname, lname, passnum, email, newpass,p)
+             reviewResponse = "updated";
+
+          }
+
+          const reviewResponse = "";
+
+            
+
+          
       var { error } = reviewResponse
       if (error) {
         res.status(400).json({ error })
       }
 
-      if (reviewResponse.modifiedCount === 0) {
-        throw new Error(
-          "unable to update flight",
-        )
-      }
-
+      if(reviewResponse === "")
+      res.json({status: "ok" , data: "Incorrect Password"});
+      
+      else
       res.json({ status: "success" })
     } catch (e) {
-      res.status(500).json({ error: e.message })
+      res.status(500).json({ error: "Failure" })
     }
   }
 

@@ -76,7 +76,7 @@ function App() {
         <li className="nav-item" >
             { user ? (
               <Link to={"/"} onClick={logout} className="nav-link" style={{cursor:'pointer'}}>
-                Logout {user.firstname +" "+ user.lastname}
+                Logout {user.username}
               </Link>
             ) : (            
             <Link to={{ pathname: "/login", state: {reserving: false}}} className="nav-link">
