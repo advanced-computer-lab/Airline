@@ -27,6 +27,19 @@ const EditDepFlight = props => {
     const returnFlight=state.DepartureFlight
     return(
             <div>
+                <Box
+  opacity='[0,0,0]'
+    component="form"
+    sx={{
+      '& .MuiTextField-root': { m: 3, width: '65ch' },
+    }}
+    noValidate
+    textAlign='left'
+    autoComplete="off"
+    height="0px"
+    marginTop={-2}
+    backgroundColor="#f0f6f7ff"
+  >
                <h3>Departure Flight</h3>
                <h5 className="card-title">{returnFlight.DepartureAirport} TO {returnFlight.DestinationAirport}</h5>
               <Container sx={{ py: 8 }} maxWidth="md">
@@ -256,7 +269,7 @@ const EditDepFlight = props => {
         </ListItem>
         <Divider />
               </List>
-                  <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'2vh'}}>  
+              <ButtonGroup style={{display: 'flex', height: '5vh' ,marginTop:'1vh',marginLeft:'350px'}}>  
                   <Link to={{ pathname: "/flights/EditDepSeats", state: state}} className="btn btn-success">Edit Seats</Link>   
                     </ButtonGroup>
                     </Grid>
@@ -270,6 +283,7 @@ const EditDepFlight = props => {
 
         <br/>
         </Container>
+        </Box>
             </div>
             
     );

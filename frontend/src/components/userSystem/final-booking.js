@@ -134,7 +134,19 @@ const Booking = props => {
     return (
       <div>
 
-         
+<Box
+    opacity='[0,0,0]'
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 3, width: '65ch' },
+      }}
+      noValidate
+      textAlign='left'
+      autoComplete="off"
+      height="0px"
+      marginTop={-2}
+      backgroundColor="#f0f6f7ff"
+    >
       <Grid container spacing ={14} mt={0}  marginTop={-7} width={1400} marginLeft={0}>
       <div className="row">
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
@@ -755,7 +767,7 @@ const Booking = props => {
                 </Grid>
                 </Container>
       </Grid>
-     
+     </Box>
           </div>
           
         

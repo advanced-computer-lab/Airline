@@ -33,6 +33,19 @@ const MyBooking = props => {
 
     return (
       <div>
+         <Box
+    opacity='[0,0,0]'
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 3, width: '65ch' },
+      }}
+      noValidate
+      textAlign='left'
+      autoComplete="off"
+      height="0px"
+      marginTop={-2}
+      backgroundColor="#f0f6f7ff"
+    >
 <Grid container spacing ={14} mt={0}  marginTop={-7} marginLeft={0} width={1340}>
       <div className="row">
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
@@ -49,7 +62,7 @@ const MyBooking = props => {
           <br/>
           <Grid item  xs={6} sm={10} md={4}>
         <div className="row"> 
-        <h3>Departure Flight</h3>
+        <h5>Departure Flight</h5>
             <div >
            
             <Card
@@ -270,7 +283,7 @@ const MyBooking = props => {
         </Container>
       <div className="col-sm">
         
-      <Container sx={{ py: 0 ,margin:"0 0 0 -200px" }} maxWidth="md">
+      <Container sx={{ py: 0 ,margin:"0px 0 0 -200px" }} maxWidth="md">
         <br/>
               
               <div className="row">
@@ -278,7 +291,7 @@ const MyBooking = props => {
           <br/>
           <Grid item  xs={6} sm={6} md={4}>
         <div className="row"> 
-        <h3>Return Flight</h3>
+        <h5>Return Flight</h5>
             <div>
            
             <Card
@@ -499,7 +512,7 @@ const MyBooking = props => {
         </Container>
         </div>
         <Container sx={{ py: 0 ,margin:"0 0 0 15px" }}  maxWidth="sm">
-        <h3>Booking Info </h3>
+        <h5>Booking Info </h5>
         <Card
               sx={{ width:"400px",height: '230px', display: 'flex', flexDirection: 'column' }}
             >
@@ -582,7 +595,7 @@ const MyBooking = props => {
 
       
       <Container sx={{ py: 0 ,margin:"0 0 0 100px" }}  maxWidth="sm">
-        <h3>Personal Information </h3>
+        <h5>Personal Information </h5>
         <Card
               sx={{ width:"400px",height: '230px', display: 'flex', flexDirection: 'column' }}
             >
@@ -663,6 +676,7 @@ const MyBooking = props => {
       
       </Container>
       </Grid>
+      </Box>
           </div>
           
         

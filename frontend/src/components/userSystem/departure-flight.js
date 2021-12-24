@@ -20,6 +20,7 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import LuggageIcon from "@mui/icons-material/Luggage";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import { textAlign } from "@mui/system";
+import { ButtonGroup } from "@mui/material";
 
 
 const FlightDep = props => {
@@ -99,6 +100,8 @@ return (
     textAlign='left'
     autoComplete="off"
     height="0px"
+    marginTop={-5}
+    backgroundColor="#f0f6f7ff"
     
   >
     
@@ -145,12 +148,12 @@ Available Departure Flights
             
             <CardContent sx={{ flexGrow: 1 }}>
 
-            <Grid style={{ width: "450px" }} fullWidth container>
+            <Grid style={{ width: "400px" }} fullWidth container>
     <Grid
       align="center"
       style={{
         
-        width: "450px",
+        width: "400px",
         height: "70px",
         alignItems: "center",
       }}
@@ -164,7 +167,7 @@ Available Departure Flights
     
     <List
       sx={{
-        width: "450px",
+        width: "400px",
         paddingTop: "0",
         paddingBottom: "0",
       }}
@@ -365,16 +368,11 @@ Available Departure Flights
     </List>
   </Grid>
             </CardContent>
-            <CardActions>
-            <Grid  xs={12}> 
+           
             <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats, noadults} }} className="btn btn-success"   >
            Select
-          
         </Link>
-        </Grid> 
         
-              
-            </CardActions>
           </Card>
         </Grid>
         );

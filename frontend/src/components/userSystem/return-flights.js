@@ -108,6 +108,8 @@ const FlightReturn = props => {
       textAlign='left'
       autoComplete="off"
       height="0px"
+      marginTop={-5}
+      backgroundColor="#f0f6f7ff"
       
     >
       
@@ -372,12 +374,13 @@ Available Return Flights
       </List>
     </Grid>
               </CardContent>
-              <CardActions>
+           
+               
               <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight, cabin, noseats, noadults, res} }} className="btn btn-success">
             Select
           </Link>
-                
-              </CardActions>
+          
+           
             </Card>
           </Grid>
           );

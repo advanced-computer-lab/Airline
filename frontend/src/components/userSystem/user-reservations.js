@@ -73,11 +73,25 @@ const UserReservations = props => {
 
       return(
         <div>
-        <div className="row" style= {{width:"75rem"}}>
+           <Box
+    opacity='[0,0,0]'
+      component="form"
+      sx={{
+        '& .MuiTextField-root': { m: 3, width: '65ch' },
+      }}
+      noValidate
+      textAlign='left'
+      autoComplete="off"
+      height="0px"
+      marginTop={-2}
+      backgroundColor="#f0f6f7ff"
+      
+    >
+        <div className="row" style= {{width:"75rem"}}  backgroundColor="#f0f6f7ff">
          
 
           {noRes() && ( <strong>You have no Reservations.</strong>)} 
-          <Grid item  xs={12} sm={6} md={4} marginLeft={-10}>
+          <Grid item  xs={12} sm={6} md={4} marginLeft={-10} >
           <h1 marginLeft>My Reservations </h1><br/>
         {reservations.map((reservation) => {
           
@@ -296,7 +310,9 @@ const UserReservations = props => {
         </ListItem>
         <Divider />
         <ListItem>
+        <ButtonGroup style={{display: 'flex', height: '5vh' ,marginTop:'1vh',marginLeft:'190px'}}>
         <Link to={{ pathname:"/flights/DepFlight", state:reservation}} className="btn btn-success">Edit Departure Flight</Link>  
+        </ButtonGroup>
         </ListItem>
                     </Grid>
                     </CardContent>
@@ -499,7 +515,9 @@ const UserReservations = props => {
         </ListItem>
         <Divider />
         <ListItem>
+        <ButtonGroup style={{display: 'flex', height: '5vh' ,marginTop:'1vh',marginLeft:'190px'}}>
         <Link to={{ pathname:"/flights/RetFlight", state:reservation}} className="btn btn-success">Edit Return Flight</Link>  
+        </ButtonGroup>
         </ListItem>
                     </Grid>
                     </CardContent>
@@ -611,11 +629,11 @@ const UserReservations = props => {
                     </div>
                     </div>
       
-                    <ButtonGroup style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '4vh' ,marginTop:'1vh'}}>
+                    <ButtonGroup style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh' ,marginTop:'1vh'}}>
                     <Button variant='contained'  size='small' color='info' onClick={() =>{ReservationsDataService.mail(reservation);}}>Mail My Booking</Button> 
                     <Link to={{ pathname:"/flights", state:reservation}} className="btn btn-success">Change flights</Link>
                     </ButtonGroup>
-                    <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'-5vh'}}>
+                    <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh' ,marginTop:'-5vh'}}>
 
                    
                     <Button variant='contained'  size='small' color='error' onClick={() => {if(window.confirm('Are you sure you want to cancel this reservation?')){deleteReservations(reservation._id)}}}>Cancel Reservation</Button> 
@@ -634,6 +652,7 @@ const UserReservations = props => {
         })}
         </Grid>
       </div>
+      </Box>
       </div>
       )
 }

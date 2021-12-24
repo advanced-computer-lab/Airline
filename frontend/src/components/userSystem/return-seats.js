@@ -136,6 +136,8 @@ const RetSeats = props => {
       textAlign='left'
       autoComplete="off"
       height="0px" 
+      marginTop={-2}
+      backgroundColor="#f0f6f7ff"
     >
       <div >
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
