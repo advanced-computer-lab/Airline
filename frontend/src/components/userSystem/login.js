@@ -7,6 +7,9 @@ import BackgroundSlider from 'react-background-slider'
 import image1 from './images/image1.jpg'
 import image2 from './images/image2.jpg'
 import image3 from './images/image3.jpg'
+import user from "../../services/user";
+
+
 const Login = props => {
 
   const [email, setEmail] = useState('')
@@ -46,16 +49,20 @@ const Login = props => {
 
 		if (data.user) {
 			localStorage.setItem('token', data.token)
-      console.log(data.token)
-			alert('Login successful')
+      alert('Login successful')
       props.login(data.user)
-
+      //console.log(user.email);
+       if(data.user.email === "admin@asairline.com")
+        props.history.push('/admin');
+      
+        else{
       if(reserving){props.history.push('/flights/ChooseDepSeats', state);}
       else {props.history.push('/');}
+      }
 
-		} else {
+		} else 
 			alert('Please check your username and password')
-		}
+		
 	}
   return (
     <div>

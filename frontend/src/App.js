@@ -55,14 +55,28 @@ function App() {
         AS Airlines
       </a>
       <div  style={{margin:"0 0 0 0"}} className="navbar-nav ms-auto">
+        {user? (
+          <li className="nav-item" >
+            {user.email === "admin@asairline.com" ?(
+          <Link to={"/admin"} className="nav-link" >
+            Home
+          </Link>
+          ):(
+            <Link to={"/"} className="nav-link" >
+            Home
+          </Link>
+          )}
+        </li>
+        ):(
         <li className="nav-item" >
           <Link to={"/"} className="nav-link" >
             Home
           </Link>
         </li>
+        )}
 
 
-        { user ? (
+        { user && !(user.email === "admin@asairline.com")? (
               <li className="nav-item" >
               <Link to={"/UpdateUser"} className="nav-link">
               Edit Profile 
@@ -70,7 +84,7 @@ function App() {
             </li>
             ) :(null)}
 
-        { user ? (
+        { user && !(user.email === "admin@asairline.com")? (
               <li className="nav-item" >
               <Link to={"/ViewReservations"} className="nav-link">
               My Reservations 

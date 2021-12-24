@@ -4,11 +4,21 @@ import * as Yup from "yup";
 import FlightDataService from "../../services/flight";
 import axios from 'axios';
 import { useParams } from "react-router";
+import jwt from "jsonwebtoken";
 
 
 
 
 const UpdateFlight = props => {
+
+  const token = localStorage.getItem('token');
+  if(!token)
+  props.history.push('/AcccessDenied');
+  else{
+  let decoded = jwt.verify(token, 'secret123');
+  if(decoded.email != "admin@asairline.com")
+  props.history.push('/AccessDenied');
+}
 
   const pathArray = window.location.pathname.split('/');
   const id = pathArray[3];
@@ -18,6 +28,8 @@ const UpdateFlight = props => {
   
 
      const formik=useFormik({
+
+      
          initialValues: {
              
              FlightNumber:flight.FlightNumber,
