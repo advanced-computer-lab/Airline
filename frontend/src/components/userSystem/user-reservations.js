@@ -90,9 +90,10 @@ const UserReservations = props => {
         <div className="row" style= {{width:"75rem"}}  backgroundColor="#f0f6f7ff">
          
 
-          {noRes() && ( <strong>You have no Reservations.</strong>)} 
+          
           <Grid item  xs={12} sm={6} md={4} marginLeft={-10} >
           <h1 marginLeft>My Reservations </h1><br/>
+          {noRes() && ( <strong>You have no Reservations.</strong>)} 
         {reservations.map((reservation) => {
           
           return (
@@ -102,7 +103,9 @@ const UserReservations = props => {
               <Card  sx={{ width:"1400px",height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardContent sx={{ flexGrow: 1 }}>
                 <div className="card-body">
+
                   <h4 className="card-title">{reservation.DepartureFlight.DepartureAirport} TO {reservation.DepartureFlight.DestinationAirport }  </h4>
+                  
                   <ListItem>
                     <ListItemAvatar>
                   <ConfirmationNumberIcon style={{ transform: "scale(1)" }} />
@@ -114,6 +117,16 @@ const UserReservations = props => {
                   variant="caption"
                    >Booking Number :{reservation.BookingNumber}</Typography>
                    </ListItem>
+                   <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh' ,marginBottom:'2vh'}}>
+                    
+                    <Button variant='contained'  size='small' color='info'  onClick={() =>{ReservationsDataService.mail(reservation);}}>Mail My Booking</Button> 
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    <Link to={{ pathname:"/flights", state:reservation}} className="btn btn-success">Change flights</Link>
+                    </ButtonGroup>
                   <p className="card-text" >
                   <div class="row">
                     
@@ -274,6 +287,22 @@ const UserReservations = props => {
         <Divider />
         <ListItem>
           <ListItemAvatar>
+            <AirlineSeatReclineExtraIcon style={{ transform: "scale(1)" }} />
+          </ListItemAvatar>
+          <Grid item align="left" xs={12}>
+          <Typography
+                  sx={{ mt: 0.1 }}
+                  color="text.secondary"
+                  display="block"
+                  variant="caption"
+                >
+                  Cabin Class
+                </Typography>
+                <Typography>{reservation.CabinClass}</Typography>
+                </Grid>
+        </ListItem>
+        <ListItem>
+          <ListItemAvatar>
             <EventSeatIcon style={{ transform: "scale(1)" }} />
           </ListItemAvatar>
           <Grid container>
@@ -292,26 +321,11 @@ const UserReservations = props => {
         </ListItem>
         <Divider />
 
-                    <ListItem>
-          <ListItemAvatar>
-            <AirlineSeatReclineExtraIcon style={{ transform: "scale(1)" }} />
-          </ListItemAvatar>
-          <Grid item align="left" xs={12}>
-          <Typography
-                  sx={{ mt: 0.1 }}
-                  color="text.secondary"
-                  display="block"
-                  variant="caption"
-                >
-                  Cabin Class
-                </Typography>
-                <Typography>{reservation.CabinClass}</Typography>
-                </Grid>
-        </ListItem>
+                   
         <Divider />
         <ListItem>
-        <ButtonGroup style={{display: 'flex', height: '5vh' ,marginTop:'1vh',marginLeft:'190px'}}>
-        <Link to={{ pathname:"/flights/DepFlight", state:reservation}} className="btn btn-success">Edit Departure Flight</Link>  
+        <ButtonGroup style={{display: 'flex', height: '5vh' ,marginTop:'1vh',marginLeft:'250px'}}>
+        <Link to={{ pathname: "/flights/EditDepSeats", state: reservation}} className="btn btn-primary">Edit Seats</Link> 
         </ButtonGroup>
         </ListItem>
                     </Grid>
@@ -479,6 +493,22 @@ const UserReservations = props => {
         <Divider />
         <ListItem>
           <ListItemAvatar>
+            <AirlineSeatReclineExtraIcon style={{ transform: "scale(1)" }} />
+          </ListItemAvatar>
+          <Grid item align="left" xs={12}>
+          <Typography
+                  sx={{ mt: 0.1 }}
+                  color="text.secondary"
+                  display="block"
+                  variant="caption"
+                >
+                  Cabin Class
+                </Typography>
+                <Typography>{reservation.CabinClass}</Typography>
+                </Grid>
+        </ListItem>
+        <ListItem>
+          <ListItemAvatar>
             <EventSeatIcon style={{ transform: "scale(1)" }} />
           </ListItemAvatar>
           <Grid container>
@@ -497,26 +527,11 @@ const UserReservations = props => {
         </ListItem>
         <Divider />
 
-                    <ListItem>
-          <ListItemAvatar>
-            <AirlineSeatReclineExtraIcon style={{ transform: "scale(1)" }} />
-          </ListItemAvatar>
-          <Grid item align="left" xs={12}>
-          <Typography
-                  sx={{ mt: 0.1 }}
-                  color="text.secondary"
-                  display="block"
-                  variant="caption"
-                >
-                  Cabin Class
-                </Typography>
-                <Typography>{reservation.CabinClass}</Typography>
-                </Grid>
-        </ListItem>
+                   
         <Divider />
         <ListItem>
-        <ButtonGroup style={{display: 'flex', height: '5vh' ,marginTop:'1vh',marginLeft:'190px'}}>
-        <Link to={{ pathname:"/flights/RetFlight", state:reservation}} className="btn btn-success">Edit Return Flight</Link>  
+        <ButtonGroup style={{display: 'flex', height: '5vh' ,marginTop:'1vh',marginLeft:'250px'}}>
+        <Link to={{ pathname: "/flights/EditRetSeats", state: reservation}} className="btn btn-primary">Edit Seats</Link>  
         </ButtonGroup>
         </ListItem>
                     </Grid>
@@ -629,10 +644,7 @@ const UserReservations = props => {
                     </div>
                     </div>
       
-                    <ButtonGroup style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh' ,marginTop:'1vh'}}>
-                    <Button variant='contained'  size='small' color='info' onClick={() =>{ReservationsDataService.mail(reservation);}}>Mail My Booking</Button> 
-                    <Link to={{ pathname:"/flights", state:reservation}} className="btn btn-success">Change flights</Link>
-                    </ButtonGroup>
+                    
                     <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh' ,marginTop:'-5vh'}}>
 
                    
