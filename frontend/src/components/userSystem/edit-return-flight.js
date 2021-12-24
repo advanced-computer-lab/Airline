@@ -259,7 +259,6 @@ const RetFlight = props => {
               </List>
                   <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'2vh'}}>
                   <Link to={{ pathname: "/flights/EditRetSeats", state: state }} className="btn btn-success">Edit Seats</Link>   
-                <Link to={{ pathname:"/flights/EditRepSeats", state:state}} className="btn btn-success">Change Flight</Link> 
                     </ButtonGroup>
                     </Grid>
                     </Grid>

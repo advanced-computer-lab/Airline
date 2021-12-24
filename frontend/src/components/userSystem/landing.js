@@ -14,6 +14,14 @@ import FormControl from '@mui/material/FormControl';
 
 const Landing = props => {
 
+  const res = props.location.state;
+
+  let edit =false
+
+    if(res!=null) edit = true;
+
+  // const str = JSON.stringify(res);
+  //       console.log("res:"+str)
 
 
     const [searchDepartDate, setSearchDepartDate ] = useState("");
@@ -97,6 +105,13 @@ const Landing = props => {
       height="0px"
       
     >
+      <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+      {edit&&
+          ((<Button variant='contained'  size='small' color='error' onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Button>))
+          
+          }
+          </div>
+      
           <h4>Where would you like to go?</h4>
           
             <Box sx={{ minWidth: 1000 } }>
@@ -183,7 +198,7 @@ const Landing = props => {
               <div className="row">
               
                 
-                <Link to={{ pathname: "/flights/SelectDeparture", state: hashobj }} className="btn btn-success">
+                <Link to={{ pathname: "/flights/SelectDeparture", state: {hashobj, res} }} className="btn btn-success">
            Search
           </Link> &nbsp;
           <Button onClick={refreshList} variant='contained'  size='medium' color='primary'>Reset filters</Button>

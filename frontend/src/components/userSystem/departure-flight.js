@@ -23,8 +23,13 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 
 const FlightDep = props => {
 
+  const res = props.location.state.res
 
-  const flight = props.location.state
+  let edit =false
+
+    if(res!=null) edit = true;
+
+  const flight = props.location.state.hashobj
 
   const returnDate = flight.ReturnDate
   
@@ -102,6 +107,12 @@ return (
   >
     
     <div className="row">
+    <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+      {edit&&
+          ((<Button variant='contained'  size='small' color='error' onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Button>))
+          
+          }
+          </div>
     <Container maxWidth="sm">
           <Typography
             component="h1"
@@ -119,7 +130,7 @@ Available Departure Flights
 
 
 
-
+        
 
     {noFlights() && ( <strong>Sorry! No Flights Match Your Search Criteria</strong>)} 
         
@@ -359,7 +370,7 @@ Available Departure Flights
   </Grid>
             </CardContent>
             <CardActions>
-            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats, noadults} }} className="btn btn-success">
+            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats, noadults, res} }} className="btn btn-success">
           Select
         </Link>
               
