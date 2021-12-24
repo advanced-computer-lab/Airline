@@ -27,7 +27,9 @@ const ReviewSelection = props => {
     const res = props.location.state.res
     let edit =false
 
-    if(res!=null) edit = true;
+    let oldprice = 0 
+
+    if(res!=null) {edit = true; oldprice = res.Price} 
 
     const flight = state.flight
     const returnFlight=state.depFlight
@@ -35,6 +37,10 @@ const ReviewSelection = props => {
     const noseats = state.noseats
     const noadults = state.noadults
     const nochild = noseats-noadults
+    let pricem = 1
+
+  if (cabin=="Business Class") pricem = 1.5
+  else if (cabin=="First Class") pricem = 2
     
 
     const user = props.User
@@ -278,7 +284,7 @@ const ReviewSelection = props => {
                   Adult Seat price
                 </Typography>
               </Grid>
-             <Typography> {"$"+returnFlight.Price} </Typography>
+             <Typography> {"$"+(returnFlight.Price*pricem)} </Typography>
              
             </Grid>
             <Grid item xs={6}>
@@ -293,7 +299,7 @@ const ReviewSelection = props => {
                     Child Seat price
                   </Typography>
                 </Grid>
-                <Typography> {"$"+returnFlight.Price/2} </Typography>
+                <Typography> {"$"+(returnFlight.Price*pricem)/2} </Typography>
               </Grid>
             </Grid>
             
@@ -519,7 +525,7 @@ paddingBottom: "0",
       Adult Seat price
     </Typography>
   </Grid>
- <Typography> {"$"+flight.Price} </Typography>
+ <Typography> {"$"+(flight.Price*pricem)} </Typography>
  
 </Grid>
 <Grid item xs={6}>
@@ -534,7 +540,7 @@ paddingBottom: "0",
         Child Seat price
       </Typography>
     </Grid>
-    <Typography> {"$"+flight.Price/2} </Typography>
+    <Typography> {"$"+(flight.Price*pricem)/2} </Typography>
   </Grid>
 </Grid>
 
@@ -550,7 +556,8 @@ paddingBottom: "0",
   
   </Grid><Grid sx={{justifyContent:"center",textAlign:"center",margin:"60px 0 0 0"}}>
           <strong>Total Travellers: {noseats} ({noadults} Adults, {nochild} Children)</strong><br/>
-            <strong>Total Price: ${noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2)}<br/><br/></strong><br/>
+            <strong>Total Price: ${noadults*(pricem*(flight.Price+returnFlight.Price)) + nochild*(pricem*((flight.Price+returnFlight.Price))/2)}</strong><br/>
+            <strong>Total to be paid: ${(noadults*(pricem*(flight.Price+returnFlight.Price)) + nochild*(pricem*((flight.Price+returnFlight.Price))/2))-oldprice}<br/><br/></strong><br/>
             </Grid>
   <Grid sx={{justifyContent:"center",textAlign:"center",margin:"-20px 0 0 0"}}>
   {user?

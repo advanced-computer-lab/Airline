@@ -37,6 +37,11 @@ const FlightDep = props => {
   
 
   const cabin = flight.CabinClass
+
+  let pricem = 1
+
+  if (cabin=="Business Class") pricem = 1.5
+  else if (cabin=="First Class") pricem = 2
   
   const noseats = parseInt(flight.NumberOfAdults) + parseInt(flight.NumberOfChildren)
 
@@ -349,7 +354,7 @@ Available Departure Flights
                 Adult Seat price
               </Typography>
             </Grid>
-           <Typography> {"$"+flight.Price} </Typography>
+           <Typography> {"$"+(flight.Price*pricem)} </Typography>
            
           </Grid>
           <Grid item xs={6}>
@@ -364,7 +369,7 @@ Available Departure Flights
                   Child Seat price
                 </Typography>
               </Grid>
-              <Typography> {"$"+flight.Price/2} </Typography>
+              <Typography> {"$"+(flight.Price*pricem)/2} </Typography>
             </Grid>
           </Grid>
           

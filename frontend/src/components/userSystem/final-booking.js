@@ -30,7 +30,9 @@ const Booking = props => {
 
     let edit =false
 
-    if(res!=null) edit = true;
+    let oldprice = 0 
+
+    if(res!=null) {edit = true; oldprice = res.Price} 
 
     //console.log(edit)
 
@@ -38,6 +40,11 @@ const Booking = props => {
     const returnFlight=state.depflight
     const cabin = state.cabin
     const noseats = state.noseats
+
+    let pricem = 1
+
+  if (cabin=="Business Class") pricem = 1.5
+  else if (cabin=="First Class") pricem = 2
 
     const user = props.User
 
@@ -53,9 +60,10 @@ const Booking = props => {
     //console.log(depreserved)
 
     const retreserved = state.reserved
-    console.log(retreserved)
 
-    const tprice = noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2);
+    const tprice = noadults*(pricem*(flight.Price+returnFlight.Price)) + nochild*(pricem*((flight.Price+returnFlight.Price))/2);
+    
+    const pay = tprice-oldprice
 
     const ReservationData = {
       BookingNumber: GenerateBookingNumber(),
@@ -151,6 +159,10 @@ const Booking = props => {
     >
        <Grid sx={{justifyContent:"center",textAlign:"center"}}>
       <br/><div className="row">
+      <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh'}}>
+      <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
+          
+      </div>
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
           ((<Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Link>))
@@ -382,7 +394,7 @@ const Booking = props => {
                 Adult Ticket Price
               </Typography>
             </Grid>
-            <Typography>{"$"+returnFlight.Price}</Typography>
+            <Typography>{"$"+returnFlight.Price*pricem}</Typography>
           </Grid>
         </ListItem>
         <Divider />
@@ -401,7 +413,7 @@ const Booking = props => {
                 Child Ticket Price
               </Typography>
             </Grid>
-            <Typography>{"$"+(returnFlight.Price/2)}</Typography>
+            <Typography>{"$"+(pricem*returnFlight.Price/2)}</Typography>
           </Grid>
         </ListItem>
         <Divider />
@@ -631,7 +643,7 @@ paddingBottom: "0",
                 Adult Ticket Price
               </Typography>
             </Grid>
-            <Typography>{"$"+flight.Price}</Typography>
+            <Typography>{"$"+flight.Price*pricem}</Typography>
           </Grid>
         </ListItem>
         <Divider />
@@ -650,7 +662,7 @@ paddingBottom: "0",
                 Child Ticket Price
               </Typography>
             </Grid>
-            <Typography>{"$"+(flight.Price/2)}</Typography>
+            <Typography>{"$"+(pricem*flight.Price/2)}</Typography>
           </Grid>
         </ListItem>
         <Divider />
@@ -668,7 +680,7 @@ paddingBottom: "0",
 
           <Grid sx={{justifyContent:"center",textAlign:"center",margin:"60px 0 0 165px"}}>
           <Card
-              sx={{ width:"400px",height: ' 150px', display: 'flex', flexDirection: 'column' }}
+              sx={{ width:"400px",height: ' 220px', display: 'flex', flexDirection: 'column' }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
             <List
@@ -711,10 +723,28 @@ paddingBottom: "0",
             Total Price
           </Typography>
         </Grid>
-        <Typography>{noadults*(flight.Price+returnFlight.Price) + nochild*((flight.Price+returnFlight.Price)/2)}</Typography>
+        <Typography>{tprice}</Typography>
       </Grid>
     </ListItem>
     <Divider />
+    <ListItem>
+      <ListItemAvatar>
+        <AttachMoneyIcon style={{ transform: "scale(1.2)" }} />
+      </ListItemAvatar>
+      <Grid container>
+        <Grid item align="left" xs={12}>
+          <Typography
+            sx={{ mt: 0.5 }}
+            color="text.secondary"
+            display="block"
+            variant="caption"
+          >
+            Total to be paid
+          </Typography>
+        </Grid>
+        <Typography>{pay}</Typography>
+      </Grid>
+    </ListItem>
             </List>
             </CardContent>   
             </Card>
