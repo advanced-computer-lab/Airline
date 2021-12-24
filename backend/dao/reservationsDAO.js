@@ -21,55 +21,6 @@ export default class ReservationsDAO {
   static async addReservation(data) {
     try {
 
-
-
-      /*const ReservationDoc = { 
-        DepartureFlight:{
-          id: DepartureFlight1._id,
-          FlightNumber: DepartureFlight1.FlightNumber,
-          DepartureTime: DepartureFlight1.DepartureTime,
-          ArrivalTime: DepartureFlight1.ArrivalTime,
-          Date: DepartureFlight1.Date,
-          DepartureAirport: DepartureFlight1.DepartureAirport,
-          DestinationAirport: DepartureFlight1.DestinationAirport,
-          TripDuration: DepartureFlight1.TripDuration,
-          Price: DepartureFlight1.Price,
-          BaggageAllowance: DepartureFlight1.BaggageAllowance
-
-        },
-        ReturnFlight:{
-          id: ReturnFlight1._id,
-          FlightNumber: ReturnFlight1.FlightNumber,
-          DepartureTime: ReturnFlight1.DepartureTime,
-          ArrivalTime: ReturnFlight1.ArrivalTime,
-          Date: ReturnFlight1.Date,
-          DepartureAirport: ReturnFlight1.DepartureAirport,
-          DestinationAirport: ReturnFlight1.DestinationAirport,
-          TripDuration: ReturnFlight1.TripDuration,
-          Price: ReturnFlight1.Price,
-          BaggageAllowance: ReturnFlight1.BaggageAllowance
-
-        },
-        User:{
-          id: User1._id,
-          firstname: User1.firstname,
-          lastname: User1.lastname,
-          passportnumber: User1.passportnumber,
-          email: User1.email
-        },
-
-        CabinClass: Cabin,
-
-        DepSeats: Depseats,
-
-        RetSeats: retseats
-
-        
-
-
-    }*/
-
-        //return {ReservationDoc}
       return await reservations.insertOne(data)
     } catch (e) {
       console.error(`Unable to add reservation: ${e}`)
@@ -102,6 +53,16 @@ export default class ReservationsDAO {
     }
   }
 
+  static async getReservationByBN(bn) {
+
+    try{
+    return await reservations.findOne({"BookingNumber":bn})
+    } catch (e) {
+      console.error(`Unable to issue find command, ${e}`)
+    }
+
+  }
+
   static async getReservationByID(id) {
     try {
       return await reservations.findOne( {"_id": new ObjectId(id)})
@@ -125,15 +86,7 @@ export default class ReservationsDAO {
   }
   static async UpdateReservation(id, data){
     try{
-      const updateResponse = await reservations.updateOne(
-        { _id: ObjectId(id)},
-        { $set:  { User:{
-          id: data.id,
-          firstname: data.firstname,
-          lastname: data.lastname,
-          passportnumber: data.passportnumber,
-          email: data.email}
-      }},)
+      const updateResponse = await reservations.updateOne({ _id: ObjectId(id)},{ $set: data})
 
       return updateResponse
     }
@@ -142,6 +95,103 @@ export default class ReservationsDAO {
       return { error: e }
     }
     }
+
+    static async UpdateReservationUser(id, data){
+      try{
+        const str = JSON.stringify(data);
+        console.log("body:"+str)
+        const updateResponse = await reservations.updateOne(
+          { _id: ObjectId(id)},
+          { $set:  {
+             User:{
+            id: data.id,
+            firstname: data.firstname,
+            lastname: data.lastname,
+            passportnumber: data.passportnumber,
+            email: data.email
+          }
+        }
+      },)
+  
+        return updateResponse
+      }
+       catch (e) {
+        console.error(`Unable to update reservation: ${e}`)
+        return { error: e }
+      }
+      }
+
+      static async UpdateReservationDepFlight(id, data){
+        try{
+          // const str = JSON.stringify(data);
+          // console.log("DAOdep:"+str)
+          
+          const updateResponse = await reservations.updateOne(
+            { _id: ObjectId(id)},
+            { $set:  {
+               DepartureFlight:{
+                id: data.id,
+                FlightNumber: data.FlightNumber,
+                DepartureTime: data.DepartureTime,
+                ArrivalTime: data.ArrivalTime,
+                Date: data.Date,
+                DepartureAirport: data.DepartureAirport,
+                DestinationAirport: data.DestinationAirport,
+                TripDuration: data.TripDuration,
+                BaggageAllowance: data.BaggageAllowance,
+                Price: data.Price,
+                EconomySeats: data.EconomySeats,
+                BusinessSeats: data.BusinessSeats,
+                FirstSeats: data.FirstSeats,
+                ReservedSeats: data.ReservedSeats
+            }
+          }
+        },)
+    
+          return updateResponse
+        }
+         catch (e) {
+          console.error(`Unable to update reservation: ${e}`)
+          return { error: e }
+        }
+        }
+
+        static async UpdateReservationRetFlight(id, data){
+          try{
+          
+            const str = JSON.stringify(data);
+            console.log("DAOret:"+str)
+           
+            
+            const updateResponse = await reservations.updateOne(
+              { _id: ObjectId(id)},
+              { $set:  {
+                 ReturnFlight:{
+                  id: data.id,
+                  FlightNumber: data.FlightNumber,
+                  DepartureTime: data.DepartureTime,
+                  ArrivalTime: data.ArrivalTime,
+                  Date: data.Date,
+                  DepartureAirport: data.DepartureAirport,
+                  DestinationAirport: data.DestinationAirport,
+                  TripDuration: data.TripDuration,
+                  BaggageAllowance: data.BaggageAllowance,
+                  Price: data.Price,
+                  EconomySeats: data.EconomySeats,
+                  BusinessSeats: data.BusinessSeats,
+                  FirstSeats: data.FirstSeats,
+                  ReservedSeats: data.ReservedSeats
+              }
+            }
+          },)
+      
+            return updateResponse
+          }
+           catch (e) {
+            console.error(`Unable to update reservation: ${e}`)
+            return { error: e }
+          }
+          }
   
 
 }

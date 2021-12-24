@@ -21,6 +21,12 @@ const DepSeats = props => {
 
     const state = props.location.state
 
+    const res = props.location.state.res
+
+    let edit =false
+
+    if(res!=null) edit = true;
+
     const noseats = state.noseats
     const noadults = state.noadults
 
@@ -44,16 +50,22 @@ const DepSeats = props => {
     else if (cabin == "Business Class"){seatsavlbl = ""+depflight.BusinessSeats}
     else if (cabin == "First Class"){seatsavlbl = ""+depflight.FirstSeats}
 
-    const row1 =[{id: "01"}, {id: "02"}, {id: "03"}, {id: "04"}, {id: "05"}, {id: "06"}]
-    const row2 =[{id: "07"}, {id: "08"}, {id: "09"}, {id: "10"}, {id: "11"}, {id: "12"}]
-    const row3 =[{id: "13"}, {id: "14"}, {id: "15"}, {id: "16"}, {id: "17"}, {id: "18"}]
-    const row4 =[{id: "19"}, {id: "20"}, {id: "21"}, {id: "22"}, {id: "23"}, {id: "24"}]
-    const row5 =[{id: "25"}, {id: "26"}, {id: "27"}, {id: "28"}, {id: "29"}, {id: "30"}]
-    const row6 =[{id: "31"}, {id: "32"}, {id: "33"}, {id: "34"}, {id: "35"}, {id: "36"}]
-    const row7 =[{id: "37"}, {id: "38"}, {id: "39"}, {id: "40"}, {id: "41"}, {id: "42"}]
-    const row8 =[{id: "43"}, {id: "44"}, {id: "45"}, {id: "46"}, {id: "47"}, {id: "48"}]
-    const row9 =[{id: "49"}, {id: "50"}, {id: "51"}, {id: "52"}, {id: "53"}, {id: "54"}]
-    const row10 =[{id: "55"}, {id: "56"}, {id: "57"}, {id: "58"}, {id: "59"}, {id: "60"}]
+    let c = ""
+
+      if (cabin == "Economy"){c="E"}
+      else if (cabin == "Business Class"){c="B"}
+      else if (cabin == "First Class"){c="F"}
+
+    const row1 =[{id: `${c}01`}, {id: `${c}02`}, {id: `${c}03`}, {id: `${c}04`}, {id: `${c}05`}, {id: `${c}06`}]
+    const row2 =[{id: `${c}07`}, {id: `${c}08`}, {id: `${c}09`}, {id: `${c}10`}, {id: `${c}11`}, {id: `${c}12`}]
+    const row3 =[{id: `${c}13`}, {id: `${c}14`}, {id: `${c}15`}, {id: `${c}16`}, {id: `${c}17`}, {id: `${c}18`}]
+    const row4 =[{id: `${c}19`}, {id: `${c}20`}, {id: `${c}21`}, {id: `${c}22`}, {id: `${c}23`}, {id: `${c}24`}]
+    const row5 =[{id: `${c}25`}, {id: `${c}26`}, {id: `${c}27`}, {id: `${c}28`}, {id: `${c}29`}, {id: `${c}30`}]
+    const row6 =[{id: `${c}31`}, {id: `${c}32`}, {id: `${c}33`}, {id: `${c}34`}, {id: `${c}35`}, {id: `${c}36`}]
+    const row7 =[{id: `${c}37`}, {id: `${c}38`}, {id: `${c}39`}, {id: `${c}40`}, {id: `${c}41`}, {id: `${c}42`}]
+    const row8 =[{id: `${c}43`}, {id: `${c}44`}, {id: `${c}45`}, {id: `${c}46`}, {id: `${c}47`}, {id: `${c}48`}]
+    const row9 =[{id: `${c}49`}, {id: `${c}50`}, {id: `${c}51`}, {id: `${c}52`}, {id: `${c}53`}, {id: `${c}54`}]
+    const row10 =[{id: `${c}55`}, {id: `${c}56`}, {id: `${c}57`}, {id: `${c}58`}, {id: `${c}59`}, {id: `${c}60`}]
 
 
    
@@ -131,10 +143,17 @@ const DepSeats = props => {
       
     >
       <div >
+      <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+      {edit&&
+          ((<Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Link>))
+          
+          }
+          </div>
           <h1>Select Departure Flight Seats </h1>
           <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+          
             { done &&
-          <Link to={{ pathname: "/flights/ChooseRetSeats", state: {retflight, depflight, noseats, cabin, reserved, noadults} }}  style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}} className="btn btn-success">
+          <Link to={{ pathname: "/flights/ChooseRetSeats", state: {retflight, depflight, noseats, cabin, reserved, noadults, res} }}  style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}} className="btn btn-success">
             Confirm Selection
           </Link>}
           </div>

@@ -1,17 +1,65 @@
-import React, { useState } from "react";
-import{Formik, useFormik} from "formik";
+import React, { Fragment, useEffect } from "react";
+import ReactDOM from "react-dom";
+import { Formik, useField, useFormikContext,useFormik,Form } from "formik";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import * as Yup from "yup";
 import FlightDataService from "../../services/flight";
+import 'react-dropdown/style.css';
+import TextField from '@mui/material/TextField';
+import BackgroundSlider from 'react-background-slider'
+ import image1 from './images/image1.jpg'
+ import image2 from './images/image2.jpg'
+ import image3 from './images/image3.jpg'
+ import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import TimePicker from '@mui/lab/TimePicker';
+import DateTimePicker from '@mui/lab/DateTimePicker';
+import DesktopDatePicker from '@mui/lab/DesktopDatePicker';
+import MobileDatePicker from '@mui/lab/MobileDatePicker';
+import Stack from '@mui/material/Stack';
+import { Typography, Container, Button, Box,Paper } from "@material-ui/core";
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker
+} from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
+import { Grid } from "@mui/material";
+//import React ,{Fragment,UseState,useEffect} from "react";
 
+
+var formSchema = {
+  date: null // if date is defiend as '' yup will throw a invalid date error
+};
+
+var validationSchema = Yup.object().shape({
+  date: Yup.date().nullable()
+});
+
+const DatePickerField = ({ ...props }) => {
+  const { setFieldValue } = useFormikContext();
+  const [field] = useField(props);
+  return (
+    <DatePicker
+      {...field}
+      {...props}
+      selected={(field.value && new Date(field.value)) || null}
+      onChange={(val) => {
+        setFieldValue(field.name, val);
+      }}
+    />
+  );
+};
 export default function Createflight(){
-    
-     const formik=useFormik({
+
+    const formik=useFormik({
          initialValues: {
              
              FlightNumber:"",
              DepartureTime:"",
              ArrivalTime:"",
-             Date:"",
+             Date: "",
              EconomySeats:"",
              BusinessSeats:"",
              FirstSeats:"",
@@ -24,6 +72,8 @@ export default function Createflight(){
 
 
          },
+
+        
 
          validationSchema: Yup.object({
              FlightNumber: Yup.string().required("Required"),
@@ -61,7 +111,7 @@ export default function Createflight(){
                  price: formik.values.Price,
 
              };
-
+             console.log(FlightData.date+"DATTTTT")
              FlightDataService.createFlight(FlightData);
              window.location.href="/admin/flights";
 
@@ -69,185 +119,205 @@ export default function Createflight(){
          },
      });
     return(
-<div>
-<h1 className="card-title">Create New Flight</h1>
-<form onSubmit={formik.handleSubmit}>
-    <div className="row">
-            <div className="row-auto">
-            Flight Number :
-               <input
-               className="form-control"
-                 id="FlightNumber"
-                 name="FlightNumber"
-                 type="text"
-                 placeholder="Flight Number"
-                 onChange={formik.handleChange}
-                value={formik.values.FlightNumber}
-                 />  
 
-           </div>
-           <div className="row-auto">     
-           
-           Departure Time : 
-               <input
-               className="form-control"
-                 id="DepartureTime"
-                 name="DepartureTime"
-                 type="time"
-                 placeholder="Departure Time"
-                 onChange={formik.handleChange}
-                value={formik.values.DepartureTime}
-                 />  
+      
+          
+             <div style={{position:"absolute",padding:"auto",backgroundImage:`url(${image3})`,margin:"-17px 0 0 -112px",height:"100vh",width:"100vw"}}>
+                
+        
+         
+        
+        
+      <Grid sx={{justifyContent:"center",textAlign:"center"}}>
+        <h1 >Add Flight
 
-           </div>
-           <div className="row-auto"> 
-               
-           Arrival Time :  
-               <input
-               className="form-control"
-                 id="ArrivalTime"
-                 name="ArrivalTime"
-                 type="time"
-                 placeholder="Arrival Time"
-                 onChange={formik.handleChange}
-                value={formik.values.ArrivalTime}
-                 />  
+  </h1></Grid>
+  <form onSubmit={
+    formik.handleSubmit}
+   
+     
+    >
+        <Grid container
+            spacing={2}
 
-          </div>
-           <div className="row-auto">   
-              
-           Trip Duration :
-               <input
-               className="form-control"
-                 id="TripDuration"
-                 name="TripDuration"
-                 type="text"
-                 placeholder="Trip Duration"
-                 onChange={formik.handleChange}
-                value={formik.values.TripDuration}
-                 />  
+              margin="0 0 0 50px"
+              alignItems="center"
+             justifyContent="center"
+           >
+          <Grid item  xs={3} >
+        <TextField 
+          required
+          id="FlightNumber"
+          label="Flight Number"
+          variant="filled"
+          value={formik.values.FlightNumber}
+          onChange={formik.handleChange}
+          sx={{ width: "250px" }}
+        /> </Grid>
+         <Grid item xs={3}  >
+         <Formik
+        initialValues={formSchema}
+        onSubmit={values => {
+          // same shape as initial values
+          console.log(values);
+        }}
+        render={props => (
+          <Form>
+            <Box sx={{ width: "250px", margin:"30px 0 0 0"}} mb={2}>
+              {/* Material Ui Date Picker */}
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardTimePicker
+                  id="date-picker-dialog"
+                  label="Departure Time"
+                  inputVariant="filled"
+                  format="HH:mm"
+                  value={props.values.date}
+                  onChange={value => props.setFieldValue("time", value)}
+                  KeyboardButtonProps={{
+                    "aria-label": "change time"
+                  }}
+                />
+              </MuiPickersUtilsProvider>
+            </Box>
 
-          </div>
-           <div className="row-auto">  
-             
-           Date :
-               <input
-               className="form-control"
-                 id="Date"
-                 name="Date"
-                 type="date"
-                 placeholder="Date"
-                 onChange={formik.handleChange}
-                value={formik.values.Date}
-                 />  
+          </Form>
+         
 
-            </div>
-           <div className="row-auto">  
-              
-           Economy Seats :
-               <input
-               className="form-control"
-                 id="EconomySeats"
-                 name="EconomySeats"
-                 type="number"
-                 placeholder="Economy Seats"
-                 onChange={formik.handleChange}
-                value={formik.values.EconomySeats}
-                 />  
+        )}
+      />
+         </Grid>
+         <Grid item  xs={3}>
+         <Formik
+        initialValues={formSchema}
+        onSubmit={values => {
+          // same shape as initial values
+          console.log(values);
+        }}
+        render={props => (
+          <Form>
+            <Box sx={{ width: "250px", margin:"10px 0 0 0"}} mb={2}>
+              {/* Material Ui Date Picker */}
+              <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <KeyboardDatePicker
+                  id="date-picker-dialog"
+                  label="Date picker dialog"
+                  inputVariant="filled"
+                  format="MM/dd/yyyy"
+                  value={props.values.date}
+                  onChange={value => props.setFieldValue("date", value)}
+                  KeyboardButtonProps={{
+                    "aria-label": "change date"
+                  }}
+                />
+              </MuiPickersUtilsProvider>
+            </Box>
 
-            </div>
-           <div className="row-auto">  
-              
-           Business Seats :
-               <input
-               className="form-control"
-                 id="BusinessSeats"
-                 name="BusinessSeats"
-                 type="number"
-                 placeholder="Business Seats"
-                 onChange={formik.handleChange}
-                value={formik.values.BusinessSeats}
-                 />  
+          </Form>
+         
 
-            </div>
-           <div className="row-auto">    
-            
-           First Seats :
-               <input
-               className="form-control"
-                 id="FirstSeats"
-                 name="FirstSeats"
-                 type="number"
-                 placeholder="First Seats"
-                 onChange={formik.handleChange}
-                value={formik.values.FirstSeats}
-                 />  
-
-            </div>
-           <div className="row-auto">    
-           
-           Departure Airport :
-               <input
-               className="form-control"
-                 id="DepartureAirport"
-                 name="DepartureAirport"
-                 type="text"
-                 placeholder="Departure Airport"
-                 onChange={formik.handleChange}
-                value={formik.values.DepartureAirport}
-                 />  
-
-          </div>
-           <div className="row-auto">      
-            
-           Destination Airport :
-               <input
-               className="form-control"
-                 id="DestinationAirport"
-                 name="DestinationAirport"
-                 type="text"
-                 placeholder="Destination Airport"
-                 onChange={formik.handleChange}
-                value={formik.values.DestinationAirport}
-                 />  
-
-          </div>
-           <div className="row-auto">  
-             
-           Baggage Allowed :
-               <input
-               className="form-control"
-                 id="BaggageAllowed"
-                 name="BaggageAllowed"
-                 type="text"
-                 placeholder="Baggage Allowed"
-                 onChange={formik.handleChange}
-                value={formik.values.BaggageAllowed}
-                 />  
-
-          </div>
-           <div className="row-auto">  
-              
-           Price :
-               <input
-               className="form-control"
-                 id="Price"
-                 name="Price"
-                 type="number"
-                 placeholder="Price"
-                 onChange={formik.handleChange}
-                value={formik.values.Price}
-                 />  
-
-<br/></div>
-
-           
-           <div style={{display: 'flex',  justifyContent:'right', alignItems:'center', height: '5vh'}}>
-           <button type= "submit" class="btn btn-primary">Create</button>
-           </div>
+        )}
+      />
+     </Grid >
+     <Grid item  xs={3}>
+           <TextField
+          required
+          id="EconomySeats"
+          label="Economy Seats"
+          type="number"
+          variant="filled"
+          onChange={formik.handleChange}
+         value={formik.values.EconomySeats}
+         sx={{ width: "250px"}}
+        /></Grid>
+       <Grid item  xs={3} >
+        <TextField
+          required
+          id="BusinessSeats"
+          label="Business Seats"
+          type="number"
+          variant="filled"
+          onChange={formik.handleChange}
+         value={formik.values.BusinessSeats}
+         sx={{ width: "250px"}}
+        /></Grid>
+         <Grid item xs={3} >
+        <TextField
+          required
+          id="FirstSeats"
+          label="First Seats"
+          type="number"
+          variant="filled"
+          onChange={formik.handleChange}
+          value={formik.values. FirstSeats}
+          sx={{ width: "250px"}}
+        /></Grid>
+         <Grid item xs={3}>
+        <TextField
+          required
+          id="DepartureAirport"
+          label="Departure Airport"
+          variant="filled"
+          value={formik.values.DepartureAirport}
+          onChange={formik.handleChange}
+          sx={{ width: "250px"}}
+        /></Grid>
+        
+        <Grid item xs={3} >
+         <TextField
+          
+          required
+          id="DestinationAirport"
+          label="Destination Airport"
+          variant="filled"
+          value={formik.values.DestinationAirport}
+          onChange={formik.handleChange}
+          sx={{ width: "250px"}}
+        /></Grid>
+        <Grid item xs={3} >
+         <TextField
+         id='TripDuration'
+          color="secondary"
+          type="number"
+          required
+          variant="filled"
+          label="Trip Duration"
+          onChange={formik.handleChange}
+         value={formik.values.TripDuration}
+         sx={{ width: "250px"}}
+        />
+        </Grid>
+        <Grid item xs={3} >
+            <TextField
+          required
+          id="BaggageAllowed"
+          label="BaggageAllowed"
+          variant="filled"
+          value={formik.values.BaggageAllowed}
+          onChange={formik.handleChange}
+          sx={{ width: "250px"}}
+        />
+        </Grid>
+        <Grid item  xs={3} >
+         <TextField
+         id='Price'
+          color="secondary"
+          type="number"
+          required
+          variant="filled"
+          label="Price"
+          onChange={formik.handleChange}
+         value={formik.values. Price}
+         sx={{ width: "250px"}}
+        />
+        
+        </Grid>
+        
+        </Grid>
+        <Grid sx={ {margin:"50px 0 0 0",textAlign: 'center'}}>
+        <Button onClick={console.log("heyy")} type="submit" variant='contained'  size='large'  >Create</Button>
+        </Grid>
+        </form>
       </div>
-</form>
-</div>
 
     )
 }

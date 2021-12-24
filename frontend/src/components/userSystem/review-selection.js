@@ -6,6 +6,11 @@ const ReviewSelection = props => {
 
     const state = props.location.state
 
+    const res = props.location.state.res
+    let edit =false
+
+    if(res!=null) edit = true;
+
     const flight = state.flight
     const returnFlight=state.depFlight
     const cabin = state.cabin
@@ -18,6 +23,12 @@ const ReviewSelection = props => {
     return(
             <div>
               <div className="row">
+              <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+      {edit&&
+          ((<Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Link>))
+          
+          }
+          </div>
           <strong>You selected the following flights,</strong>
           
           </div>
@@ -75,10 +86,10 @@ const ReviewSelection = props => {
             <div className="col-lg-4 pb-1"></div>
             <div className="col-lg-4 pb-1" style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '6vh'}}>
             {user?
-                 ( <Link to={{ pathname: "/flights/ChooseDepSeats", state: {returnFlight, flight, noseats, cabin, noadults} }} className="btn btn-success">
+                 ( <Link to={{ pathname: "/flights/ChooseDepSeats", state: {returnFlight, flight, noseats, cabin, noadults, res} }} className="btn btn-success">
             Continue Booking
           </Link> )
-          :(<Link to={{ pathname: "/login", state: {returnFlight, flight, noseats, cabin, reserving:true, noadults} }} className="btn btn-success">
+          :(<Link to={{ pathname: "/login", state: {returnFlight, flight, noseats, cabin, reserving:true, noadults, res} }} className="btn btn-success">
           Login to continue booking
         </Link>)
           }

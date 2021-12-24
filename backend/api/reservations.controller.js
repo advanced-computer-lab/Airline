@@ -13,8 +13,9 @@ export default class ReservationsController{
 
           const data = req.body
           
+          let bn = data.BookingNumber
     
-          await ReservationsDAO.addReservation(data)
+         
 
           let depFlight = await FlightsDAO.getFlightByID(data.DepartureFlight.id)
           let retFlight = await FlightsDAO.getFlightByID(data.ReturnFlight.id)
@@ -38,10 +39,13 @@ export default class ReservationsController{
     else if (cabin == "First Class"){dfseats-=noseats;rfseats-=noseats;}
 
 
-          await FlightsDAO.updateFlight(data.DepartureFlight.id, data.DepartureFlight.FlightNumber, data.DepartureFlight.DepartureTime, data.DepartureFlight.ArrivalTime, data.DepartureFlight.Date, decseats, dbseats, dfseats, data.DepartureFlight.DepartureAirport, data.DepartureFlight.DestinationAirport, data.DepartureFlight.TripDuration, data.DepartureFlight.Price, data.DepartureFlight.BaggageAllowance, depseats, true)
+          await ReservationsDAO.addReservation(data)
 
-          await FlightsDAO.updateFlight(data.ReturnFlight.id, data.ReturnFlight.FlightNumber, data.ReturnFlight.DepartureTime, data.ReturnFlight.ArrivalTime, data.ReturnFlight.Date, recseats, rbseats, rfseats, data.ReturnFlight.DepartureAirport, data.ReturnFlight.DestinationAirport, data.ReturnFlight.TripDuration, data.ReturnFlight.Price, data.ReturnFlight.BaggageAllowance, retseats, true)
+          await FlightsDAO.updateFlight(data.DepartureFlight.id, data.DepartureFlight.FlightNumber, data.DepartureFlight.DepartureTime, data.DepartureFlight.ArrivalTime, data.DepartureFlight.Date, decseats, dbseats, dfseats, data.DepartureFlight.DepartureAirport, data.DepartureFlight.DestinationAirport, data.DepartureFlight.TripDuration, data.DepartureFlight.Price, data.DepartureFlight.BaggageAllowance, depseats, bn, true)
 
+          await FlightsDAO.updateFlight(data.ReturnFlight.id, data.ReturnFlight.FlightNumber, data.ReturnFlight.DepartureTime, data.ReturnFlight.ArrivalTime, data.ReturnFlight.Date, recseats, rbseats, rfseats, data.ReturnFlight.DepartureAirport, data.ReturnFlight.DestinationAirport, data.ReturnFlight.TripDuration, data.ReturnFlight.Price, data.ReturnFlight.BaggageAllowance, retseats, bn, true)
+
+          await ReservationsMailer.SuccessfulReservation(data)
 
            //res.json(Cabin)
           res.json({ status: "success" })
@@ -100,12 +104,9 @@ export default class ReservationsController{
 
 
 
+          await FlightsDAO.updateFlight(res.DepartureFlight.id, res.DepartureFlight.FlightNumber, res.DepartureFlight.DepartureTime, res.DepartureFlight.ArrivalTime, res.DepartureFlight.Date, decseats, dbseats, dfseats, res.DepartureFlight.DepartureAirport, res.DepartureFlight.DestinationAirport, res.DepartureFlight.TripDuration, res.DepartureFlight.Price, res.DepartureFlight.BaggageAllowance, depseats, res.BookingNumber, false)
 
-  
-
-          await FlightsDAO.updateFlight(res.DepartureFlight.id, res.DepartureFlight.FlightNumber, res.DepartureFlight.DepartureTime, res.DepartureFlight.ArrivalTime, res.DepartureFlight.Date, decseats, dbseats, dfseats, res.DepartureFlight.DepartureAirport, res.DepartureFlight.DestinationAirport, res.DepartureFlight.TripDuration, res.DepartureFlight.Price, res.DepartureFlight.BaggageAllowance, depseats)
-
-          await FlightsDAO.updateFlight(res.ReturnFlight.id, res.ReturnFlight.FlightNumber, res.ReturnFlight.DepartureTime, res.ReturnFlight.ArrivalTime, res.ReturnFlight.Date, recseats, rbseats, rfseats, res.ReturnFlight.DepartureAirport, res.ReturnFlight.DestinationAirport, res.ReturnFlight.TripDuration, res.ReturnFlight.Price, res.ReturnFlight.BaggageAllowance, retseats)
+          await FlightsDAO.updateFlight(res.ReturnFlight.id, res.ReturnFlight.FlightNumber, res.ReturnFlight.DepartureTime, res.ReturnFlight.ArrivalTime, res.ReturnFlight.Date, recseats, rbseats, rfseats, res.ReturnFlight.DepartureAirport, res.ReturnFlight.DestinationAirport, res.ReturnFlight.TripDuration, res.ReturnFlight.Price, res.ReturnFlight.BaggageAllowance, retseats, res.BookingNumber, false)
 
           await ReservationsDAO.deleteReservation(resId)
 
@@ -133,6 +134,48 @@ export default class ReservationsController{
           res.status(500).json({ error: e })
         }
       }
+
+      static async apiUpdateReservation(req, res, next) {
+        try {
+
+          let res = await ReservationsDAO.getReservationByID(req.params.id);
+          
+          let flight = await FlightsDAO.getFlightByID(req.body.flightid);
+
+          const oldseats = req.body.oldseats;
+
+          const newseats = req.body.newseats;
+
+          
+          if(req.body.editdepseats) res.DepSeats = newseats;
+          else if(req.body.editretseats) res.RetSeats = newseats;
+
+  
+          await ReservationsDAO.UpdateReservation(req.params.id, res);
+
+          await FlightsDAO.updateFlight(req.body.flightid, flight.FlightNumber, flight.DepartureTime, flight.ArrivalTime, flight.Date, flight.EconomySeats, flight.BusinessSeats, flight.FirstSeats, flight.DepartureAirport, flight.DestinationAirport, flight.TripDuration, flight.Price, flight.BaggageAllowance, oldseats, null, false)
+
+          await FlightsDAO.updateFlight(req.body.flightid, flight.FlightNumber, flight.DepartureTime, flight.ArrivalTime, flight.Date, flight.EconomySeats, flight.BusinessSeats, flight.FirstSeats, flight.DepartureAirport, flight.DestinationAirport, flight.TripDuration, flight.Price, flight.BaggageAllowance, newseats, null, true)
+
+
+
+          res.json({ status: "success" })
+         
+        } catch (e) {
+          res.status(500).json({ error: e.message })
+        }
+      }
         
+      static async apiMailBooking(req, res, next) {
+        try {
+          console.log("here ctrl")
+          await ReservationsMailer.SuccessfulReservation(req.body)
+          res.json({ status: "success" })
+         
+        } catch (e) {
+          console.log(`api, ${e}`)
+          res.status(500).json({ error: e })
+        }
+      }
          
 }

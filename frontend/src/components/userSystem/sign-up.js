@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Dropdown from 'react-dropdown';
+import UserDataService from "../../services/user";
 import{Formik, useFormik} from "formik";
 import * as Yup from "yup";
 import 'react-dropdown/style.css';
@@ -38,9 +39,10 @@ export default function Signup(){
             CountryCode: Yup.string().required("Required"),
             Phone:Yup.number().required("Required"),
             Email:Yup.string().required("Required"),
-            Username:Yup.number().required("Required"),
-            Password:Yup.number().required("Required"),
-            ConfirmPassword:Yup.number().required("Required"),
+            PassNumber:Yup.number().required("Required"),
+            Username:Yup.string().required("Required"),
+            Password:Yup.string().required("Required"),
+            ConfirmPassword:Yup.string().required("Required"),
             
 
         }),
@@ -48,17 +50,24 @@ export default function Signup(){
 
         onSubmit:async (values)=>{
             const UserData = {
-                fname: formik.values.FirstName,
-                lname: formik.values.LastName,
+                firstname: formik.values.FirstName,
+                lastname: formik.values.LastName,
                 address: formik.values.Address,
                 countrycode: formik.values.CountryCode,
                 phone: formik.values.Phone,
                 email: formik.values.Email,
+                passnum: formik.values.PassNumber,
                 username: formik.values.Username,
                 password: formik.values.Password,
                 cfpassword: formik.values.ConfirmPassword,
             }
            // ? window.location.href="/admin/flights";
+
+           console.log("yup");
+           UserDataService.create(UserData);
+           window.location.href="/";
+
+
 
 
         },
@@ -72,7 +81,7 @@ export default function Signup(){
         />
 <div>
 
-<Box
+ <Box
     opacity='[0,0,0]'
       component="form"
       sx={{
@@ -152,7 +161,7 @@ export default function Signup(){
         </div>
         <TextField
           required
-          id="Pnumber"
+          id="PassNumber"
           label="Passport Number"
           variant="outlined"
           onChange={formik.handleChange}
@@ -194,7 +203,7 @@ export default function Signup(){
         <div >
             </div>
            
-        <Button variant='contained'  size='large' >Sign up</Button>
+        <Button type = 'submit' variant='contained'  size='large'  >Sign up</Button>
   
         
         </form>
