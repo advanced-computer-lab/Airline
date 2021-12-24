@@ -22,8 +22,8 @@ import UserReservations from "./components/userSystem/user-reservations"
 import SignUp from "./components/userSystem/sign-up"
 import EditDepSeats from './components/userSystem/edit-dep-seats'
 import EditRetSeats from './components/userSystem/edit-ret-seats'
-import AccessDenied from "./components/adminSystem/AccessDenied.js";
 import CabinSearch from "./components/userSystem/CabinSearch.js";
+import AccessDenied from "./components/adminSystem/AccessDenied.js";
 
 function App() {
 
