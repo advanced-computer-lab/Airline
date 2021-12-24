@@ -41,6 +41,19 @@ const ReviewSelection = props => {
 
     return(
             <div  classname="row">
+               <Box
+  opacity='[0,0,0]'
+    component="form"
+    sx={{
+      '& .MuiTextField-root': { m: 3, width: '65ch' },
+    }}
+    noValidate
+    textAlign='left'
+    autoComplete="off"
+    height="0px"
+    marginTop={-2}
+    backgroundColor="#f0f6f7ff"
+  >
               <Grid sx={{justifyContent:"center",textAlign:"center"}}>
               <h1>You selected the following flights</h1>
               <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
@@ -547,7 +560,7 @@ paddingBottom: "0",
           }
           
           </Grid><br/><br/>
-          
+          </Box>
   </div>
         
  

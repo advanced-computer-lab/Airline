@@ -121,11 +121,7 @@ const RetSeats = props => {
     return (
 
       <div>
-         <BackgroundSlider
-          images={[image1,image2, image3]}
-          duration={4}
-          transition={2}
-        />
+         
         <Box
     opacity='[0,0,0]'
       component="form"
