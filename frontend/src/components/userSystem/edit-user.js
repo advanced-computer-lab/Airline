@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import{Formik, useFormik} from "formik";
 import * as Yup from "yup";
 import UserDataService from "../../services/user";
+//import bcrypt from "bcrypt";
 import axios from 'axios';
 import { useParams } from "react-router";
 import { setuid } from "process";
@@ -28,7 +29,9 @@ const UpdateUser = props => {
              FirstName:user.firstname,
              LastName:user.lastname,
              Email:user.email,
-             PassportNumber:user.passportnumber
+             PassportNumber:user.passportnumber,
+             OldPassword:"",
+             NewPassword:""
              
 
 
@@ -38,7 +41,9 @@ const UpdateUser = props => {
              FirstName: Yup.string().required("Required"),
              LastName: Yup.string().required("Required"),
              Email : Yup.string().required("Required"),
-             PassportNumber: Yup.string().required("Required")
+             PassportNumber: Yup.string().required("Required"),
+             OldPassword: Yup.string().required("Required"),
+             NewPassword: Yup.string()
              
              
 
@@ -51,6 +56,8 @@ const UpdateUser = props => {
                  lastname: formik.values.LastName,
                  passportnumber: formik.values.PassportNumber,
                  email: formik.values.Email,
+                 oldpassword: formik.values.OldPassword,
+                 newpassword: formik.values.NewPassword
                  
              };
 
@@ -58,13 +65,28 @@ const UpdateUser = props => {
              console.log(user._id);
 
              let user1;
+             let b = true;
 
 
 
-            
+
+             
+
+               
+
+
+               
+
+
+
+             
               await UserDataService.edit(user._id,UserData).then(response => {
                 //user = response.data;
                 console.log(response.data);
+                if(response.data){
+                 b = false;
+                alert("Incorrect Password!");
+                }
               })
               .catch(e => {
                 console.log(e);
@@ -81,6 +103,7 @@ const UpdateUser = props => {
               console.log(user1);
               localStorage.setItem('token', user)
               props.log(user1);
+              if(b)
               props.history.push('/');
               
             
@@ -153,6 +176,39 @@ const UpdateUser = props => {
                  />  <br/>
 
            </div>
+
+           <div className="row-auto">
+           
+           Old Password :
+             <input
+             className="form-control"
+               id="OldPassword"
+               name="OldPassword"
+               type="password"
+               placeholder="Old Password"
+               onChange={formik.handleChange}
+              value={formik.values.OldPassword}
+               />  <br/>
+
+         </div>
+
+        
+         
+
+         <div className="row-auto">
+           
+           New Password :
+             <input
+             className="form-control"
+               id="NewPassword"
+               name="NewPassword"
+               type="password"
+               placeholder="New Password"
+               onChange={formik.handleChange}
+              value={formik.values.NewPassword}
+               />  <br/>
+
+         </div>
           
            <div style={{display: 'flex',  justifyContent:'right', alignItems:'center', height: '5vh'}}>
            <button type= "submit" class="btn btn-primary">Update</button>

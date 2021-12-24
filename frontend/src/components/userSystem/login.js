@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import UserDataService from "../../services/user";
+import {Box,Container,Typography,Grid,CardContent,CardActions,Card,ListItemAvatar,ListItem,Divider,List,Paper} from '@mui/material';
+import TextField from '@mui/material/TextField';
 
 const Login = props => {
 
@@ -27,7 +29,7 @@ const Login = props => {
 		const data = await response.json()
 
 		if (data.user) {
-			localStorage.setItem('token', data.user)
+			localStorage.setItem('token', data.token)
 			alert('Login successful')
       props.login(data.user)
 
