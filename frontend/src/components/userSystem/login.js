@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import UserDataService from "../../services/user";
+import {Box,Paper,Container,Typography,Grid,CardContent,CardActions,Card,ListItemAvatar,ListItem,Divider,List} from '@mui/material';
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 const Login = props => {
 
@@ -9,6 +12,16 @@ const Login = props => {
 
   const state = props.location.state
   const reserving = props.location.state.reserving
+
+  const styles={
+    gridStyle:{
+      position: "absolute",
+      top: "50%",
+      marginLeft: "50px",
+      height: "100px",
+      width:"50px"
+
+  }};
 
   async function login(event) {
 		event.preventDefault()
@@ -38,37 +51,20 @@ const Login = props => {
 			alert('Please check your username and password')
 		}
 	}
-
-  /*const hash = {Email: user.Email , Password: user.Password};
-
-  const login = (hash) => {
-
-    
-
-    UserDataService.authentication(hash).then(response => {
-      
-      console.log(response.data.user);
-      setUser({id: response.data.user._id});
-      setUser({Name:response.data.user.Name});
-      
-      
-    })
-    .catch(e => {
-      console.log(e);
-    });
-
-    props.login(user)
-    props.history.push(`/${user.Name}`);
-  }*/
-
   return (
-    <div>
-    <h1>Login</h1>
+    <Grid container style={styles.gridStyle} >
+      <Grid item>
+       <Paper elevation={15} style={{padding:"20px",width :"400px",height:"500px"}}>
+       <div className="form_container">
+       <h1 style={{textAlign:"center",margin:"20px 0 0 0"}}>Login</h1>
+       <br />
+          <br />
     <div className="submit-form">
-      <div>
+    <Grid style={{margin:"20px 0 0 0"}}>
         <div className="form-group">
-          <label htmlFor="user">Username</label>
-          <input
+         
+          <TextField
+          label="Username"
             type="text"
             className="form-control"
             id="email"
@@ -77,11 +73,15 @@ const Login = props => {
             onChange={(e) => setEmail(e.target.value)}
             name="email"
           />
+           <br />
+          <br />
+          
         </div>
 
         <div className="form-group">
-          <label htmlFor="id">Password</label>
-          <input
+          
+          <TextField
+          label="Password"
             type="password"
             className="form-control"
             id="password"
@@ -91,16 +91,19 @@ const Login = props => {
             name="password"
             display="none"
           />
-        </div><br/>
-        <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}> 
+          <br />
+          <br />
+        </div></Grid><br/>
+        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '5vh'}}> 
         <button onClick={login} className="btn btn-success">
           Login
         </button>
         </div>
+        
       </div>
     </div>
-    </div>
-  );
-};
+    </Paper>
+    </Grid>
+    </Grid>)};
 
 export default Login;
