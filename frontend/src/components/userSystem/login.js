@@ -30,6 +30,7 @@ const Login = props => {
 
 		if (data.user) {
 			localStorage.setItem('token', data.token)
+      console.log(data.token)
 			alert('Login successful')
       props.login(data.user)
 

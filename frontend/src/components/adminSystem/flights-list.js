@@ -1,8 +1,24 @@
 import React, { useState, useEffect } from "react";
 import FlightDataService from "../../services/flight";
 import { Link } from "react-router-dom";
+import jwt from "jsonwebtoken";
 
 const FlightsList = props => {
+
+  // const access = () => {
+  //   const token = localStorage.getItem("token");
+  //   if(!token)
+  //   console.log("access denied");
+  //   try {
+  //     let decoded = jwt.verify(token, 'secret123');
+
+  //   } catch(err) {
+      
+  //   }
+  // };
+
+
+
   const [flights, setFlights] = useState([]);
   const [searchFlightNum, setSearchFlightNum ] = useState("");
   const [searchDepartTime, setSearchDepartTime ] = useState("");
@@ -13,6 +29,14 @@ const FlightsList = props => {
   
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if(!token)
+    props.history.push('/AcccessDenied');
+    else{
+    let decoded = jwt.verify(token, 'secret123');
+    console.log(decoded.email);
+  }
+
     retrieveFlights();
   }, []);
 
