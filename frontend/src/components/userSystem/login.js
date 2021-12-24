@@ -4,6 +4,7 @@ import {Box,Paper,Container,Typography,Grid,CardContent,CardActions,Card,ListIte
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
+
 const Login = props => {
 
   const [email, setEmail] = useState('')
@@ -16,10 +17,12 @@ const Login = props => {
   const styles={
     gridStyle:{
       position: "absolute",
-      top: "50%",
+      top: "20%",
+      right:"18%",
       marginLeft: "50px",
-      height: "100px",
-      width:"50px"
+     marginRight: "200px",
+    //  height: "500px",
+      width:"500px"
 
   }};
 
