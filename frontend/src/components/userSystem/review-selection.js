@@ -78,8 +78,8 @@ const ReviewSelection = props => {
         fullWidth
         container
       >
-        <Typography sx={{margin:"0 0 0 15px"}} variant="h4">{flight.DepartureAirport} to {flight.DestinationAirport}</Typography>
-      <Typography sx={{margin:"0 0 0 15px"}} variant="h9">Flight No. {flight.FlightNumber}</Typography>
+        <Typography sx={{margin:"0 0 0 15px"}} variant="h4">{returnFlight.DepartureAirport} to {returnFlight.DestinationAirport}</Typography>
+      <Typography sx={{margin:"0 0 0 15px"}} variant="h9">Flight No. {returnFlight.FlightNumber}</Typography>
       </Grid>
       
       <List
@@ -319,7 +319,7 @@ item
 fullWidth
 container
 >
-<Typography sx={{margin:"0 0 0 15px"}} variant="h4">{flight.DepartureAirport} to {flight.DestinationAirport}</Typography>
+      <Typography sx={{margin:"0 0 0 15px"}} variant="h4">{flight.DepartureAirport} to {flight.DestinationAirport}</Typography>
       <Typography sx={{margin:"0 0 0 15px"}} variant="h9">Flight No. {flight.FlightNumber}</Typography>
 </Grid>
 

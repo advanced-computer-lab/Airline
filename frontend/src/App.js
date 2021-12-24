@@ -52,7 +52,7 @@ function App() {
       
     <nav style={{margin:"0 0 0 0"}} className="navbar navbar-expand navbar-dark bg-dark">
       <a className="navbar-brand">
-        Airline
+        AS Airlines
       </a>
       <div  style={{margin:"0 0 0 0"}} className="navbar-nav ms-auto">
         <li className="nav-item" >

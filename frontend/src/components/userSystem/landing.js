@@ -103,16 +103,17 @@ const Landing = props => {
       textAlign='left'
       autoComplete="off"
       height="0px"
-      marginTop={-4}
+      marginTop={-2}
       
     >
-      <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+      <br/><div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
           ((<Button variant='contained'  size='small' color='error' onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Button>))
           
           }
           </div>
       
+          <h1>Welcome to AS Airlines.</h1>
           <h4>Where would you like to go?</h4>
           
             <Box sx={{ minWidth: 1000 } }>
@@ -202,7 +203,6 @@ const Landing = props => {
                 <Link to={{ pathname: "/flights/SelectDeparture", state: {hashobj, res} }} className="btn btn-success">
            Search
           </Link> &nbsp;
-          <Button onClick={refreshList} variant='contained'  size='medium' color='primary'>Reset filters</Button>
               </div>
             </div>
            
