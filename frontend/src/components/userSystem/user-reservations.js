@@ -73,7 +73,7 @@ const UserReservations = props => {
 
       return(
         <div>
-        <div className="row" style= {{width:"80rem"}}>
+        <div className="row" style= {{width:"250rem"}}>
           <h1>My Reservations </h1><br/>
 
           {noRes() && ( <strong>You have no Reservations.</strong>)} 
@@ -615,7 +615,7 @@ const UserReservations = props => {
                     <Link to={{ pathname: "/flights/EditRetSeats", state: reservation }} className="btn btn-success">Edit Return Seats</Link>   
                     <Button variant='contained'  size='small' color='error' onClick={() => {if(window.confirm('Are you sure you want to cancel this reservation?')){deleteReservations(reservation._id)}}}>Cancel Reservation</Button> 
                       </ButtonGroup>
-                      
+
                     
                   </p>
                 </div>
