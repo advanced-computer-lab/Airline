@@ -199,10 +199,8 @@ const Landing = props => {
               <br/>
               <div className="row">
               
-                
-                <Link to={{ pathname: "/flights/SelectDeparture", state: {hashobj, res} }} className="btn btn-success">
-           Search
-          </Link> &nbsp;
+          <Button variant='contained'  size='small' color='success' onClick={() => {props.history.push("/flights/SelectDeparture", {hashobj, res})}}>Search</Button> &nbsp;
+
               </div>
             </div>
            

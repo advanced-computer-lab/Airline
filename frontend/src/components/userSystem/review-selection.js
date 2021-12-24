@@ -55,7 +55,11 @@ const ReviewSelection = props => {
     backgroundColor="#f0f6f7ff"
   >
               <Grid sx={{justifyContent:"center",textAlign:"center"}}>
-              <h1>You selected the following flights</h1>
+              <br/><h1>You selected the following flights</h1>
+              <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh'}}>
+      <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
+          
+      </div>
               <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
           ((<Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Link>))
@@ -542,7 +546,6 @@ paddingBottom: "0",
   </Card>
  
   </Grid>
- 
   </Grid>
   
   </Grid><Grid sx={{justifyContent:"center",textAlign:"center",margin:"60px 0 0 0"}}>
@@ -551,12 +554,9 @@ paddingBottom: "0",
             </Grid>
   <Grid sx={{justifyContent:"center",textAlign:"center",margin:"-20px 0 0 0"}}>
   {user?
-                 ( <Link to={{ pathname: "/flights/ChooseDepSeats", state: {returnFlight, flight, noseats, cabin, noadults, res} }} className="btn btn-success">
-            Continue Booking
-          </Link> )
-          :(<Link to={{ pathname: "/login", state: {returnFlight, flight, noseats, cabin, reserving:true, noadults, res} }} className="btn btn-success">
-          Login to continue booking
-        </Link>)
+                 (<Button variant='contained'  size='small' color='success' onClick={() => {props.history.push("/flights/ChooseDepSeats", {returnFlight, flight, noseats, cabin, noadults, res})}}>Continue Booking</Button>
+                 )
+          :(        <Button variant='contained'  size='small' color='success' onClick={() => {props.history.push("/login", {returnFlight, flight, noseats, cabin, reserving:true, noadults, res})}}>Login to Continue Booking</Button>          )  
           }
           
           </Grid><br/><br/>

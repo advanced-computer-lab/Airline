@@ -125,7 +125,7 @@ const UserReservations = props => {
                     &nbsp;
                     &nbsp;
                     &nbsp;
-                    <Link to={{ pathname:"/flights", state:reservation}} className="btn btn-success">Change flights</Link>
+                    <Button variant='contained'  size='small' color='info'  onClick={() =>{props.history.push("/",reservation);}}>Change flights</Button>
                     </ButtonGroup>
                   <p className="card-text" >
                   <div class="row">
@@ -325,7 +325,7 @@ const UserReservations = props => {
         <Divider />
         <ListItem>
         <ButtonGroup style={{display: 'flex', height: '5vh' ,marginTop:'1vh',marginLeft:'250px'}}>
-        <Link to={{ pathname: "/flights/EditDepSeats", state: reservation}} className="btn btn-primary">Edit Seats</Link> 
+        <Button variant='contained'  size='small' color='info'  onClick={() =>{props.history.push("/flights/EditDepSeats",reservation);}}>Edit Seats</Button>
         </ButtonGroup>
         </ListItem>
                     </Grid>
@@ -531,7 +531,7 @@ const UserReservations = props => {
         <Divider />
         <ListItem>
         <ButtonGroup style={{display: 'flex', height: '5vh' ,marginTop:'1vh',marginLeft:'250px'}}>
-        <Link to={{ pathname: "/flights/EditRetSeats", state: reservation}} className="btn btn-primary">Edit Seats</Link>  
+        <Button variant='contained'  size='small' color='info'  onClick={() =>{props.history.push("/flights/EditRetSeats",reservation);}}>Edit Seats</Button> 
         </ButtonGroup>
         </ListItem>
                     </Grid>

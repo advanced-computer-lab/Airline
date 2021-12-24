@@ -6,6 +6,7 @@ import image2 from './images/image2.jpg'
 import image3 from './images/image3.jpg'
 import Box from '@mui/material/Box';
 import './select-seats.css'; 
+import Button from '@mui/material/Button';
 
 function useForceUpdate(){
   const [value, setValue] = useState(0); // integer state
@@ -136,6 +137,7 @@ const RetSeats = props => {
       backgroundColor="#f0f6f7ff"
     >
       <br/><div >
+      <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
           ((<Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Link>))
@@ -144,10 +146,9 @@ const RetSeats = props => {
           </div>
           <h1>Select Return Flight Seats </h1>
           <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
-            { done &&
-          <Link to={{ pathname: "/flights/Booking", state: {retflight, depflight, noseats, cabin, departurereserved, reserved, noadults, res} }} className="btn btn-success">
-            Confirm Selection
-          </Link>}
+            { done &&      
+              <Button variant='contained'  size='small' color='success' onClick={() => {props.history.push("/flights/Booking", {retflight, depflight, noseats, cabin, departurereserved, reserved, noadults, res})}}>Select</Button>
+             }
           </div>
 
           <strong>Please select {noseats} {cabin} seat(s) for your return flight.</strong>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import FlightDataService from "../../services/flight";
-import { Link } from "react-router-dom";
+import { Link, Router } from "react-router-dom";
 import * as Yup from "yup";
 import 'react-dropdown/style.css';
 import {Box,Container,Typography,Grid,CardContent,CardActions,Card,ListItemAvatar,ListItem,Divider,List} from '@mui/material';
@@ -75,11 +75,11 @@ const FlightDep = props => {
 
     let string =""
 
-    if (flight.DepartureDate!="") string += `  Date: ${flight.DepartureDate} //`
-    if (flight.DepartureAirport!="") string += `     DepartureAirport: ${flight.DepartureAirport} //`
-    if (flight.DestinationAirport!="") string += `      DestinationAirport: ${flight.DestinationAirport} //`
-    if (cabin!="") string += `    Cabin Class: ${cabin} //`
-    if (noseats!=0) string += `     Seats: ${noseats}`
+     if (flight.DepartureDate!="") string += `  Date: ${flight.DepartureDate}-\n`
+    if (flight.DestinationAirport!="") string += `     DepartureAirport: ${flight.DestinationAirport}-\n`
+    if (flight.DepartureAirport!="") string += `      DestinationAirport: ${flight.DepartureAirport}-\n`
+    if (cabin!="") string += `    Cabin Class: ${cabin}      -\n`
+    if (noseats!=0) string += `     Seats: ${noseats}\n`
 
     return string
 
@@ -106,6 +106,11 @@ return (
   >
     
     <br/><br/><div className="row">
+    <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh'}}>
+    <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
+          
+      </div>
+
     <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
           ((<Button variant='contained'  size='small' color='error' onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Button>))
@@ -368,10 +373,7 @@ Available Departure Flights
     </List>
   </Grid>
             </CardContent>
-           
-            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats, noadults, res} }} className="btn btn-success"   >
-           Select
-        </Link>
+            <Button variant='contained'  size='small' color='success' onClick={() => {props.history.push("/flights/selectReturn", {flight, returnDate, cabin, noseats, noadults, res})}}>Select</Button>
         
           </Card>
         </Grid>
