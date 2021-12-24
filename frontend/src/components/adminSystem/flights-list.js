@@ -34,7 +34,8 @@ const FlightsList = props => {
     props.history.push('/AcccessDenied');
     else{
     let decoded = jwt.verify(token, 'secret123');
-    console.log(decoded.email);
+    if(decoded.email != "admin@asairline.com")
+    props.history.push('/AccessDenied');
   }
 
     retrieveFlights();

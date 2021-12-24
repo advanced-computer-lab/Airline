@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect } from "react";
+import jwt from "jsonwebtoken";
 import ReactDOM from "react-dom";
 import { Formik, useField, useFormikContext,useFormik,Form } from "formik";
 import DatePicker from "react-datepicker";
@@ -51,7 +52,16 @@ const DatePickerField = ({ ...props }) => {
     />
   );
 };
-export default function Createflight(){
+const CreateFlight = props => {
+
+  const token = localStorage.getItem('token');
+  if(!token)
+  props.history.push('/AcccessDenied');
+  else{
+  let decoded = jwt.verify(token, 'secret123');
+  if(decoded.email != "admin@asairline.com")
+  props.history.push('/AccessDenied');
+}
 
     const formik=useFormik({
          initialValues: {
@@ -321,3 +331,4 @@ export default function Createflight(){
 
     )
 }
+export default CreateFlight;
