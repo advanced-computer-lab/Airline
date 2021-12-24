@@ -73,7 +73,7 @@ const UserReservations = props => {
 
       return(
         <div>
-        <div className="row" style= {{width:"100rem"}}>
+        <div className="row" style= {{width:"75rem"}}>
           <h1>My Reservations </h1><br/>
 
           {noRes() && ( <strong>You have no Reservations.</strong>)} 
@@ -609,9 +609,8 @@ const UserReservations = props => {
 
                     <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'1vh'}}>
                     <Button variant='contained'  size='small' color='info' onClick={() =>{ReservationsDataService.mail(reservation);}}>Mail My Booking</Button> 
-                    <Link to={{ pathname:"/flights/DepFlight", state:reservation}} className="btn btn-success">Select Departure Flight</Link>  
-                    <Link to={{ pathname:"/flights/RetFlight", state:reservation}} className="btn btn-success">Select Return Flight</Link>  
-                    <Link to={{ pathname:"/flights", state:reservation}} className="btn btn-success">Change flights</Link>  
+                    <Link to={{ pathname:"/flights/DepFlight", state:reservation}} className="btn btn-success">Edit Departure Flight</Link>  
+                    <Link to={{ pathname:"/flights/RetFlight", state:reservation}} className="btn btn-success">Edit Return Flight</Link>  
                     <Button variant='contained'  size='small' color='error' onClick={() => {if(window.confirm('Are you sure you want to cancel this reservation?')){deleteReservations(reservation._id)}}}>Cancel Reservation</Button> 
                       </ButtonGroup>
 

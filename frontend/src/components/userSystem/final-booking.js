@@ -129,8 +129,6 @@ const Booking = props => {
   }
 
 
-    //console.log("HERE "+props.User.firstname)
-
 
     return (
       <div>
