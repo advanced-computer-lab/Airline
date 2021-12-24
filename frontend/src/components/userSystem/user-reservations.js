@@ -77,7 +77,7 @@ const UserReservations = props => {
          
 
           {noRes() && ( <strong>You have no Reservations.</strong>)} 
-          <Grid item  xs={12} sm={6} md={4} marginLeft={-15}>
+          <Grid item  xs={12} sm={6} md={4} marginLeft={-10}>
           <h1 marginLeft>My Reservations </h1><br/>
         {reservations.map((reservation) => {
           

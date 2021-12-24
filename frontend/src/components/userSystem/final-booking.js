@@ -20,6 +20,7 @@ import LuggageIcon from "@mui/icons-material/Luggage";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import {Box,Container,Typography,Grid,CardContent,CardActions,Card,ListItemAvatar,ListItem,Divider,List} from '@mui/material';
 import { ButtonGroup } from "@mui/material";
+import { height } from "@mui/system";
 
 const Booking = props => {
 
@@ -134,7 +135,7 @@ const Booking = props => {
       <div>
 
          
-      <Grid container spacing ={33} mt={0}  marginTop={-7}>
+      <Grid container spacing ={14} mt={0}  marginTop={-7} width={1400} marginLeft={0}>
       <div className="row">
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
@@ -156,16 +157,16 @@ const Booking = props => {
             <div >
            
             <Card
-              sx={{ width:"550px",height: '600px', display: 'flex', flexDirection: 'column' }}
+              sx={{ width:"400px",height: ' 600px', display: 'flex', flexDirection: 'column' }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
               
-                  <Grid style={{ width: "550px" }} fullWidth container>
+                  <Grid style={{ width: "400px" }} fullWidth container>
       <Grid
         align="center"
         style={{
           
-          width: "550px",
+          width: "400px",
           height: "550px",
           alignItems: "center",
         }}
@@ -178,7 +179,7 @@ const Booking = props => {
 
          <List
         sx={{
-          width: "550px",
+          width: "400px",
           paddingTop: "0",
           paddingBottom: "0",
         }}
@@ -408,7 +409,7 @@ const Booking = props => {
         </Container>
       <div className="col-sm">
         
-      <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
+      <Container sx={{ py: 0 ,margin:"0 0  0 -200px" }} maxWidth="md">
               <h3>Return Flight</h3>
               <div className="row">
           </div>
@@ -419,11 +420,11 @@ const Booking = props => {
             <div >
            
             <Card
-              sx={{ width:"550px",height: '600px', display: 'flex', flexDirection: 'column' }}
+              sx={{ width:"400px",height: '600px', display: 'flex', flexDirection: 'column' }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
               
-                  <Grid style={{ width: "550px" }} fullWidth container>
+                  <Grid style={{ width: "400px" }} fullWidth container>
       <Grid
         align="center"
         style={{
@@ -441,7 +442,7 @@ const Booking = props => {
 
          <List
         sx={{
-          width: "550px",
+          width: "400px",
           paddingTop: "0",
           paddingBottom: "0",
         }}
@@ -670,11 +671,15 @@ const Booking = props => {
         <br/>
         </Container>
         </div>
-        <Container sx={{ py: 0 ,margin:"0 0 0 15px" }}  maxWidth="sm">
-            <Card width="550px" height='100px'>      
+
+        <Container sx={{ py: 0 ,margin:"0 0 0 0px" }}  maxWidth="sm">
+        <Card
+              sx={{ width:"400px",height: ' 150px', display: 'flex', flexDirection: 'column' }}
+            >
+              <CardContent sx={{ flexGrow: 1 }}>
             <List
         sx={{
-          width: "550px",
+          width: "400px",
           paddingTop: "0",
           paddingBottom: "0",
         }}
@@ -717,6 +722,7 @@ const Booking = props => {
     </ListItem>
     <Divider />
             </List>
+            </CardContent>   
             </Card>
 
 
@@ -724,8 +730,8 @@ const Booking = props => {
          
       
       </Container>
-      <Container sx={{ py: 0 ,margin:"0 0 0 310px" }}  maxWidth='sm'>
-      <Grid container>
+      <Container sx={{ py: 0 ,margin:"0 0 0 -35px" }}  maxWidth='sm'>
+      <Grid container >
         <Grid item align="right" xs={12}>
                   
             <List
@@ -733,13 +739,15 @@ const Booking = props => {
           width: "300px",
           paddingTop: "0",
           paddingBottom: "0",
+          marginTop:"100px",
+          height:'100px'
         }}
       >
         
       <div className="col-lg-4 pb-1" style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '6vh'}}>
       {edit?
           ((<Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.delete(res._id);ReservationData.BookingNumber=res.BookingNumber;ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Modification</Button>))
-          :(<Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Booking</Button>)
+          :(<Button variant='contained'  size='medium' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Booking</Button>)
           }
                 </div>
                 </List>
