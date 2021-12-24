@@ -84,11 +84,11 @@ const FlightReturn = props => {
 
     let string =""
 
-    if (state.returnDate!="") string += `  Date: ${state.returnDate} //`
-    if (flight.DestinationAirport!="") string += `     DepartureAirport: ${flight.DestinationAirport} //`
-    if (flight.DepartureAirport!="") string += `      DestinationAirport: ${flight.DepartureAirport} //`
-    if (cabin!="") string += `    Cabin Class: ${cabin} //`
-    if (noseats!=0) string += `     Seats: ${noseats}`
+    if (state.returnDate!="") string += `  Date: ${state.returnDate}\n`
+    if (flight.DestinationAirport!="") string += `     DepartureAirport: ${flight.DestinationAirport}\n`
+    if (flight.DepartureAirport!="") string += `      DestinationAirport: ${flight.DepartureAirport}\n`
+    if (cabin!="") string += `    Cabin Class: ${cabin}\n`
+    if (noseats!=0) string += `     Seats: ${noseats}\n`
 
     return string
 
@@ -141,13 +141,13 @@ Available Return Flights
           
         
       <Container sx={{ py: 8 }} maxWidth="md">
-          <Grid container spacing={4}>
+          <Grid container sx={{justifyContent:"space-evenly",textAlign:"center",}}>
         {flights.map((flight) => {
          
          if (flight.Date<depdate){ setFlights(flights.filter((fl)=>fl._id!==flight._id));}
           else{
           return (
-            <Grid item  xs={12} sm={6} md={4}>
+            <Grid item  xs={12} sm={6} md={5.5}>
             <Card
               sx={{ width:"400px",height: '100%', display: 'flex', flexDirection: 'column' }}
             >
@@ -167,7 +167,8 @@ Available Return Flights
         fullWidth
         container
       >
-        <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {flight.FlightNumber}</Typography>
+        <Typography sx={{margin:"0 0 0 15px"}} variant="h4">{flight.DepartureAirport} to {flight.DestinationAirport}</Typography>
+      <Typography sx={{margin:"0 0 0 15px"}} variant="h9">Flight No. {flight.FlightNumber}</Typography>
       </Grid>
       
       <List
