@@ -102,7 +102,9 @@ const UserReservations = props => {
               <Card  sx={{ width:"1400px",height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardContent sx={{ flexGrow: 1 }}>
                 <div className="card-body">
+
                   <h4 className="card-title">{reservation.DepartureFlight.DepartureAirport} TO {reservation.DepartureFlight.DestinationAirport }  </h4>
+                  
                   <ListItem>
                     <ListItemAvatar>
                   <ConfirmationNumberIcon style={{ transform: "scale(1)" }} />
@@ -114,6 +116,16 @@ const UserReservations = props => {
                   variant="caption"
                    >Booking Number :{reservation.BookingNumber}</Typography>
                    </ListItem>
+                   <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh' ,marginBottom:'2vh'}}>
+                    
+                    <Button variant='contained'  size='small' color='info'  onClick={() =>{ReservationsDataService.mail(reservation);}}>Mail My Booking</Button> 
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    &nbsp;
+                    <Link to={{ pathname:"/flights", state:reservation}} className="btn btn-success">Change flights</Link>
+                    </ButtonGroup>
                   <p className="card-text" >
                   <div class="row">
                     
@@ -629,10 +641,7 @@ const UserReservations = props => {
                     </div>
                     </div>
       
-                    <ButtonGroup style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh' ,marginTop:'1vh'}}>
-                    <Button variant='contained'  size='small' color='info' onClick={() =>{ReservationsDataService.mail(reservation);}}>Mail My Booking</Button> 
-                    <Link to={{ pathname:"/flights", state:reservation}} className="btn btn-success">Change flights</Link>
-                    </ButtonGroup>
+                    
                     <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh' ,marginTop:'-5vh'}}>
 
                    

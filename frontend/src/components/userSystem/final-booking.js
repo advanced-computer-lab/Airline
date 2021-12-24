@@ -147,7 +147,7 @@ const Booking = props => {
       marginTop={-2}
       backgroundColor="#f0f6f7ff"
     >
-      <Grid container spacing ={14} mt={0}  marginTop={-7} width={1400} marginLeft={0}>
+       <Grid sx={{justifyContent:"center",textAlign:"center"}}>
       <div className="row">
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
@@ -158,44 +158,42 @@ const Booking = props => {
           <h1>Final Summary</h1><br/>
           <strong>Please review before confirming your booking.</strong>  
           </div>
-              <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
-              <h3>Departure Flight</h3>
-              <div className="row">
-          </div>
-          <br/>
+          </Grid>
+          <Grid container sx={{justifyContent:"space-evenly",margin:"70px 0 0 0"}}>
+            <Grid item>
+          <h3>Departure Flight</h3>
           <Grid item  xs={12} sm={10} md={4}>
-        <div className="row"> 
-       
-            <div >
-           
-            <Card
-              sx={{ width:"400px",height: ' 600px', display: 'flex', flexDirection: 'column' }}
-            >
+      
+        <Card
+  sx={{ width:"400px",height: '100%', display: 'flex', flexDirection: 'column' }}
+>
               <CardContent sx={{ flexGrow: 1 }}>
-              
-                  <Grid style={{ width: "400px" }} fullWidth container>
+
+              <Grid style={{ width: "450px" }} fullWidth container>
       <Grid
         align="center"
         style={{
           
-          width: "400px",
-          height: "550px",
+          width: "450px",
+          height: "70px",
           alignItems: "center",
         }}
         item
         fullWidth
         container
       >
-         <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {returnFlight.FlightNumber}</Typography>
-         <Typography sx={{margin:"0 0 0 15px"}} variant="h9">{returnFlight.DepartureAirport} TO {returnFlight.DestinationAirport}</Typography>
-
-         <List
+        <Typography sx={{margin:"0 0 0 15px"}} variant="h4">{returnFlight.DepartureAirport} to {returnFlight.DestinationAirport}</Typography>
+      <Typography sx={{margin:"0 0 0 15px"}} variant="h9">Flight No. {returnFlight.FlightNumber}</Typography>
+      </Grid>
+      
+      <List
         sx={{
-          width: "400px",
+          width: "450px",
           paddingTop: "0",
           paddingBottom: "0",
         }}
       >
+        <Divider />
              <ListItem>
           <ListItemAvatar>
             <EventIcon style={{ transform: "scale(1.2)" }} />
@@ -405,60 +403,46 @@ const Booking = props => {
           </Grid>
         </ListItem>
         <Divider />
-        
-        
               </List>
-                 
-                    </Grid>
                     </Grid>
                 </CardContent>
               </Card>
-            </div>
-        
-        </div>
-        </Grid>
-        <br/>
-        </Container>
-      <div className="col-sm">
-        
-      <Container sx={{ py: 0 ,margin:"0 0  0 -200px" }} maxWidth="md">
-              <h3>Return Flight</h3>
-              <div className="row">
-          </div>
-          <br/>
-          <Grid item  xs={12} sm={6} md={4}>
-        <div className="row"> 
-       
-            <div >
-           
-            <Card
-              sx={{ width:"400px",height: '600px', display: 'flex', flexDirection: 'column' }}
-            >
-              <CardContent sx={{ flexGrow: 1 }}>
-              
-                  <Grid style={{ width: "400px" }} fullWidth container>
-      <Grid
-        align="center"
-        style={{
-          
-          width: "550px",
-          height: "550px",
-          alignItems: "center",
-        }}
-        item
-        fullWidth
-        container
-      >
-         <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {returnFlight.FlightNumber}</Typography>
-         <Typography sx={{margin:"0 0 0 15px"}} variant="h9">{flight.DepartureAirport} TO {flight.DestinationAirport}</Typography>
 
-         <List
-        sx={{
-          width: "400px",
-          paddingTop: "0",
-          paddingBottom: "0",
-        }}
-      >
+              </Grid>
+        </Grid>
+      <Grid item>
+      <h3>Return Flight</h3>
+      <Grid item  xs={12} sm={6} md={5}>
+<Card
+  sx={{ width:"400px",height: '100%', display: 'flex', flexDirection: 'column' }}
+>
+  
+  <CardContent sx={{ flexGrow: 1 }}>
+
+  <Grid style={{ width: "450px" }} fullWidth container>
+<Grid
+align="center"
+style={{
+
+width: "450px",
+height: "70px",
+alignItems: "center",
+}}
+item
+fullWidth
+container
+>
+      <Typography sx={{margin:"0 0 0 15px"}} variant="h4">{flight.DepartureAirport} to {flight.DestinationAirport}</Typography>
+      <Typography sx={{margin:"0 0 0 15px"}} variant="h9">Flight No. {flight.FlightNumber}</Typography>
+</Grid>
+<List
+sx={{
+width: "450px",
+paddingTop: "0",
+paddingBottom: "0",
+}}
+>
+<Divider />
              <ListItem>
           <ListItemAvatar>
             <EventIcon style={{ transform: "scale(1.2)" }} />
@@ -668,24 +652,20 @@ const Booking = props => {
           </Grid>
         </ListItem>
         <Divider />
-        
-        
-              </List>
-                 
-                    </Grid>
+              </List>    
                     </Grid>
                 </CardContent>
               </Card>
-            </div>
-        
-        </div>
         </Grid>
-        <br/>
-        </Container>
-        </div>
+        </Grid>
+          </Grid>
 
-        <Container sx={{ py: 0 ,margin:"0 0 0 0px" }}  maxWidth="sm">
-        <Card
+
+          <Grid>
+
+
+          <Grid sx={{justifyContent:"center",textAlign:"center",margin:"60px 0 0 450px"}}>
+          <Card
               sx={{ width:"400px",height: ' 150px', display: 'flex', flexDirection: 'column' }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
@@ -736,13 +716,12 @@ const Booking = props => {
             </List>
             </CardContent>   
             </Card>
-
+            </Grid>
+        
 
           
          
-      
-      </Container>
-      <Container sx={{ py: 0 ,margin:"0 0 0 -35px" }}  maxWidth='sm'>
+
       <Grid container >
         <Grid item align="right" xs={12}>
                   
@@ -765,7 +744,7 @@ const Booking = props => {
                 </List>
                 </Grid>
                 </Grid>
-                </Container>
+             
       </Grid>
      </Box>
           </div>
