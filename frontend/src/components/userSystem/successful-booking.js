@@ -37,10 +37,11 @@ const MyBooking = props => {
       <div className="row">
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
           </div>
-          <h3>Congrats! You have booked your trip successfully.</h3><br/>
-          <strong>Booking Number: {res.BookingNumber}.</strong>  
+          <h1>Congrats! You have booked your trip successfully.</h1><br/>
+          <h2>Booking Number: {res.BookingNumber}.</h2> <br/> 
           </div>
               <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
+                <br/>
               <h3>Departure Flight</h3>
               <div className="row">
           </div>
@@ -267,6 +268,7 @@ const MyBooking = props => {
       <div className="col-sm">
         
       <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
+        <br/>
               <h3>Return Flight</h3>
               <div className="row">
           </div>
