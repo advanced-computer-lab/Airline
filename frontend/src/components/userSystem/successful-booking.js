@@ -41,19 +41,21 @@ const MyBooking = props => {
           <h2>Booking Number: {res.BookingNumber}.</h2> <br/> 
           </div>
               <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
+                
                 <br/>
-              <h3>Departure Flight</h3>
-              <div className="row">
-          </div>
+              
+              
+              
           <br/>
           <Grid item  xs={12} sm={10} md={4}>
         <div className="row"> 
-       
+        <h3>Departure Flight</h3>
             <div >
            
             <Card
               sx={{ width:"550px",height: '600px', display: 'flex', flexDirection: 'column' }}
             >
+
               <CardContent sx={{ flexGrow: 1 }}>
               
                   <Grid style={{ width: "550px" }} fullWidth container>
@@ -69,6 +71,7 @@ const MyBooking = props => {
         fullWidth
         container
       >
+       
          <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {res.DepartureFlight.FlightNumber}</Typography>
          <Typography sx={{margin:"0 0 0 15px"}} variant="h9">{res.DepartureFlight.DepartureAirport} TO {res.DepartureFlight.DestinationAirport}</Typography>
 
@@ -269,13 +272,13 @@ const MyBooking = props => {
         
       <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
         <br/>
-              <h3>Return Flight</h3>
+              
               <div className="row">
           </div>
           <br/>
           <Grid item  xs={12} sm={6} md={4}>
         <div className="row"> 
-       
+        <h3>Return Flight</h3>
             <div >
            
             <Card
