@@ -74,10 +74,11 @@ const UserReservations = props => {
       return(
         <div>
         <div className="row" style= {{width:"75rem"}}>
-          <h1>My Reservations </h1><br/>
+         
 
           {noRes() && ( <strong>You have no Reservations.</strong>)} 
-          <Grid item  xs={12} sm={6} md={4}>
+          <Grid item  xs={12} sm={6} md={4} marginLeft={-15}>
+          <h1 marginLeft>My Reservations </h1><br/>
         {reservations.map((reservation) => {
           
           return (
@@ -103,7 +104,7 @@ const UserReservations = props => {
                   <div class="row">
                     
                   <div class="col-sm">
-                    <Card  variant='outlined'sx={{ width:"400px",height: '500px', display: 'flex', flexDirection: 'column' }}>
+                    <Card  variant='outlined'sx={{ width:"400px",height: '550px', display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flexGrow: 1 }}>
                     <Grid align="center" style={{ width: "450px", height: "300px",alignItems: "center",  }} item fullWidth container>
                   <h5 className="card-title"> Departure Flight</h5>
@@ -294,6 +295,9 @@ const UserReservations = props => {
                 </Grid>
         </ListItem>
         <Divider />
+        <ListItem>
+        <Link to={{ pathname:"/flights/DepFlight", state:reservation}} className="btn btn-success">Edit Departure Flight</Link>  
+        </ListItem>
                     </Grid>
                     </CardContent>
                     </Card>
@@ -303,7 +307,7 @@ const UserReservations = props => {
 
 
                       
-                    <Card  variant='outlined'sx={{ width:"400px",height: '500px', display: 'flex', flexDirection: 'column' }}>
+                    <Card  variant='outlined'sx={{ width:"400px",height: '550px', display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flexGrow: 1 }}>
                     <Grid align="center" style={{ width: "450px", height: "300px",alignItems: "center",  }} item fullWidth container>
                   <h5 className="card-title"> Return Flight</h5>
@@ -494,6 +498,9 @@ const UserReservations = props => {
                 </Grid>
         </ListItem>
         <Divider />
+        <ListItem>
+        <Link to={{ pathname:"/flights/RetFlight", state:reservation}} className="btn btn-success">Edit Return Flight</Link>  
+        </ListItem>
                     </Grid>
                     </CardContent>
                     </Card>
@@ -505,9 +512,9 @@ const UserReservations = props => {
 
 
                     <div class="col-sm"> 
-                    <Card variant='outlined'sx={{ width:"400px",height: '500px', display: 'flex', flexDirection: 'column' }}>
+                    <Card variant='outlined'sx={{ width:"400px",height: '400px', display: 'flex', flexDirection: 'column' }}>
                     <CardContent sx={{ flexGrow: 1 }}>
-                    <Grid align="center" style={{ width: "450px", height: "300px",alignItems: "center",  }} item fullWidth container>
+                    <Grid align="center" style={{ width: "450px", height: "200px",alignItems: "center",  }} item fullWidth container>
                   <h5 className="card-title">  User info</h5>
                   <ListItem>
           <ListItemAvatar>
@@ -597,21 +604,20 @@ const UserReservations = props => {
         <Divider />
 
                    
-                    <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'1vh'}}>
-                      
-                    </ButtonGroup>
+                 
                     </Grid>
                     </CardContent>
                     </Card>
                     </div>
                     </div>
       
-
-                    <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'1vh'}}>
+                    <ButtonGroup style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '4vh' ,marginTop:'1vh'}}>
                     <Button variant='contained'  size='small' color='info' onClick={() =>{ReservationsDataService.mail(reservation);}}>Mail My Booking</Button> 
-                    <Link to={{ pathname:"/flights/DepFlight", state:reservation}} className="btn btn-success">Select Departure Flight</Link>  
-                    <Link to={{ pathname:"/flights/RetFlight", state:reservation}} className="btn btn-success">Select Return Flight</Link>  
-                    <Link to={{ pathname:"/flights", state:reservation}} className="btn btn-success">Change flights</Link>  
+                    <Link to={{ pathname:"/flights", state:reservation}} className="btn btn-success">Change flights</Link>
+                    </ButtonGroup>
+                    <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh' ,marginTop:'-5vh'}}>
+
+                   
                     <Button variant='contained'  size='small' color='error' onClick={() => {if(window.confirm('Are you sure you want to cancel this reservation?')){deleteReservations(reservation._id)}}}>Cancel Reservation</Button> 
                       </ButtonGroup>
 

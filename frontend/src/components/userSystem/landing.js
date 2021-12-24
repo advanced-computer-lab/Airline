@@ -88,8 +88,8 @@ const Landing = props => {
         <div>
           
           <BackgroundSlider
-          images={[image1,image2, image3]}
-          duration={4}
+          images={ [image3]}
+          duration={10000}
           transition={2}
         />
          
@@ -103,6 +103,7 @@ const Landing = props => {
       textAlign='left'
       autoComplete="off"
       height="0px"
+      marginTop={-4}
       
     >
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>

@@ -129,14 +129,12 @@ const Booking = props => {
   }
 
 
-    //console.log("HERE "+props.User.firstname)
-
 
     return (
       <div>
 
          
-      <Grid container spacing ={33} mt={0} >
+      <Grid container spacing ={33} mt={0}  marginTop={-7}>
       <div className="row">
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
@@ -149,7 +147,6 @@ const Booking = props => {
           </div>
               <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
               <h3>Departure Flight</h3>
-               <h5 className="card-title">{returnFlight.DepartureAirport} TO {returnFlight.DestinationAirport}</h5>
               <div className="row">
           </div>
           <br/>
@@ -177,6 +174,7 @@ const Booking = props => {
         container
       >
          <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {returnFlight.FlightNumber}</Typography>
+         <Typography sx={{margin:"0 0 0 15px"}} variant="h9">{returnFlight.DepartureAirport} TO {returnFlight.DestinationAirport}</Typography>
 
          <List
         sx={{
@@ -412,7 +410,6 @@ const Booking = props => {
         
       <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
               <h3>Return Flight</h3>
-               <h5 className="card-title">{flight.DepartureAirport} TO {flight.DestinationAirport}</h5>
               <div className="row">
           </div>
           <br/>
@@ -440,6 +437,7 @@ const Booking = props => {
         container
       >
          <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {returnFlight.FlightNumber}</Typography>
+         <Typography sx={{margin:"0 0 0 15px"}} variant="h9">{flight.DepartureAirport} TO {flight.DestinationAirport}</Typography>
 
          <List
         sx={{
@@ -726,9 +724,9 @@ const Booking = props => {
          
       
       </Container>
-      <Container sx={{ py: 0 ,margin:"0 0 0 300px" }}  maxWidth='sm'>
+      <Container sx={{ py: 0 ,margin:"0 0 0 310px" }}  maxWidth='sm'>
       <Grid container>
-        <Grid item align="left" xs={12}>
+        <Grid item align="right" xs={12}>
                   
             <List
         sx={{

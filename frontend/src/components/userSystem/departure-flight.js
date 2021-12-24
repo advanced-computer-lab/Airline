@@ -163,6 +163,7 @@ Available Departure Flights
       container
     >
       <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {flight.FlightNumber}</Typography>
+      <Typography sx={{margin:"0 0 0 15px"}} variant="h9">From {flight.DepartureAirport} to {flight.DestinationAirport}</Typography>
     </Grid>
     
     <List
