@@ -33,7 +33,7 @@ const MyBooking = props => {
 
     return (
       <div>
-<Grid container spacing ={33} mt={0}  marginTop={-7}>
+<Grid container spacing ={14} mt={0}  marginTop={-7} marginLeft={0} width={1340}>
       <div className="row">
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
           </div>
@@ -47,23 +47,23 @@ const MyBooking = props => {
               
               
           <br/>
-          <Grid item  xs={12} sm={10} md={4}>
+          <Grid item  xs={6} sm={10} md={4}>
         <div className="row"> 
         <h3>Departure Flight</h3>
             <div >
            
             <Card
-              sx={{ width:"550px",height: '600px', display: 'flex', flexDirection: 'column' }}
+              sx={{ width:"400px",height: '600px', display: 'flex', flexDirection: 'column' }}
             >
 
               <CardContent sx={{ flexGrow: 1 }}>
               
-                  <Grid style={{ width: "550px" }} fullWidth container>
+                  <Grid style={{ width: "400px" }} fullWidth container>
       <Grid
         align="center"
         style={{
           
-          width: "550px",
+          width: "400px",
           height: "550px",
           alignItems: "center",
         }}
@@ -77,7 +77,7 @@ const MyBooking = props => {
 
          <List
         sx={{
-          width: "550px",
+          width: "400px",
           paddingTop: "0",
           paddingBottom: "0",
         }}
@@ -270,28 +270,28 @@ const MyBooking = props => {
         </Container>
       <div className="col-sm">
         
-      <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
+      <Container sx={{ py: 0 ,margin:"0 0 0 -200px" }} maxWidth="md">
         <br/>
               
               <div className="row">
           </div>
           <br/>
-          <Grid item  xs={12} sm={6} md={4}>
+          <Grid item  xs={6} sm={6} md={4}>
         <div className="row"> 
         <h3>Return Flight</h3>
             <div >
            
             <Card
-              sx={{ width:"550px",height: '600px', display: 'flex', flexDirection: 'column' }}
+              sx={{ width:"400px",height: '600px', display: 'flex', flexDirection: 'column' }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
               
-                  <Grid style={{ width: "550px" }} fullWidth container>
+                  <Grid style={{ width: "400px" }} fullWidth container>
       <Grid
         align="center"
         style={{
           
-          width: "550px",
+          width: "400px",
           height: "550px",
           alignItems: "center",
         }}
@@ -304,7 +304,7 @@ const MyBooking = props => {
 
          <List
         sx={{
-          width: "550px",
+          width: "400px",
           paddingTop: "0",
           paddingBottom: "0",
         }}
@@ -500,10 +500,14 @@ const MyBooking = props => {
         </div>
         <Container sx={{ py: 0 ,margin:"0 0 0 15px" }}  maxWidth="sm">
         <h3>Booking Info </h3>
-            <Card width="550px" height='300px'>      
+        <Card
+              sx={{ width:"400px",height: '230px', display: 'flex', flexDirection: 'column' }}
+            >
+
+              <CardContent sx={{ flexGrow: 1 }}>
             <List
         sx={{
-          width: "550px",
+          width: "400px",
           paddingTop: "0",
           paddingBottom: "0",
         }}
@@ -520,7 +524,7 @@ const MyBooking = props => {
             display="block"
             variant="caption"
           >
-            Bookng Number :
+            Booking Number :
           </Typography>
         </Grid>
         <Typography>{res.BookingNumber}</Typography>
@@ -567,6 +571,7 @@ const MyBooking = props => {
     <Divider />
     
             </List>
+            </CardContent>
             </Card>
 
 
@@ -576,12 +581,16 @@ const MyBooking = props => {
       </Container>
 
       
-      <Container sx={{ py: 0 ,margin:"0 0 0 310px" }}  maxWidth="sm">
+      <Container sx={{ py: 0 ,margin:"0 0 0 100px" }}  maxWidth="sm">
         <h3>Personal Information </h3>
-            <Card width="550px" height='300px'>      
+        <Card
+              sx={{ width:"400px",height: '230px', display: 'flex', flexDirection: 'column' }}
+            >
+
+              <CardContent sx={{ flexGrow: 1 }}>
             <List
         sx={{
-          width: "550px",
+          width: "400px",
           paddingTop: "0",
           paddingBottom: "0",
         }}
@@ -645,6 +654,7 @@ const MyBooking = props => {
     <Divider />
     
             </List>
+            </CardContent>
             </Card>
 
 
