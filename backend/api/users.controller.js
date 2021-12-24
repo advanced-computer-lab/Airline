@@ -29,7 +29,7 @@ export default class UsersController {
     if (isPasswordValid) {
       const token = jwt.sign(
         {
-          name: user.name,
+          name: user.firstname,
           email: user.email,
         },
         'secret123'

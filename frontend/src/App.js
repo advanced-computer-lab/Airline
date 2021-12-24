@@ -23,6 +23,7 @@ import SignUp from "./components/userSystem/sign-up"
 import EditDepSeats from './components/userSystem/edit-dep-seats'
 import EditRetSeats from './components/userSystem/edit-ret-seats'
 import CabinSearch from "./components/userSystem/CabinSearch.js";
+import AccessDenied from "./components/adminSystem/AccessDenied.js";
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
   }
 
   async function logout() {
+    localStorage.removeItem("token");
     setUser(null);
   }
 
@@ -113,6 +115,7 @@ function App() {
 
       <Route  exact path={["/", "/flights"]} component={Landing} />
       <Route  path="/flights/SelectDeparture" component={FlightDep} />
+      <Route  path="/AccessDenied" component={AccessDenied} />
       <Route  path="/signup" component={SignUp} />
       <Route  path="/flights/SelectReturn" component={FlightReturn} />
       <Route 
