@@ -19,6 +19,7 @@ import AirlineSeatReclineExtraIcon from "@mui/icons-material/AirlineSeatReclineE
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import LuggageIcon from "@mui/icons-material/Luggage";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
+import { textAlign } from "@mui/system";
 
 
 const FlightDep = props => {
@@ -81,12 +82,7 @@ const FlightDep = props => {
 
 return (
   <div>
-      <BackgroundSlider
-        images={[image1,image2, image3]}
-        duration={4}
-        transition={2}
-        id="background-slider"
-      />
+     
        
        <Box
   opacity='[0,0,0]'
@@ -124,8 +120,8 @@ Available Departure Flights
     {noFlights() && ( <strong>Sorry! No Flights Match Your Search Criteria</strong>)} 
         
       
-    <Container sx={{ py: 8 }} maxWidth="md">
-        <Grid container spacing={40}>
+    <Container sx={{ py: 8}} maxWidth="md">
+        <Grid   container rowSpacing={10} columnSpacing={40}  >
       {flights.map((flight) => {
        
       
@@ -151,7 +147,8 @@ Available Departure Flights
       fullWidth
       container
     >
-      <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {flight.FlightNumber}</Typography>
+     <Typography sx={{margin:"0 0 0 15px"}} variant="h4">{flight.DepartureAirport} to {flight.DestinationAirport}</Typography>
+      <Typography sx={{margin:"0 0 0 15px"}} variant="h9">Flight No. {flight.FlightNumber}</Typography>
     </Grid>
     
     <List
@@ -358,9 +355,13 @@ Available Departure Flights
   </Grid>
             </CardContent>
             <CardActions>
-            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats, noadults} }} className="btn btn-success">
-          Select
+            <Grid  xs={12}> 
+            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats, noadults} }} className="btn btn-success"   >
+           Select
+          
         </Link>
+        </Grid> 
+        
               
             </CardActions>
           </Card>
