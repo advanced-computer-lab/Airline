@@ -41,19 +41,13 @@ const Login = props => {
 		}
 	}
   return (
-    <Grid container >
-      <Grid item>
-       <Paper elevation={15} style={{padding:"20px",width :"400px",height:"500px"}}>
-       <div className="form_container">
-       <h1 style={{textAlign:"center",margin:"20px 0 0 0"}}>Login</h1>
-       <br />
-          <br />
+    <div>
+    <h1>Login</h1>
     <div className="submit-form">
-    <Grid style={{margin:"20px 0 0 0"}}>
+      <div>
         <div className="form-group">
-         
-          <TextField
-          label="Username"
+          <label htmlFor="user">Username</label>
+          <input
             type="text"
             className="form-control"
             id="email"
@@ -62,15 +56,11 @@ const Login = props => {
             onChange={(e) => setEmail(e.target.value)}
             name="email"
           />
-           <br />
-          <br />
-          
         </div>
 
         <div className="form-group">
-          
-          <TextField
-          label="Password"
+          <label htmlFor="id">Password</label>
+          <input
             type="password"
             className="form-control"
             id="password"
@@ -80,20 +70,15 @@ const Login = props => {
             name="password"
             display="none"
           />
-          <br />
-          <br />
-        </div></Grid><br/>
-        <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '5vh'}}> 
+        </div><br/>
+        <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}> 
         <button onClick={login} className="btn btn-success">
           Login
         </button>
         </div>
-        
       </div>
     </div>
-    </Paper>
-    </Grid>
-    </Grid>
+    </div>
   );
 };
 
