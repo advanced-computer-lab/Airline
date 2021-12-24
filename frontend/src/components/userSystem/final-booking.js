@@ -746,8 +746,8 @@ const Booking = props => {
         
       <div className="col-lg-4 pb-1" style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '6vh'}}>
       {edit?
-          ((<Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.delete(res._id);ReservationData.BookingNumber=res.BookingNumber;ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Modification</Button>))
-          :(<Button variant='contained'  size='medium' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Booking</Button>)
+          ((<Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.delete(res._id);ReservationData.BookingNumber=res.BookingNumber;ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm</Button>))
+          :(<Button variant='contained'  size='medium' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm</Button>)
           }
                 </div>
                 </List>

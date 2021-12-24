@@ -7,8 +7,6 @@ import BackgroundSlider from 'react-background-slider'
 import image1 from './images/image1.jpg'
 import image2 from './images/image2.jpg'
 import image3 from './images/image3.jpg'
-
-
 const Login = props => {
 
   const [email, setEmail] = useState('')
@@ -60,13 +58,13 @@ const Login = props => {
 		}
 	}
   return (
-    
     <div>
-        <BackgroundSlider
-          images={[image1,image2, image3]}
-          duration={4}
-          transition={2}
-        />
+    <BackgroundSlider
+        images={[image1,image2, image3]}
+        duration={4}
+        transition={2}
+        id="background-slider"
+      />
     <Grid container style={styles.gridStyle} >
       <Grid item>
        <Paper elevation={15} style={{padding:"20px",width :"400px",height:"500px"}}>
