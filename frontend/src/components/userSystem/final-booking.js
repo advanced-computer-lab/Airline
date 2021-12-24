@@ -32,6 +32,8 @@ const Booking = props => {
 
     if(res!=null) edit = true;
 
+    //console.log(edit)
+
     const flight = state.retflight
     const returnFlight=state.depflight
     const cabin = state.cabin
@@ -39,16 +41,16 @@ const Booking = props => {
 
     const user = props.User
 
-    console.log(flight)
-    console.log(returnFlight)
-    console.log(props.User)
+    // console.log(flight)
+    // console.log(returnFlight)
+    // console.log(props.User)
 
     const noadults = state.noadults
 
     const nochild = noseats-noadults
 
     const depreserved = state.departurereserved
-    console.log(depreserved)
+    //console.log(depreserved)
 
     const retreserved = state.reserved
     console.log(retreserved)

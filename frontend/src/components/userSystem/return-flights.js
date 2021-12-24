@@ -30,6 +30,8 @@ const FlightReturn = props => {
 
     if(res!=null) edit = true;
 
+    console.log(edit)
+
     const flight = state.flight
 
     const cabin = state.cabin
@@ -113,7 +115,7 @@ const FlightReturn = props => {
       
     >
       
-      <div className="row">
+      <br/><br/><div className="row">
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
           ((<Button variant='contained'  size='small' color='error' onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Button>))

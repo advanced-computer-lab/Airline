@@ -105,7 +105,7 @@ return (
     
   >
     
-    <div className="row">
+    <br/><br/><div className="row">
     <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
           ((<Button variant='contained'  size='small' color='error' onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Button>))
@@ -369,7 +369,7 @@ Available Departure Flights
   </Grid>
             </CardContent>
            
-            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats, noadults} }} className="btn btn-success"   >
+            <Link to={{ pathname: "/flights/selectReturn", state: {flight, returnDate, cabin, noseats, noadults, res} }} className="btn btn-success"   >
            Select
         </Link>
         

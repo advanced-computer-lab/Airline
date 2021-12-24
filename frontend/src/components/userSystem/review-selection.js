@@ -41,14 +41,15 @@ const ReviewSelection = props => {
 
     return(
             <div  classname="row">
-              <Grid sx={{justifyContent:"center",textAlign:"center"}}>
-              <h1>You selected the following flights</h1>
               <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
           ((<Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Link>))
           
           }
           </div>
+              <Grid sx={{justifyContent:"center",textAlign:"center"}}>
+              <h1>You selected the following flights</h1>
+              
               </Grid>
               <Grid container sx={{justifyContent:"space-evenly",margin:"70px 0 0 0"}}>
               <div class="col-ig-4 pb-1">
