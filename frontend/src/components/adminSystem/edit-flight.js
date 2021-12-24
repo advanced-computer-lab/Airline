@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 
 
 
+
 const UpdateFlight = props => {
 
   const pathArray = window.location.pathname.split('/');

@@ -22,6 +22,7 @@ import UserReservations from "./components/userSystem/user-reservations"
 import SignUp from "./components/userSystem/sign-up"
 import EditDepSeats from './components/userSystem/edit-dep-seats'
 import EditRetSeats from './components/userSystem/edit-ret-seats'
+import CabinSearch from "./components/userSystem/CabinSearch.js";
 
 function App() {
 
@@ -45,13 +46,13 @@ function App() {
 
 
   return (
-    <div  style={{backgroundColor:"#f0f6f7ff" }}>
+    <div  style={{backgroundColor:"#f0f6f7ff"},{margin:"0 0 0 0"}}>
       
-    <nav className="navbar navbar-expand navbar-dark bg-dark" >
+    <nav style={{margin:"0 0 0 0"}} className="navbar navbar-expand navbar-dark bg-dark">
       <a className="navbar-brand">
         Airline
       </a>
-      <div className="navbar-nav ms-auto" >
+      <div  style={{margin:"0 0 0 0"}} className="navbar-nav ms-auto">
         <li className="nav-item" >
           <Link to={"/"} className="nav-link" >
             Home
@@ -96,13 +97,19 @@ function App() {
     </nav>
 
    
+
+
+
+
+
+   
     <div className="container mt-3">
       <Switch>
       <Route  exact path={["/admin", "/admin/flights"]} component={FlightsList} />
       <Route  path="/admin/flights/create" component={AddFlight} />
       <Route  path="/admin/flights/:id/edit" component={EditFlight} />
       <Route  path="/admin/flights/:id" component={Flight} />
-
+      <Route  path="/CabinSearch" component={CabinSearch} />
 
       <Route  exact path={["/", "/flights"]} component={Landing} />
       <Route  path="/flights/SelectDeparture" component={FlightDep} />
