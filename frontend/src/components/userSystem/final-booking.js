@@ -25,6 +25,12 @@ const Booking = props => {
 
     const state = props.location.state
 
+    const res = props.location.state.res
+
+    let edit =false
+
+    if(res!=null) edit = true;
+
     const flight = state.retflight
     const returnFlight=state.depflight
     const cabin = state.cabin
@@ -132,6 +138,12 @@ const Booking = props => {
          
       <Grid container spacing ={33} mt={0} >
       <div className="row">
+      <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+      {edit&&
+          ((<Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Link>))
+          
+          }
+          </div>
           <h1>Final Summary</h1><br/>
           <strong>Please review before confirming your booking.</strong>  
           </div>
@@ -727,7 +739,10 @@ const Booking = props => {
       >
         
       <div className="col-lg-4 pb-1" style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '6vh'}}>
-          <Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Booking</Button> &nbsp;
+      {edit?
+          ((<Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.delete(res._id);ReservationData.BookingNumber=res.BookingNumber;ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Modification</Button>))
+          :(<Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm Booking</Button>)
+          }
                 </div>
                 </List>
                 </Grid>

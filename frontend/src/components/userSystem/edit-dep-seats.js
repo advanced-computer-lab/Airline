@@ -147,6 +147,9 @@ const EditDepSeats = props => {
     
   >
     <div >
+    <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+    <Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Link>
+    </div>
         <h1>Select Departure Flight Seats </h1>
         <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
           { done &&

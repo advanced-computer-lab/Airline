@@ -21,6 +21,12 @@ const DepSeats = props => {
 
     const state = props.location.state
 
+    const res = props.location.state.res
+
+    let edit =false
+
+    if(res!=null) edit = true;
+
     const noseats = state.noseats
     const noadults = state.noadults
 
@@ -137,10 +143,17 @@ const DepSeats = props => {
       
     >
       <div >
+      <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+      {edit&&
+          ((<Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Link>))
+          
+          }
+          </div>
           <h1>Select Departure Flight Seats </h1>
           <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+          
             { done &&
-          <Link to={{ pathname: "/flights/ChooseRetSeats", state: {retflight, depflight, noseats, cabin, reserved, noadults} }}  style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}} className="btn btn-success">
+          <Link to={{ pathname: "/flights/ChooseRetSeats", state: {retflight, depflight, noseats, cabin, reserved, noadults, res} }}  style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}} className="btn btn-success">
             Confirm Selection
           </Link>}
           </div>

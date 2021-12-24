@@ -24,6 +24,12 @@ const FlightReturn = props => {
 
     const state = props.location.state
 
+    const res = props.location.state.res
+
+    let edit =false
+
+    if(res!=null) edit = true;
+
     const flight = state.flight
 
     const cabin = state.cabin
@@ -106,6 +112,12 @@ const FlightReturn = props => {
     >
       
       <div className="row">
+      <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+      {edit&&
+          ((<Button variant='contained'  size='small' color='error' onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Button>))
+          
+          }
+          </div>
       <Container maxWidth="sm">
             <Typography
               component="h1"
@@ -360,7 +372,7 @@ Available Return Flights
     </Grid>
               </CardContent>
               <CardActions>
-              <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight, cabin, noseats, noadults} }} className="btn btn-success">
+              <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight, cabin, noseats, noadults, res} }} className="btn btn-success">
             Select
           </Link>
                 
