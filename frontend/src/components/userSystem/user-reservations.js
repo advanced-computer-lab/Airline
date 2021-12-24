@@ -138,7 +138,7 @@ const UserReservations = props => {
                     </div>
                     
                     <ButtonGroup style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '4vh'}}>
-                    <Button variant='contained'  size='small' color='info' >Mail My Booking</Button>  
+                    <Button variant='contained'  size='small' color='info' onClick={() =>{ReservationsDataService.mail(reservation);}}>Mail My Booking</Button>  
                     <Button variant='contained'  size='small' color='primary' href="/flights/SelectDeparture" state={reservation}>Edit Departure Flight</Button>  
                     <Button variant='contained'  size='small' color='primary' href="/flights/SelectReturn" state={reservation}>Edit Return Flight</Button>  
                     <Link to={{ pathname: "/flights/EditDepSeats", state: reservation }} className="btn btn-success">Edit Departure Seats</Link>  

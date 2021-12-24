@@ -1,5 +1,7 @@
 import mongodb from "mongodb"
+import ReservationsDAO from "./reservationsDAO.js"
 const ObjectId = mongodb.ObjectID
+import ReservationsMailer from "../mailers/reservation-mailer.js"
 
 let flights
 
@@ -178,6 +180,58 @@ export default class FlightsDAO {
       if (bseats>0) bseatsavlbl = true 
       if (fseats>0) fseatsavlbl = true 
 
+      for(let i=0; i<resids.length; i++)
+      {
+        const res = await ReservationsDAO.getReservationByBN(resids[i]);
+
+        if(res.DepartureFlight.id == flightId){
+          //console.log(`entered dep`+"\n\n\n")        
+          await ReservationsDAO.UpdateReservationDepFlight(res._id,
+            {
+                  id: flightId,
+                  FlightNumber: Fnumber,
+                  DepartureTime: deptime,
+                  ArrivalTime: arrtime,
+                  Date: date,
+                  DepartureAirport: depairport,
+                  DestinationAirport: destairport,
+                  TripDuration: tripdur,
+                  BaggageAllowance: bagallwd,
+                  Price: price,
+                  EconomySeats: ecseats,
+                  BusinessSeats: bseats,
+                  FirstSeats: fseats,
+                  ReservedSeats: reserved
+
+            }
+          );
+
+        }
+        else if(res.ReturnFlight.id == flightId){
+          //console.log(`entered ret`+"\n\n\n")
+
+          await ReservationsDAO.UpdateReservationRetFlight(res._id,
+            {
+                  id: flightId,
+                  FlightNumber: Fnumber,
+                  DepartureTime: deptime,
+                  ArrivalTime: arrtime,
+                  Date: date,
+                  DepartureAirport: depairport,
+                  DestinationAirport: destairport,
+                  TripDuration: tripdur,
+                  BaggageAllowance: bagallwd,
+                  Price: price,
+                  EconomySeats: ecseats,
+                  BusinessSeats: bseats,
+                  FirstSeats: fseats,
+                  ReservedSeats: reserved
+
+            }
+          );
+        }
+      }
+
       const updateResponse = await flights.updateOne(
         { _id: ObjectId(flightId)},
         { $set: { FlightNumber:Fnumber, DepartureTime:deptime, ArrivalTime:arrtime, Date: date,  EconomySeats:ecseats, 
@@ -196,6 +250,20 @@ export default class FlightsDAO {
   static async deleteFlight(flightId) {
 
     try {
+      let flight = await FlightsDAO.getFlightByID(flightId)
+      let resids = flight.Reservations
+
+      for(let i=0; i<resids.length; i++)
+      {
+        const res = await ReservationsDAO.getReservationByBN(resids[i]);
+
+        await ReservationsDAO.deleteReservation(res._id)
+
+        await ReservationsMailer.CancelFlightReservation(res.User.email,res.Price, resids[i])
+
+      }
+
+
       const deleteResponse = await flights.deleteOne({
         _id: ObjectId(flightId),
       })

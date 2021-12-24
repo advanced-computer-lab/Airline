@@ -23,6 +23,10 @@ class ReservationDataService {
   update(id, data) {
     return trackPromise(http.put(`/reservations/${id}`, data));
   }
+
+  mail(data){
+    return trackPromise(http.post(`/reservations/mail`, data));
+  }
  
 
 

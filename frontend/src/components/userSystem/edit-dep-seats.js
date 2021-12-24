@@ -24,7 +24,7 @@ const EditDepSeats = props => {
 
   const noseats = reservation.DepSeats.length
 
-  let seatsavlbl 
+  let seatsavlbl = 0
 
   const [reserved, setReserved] = useState([])
 
@@ -43,9 +43,11 @@ const EditDepSeats = props => {
 
   const oldseats = reservation.DepSeats
 
-  if (cabin == "Economy"){seatsavlbl = ""+depflight.EconomySeats}
-  else if (cabin == "Business Class"){seatsavlbl = ""+depflight.BusinessSeats}
-  else if (cabin == "First Class"){seatsavlbl = ""+depflight.FirstSeats}
+  if (cabin == "Economy"){seatsavlbl = depflight.EconomySeats}
+  else if (cabin == "Business Class"){seatsavlbl = depflight.BusinessSeats}
+  else if (cabin == "First Class"){seatsavlbl = depflight.FirstSeats}
+
+  seatsavlbl+=oldseats.length
 
   //console.log(reservation._id)
 
