@@ -8,6 +8,7 @@ import AddFlight from "./components/adminSystem/add-flight";
 import EditFlight from "./components/adminSystem/edit-flight";
 import Flight from "./components/adminSystem/flights";
 import FlightsList from "./components/adminSystem/flights-list";
+import ReservationsList from "./components/adminSystem/res-list";
 import Landing from "./components/userSystem/landing";
 import FlightDep from "./components/userSystem/departure-flight";
 import FlightReturn from "./components/userSystem/return-flights";
@@ -60,8 +61,8 @@ function App() {
         {user? (
           <li className="nav-item" >
             {user.email === "admin@asairline.com" ?(
-          <Link to={"/admin"} className="nav-link" >
-            Home
+          <Link to={"/admin/flights"} className="nav-link" >
+            Flights
           </Link>
           ):(
             <Link to={"/"} className="nav-link" >
@@ -76,6 +77,14 @@ function App() {
           </Link>
         </li>
         )}
+
+{ user && (user.email === "admin@asairline.com")? (
+              <li className="nav-item" >
+              <Link to={"/admin/reservations"} className="nav-link">
+              Reservations
+            </Link>
+            </li>
+            ) :(null)}
 
 
         { user && !(user.email === "admin@asairline.com")? (
@@ -135,6 +144,7 @@ function App() {
     <div >
       <Switch>
       <Route  exact path={["/admin", "/admin/flights"]} component={FlightsList} />
+      <Route  exact path={["/admin/reservations"]} component={ReservationsList} />
       <Route  path="/admin/flights/create" component={AddFlight} />
       <Route  path="/admin/flights/:id/edit" component={EditFlight} />
       <Route  path="/admin/flights/:id" component={Flight} />

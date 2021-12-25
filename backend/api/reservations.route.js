@@ -4,7 +4,7 @@ import ReservationsMailer from "../mailers/reservation-mailer.js"
 
 const router = express.Router();
 
-
+router.route("/").get(ReservationsCtrl.apiGetReservations)
 router.route("/").post(ReservationsCtrl.apiPostReservation)
 
 router.route("/user/:id").get(ReservationsCtrl.apiGetReservationsByUserId)

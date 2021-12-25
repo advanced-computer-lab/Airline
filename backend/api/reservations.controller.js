@@ -7,6 +7,21 @@ import ReservationsMailer from "../mailers/reservation-mailer.js"
 
 export default class ReservationsController{
    
+
+  static async apiGetReservations(req, res, next) {
+        
+    
+    
+        const { resList, totalNumRes } = await ReservationsDAO.getAllReservations()
+    
+        let response = {
+          reservations: resList,
+          total_results: totalNumRes,
+        }
+        res.json(response)
+      }
+
+
       static async apiPostReservation(req, res, next) {
         try {
 

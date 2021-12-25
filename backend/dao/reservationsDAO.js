@@ -16,7 +16,30 @@ export default class ReservationsDAO {
   }
 
 
+  static async getAllReservations() {
 
+    let cursor
+    
+    try {
+      cursor = await reservations.find()
+    } catch (e) {
+      console.error(`Unable to issue find command, ${e}`)
+      return { resList: [], totalNumRes: 0 }
+    }
+
+
+    try {
+      const resList = await cursor.toArray()
+      const totalNumRes = await reservations.countDocuments()
+
+      return { resList, totalNumRes }
+    } catch (e) {
+      console.error(
+        `Unable to convert cursor to array or problem counting documents, ${e}`,
+      )
+      return { resList: [], totalNumRes: 0 }
+    }
+  }
 
   static async addReservation(data) {
     try {
