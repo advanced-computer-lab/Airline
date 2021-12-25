@@ -119,7 +119,7 @@ const UpdateUser = props => {
   });
   return (
     <div style={{backgroundImage:`url(${image3})`,  width: "100%",
-    height: "850px", marginTop:'-50px'}}>
+    height: "850px", marginTop:'0'}}>
       <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh', marginTop:"3s0px",marginLeft:"50px"}}>
       <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
           

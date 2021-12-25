@@ -71,8 +71,15 @@ const Signup = props => {
 
         };
 
-        UserDataService.create(UserData);
-        props.history.push("/login",{reserving: false});
+        if(formik.values.Password === formik.values.ConfirmPassword)
+        {
+          UserDataService.create(UserData);
+          props.history.push("/login",{reserving: false});
+
+        }
+        else
+        alert("Both Passwords do not match!");
+        
 
 
     },
