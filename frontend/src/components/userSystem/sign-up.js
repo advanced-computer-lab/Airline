@@ -78,14 +78,15 @@ const Signup = props => {
     },
 });
 return(
-  <div>
+  <div style={{backgroundImage:`url(${image3})`,  width: "100%",
+  height: "850px", marginTop:'-50px'}}>
 {/* <BackgroundSlider
         images={ [image3,image2,image1]}
         duration={10}
         transition={2}
       /> */}
   <div >
-  <br/><div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh'}}>
+  <br/><div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh', marginTop:"30px"}}>
       <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
           
       </div>

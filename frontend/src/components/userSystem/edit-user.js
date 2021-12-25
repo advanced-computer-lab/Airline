@@ -6,6 +6,7 @@ import UserDataService from "../../services/user";
 import axios from 'axios';
 import { useParams } from "react-router";
 import { setuid } from "process";
+import image3 from './images/image3.jpg'
 
 
 
@@ -116,15 +117,26 @@ const UpdateUser = props => {
     },
   });
   return (
-    <div style={{margin:"15px"}}>
+    <div style={{backgroundImage:`url(${image3})`,  width: "100%",
+    height: "800px", marginTop:'-50px'}}>
+  <div class="container mt-5" >
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8">
+            <div class="bg-white">
+              <div class="card shadow mb-5 bg-white rounded" style={{marginTop:'50px'}}>
 
+                <div class="card-body" >
+                  <div class="tab-content" id="myTabContent" >
+                    <div class="tab-pane fade active show" id="faq_tab_1" role="tabpanel" aria-labelledby="faq_tab_1-tab">
+                      <div class="container p-3" ></div>
       <h1 className="card-title">Edit user details </h1>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} >
 
         <div className="row">
           <div className="row-auto">
-
-            First Name :
+          First Name :
+          <div class="input-group mb-3">
+           
             <input
               className="form-control"
               id="FirstName"
@@ -134,12 +146,12 @@ const UpdateUser = props => {
               onChange={formik.handleChange}
               value={formik.values.FirstName}
             />
-
+</div>
           </div>
           <div className="row-auto">
-
-
-            Last Name :
+          Last Name :
+          <div class="input-group mb-3">
+          
             <input
               className="form-control"
               id="LastName"
@@ -149,12 +161,13 @@ const UpdateUser = props => {
               onChange={formik.handleChange}
               value={formik.values.LastName}
             />
-
+</div>
           </div>
           <div className="row-auto">
+          Passport Number :
+          <div class="input-group mb-3">
 
-
-            Passport Number :
+            
             <input
               className="form-control"
               id="PassportNumber"
@@ -164,11 +177,13 @@ const UpdateUser = props => {
               onChange={formik.handleChange}
               value={formik.values.PassportNumber}
             />
+            </div>
 
           </div>
           <div className="row-auto">
-
-            Email :
+          Email :
+          <div class="input-group mb-3">
+           
             <input
               className="form-control"
               id="Email"
@@ -177,31 +192,33 @@ const UpdateUser = props => {
               placeholder="Email"
               onChange={formik.handleChange}
               value={formik.values.Email}
-            />  <br />
-
+            /> 
+          </div>
           </div>
 
           <div className="row-auto">
-
-            Old Password :
+           Password :
+          <div class="input-group mb-3">
+           
             <input
               className="form-control"
               id="OldPassword"
               name="OldPassword"
               type="password"
-              placeholder="Old Password"
+              placeholder="Current Password"
               onChange={formik.handleChange}
               value={formik.values.OldPassword}
-            />  <br />
-
+            /> 
+        </div>
           </div>
 
           
 
           {toggle
             ? <div className="row-auto">
-
-              New Password :
+               New Password :
+              <div class="input-group mb-3">
+             
               <input
                 className="form-control"
                 id="NewPassword"
@@ -210,8 +227,8 @@ const UpdateUser = props => {
                 placeholder="New Password"
                 onChange={formik.handleChange}
                 value={formik.values.NewPassword}
-              />  <br />
-
+              /> 
+            </div>
             </div>
             : null}
 
@@ -223,7 +240,16 @@ const UpdateUser = props => {
             <button type="submit" class="btn btn-primary">Update</button>
           </div>
         </div>
+        
       </form>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
+      </div>
     </div>
 
 
