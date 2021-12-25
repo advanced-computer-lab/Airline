@@ -6,6 +6,7 @@ import UserDataService from "../../services/user";
 import axios from 'axios';
 import { useParams } from "react-router";
 import { setuid } from "process";
+import Button from '@mui/material/Button';
 import image3 from './images/image3.jpg'
 
 
@@ -118,12 +119,16 @@ const UpdateUser = props => {
   });
   return (
     <div style={{backgroundImage:`url(${image3})`,  width: "100%",
-    height: "800px", marginTop:'-50px'}}>
+    height: "850px", marginTop:'-50px'}}>
+      <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh', marginTop:"3s0px",marginLeft:"50px"}}>
+      <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
+          
+      </div>
   <div class="container mt-5" >
         <div class="row d-flex justify-content-center">
           <div class="col-md-8">
             <div class="bg-white">
-              <div class="card shadow mb-5 bg-white rounded" style={{marginTop:'50px'}}>
+              <div class="card shadow mb-5 bg-white rounded" style={{marginTop:'00px'}}>
 
                 <div class="card-body" >
                   <div class="tab-content" id="myTabContent" >

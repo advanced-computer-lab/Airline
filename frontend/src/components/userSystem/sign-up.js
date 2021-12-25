@@ -86,7 +86,7 @@ return(
         transition={2}
       /> */}
   <div >
-  <br/><div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh', marginTop:"30px"}}>
+  <br/><div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh', marginTop:"30px",marginLeft:"50px"}}>
       <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
           
       </div>
