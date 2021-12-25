@@ -750,7 +750,7 @@ const Booking = props => {
         <Grid>
 
 
-          <Grid sx={{ justifyContent: "center", textAlign: "center", margin: "60px 0 0 230px" }}>
+          <Grid sx={{ justifyContent: "center", textAlign: "center", margin: "60px 0 0 240px" }}>
             <Card
               sx={{ width: "400px", height: ' 220px', display: 'flex', flexDirection: 'column' }}
             >
@@ -868,8 +868,8 @@ const Booking = props => {
       <StripeCheckout stripeKey="pk_test_51KAKwFFMqAsw1TKn9YPjlgLvEEMefEOP8aemjBzhg5xJ29HuPFHMt4a2AUe6PnR83q6EIJ14uU1jQHYQqQd3sqk6008zLvCzwe"
                         token={Payment} style={{
                           position: 'absolute',
-                          right: "250px",
-                          top:"1230px" ,
+                          right: "240px",
+                          top:"1410px" ,
                     }}
                       />
                      
