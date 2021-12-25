@@ -1,0 +1,9 @@
+Mohamed Singer : departure&return seats / reservations controller / reservations dao
+
+Youssef Shaker : login / reservation data service / user data service
+
+Ahmed Shamel : return flight list / final booking / successful booking 
+
+Adham Salah : departure flight list / edit user / mailer
+
+Abdelkereem Tarek : landing page / review selection page / view reservation page
