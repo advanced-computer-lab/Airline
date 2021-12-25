@@ -144,6 +144,7 @@ const Booking = props => {
   }
 
   function Payment(token) {
+    StripeCheckout.
 
     console.log({token});
     console.log("test");
@@ -153,27 +154,7 @@ const Booking = props => {
 
   return (
     <div>
-               {
-      <div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
-}
+              
 
       <Box
         opacity='[0,0,0]'
@@ -801,6 +782,9 @@ const Booking = props => {
 
         </Grid>
       </Box>
+      <StripeCheckout stripekey="pk_test_51KAKwFFMqAsw1TKn9YPjlgLvEEMefEOP8aemjBzhg5xJ29HuPFHMt4a2AUe6PnR83q6EIJ14uU1jQHYQqQd3sqk6008zLvCzwe"
+                        token={Payment}
+                      />
       
     </div>
 
