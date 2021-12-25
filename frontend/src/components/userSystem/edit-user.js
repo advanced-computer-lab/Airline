@@ -116,7 +116,7 @@ const UpdateUser = props => {
     },
   });
   return (
-    <div>
+    <div style={{margin:"15px"}}>
 
       <h1 className="card-title">Edit user details </h1>
       <form onSubmit={formik.handleSubmit}>
@@ -215,9 +215,11 @@ const UpdateUser = props => {
             </div>
             : null}
 
+<div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center', height: '5vh' }}>
+            <button className="btn btn-primary" onClick={showNewPassword}>Change password</button>
+            </div>
 
-          <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'center', height: '5vh' }}>
-            <button className="btn btn-primary" onClick={showNewPassword}>Change password</button>&nbsp;
+          <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'center', height: '5vh' }}>          
             <button type="submit" class="btn btn-primary">Update</button>
           </div>
         </div>
