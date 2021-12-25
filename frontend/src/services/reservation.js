@@ -20,6 +20,10 @@ class ReservationDataService {
     return trackPromise(http.delete(`/reservations/${resid}`)); 
   }
 
+  deletenomail(resid){
+    return trackPromise(http.delete(`/reservations/${resid}/nomail`)); 
+  }
+
   update(id, data) {
     return trackPromise(http.put(`/reservations/${id}`, data));
   }

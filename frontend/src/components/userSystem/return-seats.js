@@ -15,7 +15,7 @@ function useForceUpdate(){
 
 const RetSeats = props => {
 
-    const state = props.location.state
+    let state = props.location.state
 
     const res = props.location.state.res
 
@@ -42,6 +42,16 @@ const RetSeats = props => {
     const retflight = state.retflight
 
     const depflight = state.depflight
+
+    console.log(retflight);
+
+    if(done){
+      state = {retflight, depflight, noseats, cabin, departurereserved, reserved, noadults, res};
+      console.log(state);
+      localStorage.setItem("state",JSON.stringify(state));
+      localStorage.setItem("user",JSON.stringify(props.User));
+      console.log(JSON.parse(localStorage.getItem("state")));
+    }
 
 
     const flightreserved = retflight.ReservedSeats

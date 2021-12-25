@@ -119,6 +119,50 @@ export default class ReservationsController{
           }
       }
 
+      static async apiCancelReservationNoMail(req, resp, next) {
+        try {
+          const resId = req.params.id
+          let res =  await ReservationsDAO.getReservationByID(resId)
+          let depid = res.DepartureFlight.id
+          let retid = res.ReturnFlight.id
+
+          let depFlight = await FlightsDAO.getFlightByID(depid)
+          let retFlight = await FlightsDAO.getFlightByID(retid)
+
+        let decseats = depFlight.EconomySeats
+        let dbseats = depFlight.BusinessSeats
+        let dfseats = depFlight.FirstSeats
+
+        let recseats = retFlight.EconomySeats
+        let rbseats = retFlight.BusinessSeats
+        let rfseats = retFlight.FirstSeats
+
+        let cabin = res.CabinClass
+
+        const depseats = res.DepSeats
+        const retseats = res.RetSeats
+
+        let noseats = res.NoSeats
+
+        if (cabin == "Economy"){decseats+=noseats;recseats+=noseats;}
+        else if (cabin == "Business Class"){dbseats+=noseats;rbseats+=noseats;}
+        else if (cabin == "First Class"){dfseats+=noseats;rfseats+=noseats;}
+
+
+
+
+        await FlightsDAO.updateFlight(res.DepartureFlight.id, res.DepartureFlight.FlightNumber, res.DepartureFlight.DepartureTime, res.DepartureFlight.ArrivalTime, res.DepartureFlight.Date, decseats, dbseats, dfseats, res.DepartureFlight.DepartureAirport, res.DepartureFlight.DestinationAirport, res.DepartureFlight.TripDuration, res.DepartureFlight.Price, res.DepartureFlight.BaggageAllowance, depseats, res.BookingNumber, false)
+
+        await FlightsDAO.updateFlight(res.ReturnFlight.id, res.ReturnFlight.FlightNumber, res.ReturnFlight.DepartureTime, res.ReturnFlight.ArrivalTime, res.ReturnFlight.Date, recseats, rbseats, rfseats, res.ReturnFlight.DepartureAirport, res.ReturnFlight.DestinationAirport, res.ReturnFlight.TripDuration, res.ReturnFlight.Price, res.ReturnFlight.BaggageAllowance, retseats, res.BookingNumber, false)
+
+        await ReservationsDAO.deleteReservation(resId)
+
+          resp.json({ status: "success" })
+        } catch (e) {
+          resp.status(500).json({ error: e.message })
+        }
+    }
+
 
       static async apiGetReservationById(req, res, next) {
         try {
