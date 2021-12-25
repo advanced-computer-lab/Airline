@@ -132,7 +132,7 @@ Follow the steps below to start the application
 
 ![][landing-ss] 
 
-- This is the landing page where the users can search for flights with the desired criteria such as departure airport, destination airport, both departure and return dates, number of seats for adults and childrens and the cabin class. 
+- This is the landing page where the users can search for flights with the desired criteria such as departure airport, destination airport, both departure and return dates, number of seats for adults and children and the cabin class. 
   
 
 
@@ -208,13 +208,13 @@ Follow the steps below to start the application
 
 ![][admincreateflight-ss]
 
-- Admin create flight page where admin can create a flight by entering flight number, departure time, arrival time, trip duration, date, economy seats, bussiness seats, first class seats, departure airport, destination airport, baggage allowance and price.
+- Admin create flight page where admin can create a flight by entering flight number, departure time, arrival time, trip duration, date, economy seats, business seats, first class seats, departure airport, destination airport, baggage allowance and price.
 
 
 ![][admineditflight-ss]
 
 
-- Admin edit flight page where admin can edit any flight by editing flight number, departure time, arrival time, trip duration, date, economy seats, bussiness seats, first class seats, departure airport, destination airport, baggage allowance and price.
+- Admin edit flight page where admin can edit any flight by editing flight number, departure time, arrival time, trip duration, date, economy seats, business seats, first class seats, departure airport, destination airport, baggage allowance and price.
 
 ![][reservationadmin-ss]
 
@@ -232,6 +232,9 @@ Follow the steps below to start the application
     - View Existing flights' details
     - Edit Existing flights(Changes are reflected on existing user bookings)
     - Delete Existing Flights(Existing user bookings that contain flight are cancelled and affected users are emailed)
+    - View Number of reservations on the system
+    - View all current reservations' details
+    - Cancel any current reservation(email sent to user)
 - User System
     - Sign up/login
     - Edit User Profile
