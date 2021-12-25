@@ -8,6 +8,10 @@ class UserDataService {
     return trackPromise(http.get(`/users/login`, data));
   }
 
+  create(data) {
+    return trackPromise(http.post("/users", data));
+  }
+
   get(id) {
     return trackPromise(http.get(`/users/${id}`));
   }

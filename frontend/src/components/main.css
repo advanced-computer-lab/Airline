@@ -1,0 +1,61 @@
+#greeting-title {
+    font-size: 50px;
+}
+
+#carousel-item {
+     height: 550px;
+}
+#carousel-itemd {
+    height: 200px;
+}
+#image-1 {
+   height: 100% !important;
+   width: 100% !important;
+}
+
+#image-2 {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+#image-3 {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+#booking-form-title {
+    padding: 20px;
+    background-color: grey;
+    font-size: 25px;
+}
+#edituser {
+    padding: 70px;
+    
+   width: 50%;
+    font-size: 20px;
+    
+   
+  
+
+}
+#edituserb {
+   
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
+    
+   
+  
+
+}
+
+#signup {
+   
+    padding: 100px;
+   width: 50%;
+    font-size: 20px;
+}
+#signuph1{
+    left: 500px;
+    height: 80px;
+   
+}

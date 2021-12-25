@@ -1,5 +1,7 @@
 import mongodb from "mongodb"
+import ReservationsDAO from "./reservationsDAO.js"
 const ObjectId = mongodb.ObjectID
+import ReservationsMailer from "../mailers/reservation-mailer.js"
 
 let flights
 
@@ -110,6 +112,8 @@ export default class FlightsDAO {
         EconomyAvailable: ecseatsavlbl,
         BusinessAvailable: bseatsavlbl,
         FirstAvailable: fseatsavlbl,
+        ReservedSeats:[],
+        Reservations:[]
 
 
     }
@@ -121,7 +125,7 @@ export default class FlightsDAO {
     }
   }
 
-  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="", seats=[], rem=false) {
+  static async updateFlight(flightId="", Fnumber="", deptime="", arrtime="", date="", ecseats=0, bseats=0, fseats=0, depairport="", destairport="", tripdur="", price=0, bagallwd="", seats=[],resid=null, add=null) {
     try {
 
       let ecseatsavlbl = false
@@ -130,17 +134,21 @@ export default class FlightsDAO {
 
       let flight
       let reserved = []
+      let resids = []
 
-      if(seats.length>0) 
-      {
       flight = await FlightsDAO.getFlightByID(flightId)
-
+      resids = flight.Reservations
       reserved = flight.ReservedSeats
+      
+      if (add) {
+        reserved = reserved.concat(seats); 
+        if(resid!=null) 
+        {
+          resids.push(resid)
+        }
       }
       
-      if (rem) {reserved = reserved.concat(seats)}
-      
-      else {
+      else if(!add){
         for (let i=0;i<=reserved.length;i++)
         {
           for (let j=0;j<=seats.length;j++)
@@ -152,7 +160,18 @@ export default class FlightsDAO {
 
 
           }
-        } 
+        }
+        if(resid!=null) 
+        {
+          for (let i=0;i<=resids.length;i++)
+        {
+          if(resids[i]==resid)
+            {
+              resids.splice(i,1);
+            }
+
+        }
+      }
       } 
 
       reserved.sort()
@@ -161,12 +180,64 @@ export default class FlightsDAO {
       if (bseats>0) bseatsavlbl = true 
       if (fseats>0) fseatsavlbl = true 
 
+      for(let i=0; i<resids.length; i++)
+      {
+        const res = await ReservationsDAO.getReservationByBN(resids[i]);
+
+        if(res.DepartureFlight.id == flightId){
+          //console.log(`entered dep`+"\n\n\n")        
+          await ReservationsDAO.UpdateReservationDepFlight(res._id,
+            {
+                  id: flightId,
+                  FlightNumber: Fnumber,
+                  DepartureTime: deptime,
+                  ArrivalTime: arrtime,
+                  Date: date,
+                  DepartureAirport: depairport,
+                  DestinationAirport: destairport,
+                  TripDuration: tripdur,
+                  BaggageAllowance: bagallwd,
+                  Price: price,
+                  EconomySeats: ecseats,
+                  BusinessSeats: bseats,
+                  FirstSeats: fseats,
+                  ReservedSeats: reserved
+
+            }
+          );
+
+        }
+        else if(res.ReturnFlight.id == flightId){
+          //console.log(`entered ret`+"\n\n\n")
+
+          await ReservationsDAO.UpdateReservationRetFlight(res._id,
+            {
+                  id: flightId,
+                  FlightNumber: Fnumber,
+                  DepartureTime: deptime,
+                  ArrivalTime: arrtime,
+                  Date: date,
+                  DepartureAirport: depairport,
+                  DestinationAirport: destairport,
+                  TripDuration: tripdur,
+                  BaggageAllowance: bagallwd,
+                  Price: price,
+                  EconomySeats: ecseats,
+                  BusinessSeats: bseats,
+                  FirstSeats: fseats,
+                  ReservedSeats: reserved
+
+            }
+          );
+        }
+      }
+
       const updateResponse = await flights.updateOne(
         { _id: ObjectId(flightId)},
         { $set: { FlightNumber:Fnumber, DepartureTime:deptime, ArrivalTime:arrtime, Date: date,  EconomySeats:ecseats, 
           BusinessSeats:bseats, FirstSeats:fseats, DepartureAirport:depairport, DestinationAirport:destairport, 
           TripDuration: tripdur, Price: price,BaggageAllowance: bagallwd, EconomyAvailable: ecseatsavlbl,  
-          BusinessAvailable: bseatsavlbl, FirstAvailable: fseatsavlbl, ReservedSeats:reserved } },
+          BusinessAvailable: bseatsavlbl, FirstAvailable: fseatsavlbl, ReservedSeats:reserved, Reservations:resids } },
       )
 
       return updateResponse
@@ -179,6 +250,20 @@ export default class FlightsDAO {
   static async deleteFlight(flightId) {
 
     try {
+      let flight = await FlightsDAO.getFlightByID(flightId)
+      let resids = flight.Reservations
+
+      for(let i=0; i<resids.length; i++)
+      {
+        const res = await ReservationsDAO.getReservationByBN(resids[i]);
+
+        await ReservationsDAO.deleteReservation(res._id)
+
+        await ReservationsMailer.CancelFlightReservation(res.User.email,res.Price, resids[i])
+
+      }
+
+
       const deleteResponse = await flights.deleteOne({
         _id: ObjectId(flightId),
       })

@@ -1,8 +1,24 @@
 import React, { useState, useEffect } from "react";
 import FlightDataService from "../../services/flight";
 import { Link } from "react-router-dom";
+import jwt from "jsonwebtoken";
 
 const FlightsList = props => {
+
+  // const access = () => {
+  //   const token = localStorage.getItem("token");
+  //   if(!token)
+  //   console.log("access denied");
+  //   try {
+  //     let decoded = jwt.verify(token, 'secret123');
+
+  //   } catch(err) {
+      
+  //   }
+  // };
+
+
+
   const [flights, setFlights] = useState([]);
   const [searchFlightNum, setSearchFlightNum ] = useState("");
   const [searchDepartTime, setSearchDepartTime ] = useState("");
@@ -13,6 +29,15 @@ const FlightsList = props => {
   
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if(!token)
+    props.history.push('/AcccessDenied');
+    else{
+    let decoded = jwt.verify(token, 'secret123');
+    if(decoded.email != "admin@asairline.com")
+    props.history.push('/AccessDenied');
+  }
+
     retrieveFlights();
   }, []);
 
@@ -95,7 +120,7 @@ const FlightsList = props => {
 
 
   return (
-    <div>
+    <div className="row" style= {{backgroundColor:"#f0f6f7ff",margin:"0", width:"95rem"}}>
       <div className="row">
           <h1>Flight Management System</h1><br/>
           
@@ -221,7 +246,7 @@ const FlightsList = props => {
                   <div>
                   <Link to={{ pathname: "/admin/flights/" + flight._id + "/edit", state: flight }} className="btn btn-primary">
             Edit
-          </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </Link> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <a className="btn btn-danger" onClick={() => {if(window.confirm('Are you sure you want to delete this flight?')){FlightDataService.deleteFlight(flight._id).then(response => {retrieveFlights();})}}}>Delete</a>
                   </div>
                 </div>

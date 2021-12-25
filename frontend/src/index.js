@@ -13,10 +13,11 @@ import Loader from 'react-loader-spinner';
       style={{
         width: "100%",
         height: "100",
+        backgroundColor:"#f0f6f7ff",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor:"#f0f6f7ff"
+       
       }}
     >
       <Loader type="ThreeDots" color="#000000" height="100" width="100" />

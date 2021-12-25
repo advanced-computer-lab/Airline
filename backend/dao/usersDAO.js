@@ -1,4 +1,5 @@
 import mongodb from "mongodb"
+import bcrypt from "bcrypt"
 const ObjectId = mongodb.ObjectID
 
 let users
@@ -54,28 +55,38 @@ export default class UsersDAO {
   }
 
 
-  static async addUser(firstname=null,lastname=null,passportnumber=null, password, email) {
+  static async addUser(firstname=null,lastname=null,passportnumber=null, password, email, username, address=null, phone=null , countrycode=null) {
     try {
+      const hash = await bcrypt.hash(password,5);
+
       const userDoc = { 
         firstname: firstname,
         lastname: lastname,
+        username: username,
         passportnumber: passportnumber,
-        password: password,
-        email: email
+        password: hash,
+        email: email,
+        address: address,
+        phone: phone,
+        countrycode: countrycode
     }
 
+      
       return await users.insertOne(userDoc)
+
+      
     } catch (e) {
       console.error(`Unable to add user: ${e}`)
       return { error: e }
     }
   }
 
-  static async updateUser(id="", fname="", lname="", passnum="", email="") {
+  static async updateUser(id="", fname="", lname="", passnum="", email="",pass,p) {
     try {
 
+
       
-      
+      if(!p){
 
       const updateResponse = await users.updateOne(
         { _id: ObjectId(id)},
@@ -83,6 +94,17 @@ export default class UsersDAO {
       )
 
       return updateResponse
+    }
+    else {
+      const hash = await bcrypt.hash(pass,5);
+      const updateResponse = await users.updateOne(
+        { _id: ObjectId(id)},
+        { $set: { firstname:fname, lastname:lname, passportnumber:passnum, email: email, password:hash } },
+      )
+
+      return updateResponse
+
+    }
     } catch (e) {
       console.error(`Unable to update user: ${e}`)
       return { error: e }

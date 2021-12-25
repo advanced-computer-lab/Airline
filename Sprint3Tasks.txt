@@ -1,0 +1,9 @@
+Ahmed Shamel:Page Styling in edit flights/ Add flights/ Edit user /Login/ Departure flight
+
+Adham Salah:Page Styling in flight lists/Flight/Return flights/Successful booking
+
+AbdelKareem Tarek:Page Styling in  departure seats/Return seats/Landing/User reservations/Final booking
+
+Youssef Shaker: signup/ sign in/ payment functionalities
+
+Mohamed Singer: edit seats/ edit reservation functionalities
