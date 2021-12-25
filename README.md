@@ -23,9 +23,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/advanced-computer-lab/Zone-A-squared.git">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  
 
 <h3 align="center">AS Airlines System</h3>
 
@@ -73,9 +71,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following.
+
+AS Airlines is a web based flight booking system. AS Airlines system is a user friendly system which any user can navigate through the website easily by creating account, reserve any roundtrip flights and search for any flight.
+It also have an admin system used by the administrator which he can view the reservations done by users and create/delete system flights.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -131,10 +130,95 @@ Follow the steps below to start the application
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+![][landing-ss] 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+- This is the landing page where the users can search for flights with the desired criteria such as departure airport, destination airport, both departure and return dates, number of seats for adults and childrens and the cabin class. 
+  
 
+
+![][depflights-ss] 
+
+- The departure flight page where the available departure flight details appears to match the search criteria.
+
+
+![][retflights-ss] 
+
+- The return flight page where the available return flights details displayed for the selected departure flight.
+
+
+![][reviewselection-ss] 
+
+- Review selection page where the selected departure and return flights are viewed with details, price and number of travellers.
+
+![][signup-ss]
+
+- Sign up page where the user can create a new account by adding his first name, last name, password, confirm password, email, username, passport number, address, country code and phone number.
+
+![][login-ss] 
+
+- Login page, the user should login to be able to continue booking.
+
+
+![][depseats-ss]
+
+- Departure seats page where the user can select the seats location for the departure flight.
+
+
+![][retseats-ss]
+
+- Return seats page where the user can select the seats location for the return flight.
+
+
+![][finalbooking1-ss]
+
+![][finalbooking2-ss]
+
+![][finalbooking3-ss]
+
+- Final Summary page where the user can view all the details of departure and return flights before final reservation. The user can click on pay with card button for the payment to be completed.
+
+
+
+![][successfulbooking1-ss]
+
+![][successfulbooking2-ss]
+
+- Successful booking is a confirmation page for reservation with booking number and all the details for departure and return flights also the user is able to view all the reservations by clicking on my reservations button.
+
+
+![][myreservations-ss]
+
+- My reservations page shows for the user all reservations made by the user. The user also can edit seats for both the departure and return flights, change flight, cancel flight and send an email contains the flight details to the user's email address.
+
+
+![][edituser-ss]
+
+![][edituserpass-ss]
+
+
+- Edit user page where existing user can change his information as first name, last name, email and passport number. Also the user can click on change password button, new text field for a new password will appear.
+
+
+
+- ADMIN SYSTEM
+![][adminhome-ss]
+
+- Admin home page where the admin can search, create, delete and edit any flight.
+
+
+![][admincreateflight-ss]
+
+- Admin create flight page where admin can create a flight by entering flight number, departure time, arrival time, trip duration, date, economy seats, bussiness seats, first class seats, departure airport, destination airport, baggage allowance and price.
+
+
+![][admineditflight-ss]
+
+
+- Admin edit flight page where admin can edit any flight by editing flight number, departure time, arrival time, trip duration, date, economy seats, bussiness seats, first class seats, departure airport, destination airport, baggage allowance and price.
+
+![][reservationadmin-ss]
+
+- Admin reservation system where the admin can view all the reservation details done by the user.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -173,23 +257,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 
 
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 
 
@@ -208,3 +275,25 @@ Don't forget to give the project a star! Thanks again!
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
+[test-screenshot]: images/mkr.png
+[landing-ss]:images/landing.png
+[depflights-ss]:images/depflights.png
+[retflights-ss]:images/retflights.png
+[reviewselection-ss]:images/reviewselection.png
+[depseats-ss]:images/depseats.png
+[retseats-ss]:images/retseats.png
+[login-ss]:images/login.png
+[myreservations-ss]:images/myreservations.png
+[successfulbooking1-ss]:images/successfulbooking1.png
+[successfulbooking2-ss]:images/successfulbooking2.png
+[finalbooking1-ss]:images/finalbooking1.png
+[finalbooking2-ss]:images/finalbooking2.png
+[finalbooking3-ss]:images/finalbooking3.png
+[myreservations-ss]:images/myreservations.png
+[adminhome-ss]:images/adminhome.png
+[reservationadmin-ss]:images/reservationadmin.png
+[signup-ss]:images/signup.png
+[edituser-ss]:images/edituser.png
+[edituserpass-ss]:images/edituserpass.png
+[admincreateflight-ss]:images/admincreateflight.png
+[admineditflight-ss]:images/admineditflight.png
