@@ -69,7 +69,7 @@ export default function Createflight(){
          },
      });
     return(
-<div>
+<div  style={{margin:"15px"}}>
 <h1 className="card-title">Create New Flight</h1>
 <form onSubmit={formik.handleSubmit}>
     <div className="row">

@@ -5,6 +5,7 @@ import image1 from './images/image1.jpg'
 import image2 from './images/image2.jpg'
 import image3 from './images/image3.jpg'
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 import './select-seats.css'; 
 
@@ -124,7 +125,7 @@ const DepSeats = props => {
 
     return (
 
-      <div>
+      <div  style={{margin:"15px"}}>
         
         <Box
     opacity='[0,0,0]'
@@ -140,6 +141,7 @@ const DepSeats = props => {
       backgroundColor="#f0f6f7ff"
     >
       <br/><div >
+      <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
           ((<Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Link>))
@@ -149,10 +151,9 @@ const DepSeats = props => {
           <h1>Select Departure Flight Seats </h1>
           <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
           
-            { done &&
-          <Link to={{ pathname: "/flights/ChooseRetSeats", state: {retflight, depflight, noseats, cabin, reserved, noadults, res} }}  style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}} className="btn btn-success">
-            Confirm Selection
-          </Link>}
+            { done &&        
+                       <Button variant='contained'  size='small' color='success' onClick={() => {props.history.push("/flights/ChooseRetSeats", {retflight, depflight, noseats, cabin, reserved, noadults, res})}}>Select</Button>
+                      }
           </div>
           <strong>Please select {noseats} {cabin} seat(s) for your departure flight.</strong>
           </div>

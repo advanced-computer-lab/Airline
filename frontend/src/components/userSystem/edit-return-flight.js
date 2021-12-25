@@ -27,7 +27,7 @@ const RetFlight = props => {
 
     const returnFlight=state.ReturnFlight
     return(
-            <div>
+            <div  style={{margin:"15px"}}>
               <Box
   opacity='[0,0,0]'
     component="form"

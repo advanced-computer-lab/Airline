@@ -36,6 +36,11 @@ const FlightReturn = props => {
 
     const cabin = state.cabin
 
+    let pricem = 1
+
+  if (cabin=="Business Class") pricem = 1.5
+  else if (cabin=="First Class") pricem = 2
+
     const noseats = state.noseats
 
     const noadults = state.noadults
@@ -86,10 +91,10 @@ const FlightReturn = props => {
 
     let string =""
 
-    if (state.returnDate!="") string += `  Date: ${state.returnDate}\n`
-    if (flight.DestinationAirport!="") string += `     DepartureAirport: ${flight.DestinationAirport}\n`
-    if (flight.DepartureAirport!="") string += `      DestinationAirport: ${flight.DepartureAirport}\n`
-    if (cabin!="") string += `    Cabin Class: ${cabin}\n`
+    if (state.returnDate!="") string += `  Date: ${state.returnDate}   -\n`
+    if (flight.DestinationAirport!="") string += `     DepartureAirport: ${flight.DestinationAirport}-\n`
+    if (flight.DepartureAirport!="") string += `      DestinationAirport: ${flight.DepartureAirport}-\n`
+    if (cabin!="") string += `    Cabin Class: ${cabin}-\n`
     if (noseats!=0) string += `     Seats: ${noseats}\n`
 
     return string
@@ -97,7 +102,7 @@ const FlightReturn = props => {
   }
 
   return (
-    <div>
+    <div  style={{margin:"15px"}}>
         
          
          <Box
@@ -116,6 +121,10 @@ const FlightReturn = props => {
     >
       
       <br/><br/><div className="row">
+      <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh'}}>
+      <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
+          
+      </div>
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
       {edit&&
           ((<Button variant='contained'  size='small' color='error' onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Button>))
@@ -352,7 +361,7 @@ Available Return Flights
                   Adult Seat price
                 </Typography>
               </Grid>
-             <Typography> {"$"+flight.Price} </Typography>
+             <Typography> {"$"+(flight.Price*pricem)} </Typography>
              
             </Grid>
             <Grid item xs={6}>
@@ -367,7 +376,7 @@ Available Return Flights
                     Child Seat price
                   </Typography>
                 </Grid>
-                <Typography> {"$"+flight.Price/2} </Typography>
+                <Typography> {"$"+(flight.Price*pricem)/2} </Typography>
               </Grid>
             </Grid>
             
@@ -377,10 +386,8 @@ Available Return Flights
     </Grid>
               </CardContent>
            
-               
-              <Link to={{ pathname: "/flights/ReviewSelection", state: {depFlight, flight, cabin, noseats, noadults, res} }} className="btn btn-success">
-            Select
-          </Link>
+              <Button variant='contained'  size='small' color='success' onClick={() => {props.history.push("/flights/ReviewSelection", {depFlight, flight, cabin, noseats, noadults, res})}}>Select</Button>
+           
           
            
             </Card>

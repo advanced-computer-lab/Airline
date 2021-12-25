@@ -25,7 +25,7 @@ import EditRetSeats from './components/userSystem/edit-ret-seats'
 import CabinSearch from "./components/userSystem/CabinSearch.js";
 import AccessDenied from "./components/adminSystem/AccessDenied.js";
 import NotFound from "./components/adminSystem/NotFound.js";
-
+import './App.css';
 
 function App() {
 
@@ -92,7 +92,7 @@ function App() {
               My Reservations 
             </Link>
             </li>
-            ) :(null)}     
+            ) :(null)}  
         
         <li className="nav-item" >
             { user ? (
@@ -121,7 +121,7 @@ function App() {
 
 
    
-    <div className="container mt-3">
+    <div >
       <Switch>
       <Route  exact path={["/admin", "/admin/flights"]} component={FlightsList} />
       <Route  path="/admin/flights/create" component={AddFlight} />
@@ -132,7 +132,6 @@ function App() {
       <Route  exact path={["/", "/flights"]} component={Landing} />
       <Route  path="/flights/SelectDeparture" component={FlightDep} />
       <Route  path="/AccessDenied" component={AccessDenied} />
-      
       <Route  path="/signup" component={SignUp} />
       <Route  path="/flights/SelectReturn" component={FlightReturn} />
       <Route 
@@ -164,8 +163,9 @@ function App() {
       <Route  path="/flights/EditRetSeats" render={(props) => <EditRetSeats {...props} User={user} />} />
       <Route  path="/flights/RetFlight" render={(props) => <RetFlight {...props} User={user} />} />
       <Route  path="/flights/DepFlight" render={(props) => <DepFlight {...props} User={user} />} />
+      <Route  path="*" component={NotFound} /> 
 
-      <Route  path="*" component={NotFound} />  
+        
       </Switch>
       
     </div>

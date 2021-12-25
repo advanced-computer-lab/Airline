@@ -122,7 +122,7 @@ const EditRetSeats = props => {
 
   return (
 
-    <div>
+    <div  style={{margin:"15px"}}>
      
       <Box
   opacity='[0,0,0]'
@@ -138,7 +138,7 @@ const EditRetSeats = props => {
     backgroundColor="#f0f6f7ff"
     
   >
-    <div >
+    <br/><div >
     <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
     <Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => {props.history.push("/ViewReservations")}}>Cancel</Link>
     </div>
