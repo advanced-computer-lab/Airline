@@ -5,7 +5,9 @@
 #carousel-item {
      height: 550px;
 }
-
+#carousel-itemd {
+    height: 200px;
+}
 #image-1 {
    height: 100% !important;
    width: 100% !important;

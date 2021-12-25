@@ -71,7 +71,11 @@ const Login = props => {
         duration={4}
         transition={2}
         id="background-slider"
+        
       />
+      <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh',position:"absolute"}}>
+      <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
+      </div>
     <Grid container style={styles.gridStyle} >
       <Grid item>
        <Paper elevation={15} style={{padding:"20px",width :"400px",height:"500px"}}>

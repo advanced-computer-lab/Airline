@@ -24,6 +24,9 @@ import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
 import {Box,Container,Typography,Grid,CardContent,CardActions,Card,ListItemAvatar,ListItem,Divider,List} from '@mui/material';
 import { ButtonGroup } from "@mui/material";
+import { Carousel } from 'react-bootstrap';
+import '../main.css';
+import { Icon } from '@iconify/react';
 const MyBooking = props => {
 
     const res = props.location.state
@@ -32,7 +35,47 @@ const MyBooking = props => {
 
 
     return (
-      <div  style={{margin:"15px"}}>
+      <div  >
+          <Carousel>
+        <Carousel.Item id="carousel-itemd">
+          <img
+            id="image-3"
+            className="d-block w-100"
+            src={image3}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            
+            <h4>Let The Journey Begin</h4>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item id="carousel-itemd">
+          <img
+            id="image-2"
+            className="d-block w-100"
+            src={image2}
+            alt="Second slide"
+          />
+
+          <Carousel.Caption>
+            
+            <h4>Let The Journey Begin</h4>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item id="carousel-itemd">
+          <img
+            id="image-1"
+            className="d-block w-100"
+            src={image1}
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+           
+            <h4>Let The Journey Begin</h4>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
          <Box
     opacity='[0,0,0]'
       component="form"

@@ -19,8 +19,13 @@ import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import NumbersIcon from '@mui/icons-material/Numbers';
 import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
 import ConfirmationNumberIcon from '@mui/icons-material/ConfirmationNumber';
+import image1 from './images/image1.jpg'
+import image2 from './images/image2.jpg'
+import image3 from './images/image3.jpg'
 import {Box,Container,Typography,Grid,CardContent,CardActions,Card,ListItemAvatar,ListItem,Divider,List} from '@mui/material';
 import { ButtonGroup } from "@mui/material";
+import { Carousel } from 'react-bootstrap';
+import '../main.css';
 
 function useForceUpdate(){
   const [value, setValue] = useState(0); // integer state
@@ -72,7 +77,47 @@ const UserReservations = props => {
 
 
       return(
-        <div  style={{margin:"15px"}}>
+        <div >
+            <Carousel>
+        <Carousel.Item id="carousel-itemd">
+          <img
+            id="image-3"
+            className="d-block w-100"
+            src={image3}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            
+            <h4>Let The Journey Begin</h4>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item id="carousel-itemd">
+          <img
+            id="image-2"
+            className="d-block w-100"
+            src={image2}
+            alt="Second slide"
+          />
+
+          <Carousel.Caption>
+            
+            <h4>Let The Journey Begin</h4>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item id="carousel-itemd">
+          <img
+            id="image-1"
+            className="d-block w-100"
+            src={image1}
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+           
+            <h4>Let The Journey Begin</h4>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
            <Box
     opacity='[0,0,0]'
       component="form"
