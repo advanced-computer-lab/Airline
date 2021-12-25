@@ -120,7 +120,7 @@ const FlightsList = props => {
 
 
   return (
-    <div style={{margin:"15px"}}>
+    <div className="row" style= {{backgroundColor:"#f0f6f7ff",margin:"0", width:"95rem"}}>
       <div className="row">
           <h1>Flight Management System</h1><br/>
           
