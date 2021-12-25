@@ -1,1 +1,29 @@
-*{margin: 0;}
+#greeting-title {
+    font-size: 50px;
+}
+
+#carousel-item {
+     height: 550px;
+}
+
+#image-1 {
+   height: 100% !important;
+   width: 100% !important;
+}
+
+#image-2 {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+#image-3 {
+    height: 100% !important;
+    width: 100% !important;
+}
+
+#booking-form-title {
+    padding: 20px;
+    background-color: grey;
+    font-size: 25px;
+}
+

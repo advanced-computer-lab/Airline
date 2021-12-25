@@ -46,7 +46,7 @@ const MyBooking = props => {
       marginTop={-2}
       backgroundColor="#f0f6f7ff"
     >
-<Grid container spacing ={14} mt={0}  marginTop={-7} marginLeft={0} width={1340}>
+<Grid container spacing ={14} mt={0}  marginTop={0} marginLeft={15} width={1340}>
       <div className="row">
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
           </div>
@@ -265,7 +265,6 @@ const MyBooking = props => {
             <Typography>{res.DepSeats.sort().toString()}</Typography>
           </Grid>
         </ListItem>
-        <Divider />
        
         
         
@@ -492,12 +491,7 @@ const MyBooking = props => {
             <Typography>{res.RetSeats.sort().toString()}</Typography>
           </Grid>
         </ListItem>
-        <Divider />
-        
-      
-        <Divider />
-        
-        
+
               </List>
                  
                     </Grid>
@@ -669,6 +663,7 @@ const MyBooking = props => {
             </List>
             </CardContent>
             </Card>
+            <br/>
 
 
           

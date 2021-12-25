@@ -24,8 +24,7 @@ import EditDepSeats from './components/userSystem/edit-dep-seats'
 import EditRetSeats from './components/userSystem/edit-ret-seats'
 import CabinSearch from "./components/userSystem/CabinSearch.js";
 import AccessDenied from "./components/adminSystem/AccessDenied.js";
-import NotFound from "./components/adminSystem/NotFound.js";
-
+import './App.css';
 
 function App() {
 
@@ -57,28 +56,14 @@ function App() {
         AS Airlines
       </a>
       <div  style={{margin:"0 0 0 0"}} className="navbar-nav ms-auto">
-        {user? (
-          <li className="nav-item" >
-            {user.email === "admin@asairline.com" ?(
-          <Link to={"/admin"} className="nav-link" >
-            Home
-          </Link>
-          ):(
-            <Link to={"/"} className="nav-link" >
-            Home
-          </Link>
-          )}
-        </li>
-        ):(
         <li className="nav-item" >
           <Link to={"/"} className="nav-link" >
             Home
           </Link>
         </li>
-        )}
 
 
-        { user && !(user.email === "admin@asairline.com")? (
+        { user ? (
               <li className="nav-item" >
               <Link to={"/UpdateUser"} className="nav-link">
               Edit Profile 
@@ -86,7 +71,7 @@ function App() {
             </li>
             ) :(null)}
 
-        { user && !(user.email === "admin@asairline.com")? (
+        { user ? (
               <li className="nav-item" >
               <Link to={"/ViewReservations"} className="nav-link">
               My Reservations 
@@ -121,7 +106,7 @@ function App() {
 
 
    
-    <div className="container mt-3">
+    <div >
       <Switch>
       <Route  exact path={["/admin", "/admin/flights"]} component={FlightsList} />
       <Route  path="/admin/flights/create" component={AddFlight} />
@@ -132,7 +117,6 @@ function App() {
       <Route  exact path={["/", "/flights"]} component={Landing} />
       <Route  path="/flights/SelectDeparture" component={FlightDep} />
       <Route  path="/AccessDenied" component={AccessDenied} />
-      
       <Route  path="/signup" component={SignUp} />
       <Route  path="/flights/SelectReturn" component={FlightReturn} />
       <Route 
@@ -165,7 +149,7 @@ function App() {
       <Route  path="/flights/RetFlight" render={(props) => <RetFlight {...props} User={user} />} />
       <Route  path="/flights/DepFlight" render={(props) => <DepFlight {...props} User={user} />} />
 
-      <Route  path="*" component={NotFound} />  
+        
       </Switch>
       
     </div>
