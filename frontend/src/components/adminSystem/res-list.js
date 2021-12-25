@@ -58,7 +58,7 @@ const ReservationsList = props => {
 
 
   return (
-    <div className="row" style= {{backgroundColor:"#f0f6f7ff",margin:"0px", width:"250rem"}}>
+    <div className="row" style= {{backgroundColor:"#f0f6f7ff",margin:"0px", width:"95rem"}}>
     <h1>Reservation Management System</h1><br/> <br/>
 
     <strong>Total Reservations: {num}</strong> <br/><br/>
@@ -69,7 +69,7 @@ const ReservationsList = props => {
      <div style= {{backgroundColor:"#f0f6f7ff"}}>
        
         <div className="col-lg-4 pb-1">
-        <div className="card" style={{border : "1px solid #111111"}}>
+        <div className="card" style={{border : "1px solid #111111", width:"800px",marginLeft:"350px"}}>
           <div className="card-body">
             <h4 className="card-title">{reservation.DepartureFlight.DepartureAirport} TO {reservation.DepartureFlight.DestinationAirport }  </h4>
             <h5>Booking Number :{reservation.BookingNumber}</h5>
