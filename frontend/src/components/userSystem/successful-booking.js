@@ -50,9 +50,14 @@ const MyBooking = props => {
       <div className="row">
       <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
           </div>
-          <h1>Congrats! You have booked your trip successfully.</h1><br/>
+          
+          <h1>Congrats! You have booked your trip successfully.</h1>
           <h2>Booking Number: {res.BookingNumber}.</h2> <br/> 
+          <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'center', height: '5vh' }}>
+          <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.push("/ViewReservations")}}>My Reservations</Button>
           </div>
+          </div>
+          
               <Container sx={{ py: 0 ,margin:"0 0 0 15px" }} maxWidth="md">
                 
                 <br/>

@@ -156,7 +156,8 @@ const Booking = props => {
 
    if(edit)
    {
-    ReservationDataService.delete(res._id); ReservationData.BookingNumber = res.BookingNumber; 
+    ReservationDataService.deletenomail(res._id); 
+    ReservationData.BookingNumber = res.BookingNumber; 
     ReservationDataService.create(ReservationData); 
     props.history.push("/flights/MyBooking", ReservationData)
    }

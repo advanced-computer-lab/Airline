@@ -84,7 +84,7 @@ const Login = props => {
         <div className="form-group">
          
           <TextField
-          label="Username"
+          label="Email"
             type="text"
             className="form-control"
             id="email"
