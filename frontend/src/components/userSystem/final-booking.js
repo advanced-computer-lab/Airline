@@ -22,6 +22,8 @@ import { Box, Container, Typography, Grid, CardContent, CardActions, Card, ListI
 import { ButtonGroup } from "@mui/material";
 import { height } from "@mui/system";
 import StripeCheckout from "react-stripe-checkout";
+import { Carousel } from 'react-bootstrap';
+import '../main.css';
 
 const Booking = props => {
 
@@ -172,8 +174,47 @@ const Booking = props => {
 
 
   return (
-    <div style={{margin:"15px"}}>
-              
+    <div >
+           <Carousel>
+        <Carousel.Item id="carousel-itemd">
+          <img
+            id="image-3"
+            className="d-block w-100"
+            src={image3}
+            alt="First slide"
+          />
+          <Carousel.Caption>
+            
+            <h4>Let The Journey Begin</h4>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item id="carousel-itemd">
+          <img
+            id="image-2"
+            className="d-block w-100"
+            src={image2}
+            alt="Second slide"
+          />
+
+          <Carousel.Caption>
+            
+            <h4>Let The Journey Begin</h4>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item id="carousel-itemd">
+          <img
+            id="image-1"
+            className="d-block w-100"
+            src={image1}
+            alt="Third slide"
+          />
+
+          <Carousel.Caption>
+           
+            <h4>Let The Journey Begin</h4>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>     
 
       <Box
         opacity='[0,0,0]'
