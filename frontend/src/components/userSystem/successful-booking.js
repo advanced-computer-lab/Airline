@@ -32,7 +32,7 @@ const MyBooking = props => {
 
 
     return (
-      <div>
+      <div  style={{margin:"15px"}}>
          <Box
     opacity='[0,0,0]'
       component="form"
@@ -43,7 +43,7 @@ const MyBooking = props => {
       textAlign='left'
       autoComplete="off"
       height="0px"
-      marginTop={-2}
+      marginTop={-4}
       backgroundColor="#f0f6f7ff"
     >
 <Grid container spacing ={14} mt={0}  marginTop={0} marginLeft={15} width={1340}>

@@ -4,7 +4,7 @@ const NotFound = (props) => {
 
 
     return(
-        <div>
+        <div >
 <main>
   <div class="container">
     <div class="row">

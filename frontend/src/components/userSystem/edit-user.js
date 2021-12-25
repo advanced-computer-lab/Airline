@@ -112,7 +112,7 @@ const UpdateUser = props => {
          },
      });
     return(
-      <div>
+      <div  style={{margin:"15px"}}>
      
          <h1 className="card-title">Edit user details </h1>
             <form onSubmit={formik.handleSubmit}>

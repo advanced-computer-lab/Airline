@@ -125,7 +125,7 @@ const DepSeats = props => {
 
     return (
 
-      <div>
+      <div  style={{margin:"15px"}}>
         
         <Box
     opacity='[0,0,0]'

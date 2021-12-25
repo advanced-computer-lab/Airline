@@ -102,7 +102,7 @@ const FlightReturn = props => {
   }
 
   return (
-    <div>
+    <div  style={{margin:"15px"}}>
         
          
          <Box

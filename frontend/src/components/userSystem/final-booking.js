@@ -142,7 +142,7 @@ const Booking = props => {
 
 
     return (
-      <div>
+      <div  style={{margin:"15px"}}>
 
 <Box
     opacity='[0,0,0]'
@@ -154,7 +154,7 @@ const Booking = props => {
       textAlign='left'
       autoComplete="off"
       height="0px"
-      marginTop={-2}
+      marginTop={-5}
       backgroundColor="#f0f6f7ff"
     >
        <Grid sx={{justifyContent:"center",textAlign:"center"}}>
@@ -678,7 +678,7 @@ paddingBottom: "0",
           <Grid>
 
 
-          <Grid sx={{justifyContent:"center",textAlign:"center",margin:"60px 0 0 240px"}}>
+          <Grid sx={{justifyContent:"center",textAlign:"center",margin:"60px 0 0 230px"}}>
           <Card
               sx={{ width:"400px",height: ' 220px', display: 'flex', flexDirection: 'column' }}
             >
@@ -763,7 +763,7 @@ paddingBottom: "0",
           paddingTop: "0",
           paddingBottom: "0",
           marginTop:"-60px",
-          marginRight:"240px",
+          marginRight:"230px",
           height:'100px'
         }}
       >

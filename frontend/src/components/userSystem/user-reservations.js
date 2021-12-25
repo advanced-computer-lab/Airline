@@ -72,7 +72,7 @@ const UserReservations = props => {
 
 
       return(
-        <div>
+        <div  style={{margin:"15px"}}>
            <Box
     opacity='[0,0,0]'
       component="form"
@@ -83,7 +83,7 @@ const UserReservations = props => {
       textAlign='left'
       autoComplete="off"
       height="0px"
-      marginTop={0}
+      marginTop={-4}
       backgroundColor="#f0f6f7ff"
       
     >
@@ -92,7 +92,7 @@ const UserReservations = props => {
 
           
           <Grid item  xs={12} sm={6} md={4} marginLeft={5} >
-          <h1 marginLeft>My Reservations </h1><br/>
+          <br/><br/><h1 marginLeft>My Reservations </h1><br/>
           {noRes() && ( <strong>You have no Reservations.</strong>)} 
         {reservations.map((reservation) => {
           

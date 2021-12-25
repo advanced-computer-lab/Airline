@@ -91,7 +91,7 @@ const UpdateFlight = props => {
      });
     return(
 
-        <div>
+        <div  style={{margin:"15px"}}>
           <h1 className="card-title">Edit flight details </h1>
 
        <form onSubmit={formik.handleSubmit}>

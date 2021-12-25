@@ -46,7 +46,7 @@ const ReviewSelection = props => {
     const user = props.User
 
     return(
-            <div  classname="row">
+            <div   style={{margin:"15px"}} classname="row">
                <Box
   opacity='[0,0,0]'
     component="form"

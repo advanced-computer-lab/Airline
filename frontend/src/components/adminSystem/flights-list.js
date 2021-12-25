@@ -120,7 +120,7 @@ const FlightsList = props => {
 
 
   return (
-    <div>
+    <div style={{margin:"15px"}}>
       <div className="row">
           <h1>Flight Management System</h1><br/>
           
