@@ -48,7 +48,6 @@ const Booking = props => {
   const returnFlight = state.depflight
   const cabin = state.cabin
   const noseats = state.noseats
-
   console.log(props.User)
 
   const user = JSON.parse(localStorage.getItem("user"));
@@ -66,8 +65,16 @@ const Booking = props => {
 
   const retreserved = state.reserved
   console.log(retreserved)
+  let pricem = 1
 
-  const tprice = noadults * (flight.Price + returnFlight.Price) + nochild * ((flight.Price + returnFlight.Price) / 2);
+  if (cabin=="Business Class") pricem = 1.5
+  else if (cabin=="First Class") pricem = 2
+
+  const tprice = noadults*(pricem*(flight.Price+returnFlight.Price)) + nochild*(pricem*((flight.Price+returnFlight.Price))/2);
+  let oldprice = 0 
+
+    if(res!=null) {edit = true; oldprice = res.Price}
+    const pay = tprice-oldprice
 
   const ReservationData = {
     BookingNumber: GenerateBookingNumber(),
@@ -687,9 +694,9 @@ const Booking = props => {
         <Grid>
 
 
-          <Grid sx={{ justifyContent: "center", textAlign: "center", margin: "60px 0 0 165px" }}>
+          <Grid sx={{ justifyContent: "center", textAlign: "center", margin: "60px 0 0 240px" }}>
             <Card
-              sx={{ width: "400px", height: ' 150px', display: 'flex', flexDirection: 'column' }}
+              sx={{ width: "400px", height: ' 220px', display: 'flex', flexDirection: 'column' }}
             >
               <CardContent sx={{ flexGrow: 1 }}>
                 <List
@@ -736,6 +743,25 @@ const Booking = props => {
                     </Grid>
                   </ListItem>
                   <Divider />
+                  <ListItem>
+      <ListItemAvatar>
+        <AttachMoneyIcon style={{ transform: "scale(1.2)" }} />
+      </ListItemAvatar>
+      <Grid container>
+        <Grid item align="left" xs={12}>
+          <Typography
+            sx={{ mt: 0.5 }}
+            color="text.secondary"
+            display="block"
+            variant="caption"
+          >
+            Total to be paid
+          </Typography>
+        </Grid>
+        <Typography>{pay}</Typography>
+      </Grid>
+    </ListItem>
+    <Divider/>
                 </List>
               </CardContent>
             </Card>
@@ -781,10 +807,16 @@ const Booking = props => {
           </Grid>
 
         </Grid>
+        
       </Box>
       <StripeCheckout stripekey="pk_test_51KAKwFFMqAsw1TKn9YPjlgLvEEMefEOP8aemjBzhg5xJ29HuPFHMt4a2AUe6PnR83q6EIJ14uU1jQHYQqQd3sqk6008zLvCzwe"
-                        token={Payment}
+                        token={Payment} style={{
+                          position: 'absolute',
+                          right: "240px",
+                          top:"1180px" ,
+                    }}
                       />
+                     
       
     </div>
 
