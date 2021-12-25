@@ -143,13 +143,16 @@ Follow the steps below to start the application
 
 ![][retflights-ss] 
 
-- The return flight page where the available return flight details displayed for the selected departure flight appears.
+- The return flight page where the available return flights details displayed for the selected departure flight.
 
 
 ![][reviewselection-ss] 
 
-- Review selection page where the selected departure and return are viewed with details, price and number of travellers.
+- Review selection page where the selected departure and return flights are viewed with details, price and number of travellers.
 
+![][signup-ss]
+
+- Sign up page where the user can create a new account by adding his first name, last name, password, confirm password, email, username, passport number, address, country code and phone number.
 
 ![][login-ss] 
 
@@ -172,7 +175,7 @@ Follow the steps below to start the application
 
 ![][finalbooking3-ss]
 
-- Final Summary page where the user can view all the details before reservation and payment method by clicking on pay with card button.
+- Final Summary page where the user can view all the details of departure and return flights before final reservation. The user can click on pay with card button for the payment to be completed.
 
 
 
@@ -185,13 +188,33 @@ Follow the steps below to start the application
 
 ![][myreservations-ss]
 
-- My reservations page show the user all reservations made by the user. The user also can edit seats for both the departure and return flights, change flight, cancel flight and send an email to the user contains the flight details.
-<br>
-</br>
-- Admin system
+- My reservations page shows for the user all reservations made by the user. The user also can edit seats for both the departure and return flights, change flight, cancel flight and send an email contains the flight details to the user's email address.
+
+
+![][edituser-ss]
+
+![][edituserpass-ss]
+
+
+- Edit user page where existing user can change his information as first name, last name, email and passport number. Also the user can click on change password button, new text field for a new password will appear.
+
+
+
+- ADMIN SYSTEM
 ![][adminhome-ss]
 
 - Admin home page where the admin can search, create, delete and edit any flight.
+
+
+![][admincreateflight-ss]
+
+- Admin create flight page where admin can create a flight by entering flight number, departure time, arrival time, trip duration, date, economy seats, bussiness seats, first class seats, departure airport, destination airport, baggage allowance and price.
+
+
+![][admineditflight-ss]
+
+
+- Admin edit flight page where admin can edit any flight by editing flight number, departure time, arrival time, trip duration, date, economy seats, bussiness seats, first class seats, departure airport, destination airport, baggage allowance and price.
 
 ![][reservationadmin-ss]
 
@@ -269,3 +292,8 @@ Follow the steps below to start the application
 [myreservations-ss]:images/myreservations.png
 [adminhome-ss]:images/adminhome.png
 [reservationadmin-ss]:images/reservationadmin.png
+[signup-ss]:images/signup.png
+[edituser-ss]:images/edituser.png
+[edituserpass-ss]:images/edituserpass.png
+[admincreateflight-ss]:images/admincreateflight.png
+[admineditflight-ss]:images/admineditflight.png
