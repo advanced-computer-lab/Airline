@@ -3,6 +3,10 @@ import { trackPromise } from 'react-promise-tracker';
 
 class ReservationDataService {
 
+  getAll() {
+    
+    return trackPromise(http.get(`/reservations`));
+  }
 
   create(data){
       return trackPromise(http.post(`/reservations`,data));
