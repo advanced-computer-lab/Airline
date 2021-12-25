@@ -32,7 +32,6 @@ const Booking = props => {
    const res = state.res 
 
 
-  let y = true;
 
   
 
@@ -151,10 +150,22 @@ const Booking = props => {
   }
 
   function Payment(token) {
-    StripeCheckout.
 
-    console.log({token});
-    console.log("test");
+    localStorage.removeItem("user");
+    localStorage.removeItem("state");
+
+   if(edit)
+   {
+    ReservationDataService.delete(res._id); ReservationData.BookingNumber = res.BookingNumber; 
+    ReservationDataService.create(ReservationData); 
+    props.history.push("/flights/MyBooking", ReservationData)
+   }
+   else {
+    ReservationDataService.create(ReservationData);
+    props.history.push("/flights/MyBooking", ReservationData);
+
+   }
+
   }
 
 
@@ -787,7 +798,7 @@ const Booking = props => {
 
                 {/* <div className="col-lg-4 pb-1" style={{ display: 'flex', justifyContent: 'right', alignItems: 'right', height: '6vh' }}>
                   {edit ?
-                    ((<Button variant='contained' size='small' color='primary' onClick={() => { if (window.confirm('Are you sure you want to book this flight?')) { ReservationDataService.delete(res._id); ReservationData.BookingNumber = res.BookingNumber; ReservationDataService.create(ReservationData); props.history.push("/flights/MyBooking", ReservationData) }; }}>Confirm</Button>))
+                    ((<Button variant='contained' size='small' color='primary' onClick={() => { if (window.confirm('Are you sure you want to book this flight?')) {  }; }}>Confirm</Button>))
                     : (<Button variant='contained' size='medium' color='primary' onClick={() => {
                       <StripeCheckout stripekey="pk_test_51KAKwFFMqAsw1TKn9YPjlgLvEEMefEOP8aemjBzhg5xJ29HuPFHMt4a2AUe6PnR83q6EIJ14uU1jQHYQqQd3sqk6008zLvCzwe"
                         token={Payment}
@@ -809,7 +820,7 @@ const Booking = props => {
         </Grid>
         
       </Box>
-      <StripeCheckout stripekey="pk_test_51KAKwFFMqAsw1TKn9YPjlgLvEEMefEOP8aemjBzhg5xJ29HuPFHMt4a2AUe6PnR83q6EIJ14uU1jQHYQqQd3sqk6008zLvCzwe"
+      <StripeCheckout stripeKey="pk_test_51KAKwFFMqAsw1TKn9YPjlgLvEEMefEOP8aemjBzhg5xJ29HuPFHMt4a2AUe6PnR83q6EIJ14uU1jQHYQqQd3sqk6008zLvCzwe"
                         token={Payment} style={{
                           position: 'absolute',
                           right: "240px",
