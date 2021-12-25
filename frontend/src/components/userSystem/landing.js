@@ -127,7 +127,7 @@ const Landing = props => {
 
           <Carousel.Caption>
             <h1 id="greeting-title"> Welcome to AS Airlines.</h1>
-            <h4>Where would you like to go?</h4>
+            <h4>Let The Journey Begin</h4>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item id="carousel-item">
@@ -140,7 +140,7 @@ const Landing = props => {
 
           <Carousel.Caption>
             <h1 id="greeting-title">Welcome to AS Airlines.</h1>
-            <h4>Where would you like to go?</h4>
+            <h4>Let The Journey Begin</h4>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

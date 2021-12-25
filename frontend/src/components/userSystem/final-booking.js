@@ -678,7 +678,7 @@ paddingBottom: "0",
           <Grid>
 
 
-          <Grid sx={{justifyContent:"center",textAlign:"center",margin:"60px 0 0 165px"}}>
+          <Grid sx={{justifyContent:"center",textAlign:"center",margin:"60px 0 0 240px"}}>
           <Card
               sx={{ width:"400px",height: ' 220px', display: 'flex', flexDirection: 'column' }}
             >
@@ -763,7 +763,7 @@ paddingBottom: "0",
           paddingTop: "0",
           paddingBottom: "0",
           marginTop:"-60px",
-          marginRight:"170px",
+          marginRight:"240px",
           height:'100px'
         }}
       >

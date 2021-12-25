@@ -83,7 +83,7 @@ const UserReservations = props => {
       textAlign='left'
       autoComplete="off"
       height="0px"
-      marginTop={-2}
+      marginTop={0}
       backgroundColor="#f0f6f7ff"
       
     >
@@ -91,14 +91,14 @@ const UserReservations = props => {
          
 
           
-          <Grid item  xs={12} sm={6} md={4} marginLeft={-10} >
+          <Grid item  xs={12} sm={6} md={4} marginLeft={5} >
           <h1 marginLeft>My Reservations </h1><br/>
           {noRes() && ( <strong>You have no Reservations.</strong>)} 
         {reservations.map((reservation) => {
           
           return (
            <div >
-             <Container sx={{ py: 8 }} fullWidth>
+             <Container sx={{ py: 5 }} fullWidth>
              <Grid item  xs={12} sm={6} md={4}>
               <Card  sx={{ width:"1400px",height: '100%', display: 'flex', flexDirection: 'column' }}>
               <CardContent sx={{ flexGrow: 1 }}>
