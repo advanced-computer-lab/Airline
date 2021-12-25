@@ -77,6 +77,8 @@ const Booking = props => {
     if(res!=null) {edit = true; oldprice = res.Price}
     const pay = tprice-oldprice
 
+    const pmt = pay>0
+
   const ReservationData = {
     BookingNumber: GenerateBookingNumber(),
     DepartureFlight: {
@@ -865,13 +867,37 @@ const Booking = props => {
         </Grid>
         
       </Box>
+      {pmt ?(
       <StripeCheckout stripeKey="pk_test_51KAKwFFMqAsw1TKn9YPjlgLvEEMefEOP8aemjBzhg5xJ29HuPFHMt4a2AUe6PnR83q6EIJ14uU1jQHYQqQd3sqk6008zLvCzwe"
                         token={Payment} style={{
                           position: 'absolute',
                           right: "240px",
                           top:"1410px" ,
                     }}
-                      />
+                      />):(<Grid container style={ {backgroundColor:"#f0f6f7ff"}}>
+                        <Grid item align="right" xs={12}>
+                                  
+                            <List
+                        sx={{
+                          width: "300px",
+                          paddingTop: "0",
+                          paddingBottom: "0",
+                          marginTop:"1170px",
+                          marginRight:"230px",
+                          height:'100px'
+                        }}
+                      >
+                        
+                      <div className="col-lg-4 pb-1" style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '6vh'}}>
+                      {edit?
+                          ((<Button variant='contained'  size='small' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.delete(res._id);ReservationData.BookingNumber=res.BookingNumber;ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm</Button>))
+                          :(<Button variant='contained'  size='medium' color='primary' onClick={() => {if(window.confirm('Are you sure you want to book this flight?')){ReservationDataService.create(ReservationData);props.history.push("/flights/MyBooking", ReservationData)};}}>Confirm</Button>)
+                          }
+                                </div>
+                                </List>
+                                </Grid>
+                                </Grid>)
+                  }
                      
       
     </div>

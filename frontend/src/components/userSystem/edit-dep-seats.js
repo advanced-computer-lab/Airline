@@ -11,6 +11,7 @@ import ReservationDataService from "../../services/reservation";
 import '../main.css'
 import { Icon } from '@iconify/react';
 import { Carousel } from 'react-bootstrap'
+import Button from '@mui/material/Button';
 
 
 function useForceUpdate(){
@@ -193,9 +194,9 @@ const EditDepSeats = props => {
         <h1>Select Departure Flight Seats </h1>
         <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
           { done &&
-        <Link to={{ pathname: "/"}} onClick={() =>{ReservationDataService.update(reservation._id, {flightid:id, oldseats:oldseats, newseats:reserved, editdepseats:true});console.log("clicked");}}  style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}} className="btn btn-success">
-          Update Selection
-        </Link>}
+        <Button  variant='contained'  size='small' color='success' onClick={() =>{ReservationDataService.update(reservation._id, {flightid:id, oldseats:oldseats, newseats:reserved, editdepseats:true});setTimeout(()=>{props.history.push("/ViewReservations")}, 1000)}}  style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+          Select
+        </Button>}
         </div>
         <strong>Please select {noseats} {cabin} seat(s) for your departure flight.</strong>
         </div>

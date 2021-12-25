@@ -74,7 +74,7 @@ const Signup = props => {
         if(formik.values.Password === formik.values.ConfirmPassword)
         {
           UserDataService.create(UserData);
-          props.history.push("/login",{reserving: false});
+          props.history.goBack();
 
         }
         else

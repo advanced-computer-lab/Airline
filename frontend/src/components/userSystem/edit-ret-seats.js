@@ -9,6 +9,7 @@ import './select-seats.css';
 import ReservationDataService from "../../services/reservation";
 import { Carousel } from 'react-bootstrap'
 import '../main.css'
+import Button from '@mui/material/Button';
 
 function useForceUpdate(){
   const [value, setValue] = useState(0); // integer state
@@ -186,9 +187,9 @@ const EditRetSeats = props => {
         <h1>Select Return Flight Seats </h1>
         <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
           { done &&
-        <Link to={{ pathname: "/"}} onClick={() =>{ReservationDataService.update(reservation._id, {flightid:id, oldseats:oldseats, newseats:reserved, editretseats:true});console.log("clicked");}}  style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}} className="btn btn-success">
-          Update Selection
-        </Link>}
+        <Button  variant='contained'  size='small' color='success' onClick={() =>{ReservationDataService.update(reservation._id, {flightid:id, oldseats:oldseats, newseats:reserved, editretseats:true});setTimeout(()=>{props.history.push("/ViewReservations")}, 1000)}}  style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
+        Select
+        </Button>}
         </div>
         <strong>Please select {noseats} {cabin} seat(s) for your return flight.</strong>
         </div>

@@ -133,8 +133,8 @@ const MyBooking = props => {
         container
       >
        
-         <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {res.DepartureFlight.FlightNumber}</Typography>
-         <Typography sx={{margin:"0 0 0 15px"}} variant="h9">{res.DepartureFlight.DepartureAirport} TO {res.DepartureFlight.DestinationAirport}</Typography>
+         <Typography sx={{margin:"0 0 0 15px"}} variant="h4">{res.DepartureFlight.DepartureAirport} TO {res.DepartureFlight.DestinationAirport}</Typography>
+         <Typography sx={{margin:"0 0 0 15px"}} variant="h9">Flight No. {res.DepartureFlight.FlightNumber}</Typography>
 
          <List
         sx={{
@@ -359,8 +359,8 @@ const MyBooking = props => {
         fullWidth
         container
       >
-         <Typography sx={{margin:"0 0 0 15px"}} variant="h4">Flight No. {res.ReturnFlight.FlightNumber}</Typography>
-         <Typography sx={{margin:"0 0 0 15px"}} variant="h9">{res.ReturnFlight.DepartureAirport} TO {res.ReturnFlight.DestinationAirport}</Typography>
+         <Typography sx={{margin:"0 0 0 15px"}} variant="h4">{res.ReturnFlight.DepartureAirport} TO {res.ReturnFlight.DestinationAirport}</Typography>
+         <Typography sx={{margin:"0 0 0 15px"}} variant="h9">Flight No. {res.ReturnFlight.FlightNumber}</Typography>
 
          <List
         sx={{
