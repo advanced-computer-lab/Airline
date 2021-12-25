@@ -24,6 +24,7 @@ import EditDepSeats from './components/userSystem/edit-dep-seats'
 import EditRetSeats from './components/userSystem/edit-ret-seats'
 import CabinSearch from "./components/userSystem/CabinSearch.js";
 import AccessDenied from "./components/adminSystem/AccessDenied.js";
+import NotFound from "./components/adminSystem/NotFound.js";
 import './App.css';
 
 function App() {
@@ -162,6 +163,7 @@ function App() {
       <Route  path="/flights/EditRetSeats" render={(props) => <EditRetSeats {...props} User={user} />} />
       <Route  path="/flights/RetFlight" render={(props) => <RetFlight {...props} User={user} />} />
       <Route  path="/flights/DepFlight" render={(props) => <DepFlight {...props} User={user} />} />
+      <Route  path="*" component={NotFound} /> 
 
         
       </Switch>
