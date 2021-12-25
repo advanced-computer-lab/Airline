@@ -93,14 +93,14 @@ return(
         transition={2}
       /> */}
   <div >
-  <br/><div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh', marginTop:"30px",marginLeft:"50px"}}>
+  <br/><div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh', marginTop:"26px"}}>
       <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
           
       </div>
     
-      <div class="container mt-5">
+      <div class="container mt-5" >
         <div class="row d-flex justify-content-center">
-          <div class="col-md-8">
+          <div class="col-md-5">
             <div class="bg-white">
               <div class="card shadow mb-5 bg-white rounded">
 
@@ -108,7 +108,7 @@ return(
                   <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade active show" id="faq_tab_1" role="tabpanel" aria-labelledby="faq_tab_1-tab">
                       <div class="container p-3">
-<h1 className="card-title">Sign up</h1>
+<h1 id ="signuph1" className="card-title">Sign up</h1>
 <form onSubmit={formik.handleSubmit}>
 <div className="row">
        <div className="row-auto">

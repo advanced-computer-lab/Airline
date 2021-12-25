@@ -45,7 +45,7 @@ const MyBooking = props => {
             alt="First slide"
           />
           <Carousel.Caption>
-            
+          <h1 id="greeting-title">AS Airlines.</h1>
             <h4>Let The Journey Begin</h4>
           </Carousel.Caption>
         </Carousel.Item>
@@ -58,7 +58,7 @@ const MyBooking = props => {
           />
 
           <Carousel.Caption>
-            
+          <h1 id="greeting-title">AS Airlines.</h1>
             <h4>Let The Journey Begin</h4>
           </Carousel.Caption>
         </Carousel.Item>
@@ -71,7 +71,7 @@ const MyBooking = props => {
           />
 
           <Carousel.Caption>
-           
+          <h1 id="greeting-title">AS Airlines.</h1>
             <h4>Let The Journey Begin</h4>
           </Carousel.Caption>
         </Carousel.Item>
