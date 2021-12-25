@@ -103,8 +103,19 @@ function App() {
             <Link to={{ pathname: "/login", state: {reserving: false}}} className="nav-link">
               Login
             </Link>
-            )}
+            
+            ) 
 
+            }
+        
+
+        </li>
+        <li className="nav-item">
+        { user==null ? (
+        <Link to={{ pathname: "/signup", state: {reserving: false}}} className="nav-link">
+             Sign up
+           </Link>
+        ):(null) }
         </li>
 
         
