@@ -134,76 +134,55 @@ Follow the steps below to start the application
 ![][landing-ss] 
 
 - This is the landing page where the users can search for flights with the desired criteria such as departure airport, destination airport, both departure and return dates, number of seats for adults and childrens and the cabin class. 
-<br>
-</br>
-<br>
-</br>
+  
+
+
 ![][depflights-ss] 
 
 - The departure flight page where the available departure flight details appears to match the search criteria.
-<br>
-</br>
-<br>
-</br>
+
+
 ![][retflights-ss] 
 
 - The return flight page where the available return flight details displayed for the selected departure flight appears.
-<br>
-</br>
-<br>
-</br>
+
+
 ![][reviewselection-ss] 
 
 - Review selection page where the selected departure and return are viewed with details, price and number of travellers.
-<br>
-</br>
-<br>
-</br>
+
+
 ![][login-ss] 
 
 - Login page, the user should login to be able to continue booking.
-<br>
-</br>
-<br>
-</br>
+
+
 ![][depseats-ss]
 
 - Departure seats page where the user can select the seats location for the departure flight.
-<br>
-</br>
-<br>
-</br>
+
+
 ![][retseats-ss]
 
 - Return seats page where the user can select the seats location for the return flight.
-<br>
-</br>
-<br>
-</br>
+
 
 ![][finalbooking1-ss]
-<br>
-</br>
+
 ![][finalbooking2-ss]
-<br>
-</br>
+
 ![][finalbooking3-ss]
+
 - Final Summary page where the user can view all the details before reservation and payment method by clicking on pay with card button.
-<br>
-</br>
-<br>
-</br>
+
 
 
 ![][successfulbooking1-ss]
-<br>
-</br>
+
 ![][successfulbooking2-ss]
+
 - Successful booking is a confirmation page for reservation with booking number and all the details for departure and return flights also the user is able to view all the reservations by clicking on my reservations button.
-<br>
-</br>
-<br>
-</br>
+
 
 
 
