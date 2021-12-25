@@ -8,6 +8,7 @@ import image1 from './images/image1.jpg'
 import image2 from './images/image2.jpg'
 import image3 from './images/image3.jpg'
 import user from "../../services/user";
+import { Link } from "react-router-dom";
 
 
 const Login = props => {
@@ -122,6 +123,11 @@ const Login = props => {
         <button onClick={login} className="btn btn-success">
           Login
         </button>
+        {/* <button style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '5vh'}}>  
+                  <Link to={{ pathname: "/signup"}} className="btn btn-success">Edit Seats</Link>   
+                  
+          Signup
+        </button> */}
         </div>
         
       </div>

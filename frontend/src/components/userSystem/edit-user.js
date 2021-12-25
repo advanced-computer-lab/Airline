@@ -7,8 +7,8 @@ import axios from 'axios';
 import { useParams } from "react-router";
 import { setuid } from "process";
 import Button from '@mui/material/Button';
-import image3 from './images/image3.jpg'
-
+import image3 from './images/image3.jpg';
+import '../main.css';
 
 
 const UpdateUser = props => {
@@ -120,11 +120,11 @@ const UpdateUser = props => {
   return (
     <div style={{backgroundImage:`url(${image3})`,  width: "100%",
     height: "850px", marginTop:'0'}}>
-      <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh', marginTop:"3s0px",marginLeft:"50px"}}>
+      <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh', marginTop:"3s0px"}}>
       <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
           
       </div>
-  <div class="container mt-5" >
+  <div id = "edituser" class="container mt-5" id="edituser" >
         <div class="row d-flex justify-content-center">
           <div class="col-md-8">
             <div class="bg-white">
@@ -139,7 +139,7 @@ const UpdateUser = props => {
 
         <div className="row">
           <div className="row-auto">
-          First Name :
+          
           <div class="input-group mb-3">
            
             <input
@@ -147,6 +147,7 @@ const UpdateUser = props => {
               id="FirstName"
               name="FirstName"
               type="text"
+              label="First Name"
               placeholder="First Name"
               onChange={formik.handleChange}
               value={formik.values.FirstName}
@@ -154,13 +155,14 @@ const UpdateUser = props => {
 </div>
           </div>
           <div className="row-auto">
-          Last Name :
+          
           <div class="input-group mb-3">
           
             <input
               className="form-control"
               id="LastName"
               name="LastName"
+              label="Last Name"
               type="text"
               placeholder="Last Name"
               onChange={formik.handleChange}
@@ -169,13 +171,14 @@ const UpdateUser = props => {
 </div>
           </div>
           <div className="row-auto">
-          Passport Number :
+         
           <div class="input-group mb-3">
 
             
             <input
               className="form-control"
               id="PassportNumber"
+              Label="Passport Number"
               name="PassportNumber"
               type="text"
               placeholder="Passport Number"
@@ -186,13 +189,14 @@ const UpdateUser = props => {
 
           </div>
           <div className="row-auto">
-          Email :
+
           <div class="input-group mb-3">
            
             <input
               className="form-control"
               id="Email"
               name="Email"
+              label="Email"
               type="text"
               placeholder="Email"
               onChange={formik.handleChange}
@@ -202,12 +206,13 @@ const UpdateUser = props => {
           </div>
 
           <div className="row-auto">
-           Password :
+          
           <div class="input-group mb-3">
            
             <input
               className="form-control"
               id="OldPassword"
+              Label="Password"
               name="OldPassword"
               type="password"
               placeholder="Current Password"
@@ -221,13 +226,14 @@ const UpdateUser = props => {
 
           {toggle
             ? <div className="row-auto">
-               New Password :
+              
               <div class="input-group mb-3">
              
               <input
                 className="form-control"
                 id="NewPassword"
                 name="NewPassword"
+                label="New Password"
                 type="password"
                 placeholder="New Password"
                 onChange={formik.handleChange}
@@ -242,7 +248,7 @@ const UpdateUser = props => {
             </div>
 
           <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'center', height: '5vh' }}>          
-            <button type="submit" class="btn btn-primary">Update</button>
+            <button id="edituserb" type="submit" class="btn btn-primary">Update</button>
           </div>
         </div>
         

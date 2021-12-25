@@ -28,4 +28,34 @@
     background-color: grey;
     font-size: 25px;
 }
+#edituser {
+    padding: 70px;
+    
+   width: 50%;
+    font-size: 20px;
+    
+   
+  
 
+}
+#edituserb {
+   
+    background-color: #4CAF50;
+    border: 2px solid #4CAF50;
+    
+   
+  
+
+}
+
+#signup {
+   
+    padding: 100px;
+   width: 50%;
+    font-size: 20px;
+}
+#signuph1{
+    left: 500px;
+    height: 80px;
+   
+}
