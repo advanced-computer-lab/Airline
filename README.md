@@ -73,7 +73,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]] 
 
 Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following.
 
@@ -131,9 +131,84 @@ Follow the steps below to start the application
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+![][landing-ss] 
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+- This is the landing page where the users can search for flights with the desired criteria such as departure airport, destination airport, both departure and return dates, number of seats for adults and childrens and the cabin class. 
+<br>
+</br>
+<br>
+</br>
+![][depflights-ss] 
+
+- The departure flight page where the available departure flight details appears to match the search criteria.
+<br>
+</br>
+<br>
+</br>
+![][retflights-ss] 
+
+- The return flight page where the available return flight details displayed for the selected departure flight appears.
+<br>
+</br>
+<br>
+</br>
+![][reviewselection-ss] 
+
+- Review selection page where the selected departure and return are viewed with details, price and number of travellers.
+<br>
+</br>
+<br>
+</br>
+![][login-ss] 
+
+- Login page, the user should login to be able to continue booking.
+<br>
+</br>
+<br>
+</br>
+![][depseats-ss]
+
+- Departure seats page where the user can select the seats location for the departure flight.
+<br>
+</br>
+<br>
+</br>
+![][retseats-ss]
+
+- Return seats page where the user can select the seats location for the return flight.
+<br>
+</br>
+<br>
+</br>
+
+![][finalbooking1-ss]
+<br>
+</br>
+![][finalbooking2-ss]
+<br>
+</br>
+![][finalbooking3-ss]
+- Final Summary page where the user can view all the details before reservation and payment method by clicking on pay with card button.
+<br>
+</br>
+<br>
+</br>
+
+
+![][successfulbooking1-ss]
+<br>
+</br>
+![][successfulbooking2-ss]
+- Successful booking is a confirmation page for reservation with booking number and all the details for departure and return flights also the user is able to view all the reservations by clicking on my reservations button.
+<br>
+</br>
+<br>
+</br>
+
+
+
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -208,3 +283,17 @@ Don't forget to give the project a star! Thanks again!
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: images/screenshot.png
+[test-screenshot]: images/mkr.png
+[landing-ss]:images/landing.png
+[depflights-ss]:images/depflights.png
+[retflights-ss]:images/retflights.png
+[reviewselection-ss]:images/reviewselection.png
+[depseats-ss]:images/depseats.png
+[retseats-ss]:images/retseats.png
+[login-ss]:images/login.png
+[myreservations-ss]:images/myreservations.png
+[successfulbooking1-ss]:images/successfulbooking1.png
+[successfulbooking2-ss]:images/successfulbooking2.png
+[finalbooking1-ss]:images/finalbooking1.png
+[finalbooking2-ss]:images/finalbooking2.png
+[finalbooking3-ss]:images/finalbooking3.png
