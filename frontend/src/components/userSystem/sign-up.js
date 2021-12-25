@@ -29,12 +29,9 @@ const Signup = props => {
         Email:"",
         Username:"",
         PassportNumber:"",
-        Phone:"",
-        CountryCode:"",
         Address: "",
-
-
-
+        CountryCode:"",
+        Phone:"",
     },
 
     validationSchema: Yup.object({
@@ -45,9 +42,11 @@ const Signup = props => {
         Email: Yup.string().required("Required"),
         Username: Yup.string().required("Required"),
         PassportNumber: Yup.string().required("Required"),
-        Phone: Yup.number().required("Required"),
-        CountryCode: Yup.string().required("Required"),
         Address:Yup.string().required("Required"),
+        CountryCode: Yup.string().required("Required"),
+        Phone: Yup.number().required("Required"),
+       
+        
         
 
         
@@ -64,9 +63,11 @@ const Signup = props => {
             email: formik.values.Email,
             username: formik.values.Username,
             passportnumber: formik.values.PassportNumber,
-            phone: formik.values.Phone,
-            countrycode: formik.values.CountryCode,
             address: formik.values.Address,
+            countrycode: formik.values.CountryCode,
+            phone: formik.values.Phone,
+           
+          
 
         };
 
@@ -78,35 +79,27 @@ const Signup = props => {
 });
 return(
   <div>
-<BackgroundSlider
+{/* <BackgroundSlider
         images={ [image3,image2,image1]}
         duration={10}
         transition={2}
-      />
- 
-<Box
-  opacity='[0,0,0]'
-    component="form"
-    sx={{
-      '& .MuiTextField-root': { m: 3, width: '65ch' },
-    }}
-    noValidate
-    textAlign='left'
-    autoComplete="off"
-    height="0px"
-    marginTop={0}
-  >
-    <div>
-
-    </div>
-  <Container fullWidth  >
+      /> */}
+  <div >
   <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh'}}>
       <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
           
       </div>
-  <Grid sx={{justifyContent:"center",textAlign:"center",margin:"00px 0 0 290px"}}>
     
-  <Card sx={{ width:"500px",height: '100%', display: 'flex', flexDirection: 'column',margin:"10px 0 0 00px" ,padding:"20px 20px 20px 20px"}}>
+      <div class="container mt-5">
+        <div class="row d-flex justify-content-center">
+          <div class="col-md-8">
+            <div class="bg-white">
+              <div class="card shadow mb-5 bg-white rounded">
+
+                <div class="card-body">
+                  <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade active show" id="faq_tab_1" role="tabpanel" aria-labelledby="faq_tab_1-tab">
+                      <div class="container p-3">
 <h1 className="card-title">Sign up</h1>
 <form onSubmit={formik.handleSubmit}>
 <div className="row">
@@ -247,15 +240,18 @@ return(
 <br/>
 
       
-      <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '5vh'}}>
-      <button type= "submit" class="btn btn-success">Sign up</button>
-      </div>
+     
  </div>
+ <div style={{display: 'flex',  justifyContent:'center', alignItems:'center', height: '5vh'}}>
+      <button type= "submit" class="btn btn-success">Sign up</button>
+      </div>    
 </form>
-</Card>
-</Grid>
-</Container>
-</Box>
+</div>
+</div>
+</div>
+</div></div></div></div></div></div>
+</div>
+
 </div>
    )
 }
