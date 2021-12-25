@@ -23,9 +23,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/advanced-computer-lab/Zone-A-squared.git">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
+  
 
 <h3 align="center">AS Airlines System</h3>
 
@@ -73,9 +71,10 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]] 
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following.
+
+AS Airlines is a web based flight booking system. AS Airlines system is a user friendly system which any user can navigate through the website easily by creating account, reserve any roundtrip flights and search for any flight.
+It also have an admin system used by the administrator which he can view the reservations done by users and create/delete system flights.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -184,11 +183,19 @@ Follow the steps below to start the application
 - Successful booking is a confirmation page for reservation with booking number and all the details for departure and return flights also the user is able to view all the reservations by clicking on my reservations button.
 
 
+![][myreservations-ss]
 
+- My reservations page show the user all reservations made by the user. The user also can edit seats for both the departure and return flights, change flight, cancel flight and send an email to the user contains the flight details.
+<br>
+</br>
+- Admin system
+![][adminhome-ss]
 
+- Admin home page where the admin can search, create, delete and edit any flight.
 
+![][reservationadmin-ss]
 
-
+- Admin reservation system where the admin can view all the reservation details done by the user.
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -227,23 +234,6 @@ Follow the steps below to start the application
 
 
 
-<!-- CONTRIBUTING -->
-## Contributing
-
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 
 
@@ -276,3 +266,6 @@ Don't forget to give the project a star! Thanks again!
 [finalbooking1-ss]:images/finalbooking1.png
 [finalbooking2-ss]:images/finalbooking2.png
 [finalbooking3-ss]:images/finalbooking3.png
+[myreservations-ss]:images/myreservations.png
+[adminhome-ss]:images/adminhome.png
+[reservationadmin-ss]:images/reservationadmin.png
