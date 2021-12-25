@@ -72,7 +72,7 @@ const Signup = props => {
         };
 
         UserDataService.create(UserData);
-        window.location.href="/";
+        props.history.push("/login",{reserving: false});
 
 
     },
@@ -85,7 +85,7 @@ return(
         transition={2}
       /> */}
   <div >
-  <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh'}}>
+  <br/><div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh'}}>
       <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
           
       </div>

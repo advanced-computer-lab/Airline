@@ -61,8 +61,8 @@ const ReviewSelection = props => {
     backgroundColor="#f0f6f7ff"
   >
               <Grid sx={{justifyContent:"center",textAlign:"center"}}>
-              <br/><h1>You selected the following flights</h1>
-              <div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh'}}>
+              
+              <br/><div style={{display: 'flex',  justifyContent:'left', alignItems:'left', height: '5vh'}}>
       <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
           
       </div>
@@ -72,6 +72,7 @@ const ReviewSelection = props => {
           
           }
           </div>
+          <br/><h1>You selected the following flights</h1>
               </Grid>
               <Grid container sx={{justifyContent:"space-evenly",margin:"70px 0 0 0"}}>
               <div class="col-ig-4 pb-1">

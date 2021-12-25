@@ -171,7 +171,7 @@ const Booking = props => {
 
 
   return (
-    <div>
+    <div style={{margin:"15px"}}>
               
 
       <Box
@@ -190,6 +190,9 @@ const Booking = props => {
         
         <Grid sx={{ justifyContent: "center", textAlign: "center" }}>
           <br /><div className="row">
+          <div style={{ display: 'flex', justifyContent: 'left', alignItems: 'left', height: '5vh' }}>
+          <Button variant='contained'  size='small' color='primary' onClick={() => {props.history.goBack()}}>Back</Button>
+          </div>
             <div style={{ display: 'flex', justifyContent: 'right', alignItems: 'right', height: '5vh' }}>
               {edit &&
                 ((<Link to={"/ViewReservations"} className="btn btn-danger" onClick={() => { props.history.push("/ViewReservations") }}>Cancel</Link>))
@@ -705,7 +708,7 @@ const Booking = props => {
         <Grid>
 
 
-          <Grid sx={{ justifyContent: "center", textAlign: "center", margin: "60px 0 0 240px" }}>
+          <Grid sx={{ justifyContent: "center", textAlign: "center", margin: "60px 0 0 230px" }}>
             <Card
               sx={{ width: "400px", height: ' 220px', display: 'flex', flexDirection: 'column' }}
             >
@@ -823,8 +826,8 @@ const Booking = props => {
       <StripeCheckout stripeKey="pk_test_51KAKwFFMqAsw1TKn9YPjlgLvEEMefEOP8aemjBzhg5xJ29HuPFHMt4a2AUe6PnR83q6EIJ14uU1jQHYQqQd3sqk6008zLvCzwe"
                         token={Payment} style={{
                           position: 'absolute',
-                          right: "240px",
-                          top:"1180px" ,
+                          right: "250px",
+                          top:"1230px" ,
                     }}
                       />
                      

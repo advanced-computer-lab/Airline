@@ -49,7 +49,7 @@ export default class UsersController {
       const username = req.body.username
       const fname = req.body.firstname
       const lname = req.body.lastname
-      const passnum = req.body.passnumber
+      const passnum = req.body.passportnumber
       const password = req.body.password
       const email = req.body.email
       const address = req.body.address
