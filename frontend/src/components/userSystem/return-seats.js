@@ -14,7 +14,7 @@ function useForceUpdate(){
 
 const RetSeats = props => {
 
-    const state = props.location.state
+    let state = props.location.state
 
     const res = props.location.state.res
 
@@ -41,6 +41,16 @@ const RetSeats = props => {
     const retflight = state.retflight
 
     const depflight = state.depflight
+
+    console.log(retflight);
+
+    if(done){
+      state = {retflight, depflight, noseats, cabin, departurereserved, reserved, noadults, res};
+      console.log(state);
+      localStorage.setItem("state",JSON.stringify(state));
+      localStorage.setItem("user",JSON.stringify(props.User));
+      console.log(JSON.parse(localStorage.getItem("state")));
+    }
 
 
     const flightreserved = retflight.ReservedSeats
@@ -144,10 +154,11 @@ const RetSeats = props => {
           </div>
           <h1>Select Return Flight Seats </h1>
           <div style={{display: 'flex',  justifyContent:'right', alignItems:'right', height: '5vh'}}>
-            { done &&
+            { done  && 
           <Link to={{ pathname: "/flights/Booking", state: {retflight, depflight, noseats, cabin, departurereserved, reserved, noadults, res} }} className="btn btn-success">
             Confirm Selection
           </Link>}
+          
           </div>
 
           <strong>Please select {noseats} {cabin} seat(s) for your return flight.</strong>
